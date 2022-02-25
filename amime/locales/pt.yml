@@ -267,10 +267,10 @@ report_text: Put down the information of your report.
 
 report_button: ⛔ Report
 
-request_content_text: Pilih Resolusi yang Anda inginkan untuk request video anime di bawah ini.
+request_content_text: Pilih Resolusi yang Anda inginkan untuk request video anime di bawah ini, <i>Resolusi tergantung ketersediaan dari sumber.</i>
 
 request_content_done_text: |
-  Permintaan Anda untuk anime <b>{title}</b>, Berjumlah (<code>{episode}</code>) Episode.
+  Permintaan Anda untuk anime <b>{title}</b>..
 
   <b>sekarang sudah tersedia!!</b>
 

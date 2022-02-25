@@ -108,13 +108,13 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
         done=False,
     )
 
-    text = "<b>New request</b>"
-    text += f"\n<b>From</b>: {user.mention()}"
+    text = "<b>Request Terbaru</b>"
+    text += f"\n<b>Dari</b>: {user.mention()}"
     text += "\n<b>Anime</b>:"
     text += f"\n    <b>ID</b>: <code>{anime.id}</code>"
     text += f"\n    <b>Name</b>: <code>{anime.title.romaji}</code>"
     text += (
-        f"\n    <b>Language</b>: <code>{lang.strings[language]['LANGUAGE_NAME']}</code>"
+        f"\n    <b>Resolusi</b>: <code>{lang.strings[language]['LANGUAGE_NAME']}</code>"
     )
     text += "\n\n#REQUEST"
 
