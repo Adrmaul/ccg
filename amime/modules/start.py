@@ -85,7 +85,7 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
 
 
 @Amime.on_message(
-    filters.cmd(r"start (?P<content_type>anime|character|manga)_(\d+)")
+    filters.cmd(r"start (?P<content_type>request|character|manga)_(\d+)")
     & filters.private
 )
 async def view(bot: Amime, message: Message):
@@ -94,7 +94,7 @@ async def view(bot: Amime, message: Message):
     matches = re.search(r"(\d+)", message.text)
     message.matches = [matches]
 
-    if content_type == "anime":
+    if content_type == "request":
         await anime_view(bot, message)
     elif content_type == "character":
         await character_view(bot, message)
