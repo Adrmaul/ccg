@@ -1,0 +1,20 @@
+{
+  "name": "amime",
+  "description": "NOTHING ",
+  "logo": "https://telegra.ph/file/6a3b1febade2313dd0dca.jpg",
+  "keywords": ["Youtube", "YoutubeDownloader"],
+  "repository": "https://github.com/Myudi422/AmimeWatch",
+  "success_url": "https://t.me/tg_utubebot",
+  "website": "https://github.com/Myudi422/AmimeWatch",
+  "env": {
+    "BOT_TOKEN": { "description": "Get Bot Token From BotFather Bot", "required": true }
+  },
+  "buildpacks": [{ "url": "heroku/python" }],
+  "formation": {
+    "worker": {
+      "quantity": 1,
+      "size": "free"
+    }
+  },
+  "stack": "heroku-20"
+}
