@@ -1,526 +1,403 @@
 LANGUAGE_CODE: en
 LANGUAGE_NAME: English
 
-back_button:
-    🔙 Back
-
+back_button: 🔙 Back
 
 # Words
 
-channel:
-    Channel
+channel: Channel
 
-group:
-    Group
+group: Group
 
-action:
-    Action
+action: Action
 
-shounen:
-    Shounen
+shounen: Shounen
 
-martial_arts:
-    Martial arts
+martial_arts: Martial arts
 
-adventure:
-    Adventure
+adventure: Adventure
 
-comedy:
-    Comedy
+comedy: Comedy
 
-ecchi:
-    Ecchi
+ecchi: Ecchi
 
-devils:
-    Devils
+devils: Devils
 
-drama:
-    Drama
+drama: Drama
 
-fantasy:
-    Fantasy
+fantasy: Fantasy
 
-yuri:
-    Yuri
+yuri: Yuri
 
-yaoi:
-    Yaoi
+yaoi: Yaoi
 
-school:
-    School
+school: School
 
-sports:
-    Sports
+sports: Sports
 
-space:
-    Space
+space: Space
 
-hentai:
-    Hentai
+hentai: Hentai
 
-isekai:
-    Isekai
+isekai: Isekai
 
-shoujo:
-    Shoujo
+shoujo: Shoujo
 
-fight:
-    Fight
+fight: Fight
 
-mystery:
-    Mystery
+mystery: Mystery
 
-supernatural:
-    Supernatural
+supernatural: Supernatural
 
-music:
-    Music
+music: Music
 
-slice_of_life:
-    Slice of life
+slice_of_life: Slice of life
 
-score:
-    Score
+score: Score
 
-status:
-    Status
+status: Status
 
-genres:
-    Genres
+genres: Genres
 
-studios:
-    Studios
+studios: Studios
 
-format:
-    Format
+format: Format
 
-start_date:
-    Start date
+start_date: Start date
 
-end_date:
-    End date
+end_date: End date
 
-short_description:
-    Short description
+short_description: Short description
 
-favorite:
-    Favorite
+favorite: Favorite
 
-notify:
-    Notify
+notify: Notify
 
-duration:
-    Duration
+duration: Duration
 
-episode:
-    Episode
+episode: Episode
 
-volume:
-    Volume
+volume: Volume
 
-chapter:
-    Chapter
+chapter: Chapter
 
-name:
-    Name
+name: Name
 
-season:
-    Season
+season: Season
 
-language:
-    Language
+language: Language
 
-notes:
-    Notes
+notes: Notes
 
-added_by:
-    Added by
+added_by: Added by
 
-video:
-    Video
+video: Video
 
-number:
-    Number
+number: Number
 
-user_informations:
-    User information
+user_informations: User information
 
-collaborator:
-    Collaborator
+collaborator: Collaborator
 
-yes:
-    Yes
+yes: Yes
 
-no:
-    No
+no: No
 
-episodes_added:
-    Added episodes
+episodes_added: Added episodes
 
-bad_quality:
-    Bad quality
+bad_quality: Bad quality
 
-wrong_episode:
-    Wrong episode
+wrong_episode: Wrong episode
 
-wrong_title:
-    Wrong title
+wrong_title: Wrong title
 
-other:
-    Other
+other: Other
 
-type:
-    Type
+type: Type
 
-date:
-    Date
+date: Date
 
-invalid_user:
-    Invalid user
+invalid_user: Invalid user
 
-episodes_viewed:
-    Seen episodes
+episodes_viewed: Seen episodes
 
-episodes_watched:
-    Watched episodes
+episodes_watched: Watched episodes
 
-similarity:
-    Similarity
+similarity: Similarity
 
-at:
-    At
+at: At
 
-views:
-    Views
+views: Views
 
-page:
-    Page
+page: Page
 
-artist:
-    Artist
+artist: Artist
 
-tags:
-    Tags
-
+tags: Tags
 
 # Texts & buttons
 
 start_text: |
-    Hello {user_mention}, I'm <b>{bot_name}</b>, a bot dedicated to <i>otakus</i>, tap the button below and learn more.
+  Hello {user_mention}, I'm <b>{bot_name}</b>, a bot dedicated to <i>otakus</i>, tap the button below and learn more.
 
 start_text_2: |
-    Hello {user_mention}, I'm <b>{bot_name}</b>, a bot dedicated to <i>otakus</i>, explore my functions using the buttons below, you can do a lot of things. 😁
+  Hello {user_mention}, I'm <b>{bot_name}</b>, a bot dedicated to <i>otakus</i>, explore my functions using the buttons below, you can do a lot of things. 😁
 
-start_button:
-    🔏 PM
+start_button: 🔏 PM
 
-help_button:
-    👮‍♀️ Help
+help_button: 👮‍♀️ Help
 
 about_text: |
-    <b>{bot_name}</b> is a bot developed in <i>Python</i> with the <b>MTProto Pyrogram</b> library, made to be fast, stable and complete when it comes to animes.
-    Links: {github} | {channel} | {group}
+  <b>{bot_name}</b> is a bot developed in <i>Python</i> with the <b>MTProto Pyrogram</b> library, made to be fast, stable and complete when it comes to animes.
+  Links: {github} | {channel} | {group}
 
-about_button:
-    👥 About
+about_button: 👥 About
 
 language_text: |
-    Choose the desired language below.
+  Choose the desired language below.
 
 language_changed_text: |
-    Language changed successfully!
+  Language changed successfully!
 
-language_button:
-    🌐 Language
+language_button: 🌐 Language
 
-search_button:
-    🔎 Search
+search_button: 🔎 Search
 
 anime_text: |
-    You are in the <b>anime</b> section, use the buttons below to do what you want, see some suggestions, see your favorite anime, search, etc...
+  You are in the <b>anime</b> section, use the buttons below to do what you want, see some suggestions, see your favorite anime, search, etc...
 
-anime_button:
-    👸 Anime
+anime_button: 👸 Anime
 
 manga_text: |
-    You are in the <b>manga</b> section, use the buttons below to do what you want, see some suggestions, see your favorite manga, search, etc...
+  You are in the <b>manga</b> section, use the buttons below to do what you want, see some suggestions, see your favorite manga, search, etc...
 
-manga_button:
-    📖 Manga
+manga_button: 📖 Manga
 
 suggestions_text: |
-    Below are <b>50</b> suggestions, I hope you like some. 😅
+  Below are <b>50</b> suggestions, I hope you like some. 😅
 
-suggestions_button:
-    🍬 Suggestions
+suggestions_button: 🍬 Suggestions
 
 favorites_text: |
-    Below are all items marked as favorite.
+  Below are all items marked as favorite.
 
-favorites_button:
-    ⭐ Favorites
+favorites_button: ⭐ Favorites
 
 categories_text: |
-    Below are some categories, choose one and find something you like. 😆
+  Below are some categories, choose one and find something you like. 😆
 
 categorie_text: |
-    Below are up to <b>50</b> results from the <b>{genre}</b> category.
+  Below are up to <b>50</b> results from the <b>{genre}</b> category.
 
-categories_button:
-    🐛 Categories
+categories_button: 🐛 Categories
 
 upcoming_text: |
-    Below are <b>50</b> items that have not yet been released.
+  Below are <b>50</b> items that have not yet been released.
 
-upcoming_button:
-    🆕 Upcoming
+upcoming_button: 🆕 Upcoming
 
-donate_button:
-    🩸 Donate
+donate_button: 🩸 Donate
 
 view_more_text: |
-    Here you will be able to see the description, characters, staff and some other things, make good use of it. 🙃
+  Here you will be able to see the description, characters, staff and some other things, make good use of it. 🙃
 
-view_more_button:
-    👓 View more
+view_more_button: 👓 View more
 
 watch_list_anime_text: |
-    Below are all available episodes. Have a good time.
-    
-    <b>About emojis</b>:
-        🙈 - Never open
-        👁️ - Just seen
-        ✅ - Watched
+  Below are all available episodes. Have a good time.
 
-watch_button:
-    📺 Watch
+  <b>About emojis</b>:
+      🙈 - Never open
+      👁️ - Just seen
+      ✅ - Watched
 
-description_button:
-    📜 Description
+watch_button: 📺 Watch
+
+description_button: 📜 Description
 
 characters_text: |
-    Below are some characters from the item in question.
+  Below are some characters from the item in question.
 
-characters_button:
-    🧑‍🤝‍🧑 Characters
+characters_button: 🧑‍🤝‍🧑 Characters
 
-studios_button:
-    🌆 Studios
+studios_button: 🌆 Studios
 
-trailer_button:
-    🎦 Trailer
+trailer_button: 🎦 Trailer
 
 manage_anime_text: |
-    Below are all the added episodes.
+  Below are all the added episodes.
 
 manage_episode_text: |
-    Below is all the information from the episode (this is just a preview).
+  Below is all the information from the episode (this is just a preview).
 
-manage_button:
-    💼 Manage
+manage_button: 💼 Manage
 
 season_text: |
-    Below are all available seasons, choose one.
+  Below are all available seasons, choose one.
 
-season_button:
-    🌡️ Season
+season_button: 🌡️ Season
 
-add_button:
-    ➕ Add
+add_button: ➕ Add
 
-del_button:
-    ✖️ Delete
+del_button: ✖️ Delete
 
-del_season_button:
-    ✖️ Delete season
+del_season_button: ✖️ Delete season
 
 confirm_text: |
-    To continue, confirm using the button below.
+  To continue, confirm using the button below.
 
-confirm_button:
-    ✔️ Confirm
+confirm_button: ✔️ Confirm
 
-cancel_button:
-    ✖️ Cancel
+cancel_button: ✖️ Cancel
 
 send_me_the_item_text: |
-    Send me the item: <b>{item}</b>.
+  Send me the item: <b>{item}</b>.
 
-mark_as_watched_button:
-    ✅ Mark as watched
+mark_as_watched_button: ✅ Mark as watched
 
-mark_as_unwatched_button:
-    👁️ Mark as unwatched
+mark_as_unwatched_button: 👁️ Mark as unwatched
 
-previous_button:
-    ⏪ Previous
+previous_button: ⏪ Previous
 
-next_button:
-    ⏩ Next
+next_button: ⏩ Next
 
-dot_button:
-    ⏺️
+dot_button: ⏺️
 
-report_text:
-    Put down the information of your report.
+report_text: Put down the information of your report.
 
-report_button:
-    ⛔ Report
+report_button: ⛔ Report
 
-request_content_text:
-    Choose the language in which you want to view the content below.
+request_content_text: Pilih Resolusi yang Anda inginkan untuk request video anime di bawah ini.
 
 request_content_done_text: |
-    Oops! Your request for <b>{title}</b> (<code>{type}</code>) is now available!
-    
-    Use the button below to view the content.
+  Permintaan Anda untuk anime <b>{title}</b> (<code>{type}</code>)
 
-request_content_button:
-    🙋‍♀️ Request content
+  <b>sekarang tersedia!!</b>
+
+request_content_button: 🙋‍♀️ Request Anime
 
 notify_users_anime_subbed_text: |
-    Oops! The anime <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added subtitled!
+  Oops! The anime <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added subtitled!
 
 notify_users_anime_dubbed_text: |
-    Oops! The anime <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added dubbed!
+  Oops! The anime <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added dubbed!
 
 notify_users_episode_subbed_text: |
-    Oops! The new <code>{number}</code> (subtitled) episode of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
+  Oops! The new <code>{number}</code> (subtitled) episode of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
 
 notify_users_episode_dubbed_text: |
-    Oops! The new <code>{number}</code> (dubbed) episode of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
+  Oops! The new <code>{number}</code> (dubbed) episode of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
 
 notify_users_episode_season_subbed_text: |
-    Oops! The new <code>{number}</code> episode of <b>{season}</b> (subtitled) season of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
+  Oops! The new <code>{number}</code> episode of <b>{season}</b> (subtitled) season of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
 
 notify_users_episode_season_dubbed_text: |
-    Oops! The new <code>{number}</code> episode of <b>{season}</b> (dubbed) season of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
+  Oops! The new <code>{number}</code> episode of <b>{season}</b> (dubbed) season of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
 
-notify_users_button:
-    🛎️ Notify users
+notify_users_button: 🛎️ Notify users
 
-collaborator_button:
-    👷‍♀️ Collaborator
+collaborator_button: 👷‍♀️ Collaborator
 
 add_in_batch_text: |
-    Send me all episodes with the caption in the following format: <b>Number | Title</b>
-    Ex:
-        <b>1 | Uzumaki Naruto Arriving</b>
-    
-    After that, use the <b>{confirm_button}</b> button.
-    
-    Note: <i>only the episode number is required</i>.
+  Send me all episodes with the caption in the following format: <b>Number | Title</b>
+  Ex:
+      <b>1 | Uzumaki Naruto Arriving</b>
+
+  After that, use the <b>{confirm_button}</b> button.
+
+  Note: <i>only the episode number is required</i>.
 
 add_in_batch_videos_text: |
-    <b>{count}</b> videos were detected, starting batch addition...
+  <b>{count}</b> videos were detected, starting batch addition...
 
-add_in_batch_button:
-    🔢 Add in batch
+add_in_batch_button: 🔢 Add in batch
 
 no_found_episodes_text: |
-    Oops! I did not find any episode, if it is a mistake, inform those responsible.
+  Oops! I did not find any episode, if it is a mistake, inform those responsible.
 
 search_results_text: |
-    Search results: <b>{query}</b>
+  Search results: <b>{query}</b>
 
 media_not_found_text: |
-    No media was found in this message.
+  No media was found in this message.
 
 scanning_media_text: |
-    Scanning media...
+  Scanning media...
 
 searching_media_text: |
-    Searching media...
+  Searching media...
 
 no_results_text: |
-    No results were found.
+  No results were found.
 
 day_releases_text: |
-    Next episodes. - <code>{date}</code>
+  Next episodes. - <code>{date}</code>
 
 timed_out_text: |
-    Timeout exceeded.
+  Timeout exceeded.
 
 api_down_text: |
-    The API is unavailable, please try again later.
+  The API is unavailable, please try again later.
 
 api_overuse_text: |
-    Excessive use of the API, please try again later.
+  Excessive use of the API, please try again later.
 
 empty_message_text: |
-    The message cannot be empty.
+  The message cannot be empty.
 
 no_chat_found_text: |
-    No chat was found, check if everything is right.
+  No chat was found, check if everything is right.
 
 sending_alert_text: |
-    The alert is being sent, please wait...
+  The alert is being sent, please wait...
 
 alert_sent_text: |
-    The alert was successfully sent to <code>{success}</code> chats and failed to send in <code>{failed}</code> chats.
+  The alert was successfully sent to <code>{success}</code> chats and failed to send in <code>{failed}</code> chats.
 
 how_to_use_text: |
-    Watch the animation above and see how to use me.
+  Watch the animation above and see how to use me.
 
-how_to_use_button:
-    ❓ How to use?
+how_to_use_button: ❓ How to use?
 
-subtitled_button:
-    🈁 Subtitled
+subtitled_button: 🈁 Subtitled
 
-next_episode_button:
-    🎦 Next episode
+next_episode_button: 🎦 Next episode
 
-read_button:
-    📒 Read
-
+read_button: 📒 Read
 
 # Alerts
-added_to_favorites_alert:
-    Item successfully added to your favorites list!
+added_to_favorites_alert: Item successfully added to your favorites list!
 
-removed_from_favorites_alert:
-    Item successfully removed from your favorites list!
+removed_from_favorites_alert: Item successfully removed from your favorites list!
 
-notifications_linked_alert:
-    Notifications successfully linked!
+notifications_linked_alert: Notifications successfully linked!
 
-notifications_turned_off_alert:
-    Notifications turned off successfully!
+notifications_turned_off_alert: Notifications turned off successfully!
 
-unfinished_function_alert:
-    Oops! This function is not yet ready, wait for updates and stay tuned on our channel.
+unfinished_function_alert: Oops! This function is not yet ready, wait for updates and stay tuned on our channel.
 
-episode_already_exists_alert:
-    An episode with the same number already exists.
+episode_already_exists_alert: An episode with the same number already exists.
 
-confirm_save_episode_alert:
-    The episode was successfully saved!
+confirm_save_episode_alert: The episode was successfully saved!
 
-confirm_delete_episode_alert:
-    The episode was successfully deleted!
+confirm_delete_episode_alert: The episode was successfully deleted!
 
-very_short_video_alert:
-    The uploaded video is too short.
+very_short_video_alert: The uploaded video is too short.
 
 reported_in_last_24h_alert: |
-    You have already reported an episode in the past 24 hours.
-    
-    Date: {date}
+  Anda telah melaporkan sebuah anime dalam 24 jam terakhir.
 
-episode_successfully_reported_alert:
-    Episode successfully reported!
+   Tanggal: {tanggal}
 
-request_sent_alert:
-    Your request has been sent to our collaborators, if the episodes are found, they will be added, please wait...
+episode_successfully_reported_alert: anime berhasil dilaporkan!
+
+request_sent_alert: Permintaan Anda telah dikirim ke kolaborator kami, jika episode ditemukan, akan ditambahkan, harap tunggu ...
 
 requested_in_last_24h_alert: |
-    This item has already received a content request in the past 24 hours.
-    
-    Date: {date}
+  Anime ini telah menerima permintaan konten dalam 24 jam terakhir.
 
-notified_users_alert:
-    Users have been successfully notified!
+   Tanggal: {tanggal}
 
-only_1_episode_not_allowed_alert:
-    Only batches over 1 episode are allowed.
+notified_users_alert: Pengguna telah berhasil diberi tahu!
+
+only_1_episode_not_allowed_alert: Only batches over 1 episode are allowed.
