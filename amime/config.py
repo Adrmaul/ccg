@@ -16,4 +16,4 @@ CHATS: Dict = {
     "staff": -1001559315851,
 }
 SUDO_USERS: List[int] = [1765145725, 918317361, 705707638]  # @AndrielFR, @Hitalo and @VegaZS
-PREFIXES: List[str] = ["!", "."] # Like !start or /start
+PREFIXES: List[str] = ["!", "/"] # Like !start or /start
