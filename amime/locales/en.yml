@@ -1,5 +1,5 @@
 LANGUAGE_CODE: en
-LANGUAGE_NAME: English
+LANGUAGE_NAME: 360/480p
 
 back_button: 🔙 Back
 
@@ -85,7 +85,7 @@ name: Name
 
 season: Season
 
-language: Language
+language: Resolusi
 
 notes: Notes
 
