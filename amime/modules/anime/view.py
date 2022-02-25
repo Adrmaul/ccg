@@ -132,8 +132,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             (lang.view_more_button, f"anime more {anime.id} {user.id}"),
         ]
 
-        if is_private:
-            buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
+
 
         if len(episodes) > 0:
             if is_private:
