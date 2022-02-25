@@ -129,7 +129,11 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             text += f"\n<b>{lang.end_date}</b>: <code>{anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}</code>"
 
         buttons = [
-            (lang.view_more_button, f"https://t.me/{bot.me.username}/?start=anime_{anime.id}"),
+            (
+                        lang.view_more_button,
+                        f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
+                        "url",
+                    )
         ]
 
 
