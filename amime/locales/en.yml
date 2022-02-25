@@ -270,9 +270,9 @@ report_button: ⛔ Report
 request_content_text: Pilih Resolusi yang Anda inginkan untuk request video anime di bawah ini.
 
 request_content_done_text: |
-  Permintaan Anda untuk anime <b>{title}</b> (<code>{type}</code>)
+  Permintaan Anda untuk anime <b>{title}</b>, Berjumlah (<code>{episode}</code>) Episode.
 
-  <b>sekarang tersedia!!</b>
+  <b>sekarang sudah tersedia!!</b>
 
 request_content_button: 🙋‍♀️ Request Anime
 
@@ -391,7 +391,7 @@ reported_in_last_24h_alert: |
 
 episode_successfully_reported_alert: anime berhasil dilaporkan!
 
-request_sent_alert: Permintaan Anda telah dikirim ke kolaborator kami, jika episode ditemukan, akan ditambahkan, harap tunggu ...
+request_sent_alert: Permintaan Anda telah dikirim ke grup kami, jika anime memang sudah rilis/ada, akan kami tambahkan, harap tunggu dalam beberapa hari kedepan, tergantung banyaknya permintaan...
 
 requested_in_last_24h_alert: |
   Anime ini telah menerima permintaan konten dalam 24 jam terakhir.
