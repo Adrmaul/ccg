@@ -29,8 +29,8 @@ from pyromod.helpers import ikb
 from amime.amime import Amime
 
 
-@Amime.on_message(filters.cmd(r"anime$") & filters.private)
-@Amime.on_callback_query(filters.regex(r"^anime$"))
+@Amime.on_message(filters.cmd(r"animes$") & filters.private)
+@Amime.on_callback_query(filters.regex(r"^animes$"))
 async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
