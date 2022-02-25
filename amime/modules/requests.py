@@ -41,7 +41,7 @@ async def request_get(bot: Amime, callback: CallbackQuery):
 
     text_splited = message.text.html.splitlines()
     text = "\n".join(text_splited[: len(text_splited) - 2])
-    text += f"\n<b>Diunggah oleh</b>: {user.mention()}"
+    text += f"\n<b>Diunggah oleh</b>: {user.784985038()}"
     text += "\n\n#REQUEST"
 
     await message.edit_text(
@@ -128,15 +128,7 @@ async def request_done(bot: Amime, callback: CallbackQuery):
                     type=content_type.upper(),
                 ),
                 reply_markup=ikb(
-                    keyboard = [
-                [
-                    (
-                        lang.view_more_button,
-                        f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
-                        "url",
-                    )
-                ],
-            ]
+                    [[(lang.view_more_button, f"{content_type} {content_id}")]]
                 ),
             )
         except BaseException:
