@@ -58,7 +58,7 @@ async def anime_upcoming(bot: Amime, callback: CallbackQuery):
                 }
                 """,
                 variables=dict(
-                    per_page=56,
+                    per_page=50,
                 ),
             ),
             headers={
@@ -82,7 +82,7 @@ async def anime_upcoming(bot: Amime, callback: CallbackQuery):
                 page_data=lambda pg: f"upcoming anime {pg}",
             )
 
-            lines = layout.create(page, lines=12)
+            lines = layout.create(page, lines=10)
 
             if len(lines) > 0:
                 keyboard += lines
