@@ -106,7 +106,6 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
         type="anime",
         datetime=now_date,
         done=False,
-        disable_web_page_preview=True,
     )
 
     text = "<b>Request Terbaru</b>"
