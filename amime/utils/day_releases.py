@@ -70,9 +70,9 @@ async def load(bot):
 
             del animes[anime_id]
 
-    await sent.edit_text(
-        f"<code>{len(animes)}</code> animes have episodes to be released today, check them out using /today"
-    )
+    #await sent.edit_text(
+        #f"<code>{len(animes)}</code> animes have episodes to be released today, check them out using /today"
+    #)
 
     await asyncio.sleep(3600)
     await load(bot)

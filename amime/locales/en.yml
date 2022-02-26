@@ -399,7 +399,7 @@ request_sent_alert: Permintaan Anda telah dikirim ke grup kami, jika anime meman
 requested_in_last_24h_alert: |
   Anime ini telah menerima permintaan konten dalam 24 jam terakhir.
 
-   Tanggal: {tanggal}
+   Tanggal: {date}
 
 notified_users_alert: Pengguna telah berhasil diberi tahu!
 
