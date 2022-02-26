@@ -163,7 +163,7 @@ language_text: |
 language_changed_text: |
   Language changed successfully!
 
-language_button: 🌐 Language
+language_button: Resolusi
 
 search_button: 🔎 Search
 
@@ -205,7 +205,7 @@ donate_button: 🩸 Donate
 view_more_text: |
   Here you will be able to see the description, characters, staff and some other things, make good use of it. 🙃
 
-view_more_button: 👓 View more
+view_more_button: 👓 View Anime
 
 watch_list_anime_text: |
   Below are all available episodes. Have a good time.
@@ -276,8 +276,6 @@ request_content_text: Pilih Resolusi yang Anda inginkan untuk request video anim
 request_content_done_text: |
   Permintaan Anda untuk anime <b>{title}</b>, sudah kami proses..
   <b>sekarang sudah tersedia!!, silahkan untuk download/streaming.</b>
-
-  Klik disini : <b>Link Anime</b>: - <a href='http://t.me/ccgnimex_bot/?start=anime_{id}'>Klik disini</a>"
 
 request_content_button: 🙋‍♀️ Request Anime
 
