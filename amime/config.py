@@ -11,7 +11,7 @@ CHANNELS: Dict = {
 }
 CHATS: Dict = {
     "backup": -1001559315851,
-    "requests": -1001559315851,
+    "requests": -1001519273319,
     "videos": -1001559315851,
     "staff": -1001559315851,
 }
