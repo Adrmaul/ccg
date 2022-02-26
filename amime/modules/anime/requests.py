@@ -85,7 +85,7 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
     requests = await Requests.filter(item=anime_id, type="anime")
     requests = sorted(requests, key=lambda request: request.id)
 
-    now_date = datetime.datetime.now().replace(tzinfo=datetime.timezone.Asia/Jakarta)
+    now_date = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
 
     if not is_collaborator and len(requests) > 0:
         request = requests[-1]
