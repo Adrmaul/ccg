@@ -77,6 +77,14 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                     ]
                 ]
             ),
+            reply_markup = InlineKeyboardMarkup(
+                [
+                    [
+                        InlineKeyboardButton("📩 Lapor/REQ", url="https://t.me/otakuindonew"),
+                        InlineKeyboardButton("💠 Channel", url="https://t.me/downloadanimebatch/302")
+                    ],
+                ]
+            )
         )
 
 
