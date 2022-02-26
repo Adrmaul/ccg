@@ -136,15 +136,12 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     )
         ]
 
-        keyboard.append(
-                [
-                    (
+        buttons = [
+            (
                         lang.report_button,
                         f"report episode {anime_id}",
                     )
-                ]
-            )
-
+        ]
 
 
         if len(episodes) > 0:
