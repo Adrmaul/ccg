@@ -165,7 +165,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         )
 
         buttons.append(
-            await lang.report_button(
+                (
                 f"report episode {anime_id}",
             )
         )
