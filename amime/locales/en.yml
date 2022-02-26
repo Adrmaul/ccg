@@ -271,6 +271,7 @@ request_content_text: Pilih Resolusi yang Anda inginkan untuk request video anim
 
 request_content_done_text: |
   Permintaan Anda untuk anime <b>{title}</b>..
+  <b>Diproses oleh</b>: {user.mention()}
 
   <b>sekarang sudah tersedia!!</b>
 
