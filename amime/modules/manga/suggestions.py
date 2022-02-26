@@ -87,7 +87,7 @@ async def manga_suggestions(bot: Amime, callback: CallbackQuery):
             if len(lines) > 0:
                 keyboard += lines
 
-    keyboard.append([(lang.back_button, "manga")])
+    keyboard.append([(lang.back_button, "manga_s")])
 
     await message.edit_text(
         lang.suggestions_text,

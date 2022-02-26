@@ -87,7 +87,7 @@ async def anime_upcoming(bot: Amime, callback: CallbackQuery):
             if len(lines) > 0:
                 keyboard += lines
 
-    keyboard.append([(lang.back_button, "anime")])
+    keyboard.append([(lang.back_button, "request")])
 
     await message.edit_text(
         lang.upcoming_text,
