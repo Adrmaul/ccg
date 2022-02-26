@@ -53,8 +53,8 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                         (lang.search_button, "", "switch_inline_query_current_chat"),
                     ],
                     [
-                        (lang.request_button, "Anime"),
-                        (lang.mangas_button, "Manga"),
+                        (lang.anime_button, "request"),
+                        (lang.manga_button, "mangas"),
                     ],
 
                 ]
