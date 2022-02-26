@@ -3,7 +3,7 @@ from typing import Dict, List
 
 GROUPS: Dict = {
     "en": -1001519273319,
-    "pt": -1001559315851,
+    "pt": -1001519273319,
 }
 CHANNELS: Dict = {
     "en": -1001706431524,

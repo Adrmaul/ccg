@@ -32,7 +32,7 @@ from amime.database import Episodes
 async def load(bot):
     now = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
 
-    sent = await bot.send_message(CHATS["staff"], "Checking the day's releases...")
+    #sent = await bot.send_message(CHATS["staff"], "Checking the day's releases...")
 
     animes = {}
 
