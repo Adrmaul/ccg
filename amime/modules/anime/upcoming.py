@@ -82,7 +82,7 @@ async def anime_upcoming(bot: Amime, callback: CallbackQuery):
                 page_data=lambda pg: f"upcoming anime {pg}",
             )
 
-            lines = layout.create(page, lines=8)
+            lines = layout.create(page, lines=12)
 
             if len(lines) > 0:
                 keyboard += lines
