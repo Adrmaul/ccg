@@ -135,13 +135,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                         "url",
                     )
         ]
-
-        buttons = [
-            (
-                        lang.report_button,
-                        f"report episode {anime_id}",
-                    )
-        ]
+        
 
 
         if len(episodes) > 0:
@@ -167,6 +161,12 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         buttons.append(
             await get_notify_button(
                 lang, user if is_private else chat, "anime", anime.id
+            )
+        )
+
+        buttons.append(
+            await lang.report_button(
+                f"report episode {anime_id}",
             )
         )
 
