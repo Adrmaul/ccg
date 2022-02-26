@@ -187,12 +187,12 @@ categories_text: |
   Below are some categories, choose one and find something you like. 😆
 
 categorie_text: |
-  Dibawah ini adalah <b>50></b> anime, hasil dari kategori <b>{genre}</b>.
+  Dibawah ini adalah <b>50</b> anime, hasil dari kategori <b>{genre}</b>.
 
 categories_button: 🐛 Categories
 
 upcoming_text: |
-  Dibawah ini adalah urutan <b>50></b> anime, yang akan rilis
+  Dibawah ini adalah urutan <b>50</b> anime, yang akan rilis
 
 upcoming_button: 🆕 Upcoming
 
