@@ -44,7 +44,7 @@ async def anime_upcoming(bot: Amime, callback: CallbackQuery):
             json=dict(
                 query="""
                 query($per_page: Int) {
-                    Page(page: 1, perPage: $per_page) {
+                    Page(page: 2, perPage: $per_page) {
                         media(type: ANIME, sort: POPULARITY_DESC, status: NOT_YET_RELEASED) {
                             id
                             title {
