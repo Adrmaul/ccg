@@ -50,17 +50,13 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
             reply_markup=ikb(
                 [
                     [
-                        (lang.about_button, "about"),
-                        (lang.language_button, "language"),
+                        (lang.search_button, "", "switch_inline_query_current_chat"),
                     ],
                     [
-                        (lang.anime_button, "anime"),
-                        (lang.manga_button, "manga"),
+                        (lang.request_button, "Anime"),
+                        (lang.mangas_button, "Manga"),
                     ],
-                    [
-                        (lang.how_to_use_button, "how_to_use"),
-                        (lang.donate_button, "donate"),
-                    ],
+
                 ]
             ),
         )
