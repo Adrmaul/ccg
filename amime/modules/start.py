@@ -53,7 +53,7 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                         (lang.search_button, "", "switch_inline_query_current_chat"),
                     ],
                     [
-                        (lang.anime_button, "request"),
+                        (lang.anime_button, "menu"),
                         (lang.manga_button, "manga_s"),
                     ],
 
@@ -81,7 +81,7 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
 
 
 @Amime.on_message(
-    filters.cmd(r"start (?P<content_type>request|character|manga)_(\d+)")
+    filters.cmd(r"start (?P<content_type>menu|character|manga)_(\d+)")
     & filters.private
 )
 async def view(bot: Amime, message: Message):
@@ -90,7 +90,7 @@ async def view(bot: Amime, message: Message):
     matches = re.search(r"(\d+)", message.text)
     message.matches = [matches]
 
-    if content_type == "request":
+    if content_type == "menu":
         await anime_view(bot, message)
     elif content_type == "character":
         await character_view(bot, message)
