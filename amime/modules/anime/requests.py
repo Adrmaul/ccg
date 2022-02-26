@@ -112,10 +112,12 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
     text += f"\n<b>Dari</b>: {user.mention()}"
     text += "\n<b>Anime</b>:"
     text += f"\n    <b>ID</b>: <code>{anime.id}</code>"
-    text += f"\n    <b>Name</b>: <code>{anime.title.romaji}</code>"
+    text += f"\n    <b>Judul</b>: <code>{anime.title.romaji}</code>"
     text += (
         f"\n    <b>Resolusi</b>: <code>{lang.strings[language]['LANGUAGE_NAME']}</code>"
     )
+    text += f"\n• <b>Link Anime</b>: - <a href='https://t.me/{bot.me.username}/?start=request_{anime.id}'>Klik disini</a>)"
+
     text += "\n\n#REQUEST"
 
     await bot.send_message(
