@@ -59,17 +59,6 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
 
                 ]
             ),
-            reply_markup=ikb(
-                [
-                    [
-                        (
-                            lang.view_more_button,
-                            f"https://t.me/downloadanimebatch/302",
-                            "url",
-                        )
-                    ]
-                ]
-            ),
         )
     else:
         await message.reply_text(
@@ -88,7 +77,6 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                     ]
                 ]
             ),
-
         )
 
 
