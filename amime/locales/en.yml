@@ -138,11 +138,13 @@ tags: Tags
 # Texts & buttons
 
 start_text: |
-  Hello {user_mention}, I'm <b>{bot_name}</b>, a bot dedicated to <i>otakus</i>, tap the button below and learn more.
+  Hello {user_mention}, saya bot <b>{bot_name}</b>, a bot dedicated to <i>otakus</i>, tap the button below and learn more.
 
 start_text_2: |
-  Hello {user_mention}, I'm <b>{bot_name}</b>, untuk penggunaan lebih lanjut, silahkan untuk ketik /help disini.
+  Hello {user_mention}, saya bot <b>{bot_name}</b>, untuk penggunaan lebih lanjut, silahkan untuk ketik /help disini.
+
   Jika kalian suka dengan bot ini, silahkan dukung kami dengan cara,support kami & juga berdonasi agar server tetap hidup & kami terus memberikan kalian anime.
+
   Saya sarankan, Silahkan Daftar/Login Anilist terlebih dahulu (/auth), untuk menikmati fitur bot ini sepenuhnya.
 
 start_button: 🔏 PM
