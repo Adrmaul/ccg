@@ -164,11 +164,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             )
         )
 
-        buttons.append(
-                (
-                f"report episode {anime_id}",
-            )
-        )
+
 
         if is_private and is_collaborator:
             buttons.append(
