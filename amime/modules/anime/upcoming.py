@@ -58,7 +58,7 @@ async def anime_upcoming(bot: Amime, callback: CallbackQuery):
                 }
                 """,
                 variables=dict(
-                    per_page=50,
+                    per_page=100,
                 ),
             ),
             headers={
