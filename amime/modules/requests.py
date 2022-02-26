@@ -130,13 +130,7 @@ async def request_done(bot: Amime, callback: CallbackQuery):
                 reply_markup=ikb(
                     [[(lang.view_more_button, f"{content_type} {content_id}")]]
                 ),
-                buttons = [
-            (
-                        lang.view_more_button,
-                        f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
-                        "url",
-                    )
-        ],
+                
             )
         except BaseException:
             pass
