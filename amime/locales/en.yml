@@ -390,7 +390,7 @@ very_short_video_alert: The uploaded video is too short.
 reported_in_last_24h_alert: |
   Anda telah melaporkan sebuah anime dalam 24 jam terakhir.
 
-   Tanggal: {tanggal}
+   Tanggal: {date}
 
 episode_successfully_reported_alert: anime berhasil dilaporkan!
 
