@@ -181,7 +181,7 @@ async def manga_view_more(bot: Amime, callback: CallbackQuery):
         keyboard.append([(lang.back_button, f"manga {manga_id} {user_id}")])
 
         await message.edit_text(
-            lang.manga_more_text,
+            lang.view_more_text,
             reply_markup=ikb(keyboard),
         )
 
