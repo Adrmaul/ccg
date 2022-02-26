@@ -126,7 +126,7 @@ async def manga_view(bot: Amime, union: Union[CallbackQuery, Message]):
             text += f"\n<b>{lang.end_date}</b>: <code>{manga.end_date.day if hasattr(manga.end_date, 'day') else 0}/{manga.end_date.month if hasattr(manga.end_date, 'month') else 0}/{manga.end_date.year if hasattr(manga.end_date, 'year') else 0}</code>"
 
         buttons = [
-            (lang.view_more_button, f"manga more {manga.id} {user.id}"),
+            (lang.manga_more_button, f"manga more {manga.id} {user.id}"),
         ]
 
         if is_private:
@@ -154,7 +154,7 @@ async def manga_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
 
 @Amime.on_callback_query(filters.regex(r"^manga more (\d+) (\d+)"))
-async def manga_view_more(bot: Amime, callback: CallbackQuery):
+async def manga_manga_more(bot: Amime, callback: CallbackQuery):
     message = callback.message
     user = callback.from_user
     lang = callback._lang
@@ -181,7 +181,7 @@ async def manga_view_more(bot: Amime, callback: CallbackQuery):
         keyboard.append([(lang.back_button, f"manga {manga_id} {user_id}")])
 
         await message.edit_text(
-            lang.view_more_text,
+            lang.manga_more_text,
             reply_markup=ikb(keyboard),
         )
 

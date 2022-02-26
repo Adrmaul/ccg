@@ -168,27 +168,33 @@ language_button: Resolusi
 search_button: 🔎 Search
 
 anime_text: |
-  You are in the <b>anime</b> section, use the buttons below to do what you want, see some suggestions, see your favorite anime, search, etc...
+  Anda berada di bagian anime, gunakan tombol di bawah untuk melakukan apa yang Anda inginkan, cek beberapa saran anime, upcoming dari kami, cari anime/database, dll...
+  Harap gunakan /help jika belum mengerti.
+
+  <i>note: Menu ini masih dalam tahap pengembangan, jadi mungkin ada beberapa bug.</i>
 
 anime_button: 👸 Anime
 
 manga_text: |
-  You are in the <b>manga</b> section, use the buttons below to do what you want, see some suggestions, see your favorite manga, search, etc...
+  Anda berada di bagian manga, gunakan tombol di bawah untuk melakukan apa yang Anda inginkan, cek beberapa saran manga, upcoming dari kami, dll...
+  Harap gunakan /help jika belum mengerti.
 
+  <i>note: Menu ini masih dalam tahap pengembangan, jadi mungkin ada beberapa bug.</i>
 manga_button: 📖 Manga
-
 suggestions_text: |
   Dibawah ini adalah <b>50</b> anime yang admin rekomendasikan, semoga kalian menyukainya.
 
 suggestions_button: 🍬 Suggestions
 
 favorites_text: |
-  Below are all items marked as favorite.
+  Di bawah ini adalah semua item yang ditandai sebagai favorit.
 
 favorites_button: ⭐ Favorites
 
 categories_text: |
-  Below are some categories, choose one and find something you like. 😆
+  Di bawah ini adalah beberapa kategori, pilih salah satu dan temukan sesuatu yang Anda sukai
+
+  <i>note: Menu ini masih dalam tahap pengembangan, jadi mungkin ada beberapa bug.</i>
 
 categorie_text: |
   Dibawah ini adalah <b>50</b> anime, hasil dari kategori <b>{genre}</b>.
@@ -205,9 +211,11 @@ donate_button: 🩸 Donate
 view_more_text: |
   Here you will be able to see the description, characters, staff and some other things, make good use of it. 🙃
 
-view_more_button: 👓 View Anime
+view_more_button: ⎆ Lihat Anime
 
-checknimex_button: ✅ Check Anime
+manga_more_button: ⎆ Lihat Manga
+
+checknimex_button: ✅ Cek Anime
 
 watch_list_anime_text: |
   Below are all available episodes. Have a good time.
