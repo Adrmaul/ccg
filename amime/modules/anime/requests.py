@@ -106,7 +106,6 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
         type="anime",
         datetime=now_date,
         done=False,
-        parse_mode=ParseMode.HTML,
         disable_web_page_preview=True,
     )
 
