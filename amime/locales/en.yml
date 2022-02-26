@@ -174,7 +174,7 @@ manga_text: |
 manga_button: 📖 Manga
 
 suggestions_text: |
-  Below are <b>50</b> suggestions, I hope you like some. 😅
+  Dibawah ini adalah <b>50</b> anime yang admin rekomendasikan, semoga kalian menyukainya.
 
 suggestions_button: 🍬 Suggestions
 
@@ -187,12 +187,12 @@ categories_text: |
   Below are some categories, choose one and find something you like. 😆
 
 categorie_text: |
-  Below are up to <b>50</b> results from the <b>{genre}</b> category.
+  Dibawah ini adalah <b>50></b> anime, hasil dari kategori <b>{genre}</b>.
 
 categories_button: 🐛 Categories
 
 upcoming_text: |
-  Below are <b>50</b> items that have not yet been released.
+  Dibawah ini adalah urutan <b>50></b> anime, yang akan rilis
 
 upcoming_button: 🆕 Upcoming
 

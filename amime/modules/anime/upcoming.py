@@ -45,7 +45,7 @@ async def anime_upcoming(bot: Amime, callback: CallbackQuery):
                 query="""
                 query($per_page: Int) {
                     Page(page: 1, perPage: $per_page) {
-                        media(type: ANIME, sort: POPULARITY_DESC, status: NOT_YET_RELEASED) {
+                        media(type: ANIME, sort: POPULARITY_DESC, status: NOT_YET_RELEASED, genres: Ecchi) {
                             id
                             title {
                                 romaji
@@ -88,7 +88,6 @@ async def anime_upcoming(bot: Amime, callback: CallbackQuery):
                 keyboard += lines
 
     keyboard.append([(lang.back_button, "request")])
-    keyboard.append({(lang.upcoming_button, "upcoming anime 2")})
 
     await message.edit_text(
         lang.upcoming_text,
