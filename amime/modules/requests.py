@@ -41,8 +41,8 @@ async def request_get(bot: Amime, callback: CallbackQuery):
 
     text_splited = message.text.html.splitlines()
     text = "\n".join(text_splited[: len(text_splited) - 2])
-    text += f"<b>Diproses oleh</b>: {user.mention()}"
-    text += "\n#REQUEST"
+    text += f"\n<b>Diproses oleh</b>: {user.mention()}"
+    text += "\n\n#REQUEST"
 
     await message.edit_text(
         text,
