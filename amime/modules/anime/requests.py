@@ -106,7 +106,8 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
         type="anime",
         datetime=now_date,
         done=False,
-        disable_web_page_preview=True
+        parse_mode=ParseMode.HTML,
+        disable_web_page_preview=True,
     )
 
     text = "<b>Request Terbaru</b>"
@@ -117,7 +118,7 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
     text += (
         f"\n    <b>Resolusi</b>: <code>{lang.strings[language]['LANGUAGE_NAME']}</code>"
     )
-    text += f"\n<b>Link Anime</b>: - <a href='https://t.me/{bot.me.username}/?start=anime_{anime.id}'>Klik disini</a>"
+    text += f"\n<b>Link Anime</b>: - <a href='http://t.me/{bot.me.username}/?start=anime_{anime.id}'>Klik disini</a>"
 
     text += "\n\n#REQUEST"
 
