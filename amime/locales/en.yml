@@ -277,7 +277,7 @@ request_content_done_text: |
   Permintaan Anda untuk anime <b>{title}</b>, sudah kami proses..
   <b>sekarang sudah tersedia!!, silahkan untuk download/streaming.</b>
 
-  Klik disini : <b>Link Anime</b>: - <a href='http://t.me/{bot.me.username}/?start=anime_{anime.id}'>Klik disini</a>"
+  Klik disini : <b>Link Anime</b>: - <a href='http://t.me/ccgnimex_bot/?start=anime_{anime.id}'>Klik disini</a>"
 
 request_content_button: 🙋‍♀️ Request Anime
 
