@@ -136,7 +136,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     )
         ]
         
-
+        buttons.append([InlineKeyboardButton("Download", switch_inline_query_current_chat={anime.title.romaji})]) 
 
         if len(episodes) > 0:
             if is_private:
