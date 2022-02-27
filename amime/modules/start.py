@@ -60,18 +60,18 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                     [
                         (
                             lang.grup_button,
-                            f"https://t.me/{bot.me.username}?start=",
+                            f"https://t.me/otakuindonew",
                             "url",
                         ),
                         (
                             lang.channel_button,
-                            f"https://t.me/{bot.me.username}?start=",
+                            f"https://t.me/downloadanimebatch/302",
                             "url",
                         )
                     ],
 
                     [
-                        (lang.anime_button, "help"),
+                        (lang.help_button, "help"),
                     ],
 
                 ]
