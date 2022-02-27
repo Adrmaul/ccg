@@ -22,7 +22,6 @@
 
 import re
 from typing import Union
-from amime.modules.anime.start import anime_start
 
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, Message
@@ -97,14 +96,3 @@ async def view(bot: Amime, message: Message):
         await character_view(bot, message)
     else:
         await manga_view(bot, message)
-
-@Amime.on_message(
-    filters.cmd(r"start (?P<content_type>menu_s)")
-    & filters.private
-)
-async def view(bot: Amime, message: Message):
-    content_type = message.matches[0]["content_type"]
-
-    if content_type == "menu_s":
-        await anime_start(bot, message)
-    
