@@ -103,7 +103,7 @@ async def view(bot: Amime, message: Message):
     filters.cmd(r"start (?P<content_type>menu)")
     & filters.private
 )
-async def view(bot: Amime, message: Message):
+async def start(bot: Amime, message: Message):
     content_type = message.matches[0]["content_type"]
 
     if content_type == "menu":
