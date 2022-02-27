@@ -57,6 +57,18 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                         (lang.anime_button, "menu"),
                         (lang.manga_button, "manga_s"),
                     ],
+                    [
+                        (
+                            lang.start_button,
+                            f"https://t.me/{bot.me.username}?start=",
+                            "url",
+                        ),
+                        (
+                            lang.start_button,
+                            f"https://t.me/{bot.me.username}?start=",
+                            "url",
+                        )
+                    ],
 
                 ]
             ),
