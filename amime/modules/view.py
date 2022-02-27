@@ -45,7 +45,7 @@ async def view(bot: Amime, message: Message):
                     matches = re.match(r"ID: (\d+) \((\w+)\)", line)
                     content_type = matches.group(2).lower()
                     message.matches = [matches]
-                    if content_type == "anime":
+                    if content_type == "menu":
                         await anime_view(bot, message)
                     elif content_type == "character":
                         await character_view(bot, message)
