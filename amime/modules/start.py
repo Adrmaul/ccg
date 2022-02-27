@@ -59,15 +59,19 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                     ],
                     [
                         (
-                            lang.start_button,
+                            lang.grup_button,
                             f"https://t.me/{bot.me.username}?start=",
                             "url",
                         ),
                         (
-                            lang.start_button,
+                            lang.channel_button,
                             f"https://t.me/{bot.me.username}?start=",
                             "url",
                         )
+                    ],
+
+                    [
+                        (lang.anime_button, "help"),
                     ],
 
                 ]
