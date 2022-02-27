@@ -29,6 +29,7 @@ from pyromod.helpers import ikb
 
 from amime.amime import Amime
 from amime.modules.anime.view import anime_view
+from amime.modules.anime.start import anime_start
 from amime.modules.character.view import character_view
 from amime.modules.manga.view import manga_view
 
@@ -96,3 +97,14 @@ async def view(bot: Amime, message: Message):
         await character_view(bot, message)
     else:
         await manga_view(bot, message)
+
+
+@Amime.on_message(
+    filters.cmd(r"start (?P<content_type>menu)")
+    & filters.private
+)
+async def view(bot: Amime, message: Message):
+    content_type = message.matches[0]["content_type"]
+
+    if content_type == "menu":
+        await anime_start(bot, message)
