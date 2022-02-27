@@ -42,7 +42,7 @@ async def request_get(bot: Amime, callback: CallbackQuery):
     text_splited = message.text.html.splitlines()
     text = "\n".join(text_splited[: len(text_splited) - 2])
     text += f"\n<b>Diproses oleh</b>: {user.mention()}"
-    text += "\n\n#REQUEST"
+    text += "\n\n#REQ"
 
     await message.edit_text(
         text,
@@ -80,7 +80,7 @@ async def request_drop(bot: Amime, callback: CallbackQuery):
 
     text_splited = message.text.html.splitlines()
     text = "\n".join(text_splited[: len(text_splited) - 3])
-    text += "\n\n#REQUEST"
+    text += "\n\n#REQ"
 
     await message.edit_text(
         text,
@@ -138,5 +138,5 @@ async def request_done(bot: Amime, callback: CallbackQuery):
             notified_users.append(request.user)
 
     await message.edit_text(
-        message.text.html + " #DONE",
+        message.text.html + " #Selesai",
     )
