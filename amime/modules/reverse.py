@@ -32,8 +32,8 @@ from pyrogram.types import Document, InputMediaPhoto, Message, Video
 from amime.amime import Amime
 
 
-@Amime.on_message(filters.cmd(r"reverse$") & filters.reply)
-async def reverse(bot: Amime, message: Message):
+@Amime.on_message(filters.cmd(r"reverse_$") & filters.reply)
+async def reverse_(bot: Amime, message: Message):
     reply = message.reply_to_message
     lang = message._lang
 
