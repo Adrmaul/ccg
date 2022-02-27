@@ -105,6 +105,6 @@ async def view(bot: Amime, message: Message):
 async def view(bot: Amime, message: Message):
     content_type = message.matches[0]["content_type"]
 
-    if content_type == "menu":
+    if content_type == "menu_s":
         await anime_start(bot, message)
     
