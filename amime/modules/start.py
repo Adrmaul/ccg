@@ -99,7 +99,7 @@ async def view(bot: Amime, message: Message):
         await manga_view(bot, message)
 
 @Amime.on_message(
-    filters.cmd(r"start (?P<content_type>menu)")
+    filters.cmd(r"start (?P<content_type>menu_s)")
     & filters.private
 )
 async def view(bot: Amime, message: Message):
