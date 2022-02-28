@@ -43,7 +43,7 @@ async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
         ],
         [
             (lang.upcoming_button, "upcoming anime 1"),
-            (lang.search_button, "tes", "switch_inline_query_current_chat"),
+            (lang.search_button, "Black Clover | audio", "switch_inline_query_current_chat"),
         ],
     ]
 
