@@ -183,7 +183,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         buttons.append(
                     (
                         lang.search_button, 
-                        f"{anime.id}", "switch_inline_query_current_chat"
+                        f"{anime.title.romaji}", "switch_inline_query_current_chat"
                     ),
                 )
         if is_private and not anime.status.lower() == "not_yet_released":
