@@ -178,9 +178,14 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                         lang.serupa_button,
                         f"https://t.me/{bot.me.username}/?start=anirec_{anime.id}",
                         "url",
-                    )
+                    ),
                 )      
-
+        buttons.append(
+                    (
+                        lang.search_button, 
+                        "{anime.title.romaji}", "switch_inline_query_current_chat"
+                    ),
+                )
         if is_private and not anime.status.lower() == "not_yet_released":
             button = (
                 lang.request_content_button,
