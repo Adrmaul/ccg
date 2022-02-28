@@ -175,20 +175,13 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         buttons.append(
                     (
-                        lang.serupa_button,
-                        f"https://t.me/{bot.me.username}/?start=anirec_{anime.id}",
-                        "url",
-                    ),
-                )      
-        buttons.append(
-                    (
                         lang.video_button, 
                         f"{anime.title.romaji} | video", "switch_inline_query_current_chat"
                     ),
                 )
         buttons.append(
                     (
-                        lang.music_button, 
+                        lang.audio_button, 
                         f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"
                     ),
                 )        
