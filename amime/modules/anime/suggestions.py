@@ -44,7 +44,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             json=dict(
                 query="""
                 query($per_page: Int) {
-                    Page(page: 2, perPage: $per_page) {
+                    Page(page: 1, perPage: $per_page) {
                         media(type: ANIME, sort: TRENDING_DESC) {
                             id
                             title {
@@ -58,8 +58,8 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 }
                 """,
                 variables=dict(
-                    per_page=50,
-                    page=2
+                    per_page=100,
+                    page=2,
                 ),
             ),
             headers={
@@ -83,7 +83,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 page_data=lambda pg: f"suggestions anime {pg}",
             )
 
-            lines = layout.create(page, lines=8)
+            lines = layout.create(page, lines=16)
 
             if len(lines) > 0:
                 keyboard += lines
