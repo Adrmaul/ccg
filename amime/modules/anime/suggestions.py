@@ -58,6 +58,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 }
                 """,
                 variables=dict(
+                    page=100,
                     perPage=100,
                 ),
             ),
