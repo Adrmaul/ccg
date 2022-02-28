@@ -94,7 +94,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         else:
             anime_id = int(query)
 
-        anime = await client.get(anime.title.romaji, "anime")
+        anime = await client.get(anime_id, "anime")
 
         if anime is None:
             return
