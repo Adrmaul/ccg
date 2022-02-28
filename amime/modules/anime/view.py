@@ -92,7 +92,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )
                 return
         else:
-            anime.title.romaji = int(query)
+            anime_id = int(query)
 
         anime = await client.get(anime.title.romaji, "anime")
 
@@ -102,7 +102,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         user_db = await Users.get(id=user.id)
         language = user_db.language_anime
 
-        episodes = await Episodes.filter(anime=anime.title.romaji)
+        episodes = await Episodes.filter(anime=anime.id)
         episodes = sorted(episodes, key=lambda episode: episode.number)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
