@@ -299,6 +299,10 @@ request_content_button: 🙋‍♀️ Request Anime
 
 serupa_button: ⌭ Anime terkait
 
+video_button: ▷ Video
+
+audio_button: ♪ Music
+
 notify_users_anime_subbed_text: |
   Oops! The anime <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added subtitled!
 
