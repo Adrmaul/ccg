@@ -44,7 +44,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             json=dict(
                 query="""
                 query($per_page: Int) {
-                    Page(page: $page, perPage: $perPage) {
+                    Page(page: 2, perPage: $per_page) {
                         media(type: ANIME, sort: TRENDING_DESC) {
                             id
                             title {
