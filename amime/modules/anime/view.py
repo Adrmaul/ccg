@@ -35,8 +35,8 @@ from amime.modules.favorites import get_favorite_button
 from amime.modules.notify import get_notify_button
 
 
-@Amime.on_message(filters.cmd(r"anime (.+)"))
-@Amime.on_callback_query(filters.regex(r"^anime (\d+)\s?(\d+)?\s?(\d+)?"))
+@Amime.on_message(filters.cmd(r"menu (.+)"))
+@Amime.on_callback_query(filters.regex(r"^menu (\d+)\s?(\d+)?\s?(\d+)?"))
 async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
@@ -102,7 +102,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         user_db = await Users.get(id=user.id)
         language = user_db.language_anime
 
-        episodes = await Episodes.filter(anime=anime.id)
+        episodes = await Episodes.filter(anime=anime.title.romaji)
         episodes = sorted(episodes, key=lambda episode: episode.number)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
