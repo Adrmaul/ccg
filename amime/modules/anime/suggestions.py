@@ -58,8 +58,8 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 }
                 """,
                 variables=dict(
-                    per_page=100,
-                    page=2,
+                    page=5,
+                    per_page=500,
                 ),
             ),
             headers={
@@ -83,7 +83,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 page_data=lambda pg: f"suggestions anime {pg}",
             )
 
-            lines = layout.create(page, lines=16)
+            lines = layout.create(page, lines=8)
 
             if len(lines) > 0:
                 keyboard += lines
