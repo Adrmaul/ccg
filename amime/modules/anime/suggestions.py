@@ -43,7 +43,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             url="https://graphql.anilist.co",
             json=dict(
                 query="""
-                query($page: Int) {
+                query($per_page: Int) {
                     Page(page: 1, perPage: $per_page) {
                         media(type: ANIME, sort: TRENDING_DESC) {
                             id
@@ -58,7 +58,8 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 }
                 """,
                 variables=dict(
-                    per_page=200,
+                    per_page=50,
+                    page=2
                 ),
             ),
             headers={
