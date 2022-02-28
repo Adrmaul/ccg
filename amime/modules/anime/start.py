@@ -43,9 +43,6 @@ async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
         ],
         [
             (lang.upcoming_button, "upcoming anime 1"),
-            (lang.favorites_button, "favorites anime 1"),
-        ],
-        [
             (lang.search_button, "", "switch_inline_query_current_chat"),
         ],
     ]

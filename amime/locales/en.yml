@@ -297,6 +297,8 @@ request_content_done_text: |
 
 request_content_button: 🙋‍♀️ Request Anime
 
+serupa_button: ⌭ Anime terkait
+
 notify_users_anime_subbed_text: |
   Oops! The anime <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added subtitled!
 
