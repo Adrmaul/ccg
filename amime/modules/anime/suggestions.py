@@ -59,8 +59,7 @@ query ($page: Int, $perPage: Int) {
                 }
                 """,
                 variables=dict(
-                    page=5,
-                    per_page=80,
+                    per_page=100,
                 ),
             ),
             headers={
