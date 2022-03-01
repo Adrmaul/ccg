@@ -16,5 +16,6 @@ tortoise-orm==0.18.1
 telegraph==1.4.1
 typing-extensions==4.1.1
 
+
 git+https://github.com/pyrogram/pyrogram
-git+https://github.com/AmanoTeam/python-anilist
+git+git+https://github.com/AmanoTeam/python-anilist.git#egg=python-anilist
