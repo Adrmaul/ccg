@@ -1,1 +1,1 @@
-worker: python3 -m amime
+worker: python -m amime
