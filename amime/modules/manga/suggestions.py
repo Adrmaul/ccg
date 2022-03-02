@@ -44,7 +44,7 @@ async def manga_suggestions(bot: Amime, callback: CallbackQuery):
                 query="""
                 query($per_page: Int) {
                     Page(page: 1, perPage: $per_page) {
-                        media(type: MANGA, sort: POPULARITY_DESC) {
+                        media(type: MANGA, sort: TRENDING_DESC) {
                             id
                             title {
                                 romaji
