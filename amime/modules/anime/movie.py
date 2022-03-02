@@ -21,9 +21,9 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             url="https://graphql.anilist.co",
             json=dict(
                 query="""
-                query($gnr: Action, $page: Int, $perPage: Int) {
-                    Page(page: $page, perPage: $perPage) {
-                        media(genre: $gnr, type: ANIME, format: MOVIE, sort: TRENDING_DESC) {
+                query($page: Int) {
+                    Page (perPage: 50, page: $page) {
+                        media(type: ANIME, format: MOVIE, sort: TRENDING_DESC) {
                             id
                             title {
                                 romaji
