@@ -286,7 +286,7 @@ report_text: Put down the information of your report.
 report_button: ⛔ Report
 
 request_content_text: |
-  Pilih Resolusi yang Anda inginkan untuk request video anime di bawah ini, <i>Resolusi tergantung ketersediaan dari sumber.</i>
+  Pilih Tipe yang Anda inginkan untuk request terhadap anime ini, <i>Tipe tergantung ketersediaan dari sumber.</i>
   Silahkan untuk cek daftar urutan request anime, di grup kami @otakuindonew.
 
   Mohon untuk cek anime terlebih dahulu, sebelum request, ada atau tidak, dan jangan spam request, agar nanti tidak kami ban!.
@@ -295,7 +295,7 @@ request_content_done_text: |
   Permintaan Anda untuk anime <b>{title}</b>, sudah kami proses..
   <b>sekarang sudah tersedia!!, silahkan untuk download/streaming.</b>
 
-request_content_button: 🙋‍♀️ Request Anime
+request_content_button: 🙋‍♀️ Request
 
 serupa_button: ⌭ Anime terkait
 
