@@ -9,7 +9,7 @@ from amime.amime import Amime
 
 
 @Amime.on_callback_query(filters.regex(r"^tvshow_upcoming anime (?P<page>\d+)"))
-async def anime_suggestions(bot: Amime, callback: CallbackQuery):
+async def anime_start(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
     message = callback.message
@@ -55,7 +55,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
 
             layout = Pagination(
                 suggestions,
-                item_data=lambda i, pg: f"menu {i.id}",
+                item_data=lambda i, pg: f"https://t.me/ccgnimex_bot?start=anime_{i.id}",
                 item_title=lambda i, pg: i.title.romaji,
                 page_data=lambda pg: f"tvshow_upcoming anime {pg}",
             )
