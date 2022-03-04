@@ -39,17 +39,17 @@ async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
 
     keyboard = [
         [
-            (lang.tv.button, "TV-SHOW_menu"),
-            (lang.movie.button, "movie-menu"),
-            (lang.tv-s.button, "TV-SHORT_menu"),
+            (lang.t_button, "TV-SHOW_menu"),
+            (lang.movie_button, "movie-menu"),
+            (lang.tvs_button, "TV-SHORT_menu"),
         ],
         [
-            (lang.ova.button, "OVA_menu"),
-            (lang.ona.button, "ONA_menu"),
-            (lang.spesial.button, "SPECIAL_menu"),
+            (lang.ova_button, "OVA_menu"),
+            (lang.ona_button, "ONA_menu"),
+            (lang.spesial_button, "SPECIAL_menu"),
         ],
         [
-            (lang.mv.button, "MV-SONG_menu"),
+            (lang.mv_button, "MV-SONG_menu"),
         ],
         [
             (lang.search_button, "", "switch_inline_query_current_chat"),
