@@ -83,43 +83,8 @@ async def anime_categorie(bot: Amime, callback: CallbackQuery):
     message = callback.message
     lang = callback._lang
 
-    keyboard = []
-    async with httpx.AsyncClient(http2=True) as client:
-        response = await client.post(
-            url="https://graphql.anilist.co",
-            json=dict(
-                query="""
-                query ($gnr: String, $page: Int) {
-                   Page (perPage: 50, page: $page) {
-                        media(type: ANIME, format: MOVIE, sort: TRENDING_DESC) {
-                            id
-                            title {
-                                romaji
-                                english
-                                native
-                            }
-                            siteUrl
-                        }
-                    }
-                }
-                """,
-                variables=dict(
-                    perPage=100,
-                ),
-            ),
-            headers={
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-            },
-        )
-        data = response.json()
-        await client.aclose()
-        if data["data"]:
-            items = data["data"]["Page"]["media"]
-            suggestions = [
-                Anime(id=item["id"], title=item["title"], url=item["siteUrl"])
-                for item in items
-            ]
+    genre = categorie.replace("_", " ")
+    results = await anilist.AsyncClient().search(genre, "anime", 50)
 
     layout = Pagination(
         results,
