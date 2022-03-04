@@ -41,15 +41,15 @@ async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
         [
             (lang.tv_button, "tvshow_menu"),
             (lang.movie_button, "movie-menu"),
-            (lang.tvs_button, "TV-SHORT_menu"),
+            (lang.tvs_button, "tvshort_menu"),
         ],
         [
-            (lang.ova_button, "OVA_menu"),
-            (lang.ona_button, "ONA_menu"),
-            (lang.spesial_button, "SPECIAL_menu"),
+            (lang.ova_button, "ova_menu"),
+            (lang.ona_button, "ona_menu"),
+            (lang.spesial_button, "spesial_menu"),
         ],
         [
-            (lang.mv_button, "MV-SONG_menu"),
+            (lang.mv_button, "mv_menu"),
             (lang.search_button, "", "switch_inline_query_current_chat"),
         ],
     ]
