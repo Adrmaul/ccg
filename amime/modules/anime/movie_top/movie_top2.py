@@ -22,8 +22,8 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             json=dict(
                 query="""
                 query($per_page: Int) {
-                    Page(page: 2, perPage: $per_page) {
-                        media(type: ANIME, format: MOVIE, sort: FAVOURITES_DESC, status: FINISHED) {
+                    Page(page: 3, perPage: $per_page) {
+                        media(type: ANIME, format: MOVIE, sort: SCORE_DESC, status: FINISHED) {
                             id
                             title {
                                 romaji
@@ -64,7 +64,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
 
             if len(lines) > 0:
                 keyboard += lines
-    keyboard.append([(lang.Prev, "top_movie2 anime 1"), (lang.Next, "top_movie anime 1")])
+    keyboard.append([(lang.Prev, "top_movie1 anime 1"), (lang.Next, "top_movie3 anime 1")])
     keyboard.append([(lang.back_button, "movie-menu")])
 
     await message.edit_text(
