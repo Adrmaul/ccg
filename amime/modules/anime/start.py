@@ -29,7 +29,7 @@ from pyromod.helpers import ikb
 from amime.amime import Amime
 
 
-@Amime.on_message(filters.cmd(r"menu$"))
+@Amime.on_message(filters.cmd(r"menu$") & filters.private)
 @Amime.on_callback_query(filters.regex(r"^menu$"))
 async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)

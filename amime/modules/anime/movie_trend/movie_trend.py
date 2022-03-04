@@ -21,9 +21,9 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             url="https://graphql.anilist.co",
             json=dict(
                 query="""
-                query($page: Int) {
-                    Page (perPage: 100, page: $page) {
-                        media(type: ANIME, format: MOVIE, sort: TRENDING_DESC) {
+                query($per_page: Int) {
+                    Page(page: 1, perPage: $per_page) {
+                        media(type: ANIME, format: MOVIE, sort: TRENDING_DESC, status: FINISHED) {
                             id
                             title {
                                 romaji
@@ -64,7 +64,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
 
             if len(lines) > 0:
                 keyboard += lines
-
+    keyboard.append([(lang.Next, "trending_movie1 anime 1")])
     keyboard.append([(lang.back_button, "movie-menu")])
 
     await message.edit_text(
