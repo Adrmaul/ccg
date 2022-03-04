@@ -16,7 +16,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
 
     keyboard = [
         [
-            (lang.TOP, "top_TV-SHOW anime 1"),
+            (lang.TOP, "tvshow_top anime 1"),
             (lang.TRENDING, "trending_TV-SHOW anime 1"),
             (lang.UPCOMING, "upcoming_TV-SHOW anime 1"),
         ],
