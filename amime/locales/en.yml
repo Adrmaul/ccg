@@ -223,6 +223,20 @@ manga_more_button: ⎆ Lihat Manga
 
 checknimex_button: ✅ Cek Anime
 
+tv.button: TV-SHOW
+
+tv-s.button: TV-SHORT
+
+movie.button: MOVIE
+
+ova.button: OVA
+
+ona.button: ONA
+
+spesial.button: SPESIAL
+
+mv.button: MV-SONG
+
 watch_list_anime_text: |
   Below are all available episodes. Have a good time.
 
