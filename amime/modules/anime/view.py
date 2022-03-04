@@ -159,7 +159,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         buttons.append(
                     (
-                        lang.Batch_button,
+                        lang.batch_button,
                         f"https://t.me/downloadanimebatch/302",
                         "url",
                     )
