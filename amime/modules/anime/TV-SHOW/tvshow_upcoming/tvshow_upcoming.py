@@ -9,7 +9,7 @@ from amime.amime import Amime
 
 
 @Amime.on_callback_query(filters.regex(r"^tvshow_upcoming anime (?P<page>\d+)"))
-async def anime_start(bot: Amime, callback: CallbackQuery):
+async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
     page = int(callback.matches[0]["page"])
 
     message = callback.message
