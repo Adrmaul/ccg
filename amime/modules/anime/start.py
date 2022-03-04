@@ -39,7 +39,7 @@ async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
     keyboard = [
         [
             (lang.suggestions_button, "suggestions anime 1"),
-            (lang.MOVIE, "movie anime 1"),
+            (lang.Movie, "movie-menu"),
             (lang.categories_button, "categories anime 1"),
         ],
         [

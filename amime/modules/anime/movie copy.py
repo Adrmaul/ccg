@@ -8,7 +8,7 @@ from pyromod.nav import Pagination
 from amime.amime import Amime
 
 
-@Amime.on_callback_query(filters.regex(r"^trending_movie anime (?P<page>\d+)"))
+@Amime.on_callback_query(filters.regex(r"^movie anime (?P<page>\d+)"))
 async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
@@ -55,7 +55,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
 
             layout = Pagination(
                 suggestions,
-                item_data=lambda i, pg: f"movi-menu {i.id}",
+                item_data=lambda i, pg: f"menu {i.id}",
                 item_title=lambda i, pg: i.title.romaji,
                 page_data=lambda pg: f"movie anime {pg}",
             )
@@ -65,7 +65,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             if len(lines) > 0:
                 keyboard += lines
 
-    keyboard.append([(lang.back_button, "movie-menu")])
+    keyboard.append([(lang.back_button, "menu")])
 
     await message.edit_text(
         lang.suggestions_text,
