@@ -20,10 +20,6 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
             (lang.TRENDING, "trending_movie anime 1"),
             (lang.UPCOMING, "upcoming_movie anime 1"),
         ],
-        [
-            (lang.upcoming_button, "upcoming anime 1"),
-            (lang.search_button, "", "switch_inline_query_current_chat"),
-        ],
     ]
 
     if is_callback:
