@@ -106,9 +106,9 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         episodes = sorted(episodes, key=lambda episode: episode.number)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
-        text = f"<b>{anime.title.romaji}</b>"
+        text = f"<code>{anime.title.romaji}</code>"
         if hasattr(anime.title, "native"):
-            text += f" (<code>{anime.title.native}</code>)"
+            text += f" (<b>{anime.title.native}</b>)"
         text += f"\n\n<b>ID</b>: <code>{anime.id}</code>"
         if hasattr(anime, "score"):
             if hasattr(anime.score, "average"):

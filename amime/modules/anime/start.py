@@ -20,6 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from ctypes.wintypes import SHORT
 from typing import Union
 
 from pyrogram import filters
@@ -38,12 +39,19 @@ async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
 
     keyboard = [
         [
-            (lang.suggestions_button, "suggestions anime 1"),
-            (lang.Movie, "movie-menu"),
-            (lang.categories_button, "categories anime 1"),
+            (lang.TV-SHOW, "TV-SHOW_menu"),
+            (lang.MOVIE, "movie-menu"),
+            (lang.TV-SHORT, "TV-SHORT_menu anime 1"),
         ],
         [
-            (lang.upcoming_button, "upcoming anime 1"),
+            (lang.OVA, "OVA_menu anime 1"),
+            (lang.ONA, "ONA_menu anime 1"),
+            (lang.SPECIAL, "SPECIAL_menu anime 1"),
+        ],
+        [
+            (lang.MV-SONG, "MV-SONG_menu anime 1"),
+        ],
+        [
             (lang.search_button, "", "switch_inline_query_current_chat"),
         ],
     ]
