@@ -8,7 +8,7 @@ from pyromod.nav import Pagination
 from amime.amime import Amime
 
 
-@Amime.on_callback_query(filters.regex(r"^top_movie1 anime (?P<page>\d+)"))
+@Amime.on_callback_query(filters.regex(r"^top_movie3 anime (?P<page>\d+)"))
 async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
@@ -22,7 +22,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             json=dict(
                 query="""
                 query($per_page: Int) {
-                    Page(page: 3, perPage: $per_page) {
+                    Page(page: 4, perPage: $per_page) {
                         media(type: ANIME, format: MOVIE, sort: SCORE_DESC, status: FINISHED) {
                             id
                             title {
@@ -57,14 +57,14 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 suggestions,
                 item_data=lambda i, pg: f"menu {i.id}",
                 item_title=lambda i, pg: i.title.romaji,
-                page_data=lambda pg: f"top_movie2 anime {pg}",
+                page_data=lambda pg: f"top_movie1 anime {pg}",
             )
 
             lines = layout.create(page, lines=8)
 
             if len(lines) > 0:
                 keyboard += lines
-    keyboard.append([(lang.Prev, "top_movie1 anime 1"), (lang.Next, "top_movie3 anime 1")])
+    keyboard.append([(lang.Prev, "top_movie2 anime 1"), (lang.Next, "top_movie4 anime 1")])
     keyboard.append([(lang.back_button, "movie-menu")])
 
     await message.edit_text(
