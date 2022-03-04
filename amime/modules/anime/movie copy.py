@@ -1,73 +1,35 @@
-import httpx
-from anilist.types import Anime
+from typing import Union
+
 from pyrogram import filters
-from pyrogram.types import CallbackQuery
+from pyrogram.types import CallbackQuery, Message
 from pyromod.helpers import ikb
-from pyromod.nav import Pagination
 
 from amime.amime import Amime
 
 
-@Amime.on_callback_query(filters.regex(r"^movie anime (?P<page>\d+)"))
-async def anime_suggestions(bot: Amime, callback: CallbackQuery):
-    page = int(callback.matches[0]["page"])
+@Amime.on_message(filters.cmd(r"movie-menu$") & filters.private)
+@Amime.on_callback_query(filters.regex(r"^movie-menu$"))
+async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
+    is_callback = isinstance(union, CallbackQuery)
+    message = union.message if is_callback else union
+    lang = union._lang
 
-    message = callback.message
-    lang = callback._lang
+    keyboard = [
+        [
+            (lang.TOP_MOVIE, "suggestions anime 1"),
+            (lang.TRENDING_MOVIE, "trending_movie anime 1"),
+            (lang.UPCOMING_MOVIE, "categories anime 1"),
+        ],
+        [
+            (lang.upcoming_button, "upcoming anime 1"),
+            (lang.search_button, "", "switch_inline_query_current_chat"),
+        ],
+    ]
 
-    keyboard = []
-    async with httpx.AsyncClient(http2=True) as client:
-        response = await client.post(
-            url="https://graphql.anilist.co",
-            json=dict(
-                query="""
-                query($page: Int) {
-                    Page (perPage: 100, page: $page) {
-                        media(type: ANIME, format: MOVIE, sort: TRENDING_DESC) {
-                            id
-                            title {
-                                romaji
-                                english
-                                native
-                            }
-                            siteUrl
-                        }
-                    }
-                }
-                """,
-                variables=dict(
-                    perPage=100,
-                ),
-            ),
-            headers={
-                "Content-Type": "application/json",
-                "Accept": "application/json",
-            },
-        )
-        data = response.json()
-        await client.aclose()
-        if data["data"]:
-            items = data["data"]["Page"]["media"]
-            suggestions = [
-                Anime(id=item["id"], title=item["title"], url=item["siteUrl"])
-                for item in items
-            ]
+    if is_callback:
+        keyboard.append([(lang.back_button, "menu")])
 
-            layout = Pagination(
-                suggestions,
-                item_data=lambda i, pg: f"menu {i.id}",
-                item_title=lambda i, pg: i.title.romaji,
-                page_data=lambda pg: f"movie anime {pg}",
-            )
-
-            lines = layout.create(page, lines=8)
-
-            if len(lines) > 0:
-                keyboard += lines
-
-    keyboard.append([(lang.back_button, "menu")])
-
-    await message.edit_text(
-        lang.suggestions_text,
+    await (message.edit_text if is_callback else message.reply_text)(
+        lang.anime_text,
         reply_markup=ikb(keyboard),
     )
