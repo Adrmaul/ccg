@@ -128,7 +128,7 @@ async def request_done(bot: Amime, callback: CallbackQuery):
                     type=content_type.upper(),
                 ),
                 reply_markup=ikb(
-                    [[(lang.checknimex_button, f"{content_type} {content_id}")]]
+                    [[(lang.checknimex_button, f"menu {content_id}")]]
                 ),
                 
             )
