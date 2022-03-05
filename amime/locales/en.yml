@@ -141,7 +141,7 @@ start_text: |
   Hello {user_mention}, saya bot <b>{bot_name}</b>, a bot dedicated to <i>otakus</i>, tap the button below and learn more.
 
 start_text_2: |
-  Hello {user_mention}, saya bot <b>{bot_name}</b>, untuk penggunaan lebih lanjut, silahkan untuk ketik /help disini.
+  Hello {user_mention}, saya bot <b>{bot_name}</b>, untuk penggunaan lebih lanjut, silahkan klik tombol help dibawah!.
 
   Jika kalian suka dengan bot ini, silahkan dukung kami dengan cara,support kami & juga berdonasi agar server tetap hidup & kami terus memberikan kalian anime.
 
