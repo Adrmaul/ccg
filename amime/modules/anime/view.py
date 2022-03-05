@@ -159,10 +159,12 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         if is_private and not anime.status.lower() == "not_yet_released":
             buttons.append(
-                lang.batch_button,
-                f"https://t.me/downloadanimebatch/302",
+                (
+                    lang.manage_button,
+                    f"https://t.me/downloadanimebatch/302",
                         "url",
-            )        
+                )
+            )       
 
 
 
