@@ -46,7 +46,7 @@ async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
         [
             (lang.ova_button, "ova_menu"),
             (lang.ona_button, "ona_menu"),
-            (lang.spesial_button, "spesial_menu"),
+            (lang.spesial_button, "special_menu"),
         ],
         [
             (lang.mv_button, "mv_menu"),
