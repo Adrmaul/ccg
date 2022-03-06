@@ -124,6 +124,7 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
         CHATS["requests"],
         text,
         reply_markup=ikb([[("🆙 Get", f"request get anime {anime_id} {language}")]]),
+        disable_web_page_preview=True
     )
 
     await callback.answer(lang.request_sent_alert, show_alert=True)
