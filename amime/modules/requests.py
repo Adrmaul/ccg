@@ -87,6 +87,7 @@ async def request_drop(bot: Amime, callback: CallbackQuery):
         reply_markup=ikb(
             [[("🆙 Get", f"request get {content_type} {content_id} {language}")]]
         ),
+        disable_web_page_preview=True,
     )
 
 
