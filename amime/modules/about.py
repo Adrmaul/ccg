@@ -50,10 +50,33 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
 
     await (message.edit_text if is_callback else message.reply_text)(
         lang.about_text.format(
-            bot_name=bot.me.first_name,
-            github="<a href='https://github.com/AmanoTeam/AmimeWatch'>GitHub</a>",
-            channel=f"<a href='https://t.me/c/{str(CHANNELS[lang.code])[4:]}/-1'>{lang.channel}</a>",
-            group=f"<a href='https://t.me/c/{str(GROUPS[lang.code])[4:]}/-1'>{lang.group}</a>",
+            Disclaimer untuk bot ccgnimex.
+            Ada beberapa yang mungkin harus kalian pahami terkait bot ini, agar nantinya kalian memahami sepenuhnya bot ini.
+            Bot ini merupakan bot yang terhubung dengan website anilist.co, yang dimana kalian bisa menggunakan bot ini untuk list, anime, manga, dan lainnya.
+            adapun beberapa fitur yang kami pakai, yaitu **mendownload/streaming anime.**.
+            
+            Mendownload/Streaming
+            Perlu kalian ketahui, mendownload/streaming video disini, merupakan tindakan ilegal/tidak dibenarkan, artinya kenapa?
+            Pada dasarnya kami tidak mempunyai izin, untuk mempublish/share anime, bisa dibilang ini BAJAKAN.
+            Jadi saran kami, lebih baik kalian melihat anime ke situs/app yang sudah legal, seperti MUSE INDONESIA, NETFLIX,dan lainnya.
+            
+            Tujuan Membuat bot ini?
+            Karena ingin memudahkan admin pribadi untuk melist anime dan menonton anime, walaupun ini melanggar. tetapi kami pun jika tetap mendukung anime legal. dan menontonnya.
+            
+            Dapat dari mana sumber file anime?
+            Kami, mendapatkan file anime dari berbagai macam website, berikut ini listnya:
+            Otakudesu | Kusonime | Koenime | Samehadaku | Oplovers | Bakadame | ...
+            
+            Jadi kami mengucapkan terimakasih kepada mereka yang sudah memberikan anime, silahkan untuk mendukungnya, kalian bisa kunjungi website mereka.
+            
+            
+           KESIMPULAN.
+           Bot ini memang tujuannya untuk memudahkan kita, dan tentunya membantu kita khusus nya bagi para pecinta anime.
+           dan jika memang ada pihak yang keberatan dengan adanya bot/konten dari kami, silahkan lapor, agar kami proses.
+           intinya buat kalian, jika kalian mampu menonton yang legal, lakukan. karena, itupun merupakan salah satu support ke pembuat anime tersebut.
+           
+           Terimakasih. - cccgnimexTeam.
+            
         ),
         disable_web_page_preview=True,
         **kwargs,
