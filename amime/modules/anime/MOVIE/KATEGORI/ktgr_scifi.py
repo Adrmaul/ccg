@@ -8,7 +8,7 @@ from pyromod.nav import Pagination
 from amime.amime import Amime
 
 
-@Amime.on_callback_query(filters.regex(r"^movie_psychological anime (?P<page>\d+)"))
+@Amime.on_callback_query(filters.regex(r"^movie_scifi anime (?P<page>\d+)"))
 async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
@@ -23,7 +23,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 query="""
                 query($page: Int, $perPage: Int) {
                     Page(page: $page, perPage: $perPage) {
-                        media(type: ANIME, format: MOVIE, sort: TRENDING_DESC, genre: "psychological") {
+                        media(type: ANIME, format: MOVIE, sort: TRENDING_DESC, genre: "sci-fi") {
                             id
                             title {
                                 romaji
@@ -57,14 +57,14 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 suggestions,
                 item_data=lambda i, pg: f"menu {i.id}",
                 item_title=lambda i, pg: i.title.romaji,
-                page_data=lambda pg: f"movie_psychological anime {pg}",
+                page_data=lambda pg: f"movie_scifi anime {pg}",
             )
 
             lines = layout.create(page, lines=8)
 
             if len(lines) > 0:
                 keyboard += lines
-    keyboard.append([(lang.Next, "movie_psychological anime 1")])
+    keyboard.append([(lang.Next, "movie_scifi anime 1")])
     keyboard.append([(lang.back_button, "ktgr_movie-menu")])
 
     await message.edit_text(
