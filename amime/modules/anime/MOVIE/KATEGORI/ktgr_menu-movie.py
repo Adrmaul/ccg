@@ -49,7 +49,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
         ],
         [
             (lang.SUPERNATURAL, "movie_supernatural anime 1"),
-            (lang.THRILLER, "movie_trhriller anime 1"),
+            (lang.THRILLER, "movie_thriller anime 1"),
         ],
     ]
 
