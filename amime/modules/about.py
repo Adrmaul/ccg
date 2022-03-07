@@ -51,7 +51,7 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
     await (message.edit_text if is_callback else message.reply_text)(
         lang.about_text.format(
             bot_name=bot.me.first_name,
-            github="<a href='https://github.com/AmanoTeam/AmimeWatch'>GitHub</a>",
+            github="<a href='t.me/Rizki_Wahyudi03'>Owner</a>",
             channel=f"<a href='https://t.me/c/{str(CHANNELS[lang.code])[4:]}/-1'>{lang.channel}</a>",
             group=f"<a href='https://t.me/c/{str(GROUPS[lang.code])[4:]}/-1'>{lang.group}</a>",
         ),
