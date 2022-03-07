@@ -75,7 +75,8 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                             lang.help_button,
                             f"https://t.me/ccgnimeX_bot/?start=help",
                             "url",
-                        )
+                        ),
+                        (lang.DISCLAIMER, "about"),
                     ],
 
                 ]
