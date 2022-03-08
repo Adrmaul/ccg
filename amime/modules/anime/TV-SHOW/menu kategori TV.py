@@ -21,7 +21,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
             (lang.UPCOMING, "tvshow_upcoming anime 1"),
         ],
         [
-            (lang.KATEGORI, "ktgr_tvshow-menu"),
+            (lang.KATEGORI, "ktgr_tv-menu"),
         ],
     ]
 

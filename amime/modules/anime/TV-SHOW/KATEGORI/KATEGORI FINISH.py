@@ -7,8 +7,8 @@ from pyromod.helpers import ikb
 from amime.amime import Amime
 
 
-@Amime.on_message(filters.cmd(r"ktgr_tv-menu$") & filters.private)
-@Amime.on_callback_query(filters.regex(r"^ktgr_tv-menu$"))
+@Amime.on_message(filters.cmd(r"ktgr-finish$") & filters.private)
+@Amime.on_callback_query(filters.regex(r"^ktgr-finish$"))
 async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
@@ -54,7 +54,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
     ]
 
     if is_callback:
-        keyboard.append([(lang.back_button, "tvshow_menu")])
+        keyboard.append([(lang.back_button, "ktgr_tvshow-menu")])
 
     await (message.edit_text if is_callback else message.reply_text)(
         lang.anime_text,
