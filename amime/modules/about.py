@@ -54,6 +54,13 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
             github="<a href='t.me/Rizki_Wahyudi03'>Owner</a>",
             channel=f"<a href='https://t.me/downloadanimebatch/'>{lang.channel}</a>",
             group=f"<a href='https://t.me/c/{str(GROUPS[lang.code])[4:]}/-1'>{lang.group}</a>",
+            otakudesu="<a href='https://otakudesu.io'>Otakudesu</a>",
+            kusonime="<a href='https://kusonime.com/'>Kusonime</a>",
+            samehadaku="<a href='https://194.163.183.129/'>Samehadaku</a>",
+            oplovers="<a href='https://oploverz.asia/'>Oplovers</a>",
+            bakadame="<a href='https://bakadame.com/'>Bakadame</a>",
+            koenime="<a href='https://koenime.com/'>Koenime</a>",
+
         ),
         disable_web_page_preview=True,
         **kwargs,
