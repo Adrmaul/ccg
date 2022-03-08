@@ -21,8 +21,8 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             url="https://graphql.anilist.co",
             json=dict(
                 query="""
-                query($page: Int, $perPage: Int) {
-                    Page(page: 2, perPage: $perPage) {
+                query($per_page: Int) {
+                    Page(page: 2, perPage: $per_page) {
                         media(type: ANIME, format: TV, sort: TRENDING_DESC, status: FINISHED, genre: "action") {
                             id
                             title {
