@@ -17,7 +17,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
     keyboard = [
         [
             (lang.FINISHED, "ktgr-finish"),
-            (lang.ONGOING, "ktgr-ongoing anime 1"),
+            (lang.ONGOING, "ktgr-ongoing"),
         ],    
     ]
 
