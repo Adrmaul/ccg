@@ -20,6 +20,9 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
             (lang.TRENDING, "tvshow_trending anime 1"),
             (lang.UPCOMING, "tvshow_upcoming anime 1"),
         ],
+        [
+            (lang.KATEGORI, "ktgr_tv-menu"),
+        ],
     ]
 
     if is_callback:
