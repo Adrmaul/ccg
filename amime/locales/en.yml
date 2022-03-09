@@ -170,31 +170,67 @@ dasar_text: |
 
 anilist_text: |
   Ini merupakan menu bantuan anilist, terkait penggunaan bot ini,
+  Di bawah ini adalah daftar cmd anilist dasar untuk info anime, karakter, manga, dll.
 
-  Gunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online.
-  Gunakan /start atau !start cmd untuk memulai bot di grup atau pm.
-  Gunakan /feedback cmd untuk menghubungi pemilik bot.
+  /anime - Gunakan cmd ini untuk mendapatkan info tentang anime tertentu menggunakan kata kunci (nama anime) atau ID Anilist
+  (Dapat mencari info tentang sekuel dan prekuel)
+
+  /anilist - Gunakan perintah ini untuk memilih di antara beberapa anime dengan nama serupa yang terkait dengan kueri yang dicari
+  (Tidak termasuk tombol untuk prekuel dan sekuel)
+
+  /character - Gunakan perintah ini untuk mendapatkan info tentang karakter
+
+  /manga - Gunakan perintah ini untuk mendapatkan info tentang manga
+
+  /airing - Gunakan perintah ini untuk mendapatkan info status penayangan anime
+
+  /top - Gunakan cmd ini untuk mencari anime teratas dari genre/tag atau dari semua anime
+  (Untuk mendapatkan daftar tag atau genre yang tersedia, kirim /gettags atau /getgenres
+  '/gettags nsfw' untuk tag nsfw)
+
+  /user - Gunakan perintah ini untuk mendapatkan info tentang pengguna anilist
+
+  /browse - Gunakan perintah ini untuk mendapatkan pembaruan tentang anime terbaru/top/upcoming.
 
 tingkat_text: |
-  Ini merupakan menu bantuan tingkat lanjut, terkait penggunaan bot ini,
+  Ini merupakan menu bantuan tambahan serta fitur canggih, terkait penggunaan bot ini,
 
-  Gunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online.
-  Gunakan /start atau !start cmd untuk memulai bot di grup atau pm.
-  Gunakan /feedback cmd untuk menghubungi pemilik bot.
+  Gunakan /auth atau !auth untuk login/daftar akun Anilist Anda dengan bot.
+
+  Otorisasi diri Anda membuka fitur-fitur canggih bot seperti:
+  - menambahkan anime/karakter/manga ke favorit
+  - melihat data anilist Anda yang terkait dengan anime/manga dalam pencarian Anda yang mencakup skor, status, dan favorit
+  - buka /flex, /me, /activity and /favourites 
+  - menambahkan/memperbarui entri anilis seperti selesai atau berencana untuk menonton/membaca
+  - menghapus entri anilis
+
+  Gunakan /flex or !flex cmd untuk mendapatkan statistik anilist Anda
+
+  Gunakan /logout or !logout cmd untuk memutuskan akun Anilist Anda
+
+  Gunakan /me atau !me cmd untuk mendapatkan aktivitas terbaru anilist Anda
+  bisa juga /activity or !activity
+
+  Gunakan /favourites cmd untuk mendapatkan favorit anilis Anda.
 
 tambahan_text: |
-  Ini merupakan menu bantuan tambahan, terkait penggunaan bot ini,
+  Gunakan /reverse untuk mencari anime melalui tracemoepy API, yang dimana bot ini akan memberikan judul/info terkait anime tersebut.
 
-  Gunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online.
-  Gunakan /start atau !start cmd untuk memulai bot di grup atau pm.
-  Gunakan /feedback cmd untuk menghubungi pemilik bot.
+  <i>Catatan: Ini berfungsi paling baik pada gambar anime yang tidak dipotong,
+  ketika digunakan pada media yang kepotong, Anda mungkin mendapatkan hasil tetapi mungkin tidak akurat.</i>
+
+  Gunakan perintah /schedule untuk mendapatkan anime terjadwal berdasarkan hari kerja
+
+  Gunakan perintah /watch untuk mendapatkan urutan tontonan anime yang dicari
+
+  Gunakan /fillers cmd untuk mendapatkan daftar pengisi untuk anime
+
+  Gunakan /quote cmd untuk mendapatkan kutipan acak
 
 channel_text: |
-  Ini merupakan menu bantuan Channel, terkait penggunaan bot ini,
+  Ini merupakan menu bantuan Channel,
 
-  Gunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online.
-  Gunakan /start atau !start cmd untuk memulai bot di grup atau pm.
-  Gunakan /feedback cmd untuk menghubungi pemilik bot.
+  Masih Progress...
 
 about_text: |
   <b>Disclaimer untuk bot ccgnimex.</b>
