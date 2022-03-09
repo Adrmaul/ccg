@@ -47,11 +47,11 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
                 (lang.Anilist, "anilist"),
             ],
             [
-                (lang.TingkatLanjut, "tingkat"),
+                (lang.tingkat_button, "tingkat"),
                 (lang.Tambahan, "tambahan"),
             ],
             [
-                (lang.Bantuan_Channel, "channel"),
+                (lang.channelhelp_button, "channel"),
             ],
             [
                 (lang.back_button, "start"),

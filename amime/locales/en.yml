@@ -143,11 +143,15 @@ start_text: |
 start_text_2: |
   Hello {user_mention}, saya bot <b>{bot_name}</b>, untuk penggunaan lebih lanjut, silahkan klik tombol bantuan dibawah!.
 
-  Jika kalian suka dengan bot ini, silahkan dukung kami dengan cara,support kami & juga berdonasi agar server tetap hidup & kami terus memberikan kalian anime.
+  Jika kalian suka dengan bot ini, silahkan dukung kami dengan cara, share bot ini, ataupun support kami & juga berdonasi agar server tetap hidup & kami meningkatkan bot ini lebih baik.
 
   Saya sarankan, Silahkan Daftar/Login Anilist terlebih dahulu (/auth), untuk menikmati fitur bot ini sepenuhnya.
 
 start_button: 🔏 PM
+
+tingkat_button: Tingkat Lanjut
+
+channelhelp_button: Tutorial Untuk Channel
 
 grup_button: ≛ grup
 
