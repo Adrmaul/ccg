@@ -141,7 +141,7 @@ start_text: |
   Hello {user_mention}, saya bot <b>{bot_name}</b>, a bot dedicated to <i>otakus</i>, tap the button below and learn more.
 
 start_text_2: |
-  Hello {user_mention}, saya bot <b>{bot_name}</b>, untuk penggunaan lebih lanjut, silahkan klik tombol help dibawah!.
+  Hello {user_mention}, saya bot <b>{bot_name}</b>, untuk penggunaan lebih lanjut, silahkan klik tombol bantuan dibawah!.
 
   Jika kalian suka dengan bot ini, silahkan dukung kami dengan cara,support kami & juga berdonasi agar server tetap hidup & kami terus memberikan kalian anime.
 
@@ -160,6 +160,13 @@ bantuan_text: |
 
   Silahkan Untuk pilih, daftar menu bantuan, yang kalian butuhkan.
   harap untuk dibaca semua, agar memahami bot ini sepenuhnya.
+
+dasar_text: |
+  Ini merupakan menu bantuan dasar, terkait penggunaan bot ini,
+
+  Gunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online.
+  Gunakan /start atau !start cmd untuk memulai bot di grup atau pm.
+  Gunakan /feedback cmd untuk menghubungi pemilik bot.
 
 about_text: |
   <b>Disclaimer untuk bot ccgnimex.</b>
