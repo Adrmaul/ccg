@@ -8,7 +8,7 @@ from pyromod.nav import Pagination
 from amime.amime import Amime
 
 
-@Amime.on_callback_query(filters.regex(r"^tv_supernatural anime (?P<page>\d+)"))
+@Amime.on_callback_query(filters.regex(r"^tv_sports3 anime (?P<page>\d+)"))
 async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
@@ -21,9 +21,9 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             url="https://graphql.anilist.co",
             json=dict(
                 query="""
-                query($page: Int, $perPage: Int) {
-                    Page(page: $page, perPage: $perPage) {
-                        media(type: ANIME, format: TV, sort: TRENDING_DESC, status: FINISHED, genre: "supernatural") {
+                query($per_page: Int) {
+                    Page(page: 4, perPage: $per_page) {
+                        media(type: ANIME, format: TV, sort: TRENDING_DESC, status: FINISHED, genre: "sports") {
                             id
                             title {
                                 romaji
@@ -57,14 +57,14 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 suggestions,
                 item_data=lambda i, pg: f"menu {i.id}",
                 item_title=lambda i, pg: i.title.romaji,
-                page_data=lambda pg: f"tv_supernatural anime {pg}",
+                page_data=lambda pg: f"tv_sports3 anime {pg}",
             )
 
             lines = layout.create(page, lines=8)
 
             if len(lines) > 0:
                 keyboard += lines
-    keyboard.append([(lang.Next, "tv_supernatural1 anime 1")])
+    keyboard.append([(lang.Prev, "tv_sports2 anime 1"), (lang.Next, "tv_sports4 anime 1")])
     keyboard.append([(lang.back_button, "ktgr-finish")])
 
     await message.edit_text(
