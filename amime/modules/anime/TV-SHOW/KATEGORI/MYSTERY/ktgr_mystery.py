@@ -57,14 +57,14 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 suggestions,
                 item_data=lambda i, pg: f"menu {i.id}",
                 item_title=lambda i, pg: i.title.romaji,
-                page_data=lambda pg: f"tv_mystery1 anime {pg}",
+                page_data=lambda pg: f"tv_mystery anime {pg}",
             )
 
             lines = layout.create(page, lines=8)
 
             if len(lines) > 0:
                 keyboard += lines
-    keyboard.append([(lang.Next, "tv_mystery anime 1")])
+    keyboard.append([(lang.Next, "tv_mystery1 anime 1")])
     keyboard.append([(lang.back_button, "ktgr-finish")])
 
     await message.edit_text(
