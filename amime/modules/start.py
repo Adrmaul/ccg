@@ -77,6 +77,7 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                             "url",
                         ),
                         (lang.DISCLAIMER, "about"),
+                        (lang.tes, "pic"),
                     ],
 
                 ]
