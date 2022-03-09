@@ -222,12 +222,19 @@ tingkat_text: |
 
   Gunakan /favourites cmd untuk mendapatkan favorit anilis Anda.
 
-  Untuk mengganti foto/sampul anda, silahkan kunjungi https://anilist.co/settings, lalu pilih foto dan terapkan.
+  <b>Mengganti foto/sampul anda </b>
 
-  Bagaimana masalah terhadap, riwayat, atau list yang belum muncul ?, normalnya kalian harus menunggu 1 hari saat kalian list,
+  Silahkan kunjungi https://anilist.co/settings, lalu pilih foto dan terapkan.
+
+  <b>Bagaimana masalah terhadap, riwayat, atau list
+  yang belum muncul ?</b> 
+
+  Normalnya kalian harus menunggu 1 hari saat kalian list,
   agar tampil di menu /flex, /me dan lainnya.
 
-  solusinya yang ingin menambahkan dengan manual/cepat, silahkan klik ini : https://anilist.co/settings/lists, cari text "Stats", klik tombol Update stats.
+  Solusinya yang ingin menambahkan dengan manual/cepat, silahkan klik ini : https://anilist.co/settings/lists 
+
+  Cari text "Stats", klik tombol Update stats.
 
 tambahan_text: |
   Gunakan /reverse untuk mencari anime melalui tracemoepy API, yang dimana bot ini akan memberikan judul/info terkait anime tersebut.
@@ -247,15 +254,24 @@ tambahan_text: |
 
   Gunakan /waifu untuk mendapatkan gambar waifu (neko) secara random (API)
 
-  Untuk yang ingin mendownload VIDEO/AUDIO dari Youtube.
+  <b>Mendownload VIDEO/AUDIO dari Youtube.</b>
 
   Silahkan aktifkan bot @vid nya terlebih dahulu, lalu kembali kebot ini.
-  Setelah itu, kalian ketik <code>@vid "judul/nama" </code> yang ingin kalian download/streaming.
+
+  Setelah itu, kalian ketik <code>@vid "judul/nama" </code> yang ingin
+
+  kalian download/streaming.
+
   lalu, klik video tersebut, nanti otomatis bot ini akan memprosesnya.
 
-  Untuk yang bingung streaming gagal/ ingin download via link, saya sarankan gunakan bot ini @nimexLink_bot,
+  <b>Stream/Download External</b> 
 
-  fungsinya itu, untuk menconvert, file dokumen/video dari telegram, ke link yang bisa kalian download mengunakan browser maupun sejenisnya.
+  Saya sarankan gunakan bot ini @nimexLink_bot
+
+  fungsinya itu, untuk menconvert, file dokumen/video dari telegram,
+
+  ke link yang bisa kalian download mengunakan browser maupun sejenisnya.
+
   tidak hanya itu, selain mendownload, kalian bisa streaming via link.
 
   ....
