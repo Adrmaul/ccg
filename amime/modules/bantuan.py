@@ -43,6 +43,17 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
     if is_private and is_callback:
         keyboard = [
             [
+                (lang.Dasar, "dasar"),
+                (lang.Anilist, "anilist"),
+            ],
+            [
+                (lang.TingkatLanjut, "lanjut"),
+                (lang.Tambahan, "tambahan"),
+            ],
+            [
+                (lang.Bantuan_Channel, "chnnel"),
+            ],
+            [
                 (lang.back_button, "start"),
             ],
         ]
