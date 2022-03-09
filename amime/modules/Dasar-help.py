@@ -43,7 +43,7 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
     if is_private and is_callback:
         keyboard = [
             [
-                (lang.back_button, "start"),
+                (lang.back_button, "bantuan"),
             ],
         ]
         kwargs["reply_markup"] = ikb(keyboard)

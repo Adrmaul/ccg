@@ -30,8 +30,8 @@ from amime.amime import Amime
 from amime.config import CHANNELS, GROUPS
 
 
-@Amime.on_message(filters.cmd(r"bantuan$"))
-@Amime.on_callback_query(filters.regex(r"^bantuan$"))
+@Amime.on_message(filters.cmd(r"tingkat$"))
+@Amime.on_callback_query(filters.regex(r"^tingkat$"))
 async def about(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
@@ -43,24 +43,13 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
     if is_private and is_callback:
         keyboard = [
             [
-                (lang.Dasar, "dasar"),
-                (lang.Anilist, "anilist"),
-            ],
-            [
-                (lang.TingkatLanjut, "tingkat"),
-                (lang.Tambahan, "tambahan"),
-            ],
-            [
-                (lang.Bantuan_Channel, "channel"),
-            ],
-            [
-                (lang.back_button, "start"),
+                (lang.back_button, "bantuan"),
             ],
         ]
         kwargs["reply_markup"] = ikb(keyboard)
 
     await (message.edit_text if is_callback else message.reply_text)(
-        lang.bantuan_text.format(
+        lang.tingkat_text.format(
             bot_name=bot.me.first_name,
             github="<a href='t.me/Rizki_Wahyudi03'>Owner</a>",
             channel=f"<a href='https://t.me/downloadanimebatch/'>{lang.channel}</a>",

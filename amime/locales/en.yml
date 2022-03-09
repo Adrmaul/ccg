@@ -168,6 +168,34 @@ dasar_text: |
   Gunakan /start atau !start cmd untuk memulai bot di grup atau pm.
   Gunakan /feedback cmd untuk menghubungi pemilik bot.
 
+anilist_text: |
+  Ini merupakan menu bantuan anilist, terkait penggunaan bot ini,
+
+  Gunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online.
+  Gunakan /start atau !start cmd untuk memulai bot di grup atau pm.
+  Gunakan /feedback cmd untuk menghubungi pemilik bot.
+
+tingkat_text: |
+  Ini merupakan menu bantuan tingkat lanjut, terkait penggunaan bot ini,
+
+  Gunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online.
+  Gunakan /start atau !start cmd untuk memulai bot di grup atau pm.
+  Gunakan /feedback cmd untuk menghubungi pemilik bot.
+
+tambahan_text: |
+  Ini merupakan menu bantuan tambahan, terkait penggunaan bot ini,
+
+  Gunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online.
+  Gunakan /start atau !start cmd untuk memulai bot di grup atau pm.
+  Gunakan /feedback cmd untuk menghubungi pemilik bot.
+
+channel_text: |
+  Ini merupakan menu bantuan Channel, terkait penggunaan bot ini,
+
+  Gunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online.
+  Gunakan /start atau !start cmd untuk memulai bot di grup atau pm.
+  Gunakan /feedback cmd untuk menghubungi pemilik bot.
+
 about_text: |
   <b>Disclaimer untuk bot ccgnimex.</b>
 
