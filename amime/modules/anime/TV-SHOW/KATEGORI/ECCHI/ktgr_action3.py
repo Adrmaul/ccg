@@ -23,7 +23,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 query="""
                 query($per_page: Int) {
                     Page(page: 4, perPage: $per_page) {
-                        media(type: ANIME, format: TV, sort: TRENDING_DESC, status: FINISHED, genre: "ecchi") {
+                        media(type: ANIME, format: TV, sort: POPULARITY_DESC, status: FINISHED, genre: "ecchi") {
                             id
                             title {
                                 romaji
