@@ -53,7 +53,7 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
             bot_name=bot.me.first_name,
             github="<a href='t.me/Rizki_Wahyudi03'>Owner</a>",
             channel=f"<a href='https://t.me/downloadanimebatch/'>{lang.channel}</a>",
-            group=f"<a href='https://t.me/c/{str(GROUPS[lang.code])[4:]}/-1'>{lang.group}</a>",
+            group=f"<a href='https://t.me/otakuindonew'>{lang.group}</a>",
             otakudesu="<a href='https://otakudesu.io'>Otakudesu</a>",
             kusonime="<a href='https://kusonime.com/'>Kusonime</a>",
             samehadaku="<a href='https://194.163.183.129/'>Samehadaku</a>",
