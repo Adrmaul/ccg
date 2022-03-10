@@ -108,22 +108,20 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
         done=False,
     )
 
-    text = "<b>Notifikasi anime akan kami garap!</b>"
-    text += "\n<b>Anime</b>:"
-    text += f"\n    <b>ID</b>: <code>{anime.id}</code>"
-    text += f"\n    <b>Judul</b>: <code>{anime.title.romaji}</code>"
+    text = "<b>Notifikasi Update!! | Anime yang akan kami garap!</b>"
+    text += f"<b>ID</b>: <code>{anime.id}</code>"
+    text += f"<b>Judul</b>: <code>{anime.title.romaji}</code>"
     text += (
-        f"\n    <b>Tipe</b>: <code>{lang.strings[language]['LANGUAGE_NAME']}</code>"
+        f"<b>Tipe</b>: <code>{lang.strings[language]['LANGUAGE_NAME']}</code>"
     )
-    text += f"\n<b>Link Anime</b>: - <a href='http://t.me/{bot.me.username}/?start=anime_{anime.id}'>Klik disini</a>"
+    text += f"\n\n<b>Link Anime</b>: - <a href='http://t.me/{bot.me.username}/?start=anime_{anime.id}'>Klik disini</a>"
 
     text += "\n\n#NOTIF"
 
     await bot.send_message(
         CHATS["requests"],
         text,
-        reply_markup=ikb([[("🆙 Get", f"notif get anime {anime_id} {language}")]]),
-        disable_web_page_preview=True
+        disable_web_page_preview=True,
     )
 
     await callback.answer(lang.request_sent_alert, show_alert=True)
