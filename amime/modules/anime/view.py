@@ -194,7 +194,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             buttons.append(
                     (
                         lang.Tes, 
-                        f"desc_{anime.id}_ANI_True_{user}"
+                        f"desc_{anime.id}_ANI_True_{user_id}"
                     ),
                 )
 
