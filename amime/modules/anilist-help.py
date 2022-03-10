@@ -30,7 +30,6 @@ from amime.amime import Amime
 from amime.config import CHANNELS, GROUPS
 
 
-@Amime.on_message(filters.cmd(r"anilist$"))
 @Amime.on_callback_query(filters.regex(r"^anilist$"))
 async def about(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
