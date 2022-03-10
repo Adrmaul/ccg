@@ -131,7 +131,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         buttons = [
             (
                         lang.view_more_button,
-                        f"manga more {anime.id} {user.id}"
+                        f"anime more {anime.id} {user.id}"
                     )
         ]
          
