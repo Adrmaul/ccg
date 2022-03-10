@@ -369,7 +369,14 @@ upcoming_button: 🆕 Upcoming
 donate_button: 🩸 Donate
 
 view_more_text: |
-  Di sini Anda akan dapat melihat deskripsi/sinopsis, karakter, dan beberapa hal lainnya, manfaatkan dengan baik. 🙃.
+  Dibawah ini ada 2 pilihan yang bisa kalian gunakan :
+
+  Login : Bagi user yang sudah menautkan akun anilistnya ke bot dengan cara /auth.
+
+  Guest : Bagi user yang tidak menautkan akun anilistnya.
+
+  Perbedaanya, jika kalian user guest, menekan tombol login, 
+  kalian tidak bisa mengklik tombol (Back) untuk menambahkan list-an.
 
 view_more_button: ⎆ Menu Anime
 manga_more_button: ⎆ Menu Manga
