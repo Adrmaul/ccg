@@ -174,9 +174,10 @@ dasar_text: |
 
 anilist_text: |
   Ini merupakan menu bantuan anilist, terkait penggunaan bot ini,
-  Di bawah ini adalah daftar cmd anilist dasar untuk info anime, karakter, manga, dll.
 
-  /anime - Gunakan cmd ini untuk mendapatkan info tentang anime tertentu menggunakan kata kunci (nama anime) atau ID Anilist
+  Di bawah ini adalah daftar cmd anilist dasar untuk mendownload/ mengambil info anime, karakter, manga, dll.
+
+  /anime - Gunakan cmd ini untuk mendapatkan info & mendownload anime tertentu menggunakan kata kunci (nama anime) atau ID Anilist
   (Dapat mencari info tentang sekuel dan prekuel)
 
   /anilist - Gunakan perintah ini untuk memilih di antara beberapa anime dengan nama serupa yang terkait dengan kueri yang dicari
