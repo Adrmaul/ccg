@@ -260,7 +260,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
 
         keyboard = array_chunk(buttons, 2)
 
-        keyboard.append([(lang.back_button, f"anime {anime_id} {user_id}")])
+        keyboard.append([(lang.back_button, f"menu {anime_id} {user_id}")])
 
         await message.edit_text(
             lang.view_more_text,
