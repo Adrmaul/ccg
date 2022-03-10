@@ -43,13 +43,13 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
     if is_private and is_callback:
         keyboard = [
             [
-                (lang.back_button, "bantuan"),
+                (lang.back_button, "start"),
             ],
         ]
         kwargs["reply_markup"] = ikb(keyboard)
 
     await (message.edit_text if is_callback else message.reply_text)(
-        lang.dasar_text.format(
+        lang.donasi_text.format(
             bot_name=bot.me.first_name,
             github="<a href='t.me/Rizki_Wahyudi03'>Owner</a>",
             channel=f"<a href='https://t.me/downloadanimebatch/'>{lang.channel}</a>",
