@@ -188,7 +188,16 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                         lang.audio_button, 
                         f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"
                     ),
-                )        
+                ) 
+
+        if is_private and not anime.status.lower() == "not_yet_released":        
+            buttons.append(
+                    (
+                        lang.Tes, 
+                        f"desc_{anime.id}_ANI_True_784985038"
+                    ),
+                )
+
         if is_private and not anime.status.lower() == "not_yet_released":
             button = (
                 lang.request_content_button,
