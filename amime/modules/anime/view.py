@@ -41,7 +41,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
     chat = message.chat
-    userz = mdata['from_user']['id']
     user = union.from_user
     lang = union._lang
 
@@ -195,7 +194,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             buttons.append(
                     (
                         lang.Tes, 
-                        f"desc_{anime.id}_ANI_True_{userz}"
+                        f"desc_{anime.id}_ANI_True_{user}"
                     ),
                 )
 
