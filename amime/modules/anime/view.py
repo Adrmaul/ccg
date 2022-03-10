@@ -129,11 +129,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             text += f"\n<b>{lang.end_date}</b>: <code>{anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}</code>"
 
         buttons = [
-            (
-                        lang.view_more_button,
-                        f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
-                        "url",
-                    )
+            (lang.anime_more_button, f"anime more {manga.id} {user.id}"),
         ]
          
 
@@ -190,13 +186,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     ),
                 ) 
 
-        if is_private and not anime.status.lower() == "not_yet_released":        
-            buttons.append(
-                    (
-                        lang.Tes, 
-                        f"desc_{anime.id}_ANI_True_{user_id}"
-                    ),
-                )
 
         if is_private and not anime.status.lower() == "not_yet_released":
             button = (
@@ -255,7 +244,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
         anime = await client.get(anime_id, "anime")
 
         buttons = [
-            (lang.description_button, f"anime description {anime_id} {user_id} 1"),
+            (lang.description_button, f"desc_{anime.id}_ANI_True_{user_id}"),
             (lang.characters_button, f"anime characters {anime_id} {user_id}"),
             (lang.studios_button, f"anime studios {anime_id} {user_id}"),
         ]
