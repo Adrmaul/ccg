@@ -131,7 +131,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         buttons = [
             (
                         lang.view_more_button,
-                        f"btn_{anime.id}_ANI_True_{user.id}"
+                        f"anime more {anime.id} {user.id}"
                     )
         ]
          
@@ -256,9 +256,9 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
         anime = await client.get(anime_id, "anime")
 
         buttons = [
-            (lang.description_button, f"desc_{anime.id}_ANI_True_{user_id}"),
+            (lang.Login, f"desc_{anime.id}_ANI_True_{user_id}"),
+            (lang.Guest, f"desc_{anime.id}_ANI_False_{user_id}"),
             (lang.characters_button, f"anime characters {anime_id} {user_id}"),
-            (lang.studios_button, f"anime studios {anime_id} {user_id}"),
         ]
 
         if hasattr(anime, "trailer"):
