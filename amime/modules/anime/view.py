@@ -182,7 +182,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     ),
                 )
         
-        if is_private and not anime.status.lower() == "not_yet_released":        
+        if is_private:       
             buttons.append(
                     (
                         lang.Hapus, 
