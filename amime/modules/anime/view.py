@@ -132,11 +132,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             (
                         lang.view_more_button,
                         f"anime more {anime.id} {user.id}"
-                    ),
-            (
-                        lang.Download,
-                        f"download more {anime.id} {user.id}"
-                    ),        
+                    )       
         ]
          
 
@@ -181,7 +177,15 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if is_private and not anime.status.lower() == "not_yet_released":        
             buttons.append(
                     (
-                        lang.Delete, 
+                        lang.Download, 
+                        f"download more {anime.id} {user.id}"
+                    ),
+                )
+        
+        if is_private and not anime.status.lower() == "not_yet_released":        
+            buttons.append(
+                    (
+                        lang.Hapus, 
                         f"neko_delete, {user.id}"
                     ),
                 )         
