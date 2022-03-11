@@ -132,11 +132,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             (
                         lang.view_more_button,
                         f"anime more {anime.id} {user.id}"
-                    ),
-            (
-                        lang.Download,
-                        f"download more {anime.id} {user.id}"
-                    ),        
+                    )
         ]
          
 
@@ -187,11 +183,11 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )         
 
 
-        #if is_private and not anime.status.lower() == "not_yet_released":
-        #    button = (
-        #        lang.request_content_button,
-        #        f"request episodes {anime.id} {language}",
-        #    )
+        if is_private and not anime.status.lower() == "not_yet_released":
+            button = (
+                lang.request_content_button,
+                f"request episodes {anime.id} {language}",
+            )
             if anime.status.lower() == "releasing":
                 if hasattr(anime, "next_airing"):
                     next_episode = anime.next_airing.episode
