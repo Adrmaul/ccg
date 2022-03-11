@@ -264,7 +264,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
         anime = await client.get(anime_id, "anime")
 
         buttons = [
-            (lang.Login, f"desc_{anime.id}_ANI_True_{user_id}"),
+            (lang.Login, f"btn_{anime.id}_ANI_True_{user_id}"),
             (lang.Guest, f"desc_{anime.id}_ANI_False_{user_id}"),
             #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
         ]
