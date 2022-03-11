@@ -202,7 +202,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             buttons.append(
                     (
                         lang.Delete, 
-                        f"neko_delete,{user.id}"
+                        f"neko_delete, {user.id}"
                     ),
                 )         
 
