@@ -176,7 +176,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     ),
                 )
         
-               
+        if is_private:       
             buttons.append(
                     (
                         lang.Hapus, 
