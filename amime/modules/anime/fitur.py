@@ -169,14 +169,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
        #         )
        #     )
 
-        if is_private and is_collaborator:
-            buttons.append(
-                (
-                    lang.Notifikasi,
-                    f"notif episodes {anime.id} {language}",
-                )
-            )
-
 
 
         if is_private and not anime.status.lower() == "not_yet_released":        
@@ -229,7 +221,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             )
 
 
-@Amime.on_callback_query(filters.regex(r"^fitur more (\d+) (\d+)"))
+@Amime.on_callback_query(filters.regex(r"^download more (\d+) (\d+)"))
 async def anime_view_more(bot: Amime, callback: CallbackQuery):
     message = callback.message
     user = callback.from_user
