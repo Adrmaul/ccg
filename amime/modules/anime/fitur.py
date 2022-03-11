@@ -239,8 +239,8 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
         buttons = [
             (lang.Video, f"{anime.title.romaji} | video", "switch_inline_query_current_chat"),
             (lang.Audio, f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"),
-            (lang.request_content_button, f"request episodes {anime.id} {language}"),     
-            ]
+            #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
+        ],
         
 
        # if hasattr(anime, "trailer"):
