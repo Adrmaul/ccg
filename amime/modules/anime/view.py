@@ -132,7 +132,11 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             (
                         lang.view_more_button,
                         f"anime more {anime.id} {user.id}"
-                    )
+                    ),
+            (
+                        lang.Download,
+                        f"download more {anime.id} {user.id}"
+                    ),        
         ]
          
 
