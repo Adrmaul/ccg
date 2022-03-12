@@ -167,7 +167,14 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
 
 
-              
+        if is_private and is_collaborator:
+            buttons.append(
+                (
+                    lang.Notifikasi,
+                    f"notif episodes {anime.id} {language}",
+                )
+            )
+                  
         if is_private and not anime.status.lower() == "not_yet_released":        
             buttons.append(
                     (
