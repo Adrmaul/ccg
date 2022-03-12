@@ -108,7 +108,7 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
         done=False,
     )
 
-    text = "<b>Notifikasi Update!! | Anime yang akan kami garap!</b>"
+    text = "<b>Notifikasi Update!! | Anime yang kami garap, tanpa update ke channel!!</b>"
     text += f"\n\n<b>ID</b>: <code>{anime.id}</code>"
     text += f"\n<b>Judul</b>: <code>{anime.title.romaji}</code>"
     text += (
