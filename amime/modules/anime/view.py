@@ -177,7 +177,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if is_private and not anime.status.lower() == "not_yet_released":        
             buttons.append(
                     (
-                        lang.Download, 
+                        lang.Download_text, 
                         f"download more {anime.id} {user.id}"
                     ),
                 )
