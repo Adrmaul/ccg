@@ -185,7 +185,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if is_private:       
             buttons.append(
                     (
-                        lang.Hapus, 
+                        lang.Hapus_text, 
                         f"neko_delete, {user.id}"
                     ),
                 )         

@@ -533,6 +533,8 @@ add_in_batch_videos_text: |
 
 add_in_batch_button: 🔢 Add in batch
 
+Hapus_text: ⌧ Hapus
+
 no_found_episodes_text: |
   Oops! I did not find any episode, if it is a mistake, inform those responsible.
 
