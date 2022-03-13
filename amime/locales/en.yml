@@ -641,7 +641,11 @@ movietop_text: |
 
   <b>Total list</b>
   <code>Anime : 550 movie
-  Daftar : 10 halaman</code>
+  Daftar : 11 halaman</code>
 
 movietrend_text: |
-  Dibawah ini adalah daftar list movie yang akan rilis berdasarkan info dari anilist.
+  Dibawah ini adalah daftar list movie yang sedang hangat/Trending berdasarkan info dari anilist.
+
+  <b>Total list</b>
+  <code>Anime : 550 movie
+  Daftar : 11 halaman</code>
