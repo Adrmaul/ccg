@@ -631,4 +631,7 @@ moviemenu_text: |
   Anda sekarang berada dimenu movie, dibawah ini ada beberapa tombol yang bisa kalian pilih.
   Mulai dari kategori per genre, anime terbaik, trending, maupun yang akan rilis.
 
-  (Semua list yang terdapat dibot ini, diupdate otomatis berdasarkan anilist.)
+  <i>(Semua list yang terdapat dibot ini, diupdate otomatis berdasarkan anilist)</i>
+
+movieup_text: |
+  Dibawah ini adalah daftar list movie yang akan rilis berdasarkan info dari anilist.
