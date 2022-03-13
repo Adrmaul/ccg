@@ -635,3 +635,14 @@ moviemenu_text: |
 
 movieup_text: |
   Dibawah ini adalah daftar list movie yang akan rilis berdasarkan info dari anilist.
+
+movietop_text: |
+  Dibawah ini adalah daftar list movie yang terbaik berdasarkan info dari anilist.
+
+  <b>Total index</b>
+
+  <code>Anime : 1050 movie
+  Daftar : 10 halaman</code>
+
+movietrend_text: |
+  Dibawah ini adalah daftar list movie yang akan rilis berdasarkan info dari anilist.

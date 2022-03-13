@@ -68,6 +68,6 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     keyboard.append([(lang.back_button, "movie-menu")])
 
     await message.edit_text(
-        lang.suggestions_text,
+        lang.movietop_text,
         reply_markup=ikb(keyboard),
     )
