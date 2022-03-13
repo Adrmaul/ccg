@@ -626,3 +626,9 @@ requested_in_last_24h_alert: |
 notified_users_alert: Pengguna telah berhasil diberi tahu!
 
 only_1_episode_not_allowed_alert: Only batches over 1 episode are allowed.
+
+movie-menu_text: |
+  Anda sekarang berada dimenu movie, dibawah ini ada beberapa tombol yang bisa kalian pilih.
+  Mulai dari kategori per genre, anime terbaik, trending, maupun yang akan rilis.
+
+  (Semua list yang terdapat dibot ini, diupdate otomatis berdasarkan anilist.)
