@@ -42,18 +42,7 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
     if is_private and is_callback:
         keyboard = [
             [
-                (lang.Dasar, "dasar"),
-                (lang.Anilist, "anilist"),
-            ],
-            [
-                (lang.tingkat_button, "tingkat"),
-                (lang.Tambahan, "tambahan"),
-            ],
-            [
-                (lang.channelhelp_button, "channel"),
-            ],
-            [
-                (lang.back_button, "start"),
+                (lang.back_button, "download more {anime.id} {user.id}"),
             ],
         ]
         kwargs["reply_markup"] = ikb(keyboard)
