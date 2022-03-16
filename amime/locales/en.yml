@@ -378,7 +378,9 @@ view_more_text: |
   Perbedaanya, jika kalian user guest, menekan tombol login, 
   kalian tidak bisa mengklik tombol (Back) untuk menambahkan list-an.
 
-infodownload_text: |
+download_more_text: |
+  Silahkan untuk mendownload/streaming.
+
   Untuk Mencari episode, silahkan kalian tambahkan angka (EPS) diinline keyboard.
 
   seperti : <code>Naruto 133,</code>, atau jika tidak keluar, <code>133 naruto</code> dan sebagiannya.
@@ -394,14 +396,9 @@ infodownload_text: |
 
   Silahkan untuk mendownload nya dan gunakan app mx player ataupun sejenisnya.
 
-  Dan jika yang ingin streaming, silahkan forward videonya ke bot @nimexLink_bot, salin link (downloadnya) dan gunakan aplikasi {playit} : 
+  Dan jika yang ingin streaming, silahkan forward videonya ke bot @nimexLink_bot, salin link (downloadnya) dan gunakan aplikasi PlayIt.
 
   Masih bingung? atau ada kendala? - hubungi admin di @otakuindonew.
-
-download_more_text: |
-  Silahkan untuk mendownload/streaming.
-
-  Sebelum download/stream, silahkan klik tombol Info yang ada dibawah.
 
 view_more_button: ⎆ Menu Anime
 manga_more_button: ⎆ Menu Manga
