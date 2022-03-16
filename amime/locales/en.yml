@@ -382,14 +382,21 @@ download_more_text: |
   Silahkan untuk mendownload/streaming.
 
   Untuk Mencari episode, silahkan kalian tambahkan angka (EPS) diinline keyboard.
-  seperti : Naruto 133, atau jika tidak keluar, 133 naruto dan sebagiannya..
+
+  seperti : <code>Naruto 133,</code>, atau jika tidak keluar, <code>133 naruto</code> dan sebagiannya.
 
   Anime yang ada tanda (., !, :, dan simbol lainnya.)
-  Jika Video tidak ada tetapi ada dilist, silahkan ketik manual judulnya. biasanya tidak terfilter oleh database.
+  Jika Video tidak ada tetapi ada dilist, silahkan ketik manual judulnya. 
+
+  Biasanya tidak terfilter oleh database.
+
   Seperti : Kobato. menjadi Kobato
 
-  Note: Jika video tidak bisa diputar/tidak muncul subtitlenya, silahkan untuk mendownload nya dan gunakan app mx player ataupun sejenisnya.
-  dan jika yang ingin streaming, silahkan forward videonya ke bot @nimexLink_bot, salin link (downloadnya) dan gunakan aplikasi {playit}.
+  <b>Note:</b> Jika video tidak bisa diputar/tidak muncul subtitlenya, 
+
+  Silahkan untuk mendownload nya dan gunakan app mx player ataupun sejenisnya.
+
+  Dan jika yang ingin streaming, silahkan forward videonya ke bot @nimexLink_bot, salin link (downloadnya) dan gunakan aplikasi {playit}.
 
   Masih bingung? atau ada kendala? - hubungi admin di @otakuindonew.
 
