@@ -248,7 +248,9 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
 
-        buttons = [
+        buttons =[
+            (lang.Info, f"infodownload")], 
+        [
             (lang.Video, f"{anime.title.romaji} | video", "switch_inline_query_current_chat"),
             (lang.Audio, f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"),
             #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
@@ -267,7 +269,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
         await message.edit_text(
             lang.download_more_text,
             reply_markup=ikb(keyboard),
-        )
+        )        
 
 
 @Amime.on_callback_query(filters.regex(r"anime description (\d+) (\d+) (\d+)"))
