@@ -182,6 +182,14 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                         f"download more {anime.id} {user.id}"
                     ),
                 )
+        await (message.edit_text if is_callback else message.reply_text)(
+        lang.Download_text.format(
+            playit="<a href='https://t.me/ccgXmediaUp_bot?start=Z2V0LTEyMzk0OTI0OTg1MDI2OTA2'>PlayIt</a>",
+
+        ),
+        disable_web_page_preview=True,
+        **kwargs,
+    )        
         
         if is_private:       
             buttons.append(
