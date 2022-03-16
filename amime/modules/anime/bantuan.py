@@ -29,6 +29,16 @@ from pyromod.helpers import ikb
 from amime.amime import Amime
 from amime.config import CHANNELS, GROUPS
 
+import anilist
+from pyrogram import filters
+from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
+from pyromod.helpers import array_chunk, ikb
+
+from amime.amime import Amime
+from amime.database import Episodes, Users
+from amime.modules.favorites import get_favorite_button
+from amime.modules.notify import get_notify_button
+
 
 @Amime.on_callback_query(filters.regex(r"^infodownload$"))
 async def about(bot: Amime, union: Union[CallbackQuery, Message]):
