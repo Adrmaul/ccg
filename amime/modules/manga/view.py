@@ -129,7 +129,7 @@ async def manga_view(bot: Amime, union: Union[CallbackQuery, Message]):
             (lang.manga_more_button, f"manga more {manga.id} {user.id}"),
              (
                         lang.Baca,
-                        f"https://westmanga.info/manga/{anime.id}",
+                        f"https://westmanga.info/manga/{manga.title.romaji}",
                         "url",
                     ),
         ]
