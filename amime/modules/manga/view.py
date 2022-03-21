@@ -174,7 +174,7 @@ async def manga_view_more(bot: Amime, callback: CallbackQuery):
             (lang.studios_button, f"manga studios {manga_id} {user_id}"),
             (
                             lang.grup_button,
-                            f"https://westmanga.info/manga/{manga.title.romaji}",
+                            f"https://westmanga.info/manga/{manga_id}",
                             "url",
                         ),
         ]
