@@ -131,6 +131,14 @@ async def manga_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "manga", manga.id))
+        
+        buttons.append(
+                    (
+                        lang.Baca,
+                        f"https://westmanga.info/manga/{anime.id}",
+                        "url",
+                    )
+                )
 
         buttons.append(
             await get_notify_button(
