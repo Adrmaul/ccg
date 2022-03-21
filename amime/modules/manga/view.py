@@ -126,13 +126,12 @@ async def manga_view(bot: Amime, union: Union[CallbackQuery, Message]):
             text += f"\n<b>{lang.end_date}</b>: <code>{manga.end_date.day if hasattr(manga.end_date, 'day') else 0}/{manga.end_date.month if hasattr(manga.end_date, 'month') else 0}/{manga.end_date.year if hasattr(manga.end_date, 'year') else 0}</code>"
 
         buttons = [
-            (lang.manga_more_button, f"manga more {manga.id} {user.id}"),
-             (
-                        lang.Baca,
-                        f"https://westmanga.info/manga/{manga.title.romaji}",
-                        "url",
-                    ),
-        ]
+                        (
+                            lang.grup_button,
+                            f"https://westmanga.info/manga/{manga.title.romaji}",
+                            "url",
+                        )
+                    ]
 
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "manga", manga.id))
