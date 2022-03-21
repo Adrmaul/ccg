@@ -126,12 +126,8 @@ async def manga_view(bot: Amime, union: Union[CallbackQuery, Message]):
             text += f"\n<b>{lang.end_date}</b>: <code>{manga.end_date.day if hasattr(manga.end_date, 'day') else 0}/{manga.end_date.month if hasattr(manga.end_date, 'month') else 0}/{manga.end_date.year if hasattr(manga.end_date, 'year') else 0}</code>"
 
         buttons = [
-                        (
-                            lang.grup_button,
-                            f"https://westmanga.info/manga/{manga.title.romaji}",
-                            "url",
-                        )
-                    ]
+            (lang.manga_more_button, f"manga more {manga.id} {user.id}"),
+        ]
 
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "manga", manga.id))
@@ -176,6 +172,11 @@ async def manga_view_more(bot: Amime, callback: CallbackQuery):
             (lang.description_button, f"manga description {manga_id} {user_id} 1"),
             (lang.characters_button, f"manga characters {manga_id} {user_id}"),
             (lang.studios_button, f"manga studios {manga_id} {user_id}"),
+            (
+                            lang.grup_button,
+                            f"https://t.me/otakuindonew",
+                            "url",
+                        ),
         ]
 
         buttons.append(("🐢 Anilist", manga.url, "url"))
