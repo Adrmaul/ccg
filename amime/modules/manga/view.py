@@ -124,7 +124,6 @@ async def manga_view(bot: Amime, union: Union[CallbackQuery, Message]):
             text += f"\n<b>{lang.start_date}</b>: <code>{manga.start_date.day if hasattr(manga.start_date, 'day') else 0}/{manga.start_date.month if hasattr(manga.start_date, 'month') else 0}/{manga.start_date.year if hasattr(manga.start_date, 'year') else 0}</code>"
         if not manga.status.lower() in ["not_yet_released", "releasing"]:
             text += f"\n<b>{lang.end_date}</b>: <code>{manga.end_date.day if hasattr(manga.end_date, 'day') else 0}/{manga.end_date.month if hasattr(manga.end_date, 'month') else 0}/{manga.end_date.year if hasattr(manga.end_date, 'year') else 0}</code>"
-        text = f" <code>Baca: </code> - <a href='https://westmanga.info/manga/{manga.title.romaji}'>Klik disini</a>"
 
         buttons = [
             (lang.manga_more_button, f"manga more {manga.id} {user.id}"),
@@ -173,11 +172,6 @@ async def manga_view_more(bot: Amime, callback: CallbackQuery):
             (lang.description_button, f"manga description {manga_id} {user_id} 1"),
             (lang.characters_button, f"manga characters {manga_id} {user_id}"),
             (lang.studios_button, f"manga studios {manga_id} {user_id}"),
-            (
-                            lang.grup_button,
-                            f"https://westmanga.info/manga/{manga_id}",
-                            "url",
-                        ),
         ]
 
         buttons.append(("🐢 Anilist", manga.url, "url"))
