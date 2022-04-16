@@ -22,7 +22,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
     ]
 
     if is_callback:
-        keyboard.append([(lang.back_button, "tvshow_menu$")])
+        keyboard.append([(lang.back_button, "tvshow_menu")])
 
     await (message.edit_text if is_callback else message.reply_text)(
         lang.anime_text,
