@@ -8,7 +8,7 @@ from pyromod.nav import Pagination
 from amime.amime import Amime
 
 
-@Amime.on_callback_query(filters.regex(r"^tv_ongoing_ongoing_action anime (?P<page>\d+)"))
+@Amime.on_callback_query(filters.regex(r"^tv_ongoing_action anime (?P<page>\d+)"))
 async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
@@ -23,7 +23,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 query="""
                 query($page: Int, $perPage: Int) {
                     Page(page: $page, perPage: $perPage) {
-                        media(type: ANIME, format: TV, sort: TRENDING_DESC, status: FINISHED, genre: "action") {
+                        media(type: ANIME, format: TV, sort: TRENDING_DESC, status: RELEASING, genre: "action") {
                             id
                             title {
                                 romaji
