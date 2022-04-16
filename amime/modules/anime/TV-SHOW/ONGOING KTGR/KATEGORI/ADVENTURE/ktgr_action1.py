@@ -65,7 +65,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             if len(lines) > 0:
                 keyboard += lines
     keyboard.append([(lang.Prev, "tv_ongoing_adventure anime 1"), (lang.Next, "tv_ongoing_adventure2 anime 1")])
-    keyboard.append([(lang.back_button, "ktgr-finish")])
+    keyboard.append([(lang.back_button, "ktgr-ongoing")])
 
     await message.edit_text(
         lang.suggestions_text,
