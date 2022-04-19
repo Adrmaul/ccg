@@ -18,7 +18,12 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
         [
             (lang.FINISHED, "ktgr-finish"),
             (lang.ONGOING, "ktgr-ongoing"),
+
+        ],
+        [
             (lang.EPISODE, "ktgr-episode"),
+        ],
+        [
             (lang.STUDIO, "ktgr-studio"),
             (lang.TAHUN, "ktgr-tahun"),
 
