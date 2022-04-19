@@ -404,7 +404,13 @@ view_more_button: ⎆ Menu Anime
 
 manga_more_button: ⎆ Menu Manga
 
-lebih24_button: EPS LEBIH DARI 24 +
+lebih24_button: EPS 24 - 30
+
+lebih25_button: EPS 31 - 50
+
+lebih50_button: EPS 51 - 100
+
+lebih100_button: EPS 101 - 1000 +
 
 kurang24_button: EPS KURANG DARI 24 -
 
