@@ -8,7 +8,7 @@ from pyromod.nav import Pagination
 from amime.amime import Amime
 
 
-@Amime.on_callback_query(filters.regex(r"^tv_horror anime (?P<page>\d+)"))
+@Amime.on_callback_query(filters.regex(r"^tv_ongoing_horror anime (?P<page>\d+)"))
 async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
@@ -23,7 +23,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 query="""
                 query($page: Int, $perPage: Int) {
                     Page(page: $page, perPage: $perPage) {
-                        media(type: ANIME, format: TV, sort: TRENDING_DESC, status: FINISHED, genre: "horror") {
+                        media(type: ANIME, format: TV, sort: TRENDING_DESC, status: RELEASING, genre: "horror") {
                             id
                             title {
                                 romaji
@@ -57,15 +57,14 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 suggestions,
                 item_data=lambda i, pg: f"menu {i.id}",
                 item_title=lambda i, pg: i.title.romaji,
-                page_data=lambda pg: f"tv_horror anime {pg}",
+                page_data=lambda pg: f"tv_ongoing_horror anime {pg}",
             )
 
             lines = layout.create(page, lines=8)
 
             if len(lines) > 0:
                 keyboard += lines
-    keyboard.append([(lang.Next, "tv_horror1 anime 1")])
-    keyboard.append([(lang.back_button, "ktgr-finish")])
+    keyboard.append([(lang.back_button, "ktgr-ongoing")])
 
     await message.edit_text(
         lang.suggestions_text,
