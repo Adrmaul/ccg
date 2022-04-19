@@ -16,10 +16,23 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
 
     keyboard = [
         [
-            (lang.lebih24_button, "ktgr-24+"),
             (lang.kurang24_button, "ktgr-24-"),
 
-        ],    
+        ], 
+        [
+            (lang.lebih24_button, "ktgr-24+"),
+            (lang.lebih25_button, "ktgr-25+"),
+
+        ],
+        [
+            (lang.lebih50_button, "ktgr-50+"),
+            (lang.lebih75_button, "ktgr-75+"),
+
+        ], 
+        [
+            (lang.lebih100_button, "ktgr-100+"),
+
+        ],     
     ]
 
     if is_callback:

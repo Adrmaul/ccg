@@ -408,7 +408,9 @@ lebih24_button: EPS 24 - 30
 
 lebih25_button: EPS 31 - 50
 
-lebih50_button: EPS 51 - 100
+lebih50_button: EPS 51 - 75
+
+lebih70_button: EPS 76 - 100
 
 lebih100_button: EPS 101 - 1000 +
 
