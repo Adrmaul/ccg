@@ -410,11 +410,11 @@ lebih25_button: EPS 31 - 50
 
 lebih50_button: EPS 51 - 75
 
-lebih70_button: EPS 76 - 100
+lebih75_button: EPS 76 - 100
 
 lebih100_button: EPS 101 - 1000 +
 
-kurang24_button: EPS KURANG DARI 24 -
+kurang24_button: EPS 1 - 23
 
 checknimex_button: ✅ Cek Anime
 
