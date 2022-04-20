@@ -106,28 +106,27 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         episodes = sorted(episodes, key=lambda episode: episode.number)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
-        text = f"<code>{anime.title.romaji}</code>"
+        text = f"⌯ <code>{anime.title.romaji}</code>"
         if hasattr(anime.title, "native"):
             text += f" (<b>{anime.title.native}</b>)"
+        text += f"\n─────── ∘°❉°∘ ───────"    
         text += f"\n\n<b>ID</b>: <code>{anime.id}</code>"
         if hasattr(anime, "score"):
             if hasattr(anime.score, "average"):
-                text += f"\n<b>{lang.score}</b>: <code>{anime.score.average}</code>"
-        text += f"\n<b>{lang.status}</b>: <code>{anime.status}</code>"
+                text += f"\n<b>{lang.score}</b>: <code>{anime.score.average}% 🌟</code>"
+        text += f"\n<b>{lang.status}</b>: <code>{anime.status} | {anime.duration}m</code>"
+        text += f"\n<b>{lang.format}</b>: <code>{anime.format}</code>"
         if hasattr(anime, "genres"):
             text += f"\n<b>{lang.genres}</b>: <code>{', '.join(anime.genres)}</code>"
-        if hasattr(anime, "studios"):
-            text += f"\n<b>{lang.studios}</b>: <code>{', '.join(anime.studios)}</code>"
-        text += f"\n<b>{lang.format}</b>: <code>{anime.format}</code>"
-        if hasattr(anime, "duration"):
-            text += f"\n<b>{lang.duration}</b>: <code>{anime.duration}m</code>"
         if not anime.format.lower() == "movie" and hasattr(anime, "episodes"):
-            text += f"\n<b>{lang.episode}s</b>: <code>{anime.episodes}</code>"
+            text += f"\n<b>{lang.episode}s</b>: <code>{anime.episodes} Eps</code>"
         if not anime.status.lower() == "not_yet_released":
             text += f"\n<b>{lang.start_date}</b>: <code>{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0}</code>"
         if not anime.status.lower() in ["not_yet_released", "releasing"]:
             text += f"\n<b>{lang.end_date}</b>: <code>{anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}</code>"
-
+        if hasattr(anime, "studios"):
+            text += f"\n<b>{lang.studios}</b>: <code>{', '.join(anime.studios)}</code>"
+            text += f"\n─────── ∘°❉°∘ ───────"
         buttons = [
             (
                         lang.view_more_button,
