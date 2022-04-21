@@ -39,8 +39,8 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
 
     kwargs: Dict = {}
 
-    is_private = await filters.private(bot, message)
-    if is_private and is_callback:
+    is_callback = await filters.private(bot, message)
+    if is_callback:
         keyboard = [
             [
                 (lang.Dasar, "dasar"),
