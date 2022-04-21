@@ -22,6 +22,7 @@
 
 import re
 from typing import Union
+from amime.modules.bantuan import about
 
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, Message
@@ -116,6 +117,8 @@ async def view(bot: Amime, message: Message):
         await anime_view(bot, message)
     elif content_type == "character":
         await character_view(bot, message)
+    elif content_type == "bantuan":  
+        await about(bot, message)      
     else:
         await manga_view(bot, message)
 
@@ -129,3 +132,5 @@ async def menu(bot: Amime, message: Message):
 
     if content_type == "menu":
         await anime_start(bot, message)
+    elif content_type == "bantuan":  
+        await about(bot, message)  
