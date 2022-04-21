@@ -103,7 +103,7 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
 
 
 @Amime.on_message(
-    filters.cmd(r"start (?P<content_type>menu|character|manga)_(\d+)")
+    filters.cmd(r"start (?P<content_type>menu|character|manga|bantuan)_(\d+)")
     & filters.private
 )
 async def view(bot: Amime, message: Message):
