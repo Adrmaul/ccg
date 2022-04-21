@@ -35,12 +35,13 @@ from amime.config import CHANNELS, GROUPS
 async def about(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
+    user = union.from_user
     lang = union._lang
 
     kwargs: Dict = {}
 
-    is_callback = await filters.private(bot, message)
-    if is_callback:
+    is_private = await filters.private(bot, message)
+    if is_private and is_callback:
         keyboard = [
             [
                 (lang.Dasar, "dasar"),
