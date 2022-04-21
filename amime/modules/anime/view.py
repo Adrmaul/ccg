@@ -114,7 +114,8 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if hasattr(anime, "score"):
             if hasattr(anime.score, "average"):
                 text += f"\n⋟ <b>{lang.score}</b>: <code>{anime.score.average}% 🌟</code>"
-        text += f"\n⋟ <b>{lang.status}</b>: <code>{anime.status} | {anime.duration}m</code>"
+        if not anime.status.lower() == "not_yet_released":
+            text += f"\n⋟ <b>{lang.status}</b>: <code>{anime.status} | {anime.duration}m</code>"
         text += f"\n⋟ <b>{lang.format}</b>: <code>{anime.format}</code>"
         if hasattr(anime, "genres"):
             text += f"\n⋟ <b>{lang.genres}</b>: <code>{', '.join(anime.genres)}</code>"

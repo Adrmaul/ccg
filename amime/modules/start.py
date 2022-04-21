@@ -121,7 +121,7 @@ async def view(bot: Amime, message: Message):
 
 
 @Amime.on_message(
-    filters.cmd(r"start (?P<content_type>menu)")
+    filters.cmd(r"start (?P<content_type>menu|bantuan)")
     & filters.private
 )
 async def menu(bot: Amime, message: Message):
