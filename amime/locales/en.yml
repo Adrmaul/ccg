@@ -416,6 +416,10 @@ lebih100_button: EPS 101 - 1000 +
 
 kurang24_button: EPS 1 - 19
 
+pagedua-s_button: Next (2)
+
+pagesatu-s_button: Prev (1)
+
 enam_button: 2006
 
 tujuh_button: 2007
@@ -432,25 +436,61 @@ duabls_button: 2012
 
 tigabls_button: 2013
 
-empatbls__button: 2014
+empatbls_button: 2014
 
-limabls__button: 2015
+limabls_button: 2015
 
-enambls__button: 2016
+enambls_button: 2016
 
-tujuhbls:_button: 2017
+tujuhbls_button: 2017
 
 delapanbls_button: 2018
 
-sembilanbls__button: 2019
+sembilanbls_button: 2019
 
 duapuluh_button: 2020
 
-duasatu__button: 2021
+duasatu_button: 2021
 
-duadua__button: 2022
+duadua_button: 2022
 
 duatiga_button: 2023
+
+enam1_button: 1988
+
+tujuh1_button: 1989
+
+delapan1_button: 1990
+
+sembilan1_button: 1991
+
+sepuluh1_button: 1992
+
+sebelas1_button: 1993
+
+duabls1_button: 1994
+
+tigabls1_button: 1995
+
+empatbls1_button: 1996
+
+limabls1_button: 1997
+
+enambls1_button: 1998
+
+tujuhbls1_button: 1999
+
+delapanbls1_button: 2000
+
+sembilanbls1_button: 2001
+
+duapuluh1_button: 2002
+
+duasatu1_button: 2003
+
+duadua1_button: 2004
+
+duatiga1_button: 2005
 
 checknimex_button: ✅ Cek Anime
 
