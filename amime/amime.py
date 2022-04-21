@@ -96,7 +96,7 @@ class Amime(Client):
 
         aiocron.crontab("*/2 * * * *", func=backup.save, args=(self,), start=True)
         aiocron.crontab(
-            "*/2 * * * *", func=day_releases.reload, args=(self,), start=True
+            "*/3 * * * *", func=day_releases.reload, args=(self,), start=True
         )
 
         pool = concurrent.futures.ThreadPoolExecutor(max_workers=self.workers - 4)
