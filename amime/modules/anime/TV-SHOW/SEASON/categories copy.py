@@ -46,7 +46,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
 
         ], 
         [
-            (lang.sebls1_button, "1993_se"),
+            (lang.sebelas1_button, "1993_se"),
             (lang.sepuluh1_button, "1992_se"),
 
         ], 
@@ -63,7 +63,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
     ]
 
     if is_callback:
-        keyboard.append([(lang.pagesatu-s_button, "ktgr-season")])
+        keyboard.append([(lang.pagesatu_button, "ktgr-season")])
         keyboard.append([(lang.back_button, "ktgr_tvshow-menu")])
 
     await (message.edit_text if is_callback else message.reply_text)(

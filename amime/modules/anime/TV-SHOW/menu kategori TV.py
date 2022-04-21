@@ -22,7 +22,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
         ],
         [
             (lang.EPISODE, "ktgr-episode"),
-            (lang.TAHUN, "ktgr-season"),
+            (lang.SEASON, "ktgr-season"),
 
         ],    
     ]
