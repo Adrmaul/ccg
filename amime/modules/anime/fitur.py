@@ -127,6 +127,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if hasattr(anime, "studios"):
             text += f"\n⋟ <b>{lang.studios}</b>: <code>{', '.join(anime.studios)}</code>"
             text += f"\n─────── ∘°❉°∘ ───────"
+
         buttons = [
             (
                         lang.view_more_button,
