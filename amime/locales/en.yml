@@ -331,6 +331,23 @@ anime_text: |
 
   <i>note: Menu ini masih dalam tahap pengembangan, jadi mungkin ada beberapa bug.</i>
 
+progress_text: |
+  Anda berada di bagian menu progress anime, silahkan untuk streaming & mendownload anime ongoing yang kami garap!.
+
+  Berikut jadwal rilisnya :
+
+  Rabu : Yuusha, Yamemasu
+
+  Kamis : Komi-san wa, Komyushou desu. 2
+
+  Jumat : Date A Live IV | Koi wa Sekai Seifuku no Ato de
+
+  Sabtu : Kaguya-sama wa Kokurasetai - Ultra Romantic | Aharen-san wa Hakarenai | RikeKoi S2
+
+  Minggu : SPY×FAMILY
+
+  <i>note: Ini merupakan jadwal yang kami garap dimusim semi (Maret - Juni), list akan hilang ketika musim berganti!.</i>
+
 anime_button: 👸 Anime
 
 manga_text: |
@@ -399,6 +416,22 @@ download_more_text: |
   Dan jika yang ingin streaming menggunakan link, silahkan forward videonya ke bot @nimexLink_bot, salin link (downloadnya) dan gunakan aplikasi PlayIt.
 
   Masih bingung? atau ada kendala? - hubungi admin di @otakuindonew.
+
+anime1_button: SPY×FAMILY
+
+anime2_button: Kaguya-sama wa Kokurasetai - Ultra Romantic
+
+anime3_button: Komi-san wa, Komyushou desu. 2
+
+anime4_button: Aharen-san wa Hakarenai
+
+anime5_button: Date A Live IV
+
+anime6_button: Yuusha, Yamemasu
+
+anime7_button: Rikekoi S2
+
+anime8_button: Koi wa Sekai Seifuku no Ato de
 
 view_more_button: ⎆ Menu Anime
 
