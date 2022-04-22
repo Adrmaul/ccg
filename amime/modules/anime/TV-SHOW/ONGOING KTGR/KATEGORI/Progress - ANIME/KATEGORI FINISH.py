@@ -14,7 +14,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
     message = union.message if is_callback else union
     lang = union._lang
 
-    keyboard = [
+    keyboard.append([
         [
             (lang.anime1_button, f"anime more 140960 {user_id}"),
             (lang.anime2_button, f"anime more 125367 {user_id}"),
@@ -31,7 +31,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
             (lang.anime7_button, f"anime more 125124 {user_id}"),
             (lang.anime8_button, f"anime more 132010 {user_id}"),
         ],
-    ]
+    ])
 
     if is_callback:
         keyboard.append([(lang.back_button, "ktgr-ongoing")])

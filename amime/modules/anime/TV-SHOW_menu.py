@@ -22,6 +22,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
         ],
         [
             (lang.KATEGORI, "ktgr_tvshow-menu"),
+            (lang.PROGRESS, "ktgr_progress"),
         ],
     ]
 
