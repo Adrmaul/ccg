@@ -58,6 +58,6 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
         keyboard.append([(lang.back_button, "ktgr_tvshow-menu")])
 
     await (message.edit_text if is_callback else message.reply_text)(
-        lang.anime_text,
+        lang.progress_text,
         reply_markup=ikb(keyboard),
     )
