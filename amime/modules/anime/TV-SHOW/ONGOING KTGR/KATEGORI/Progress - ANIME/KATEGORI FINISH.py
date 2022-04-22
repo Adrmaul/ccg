@@ -6,6 +6,11 @@ from pyromod.helpers import ikb
 
 from amime.amime import Amime
 
+from anilist.types import Anime
+from pyrogram.types import CallbackQuery
+from pyromod.nav import Pagination
+
+
 
 @Amime.on_message(filters.cmd(r"ktgr_progress$") & filters.private)
 @Amime.on_callback_query(filters.regex(r"^ktgr_progress$"))
