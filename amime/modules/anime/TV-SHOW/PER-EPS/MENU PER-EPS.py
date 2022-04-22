@@ -30,7 +30,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
 
         ], 
         [
-            (lang.lebih100_button, "ktgr-100+"),
+            (lang.lebih100_button, "ktgr-100plus"),
 
         ],     
     ]
