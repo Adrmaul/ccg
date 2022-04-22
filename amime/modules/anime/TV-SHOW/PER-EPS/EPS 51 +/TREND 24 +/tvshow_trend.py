@@ -8,7 +8,7 @@ from pyromod.nav import Pagination
 from amime.amime import Amime
 
 
-@Amime.on_callback_query(filters.regex(r"^tvshow_25plus_upcoming anime (?P<page>\d+)"))
+@Amime.on_callback_query(filters.regex(r"^tvshow_51plus_trending anime (?P<page>\d+)"))
 async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
@@ -23,7 +23,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 query="""
                 query($per_page: Int) {
                     Page(page: 1, perPage: $per_page) {
-                        media(type: ANIME, format: TV, sort: POPULARITY_DESC, status: NOT_YET_RELEASED, episodes_greater: 31, episodes_lesser: 50) {
+                        media(type: ANIME, format: TV, sort: TRENDING_DESC, status: FINISHED, episodes_greater: 51, episodes_lesser: 75) {
                             id
                             title {
                                 romaji
@@ -57,14 +57,15 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 suggestions,
                 item_data=lambda i, pg: f"menu {i.id}",
                 item_title=lambda i, pg: i.title.romaji,
-                page_data=lambda pg: f"tvshow_25plus_upcoming anime {pg}",
+                page_data=lambda pg: f"tvshow_51plus_trending anime {pg}",
             )
 
             lines = layout.create(page, lines=8)
 
             if len(lines) > 0:
                 keyboard += lines
-    keyboard.append([(lang.back_button, "ktgr-25plus")])
+    keyboard.append([(lang.Next, "tvshow_51plus_trending1 anime 1")])
+    keyboard.append([(lang.back_button, "ktgr-51plus")])
 
     await message.edit_text(
         lang.suggestions_text,
