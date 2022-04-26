@@ -332,21 +332,47 @@ anime_text: |
   <i>note: Menu ini masih dalam tahap pengembangan, jadi mungkin ada beberapa bug.</i>
 
 progress_text: |
-  Anda berada di bagian menu ongoing anime, silahkan untuk streaming & mendownload anime ongoing yang kami garap!.
+  Anda berada di bagian menu ongoing anime, silahkan untuk cek semua anime apa saya yang sedang tayang & anime ongoing yang kami garap!.
 
-  Berikut jadwal rilisnya :
+  <i>Anime ongoing yang Di garap, diprogress oleh admin @Jefsann</b>
 
-  Rabu : Yuusha, Yamemasu
+ongoing_text: |
 
-  Kamis : Komi-san wa, Komyushou desu. 2
+  Berikut jadwal anime yang kami garap akan rilis:
 
-  Jumat : Date A Live IV | Koi wa Sekai Seifuku no Ato de
+  Senin : -
+  Selasa : - 
+  Rabu : - 
+  Kamis : Summer Time Render | Tate no Yuusha no Nariagari S2 | Shijou Saikyou no Daimaou, Murabito A ni Tensei suru
+  Jumat :
+  Sabtu : Kaguya-sama wa Kokurasetai -Ultra Romantic | Date A Live IV | RikeKoi S2
+  Minggu : SPY x FAMILY | Love Live! Nijigasaki Gakuen School Idol S2 | Magia Record: Mahou Shoujo Madoka★Magica Gaiden Final Season.
 
-  Sabtu : Kaguya-sama wa Kokurasetai - Ultra Romantic | Aharen-san wa Hakarenai | RikeKoi S2
+  <i> Ini merupakan jadwal yang kami garap dimusim semi (Maret - Juni), list akan hilang ketika musim berganti!. </i>
 
-  Minggu : SPY×FAMILY
+anime_satu: Date A Live IV
 
-  <i>note: Ini merupakan jadwal yang kami garap dimusim semi (Maret - Juni), list akan hilang ketika musim berganti!.</i>
+anime_dua: Kaguya-sama wa Kokurasetai -Ultra Romantic
+
+anime_tiga: Magia Record - Mahou Shoujo Final Season.
+
+anime_empat: Shijou Saikyou no Daimaou, Murabito A ni Tensei suru
+
+anime_lima: RikeKoi S2
+
+anime_enam: SPY x FAMILY
+
+anime_tujuh: Summer Time Render
+
+anime_delapan: Tate no Yuusha no Nariagari S2
+
+anime_sembilan:
+
+anime_sepuluh:
+
+anime_sebelas:
+
+anime_duabelas:
 
 anime_button: 👸 Anime
 
