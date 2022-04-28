@@ -4,33 +4,36 @@ from pyrogram import filters
 from pyrogram.types import CallbackQuery, Message
 from pyromod.helpers import ikb
 
+import datetime
+import re
+import anilist
+from pyromod.helpers import array_chunk, ikb
+
 from amime.amime import Amime
+from amime.config import CHATS
+from amime.database import Requests
+from amime.modules.anime.view import anime_view
 
 
-@Amime.on_message(filters.cmd(r"tvshow_menu$") & filters.private)
-@Amime.on_callback_query(filters.regex(r"^tvshow_menu$"))
+
+
+@Amime.on_message(filters.cmd(r"senin$") & filters.private)
+@Amime.on_callback_query(filters.regex(r"^senin$"))
 async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
     lang = union._lang
 
     keyboard = [
-        [
-            (lang.TOP, "tvshow_top anime 1"),
-            (lang.TRENDING, "tvshow_trending anime 1"),
-            (lang.UPCOMING, "tvshow_upcoming anime 1"),
-        ],
-        [
-            (lang.KATEGORI, "ktgr_tvshow-menu"),
-            (lang.progress_button, "ktgr_jadwal"),
-            
-        ],
+        
+
+
     ]
 
     if is_callback:
-        keyboard.append([(lang.back_button, "menu")])
+        keyboard.append([(lang.back_button, "ktgr-ongoing")])
 
     await (message.edit_text if is_callback else message.reply_text)(
-        lang.anime_text,
+        lang.ongoing_tidak_text,
         reply_markup=ikb(keyboard),
     )
