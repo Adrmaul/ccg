@@ -16,5 +16,4 @@ tortoise-orm==0.18.1
 telegraph==1.4.1
 typing-extensions==4.1.1
 python-anilist==1.0.9
-
-git+https://github.com/pyrogram/pyrogram
+Pyrogram==2.0.0
