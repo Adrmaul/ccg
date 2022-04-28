@@ -90,6 +90,6 @@ async def manga_suggestions(bot: Amime, callback: CallbackQuery):
     keyboard.append([(lang.back_button, "manga_s")])
 
     await message.edit_text(
-        lang.suggestions_text,
+        lang.manga_beta_text,
         reply_markup=ikb(keyboard),
     )

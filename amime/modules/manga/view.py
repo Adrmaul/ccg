@@ -130,13 +130,21 @@ async def manga_view(bot: Amime, union: Union[CallbackQuery, Message]):
         ]
 
         if is_private:
-            buttons.append(await get_favorite_button(lang, user, "manga", manga.id))
+            buttons.append(
+                    (
+                        lang.Hapus_text, 
+                        f"neko_delete, {user.id}"
+                    ),
+                )  
+           # buttons.append(await get_favorite_button(lang, user, "manga", manga.id)) # menu add favorit.
 
-        buttons.append(
-            await get_notify_button(
-                lang, user if is_private else chat, "manga", manga.id
-            )
-        )
+        #buttons.append(
+         #   await get_notify_button(
+          #      lang, user if is_private else chat, "manga", manga.id
+         #   )
+        #)
+
+        #diatas menu notifikasi
 
         keyboard = array_chunk(buttons, 2)
 

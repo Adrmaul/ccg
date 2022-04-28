@@ -334,29 +334,33 @@ anime_text: |
 progress_text: |
   Anda berada di bagian menu ongoing anime, silahkan untuk cek semua anime apa saya yang sedang tayang & anime ongoing yang kami garap!.
 
-  <i>Anime ongoing yang Di garap, diprogress oleh admin @Jefsann</b>
+  <i>Anime ongoing yang digarap, jangan harap tepat waktu . karena kami belum terlalu fokus ongoing. </b>
 
 ongoing_text: |
 
-  Berikut jadwal anime yang kami garap akan rilis
+  Berikut jadwal anime yang kami garap akan rilis - <i>Perkiraan</i>
 
-  Senin : -
-  Selasa : - 
-  Rabu : - 
-  Kamis : Summer Time Render | Tate no Yuusha no Nariagari S2 | Shijou Saikyou no Daimaou, Murabito A ni Tensei suru
-  Jumat :
-  Sabtu : Kaguya-sama wa Kokurasetai -Ultra Romantic | Date A Live IV | RikeKoi S2
-  Minggu : SPY x FAMILY | Love Live! Nijigasaki Gakuen School Idol S2 | Magia Record Mahou Shoujo Madoka★Magica Gaiden Final Season.
+  Kamis : Summer Time Render | 
+          Tate no Yuusha no Nariagari S2 | 
+          Paripi Koumei |
+          Shijou Saikyou no Daimaou, Murabito A ni Tensei suru |
 
-  <i> Ini merupakan jadwal yang kami garap dimusim semi (Maret - Juni), list akan hilang ketika musim berganti!. </i>
+  Sabtu : Kaguya-sama wa Kokurasetai -Ultra Romantic | 
+          Date A Live IV | 
+          RikeKoi S2 |
+
+  Minggu: SPY x FAMILY | 
+          
+
+  <i> Ini merupakan jadwal yang kami Proses, berdasarkan perkiraan dari rilisan fansub, bukan studio.</i>
 
 anime_satu: Date A Live IV
 
-anime_dua: Kaguya-sama wa Kokurasetai -Ultra Romantic
+anime_dua: Kaguya-sama S2
 
-anime_tiga: Magia Record - Mahou Shoujo Final Season.
+anime_tiga: Paripi Koumei
 
-anime_empat: Shijou Saikyou no Daimaou, Murabito A ni Tensei suru
+anime_empat: Shijou Saikyou no Daimaou
 
 anime_lima: RikeKoi S2
 
@@ -364,7 +368,7 @@ anime_enam: SPY x FAMILY
 
 anime_tujuh: Summer Time Render
 
-anime_delapan: Tate no Yuusha no Nariagari S2
+anime_delapan: Tate no Yuusha S2
 
 anime_sembilan:
 
@@ -375,6 +379,10 @@ anime_sebelas:
 anime_duabelas:
 
 anime_button: 👸 Anime
+
+manga_more_text: Silahkan kalian pilih menu, yang ingin kalian pilih, - (Semua fitur bot ini masih tahap pengembangan).
+
+manga_beta_text: Menu manga ini, untuk sekarang belum bisa mendownload / direct link. [BETA] ~ doain aja semoga nanti bisa.
 
 manga_text: |
   Anda berada di bagian manga, gunakan tombol di bawah untuk melakukan apa yang Anda inginkan, cek beberapa saran manga, upcoming dari kami, dll...
@@ -445,9 +453,9 @@ download_more_text: |
 
 anime1_button: SPY×FAMILY
 
-anime2_button: Kaguya-sama wa Kokurasetai - Ultra Romantic
+anime2_button: Kaguya-sama S3
 
-anime3_button: Komi-san wa, Komyushou desu. 2
+anime3_button: Komi-san wa, S2
 
 anime4_button: Aharen-san wa Hakarenai
 
@@ -457,7 +465,7 @@ anime6_button: Yuusha, Yamemasu
 
 anime7_button: Rikekoi S2
 
-anime8_button: Koi wa Sekai Seifuku no Ato de
+anime8_button: Koi wa Sekai Seifuku
 
 view_more_button: ⎆ Menu Anime
 

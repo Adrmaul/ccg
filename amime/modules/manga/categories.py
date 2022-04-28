@@ -29,7 +29,7 @@ from pyromod.nav import Pagination
 from amime.amime import Amime
 
 
-@Amime.on_callback_query(filters.regex(r"^categories manga (?P<page>\d+)"))
+@Amime.on_callback_query(filters.regex(r"^categoriess manga (?P<page>\d+)"))
 async def manga_categories(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
