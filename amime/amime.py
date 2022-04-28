@@ -110,4 +110,4 @@ class Amime(Client):
         logger.warning("AmimeWatch stopped. Bye.")
 
     def is_sudo(self, user: User) -> bool:
-        return user.id in self
+        return user.id in self.sudos
