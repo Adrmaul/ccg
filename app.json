@@ -7,7 +7,7 @@
   "success_url": "https://t.me/tg_utubebot",
   "website": "https://github.com/Myudi422/AmimeWatch",
   "env": {
-    "BOT_TOKEN": { "description": "Get Bot Token From BotFather Bot", "required": true }
+   
   },
   "buildpacks": [{ "url": "heroku/python" }],
   "formation": {
