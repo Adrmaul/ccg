@@ -94,9 +94,9 @@ class Amime(Client):
 
         self.day_releases = None
 
-        aiocron.crontab("*/2 * * * *", func=backup.save, args=(self,), start=True)
+        aiocron.crontab("0 * * * *", func=backup.save, args=(self,), start=True)
         aiocron.crontab(
-            "*/3 * * * *", func=day_releases.reload, args=(self,), start=True
+            "*/10 * * * *", func=day_releases.reload, args=(self,), start=True
         )
 
         pool = concurrent.futures.ThreadPoolExecutor(max_workers=self.workers - 4)
@@ -110,4 +110,4 @@ class Amime(Client):
         logger.warning("AmimeWatch stopped. Bye.")
 
     def is_sudo(self, user: User) -> bool:
-        return user.id in self.sudos
+        return user.id in self.
