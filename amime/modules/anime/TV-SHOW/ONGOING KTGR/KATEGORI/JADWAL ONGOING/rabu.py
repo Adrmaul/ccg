@@ -31,7 +31,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
     ]
 
     if is_callback:
-        keyboard.append([(lang.back_button, "ktgr-ongoing")])
+        keyboard.append([(lang.back_button, "ktgr_jadwal")])
 
     await (message.edit_text if is_callback else message.reply_text)(
         lang.ongoing_tidak_text,
