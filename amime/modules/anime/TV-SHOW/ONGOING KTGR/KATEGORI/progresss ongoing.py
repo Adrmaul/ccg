@@ -17,20 +17,20 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
 
     keyboard = [
         [
-            (lang.anime_satu, f"menu_140960" ),
-            (lang.anime_dua, f"menu_125367"),
+            (lang.anime_satu, f"menu 140960" ),
+            (lang.anime_dua, f"menu 125367"),
         ],
         [
-            (lang.anime_tiga, f"menu_136080"),
-            (lang.anime_empat, f"menu_130586"),
+            (lang.anime_tiga, f"menu 136080"),
+            (lang.anime_empat, f"menu 130586"),
         ],
         [
-            (lang.anime_lima, f"menu_125124"),
-            (lang.anime_enam, f"menu_116605"),
+            (lang.anime_lima, f"menu 125124"),
+            (lang.anime_enam, f"menu 116605"),
         ],
         [
-            (lang.anime_tujuh, f"menu_129201"),
-            (lang.anime_delapan, f"menu_111321"),
+            (lang.anime_tujuh, f"menu 129201"),
+            (lang.anime_delapan, f"menu 111321"),
         ],
 
     ]
