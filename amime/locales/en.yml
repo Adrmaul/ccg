@@ -332,14 +332,13 @@ anime_text: |
   <i>note: Menu ini masih dalam tahap pengembangan, jadi mungkin ada beberapa bug.</i>
 
 progress_text: |
-  Anda berada di bagian menu ongoing anime, silahkan untuk cek semua anime apa saya yang sedang tayang & anime ongoing yang kami garap!.
-
-  <i>Anime ongoing yang digarap, jangan harap tepat waktu . karena kami belum terlalu fokus ongoing. </b>
+  Silahkan pilih kategori yang ingin kalian cari terhadap semua anime ongoing yang sedang tayang.
 
 ongoing_tidak_text: Mohon maaf, jadwal ini, tidak tersedia untuk sekarang..😇
 
 ongoing_text: |
 
+  Ini merupakan jadwal yang kami Proses, berdasarkan perkiraan dari rilisan fansub, bukan studio.
   Berikut jadwal anime yang kami garap akan rilis - <i>Perkiraan</i>
 
   <b>Kamis</b> : 
@@ -347,16 +346,16 @@ ongoing_text: |
   Tate no Yuusha no Nariagari S2 
   Paripi Koumei 
   Shijou Saikyou no Daimaou, Murabito A ni Tensei suru 
+  Komi Can't Communicate Part 2
 
   <b>Sabtu</b> : 
   Kaguya-sama wa Kokurasetai -Ultra Romantic 
   Date A Live IV 
   RikeKoi S2 
 
-  Minggu: SPY x FAMILY  
-          
+  Minggu: SPY x FAMILY    
 
-  <i> Ini merupakan jadwal yang kami Proses, berdasarkan perkiraan dari rilisan fansub, bukan studio.</i>
+  <i>Anime ongoing yang digarap, jangan harap tepat waktu. karena kami belum terlalu fokus ongoing.</i>
 
 anime_satu: Date A Live IV
 
@@ -374,7 +373,7 @@ anime_tujuh: Summer Time Render
 
 anime_delapan: Tate no Yuusha S2
 
-anime_sembilan:
+anime_sembilan: Komi Can't Communicate S2
 
 anime_sepuluh:
 
