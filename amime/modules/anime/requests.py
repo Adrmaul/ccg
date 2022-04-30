@@ -118,7 +118,7 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
     )
     text += f"\n<b>Link Anime</b>: - <a href='http://t.me/{bot.me.username}/?start=anime_{anime.id}'>Klik disini</a>"
 
-    text += "\n\n#REQ"
+    text += "\n\n#REQ - MOHON MEMBER JANGAN KLIK GET! (Khusus Admin)"
 
     await bot.send_message(
         CHATS["requests"],

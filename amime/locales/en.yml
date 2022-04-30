@@ -647,9 +647,10 @@ report_button: ⛔ Report
 
 request_content_text: |
   Pilih Tipe yang Anda inginkan untuk request terhadap anime ini, <i>Tipe tergantung ketersediaan dari sumber.</i>
-  Silahkan untuk cek daftar urutan request anime, di grup kami @otakuindonew.
+  Silahkan untuk cek urutan request anime, di grup kami @otakuindonew.
+  dengan mencari hastag #REQ, Disana akan muncul list requestan kalian itu statusnya diproses atau belum.
 
-  Mohon untuk cek anime terlebih dahulu, sebelum request, ada atau tidak, dan jangan spam request, agar nanti tidak kami ban!.
+  Mohon untuk cek anime terlebih dahulu, kami akan memproses requestan jika admin tidak sibuk, ataupun sedang tidak memproses anime lain.
 
 request_content_done_text: |
   Permintaan Anda untuk anime <b>{title}</b>, sudah kami proses..
@@ -795,7 +796,7 @@ reported_in_last_24h_alert: |
 
 episode_successfully_reported_alert: anime berhasil dilaporkan!
 
-request_sent_alert: Permintaan Anda telah dikirim ke grup kami, jika anime memang sudah rilis/ada, akan kami tambahkan, harap tunggu dalam beberapa hari kedepan, tergantung banyaknya permintaan...
+request_sent_alert: Permintaan Anda telah dikirim ke grup @otakuindonew, jika anime memang sudah rilis/ada, akan kami tambahkan, harap tunggu dalam beberapa hari kedepan. atau kalau ingin cepat pm admin digrup!.
 
 requested_in_last_24h_alert: |
   Anime ini telah menerima permintaan konten dalam 24 jam terakhir.

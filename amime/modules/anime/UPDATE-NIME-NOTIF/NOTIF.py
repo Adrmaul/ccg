@@ -108,7 +108,7 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
         done=False,
     )
 
-    text = "<b>Notifikasi Update!! | Anime Upload dibot!</b>"
+    text = "<b>🔔 Notifikasi Media Upload dibot!</b>"
     text += f"\n\n<b>ID</b>: <code>{anime.id}</code>"
     text += f"\n<b>Judul</b>: <code>{anime.title.romaji}</code>"
     text += (
