@@ -119,7 +119,7 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
     text += "\n\n#NOTIF"
 
     await bot.send_message(
-        CHATS["requests"],
+        CHATS["notifikasi"],
         text,
         disable_web_page_preview=True,
     )
