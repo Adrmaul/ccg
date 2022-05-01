@@ -85,7 +85,7 @@ async def request_drop(bot: Amime, callback: CallbackQuery):
     await message.edit_text(
         text,
         reply_markup=ikb(
-            [[("🆙 Get", f"request get {content_type} {content_id} {language}")]]
+            [[("🆙 Get", f"request get {content_type} {content_id} {language}"), ("⌧ Hapus", f"neko_delete, {user.id}")]]
         ),
         disable_web_page_preview=True,
     )
@@ -140,4 +140,5 @@ async def request_done(bot: Amime, callback: CallbackQuery):
 
     await message.edit_text(
         message.text.html + " #Selesai",
+        disable_web_page_preview=True,
     )

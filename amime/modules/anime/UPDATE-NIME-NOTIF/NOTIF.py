@@ -114,17 +114,17 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
     text += (
         f"\n<b>Tipe</b>: <code>{lang.strings[language]['LANGUAGE_NAME']}</code>"
     )
-    text += f"\n\n<b>Link Anime</b>: - <a href='http://t.me/{bot.me.username}/?start=anime_{anime.id}'>Klik disini</a>"
+    text += f"\n\n<b>Tonton Anime</b>: - <a href='http://t.me/{bot.me.username}/?start=anime_{anime.id}'>Klik disini</a>"
 
-    text += "\n\n#NOTIF"
+    text += "\n\n#NOTIF - <a href='https://t.me/downloadanimebatch'>ᴀɴɪᴍᴇ 𝕏 ʙᴀᴛᴄʜ</a>"
 
     await bot.send_message(
-        CHATS["notifikasi"],
+        CHATS["AniReborn", "ccgnimex"],
         text,
         disable_web_page_preview=True,
     )
 
-    await callback.answer(lang.request_sent_alert, show_alert=True)
+    await callback.answer(lang.kirim_sent_alert, show_alert=True)
 
     matches = re.match(r"(\d+) (\d+)\s?(\d+)?", f"{anime_id} {user.id}")
     callback.matches = [matches]

@@ -11,10 +11,11 @@ CHANNELS: Dict = {
 }
 CHATS: Dict = {
     "backup": -1001535057794,
-    "notifikasi": -1001204586138,
+    "AniReborn": -1001204586138,
+    "ccgnimex": -1001519273319,
     "requests": -1001519273319, 
     "videos": -1001559315851,
     "staff": -1001519273319,
 }
-SUDO_USERS: List[int] = [1765145725, 1457083910, 1808809023]  # @AndrielFR, @Hitalo and @VegaZS
+SUDO_USERS: List[int] = [1765145725, 1457083910, 1808809023, 784985038]  # @AndrielFR, @Hitalo and @VegaZS
 PREFIXES: List[str] = ["!", "/"] # Like !start or /start
