@@ -124,6 +124,12 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
         disable_web_page_preview=True,
     )
 
+    await bot.send_message(
+        CHATS["notifikasi1"],
+        text,
+        disable_web_page_preview=True,
+    )    
+
     await callback.answer(lang.kirim_sent_alert, show_alert=True)
 
     matches = re.match(r"(\d+) (\d+)\s?(\d+)?", f"{anime_id} {user.id}")
