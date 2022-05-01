@@ -645,6 +645,8 @@ report_text: Put down the information of your report.
 
 report_button: ⛔ Report
 
+notif_admin_text: Silahkan untuk admin, pilih yang sesuai dengan apa yang diupload.
+
 request_content_text: |
   Pilih Tipe yang Anda inginkan untuk request terhadap anime ini, <i>Tipe tergantung ketersediaan dari sumber.</i>
 

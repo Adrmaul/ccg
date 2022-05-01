@@ -65,7 +65,7 @@ async def request_episodes(bot: Amime, callback: CallbackQuery):
     )
 
     await message.edit_text(
-        lang.request_content_text,
+        lang.notif_admin_text,
         reply_markup=ikb(keyboard),
     )
 
@@ -108,13 +108,13 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
         done=False,
     )
 
-    text = "<b>🔔 Notifikasi Media Upload dibot!</b>"
+    text = "<b>🔔 Notifikasi Media Upload Dibot!</b>"
     text += f"\n\n<b>ID</b>: <code>{anime.id}</code>"
     text += f"\n<b>Judul</b>: <code>{anime.title.romaji}</code>"
     text += (
         f"\n<b>Tipe</b>: <code>{lang.strings[language]['LANGUAGE_NAME']}</code>"
     )
-    text += f"\n\n<b>Tonton Anime</b>: - <a href='http://t.me/{bot.me.username}/?start=anime_{anime.id}'>Klik disini</a>"
+    text += f"\n\n<b>Link Anime</b>: - <a href='http://t.me/{bot.me.username}/?start=anime_{anime.id}'>Klik disini</a>"
 
     text += "\n\n#NOTIF - <a href='https://t.me/downloadanimebatch'>ᴀɴɪᴍᴇ 𝕏 ʙᴀᴛᴄʜ</a>"
 
