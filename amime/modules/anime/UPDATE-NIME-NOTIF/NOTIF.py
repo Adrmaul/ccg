@@ -65,7 +65,7 @@ async def request_episodes(bot: Amime, callback: CallbackQuery):
     )
 
     await message.edit_text(
-        lang.notif_admin_text,
+        lang.request_content_text,
         reply_markup=ikb(keyboard),
     )
 
@@ -119,12 +119,12 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
     text += "\n\n#NOTIF - <a href='https://t.me/downloadanimebatch'>ᴀɴɪᴍᴇ 𝕏 ʙᴀᴛᴄʜ</a>"
 
     await bot.send_message(
-        CHATS["AniReborn", "ccgnimex"],
+        CHATS["notif1"]["notif2"],
         text,
         disable_web_page_preview=True,
     )
 
-    await callback.answer(lang.kirim_sent_alert, show_alert=True)
+    await callback.answer(lang.request_sent_alert, show_alert=True)
 
     matches = re.match(r"(\d+) (\d+)\s?(\d+)?", f"{anime_id} {user.id}")
     callback.matches = [matches]
