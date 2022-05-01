@@ -119,7 +119,7 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
     text += "\n\n#NOTIF - <a href='https://t.me/downloadanimebatch'>ᴀɴɪᴍᴇ 𝕏 ʙᴀᴛᴄʜ</a>"
 
     await bot.send_message(
-        CHATS["notif1"]["notif2"],
+        CHATS['notif1', 'notif2'],
         text,
         disable_web_page_preview=True,
     )
