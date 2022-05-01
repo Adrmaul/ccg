@@ -65,7 +65,7 @@ async def request_episodes(bot: Amime, callback: CallbackQuery):
     )
 
     await message.edit_text(
-        lang.request_content_text,
+        lang.oke_sent_alert,
         reply_markup=ikb(keyboard),
     )
 
@@ -124,7 +124,7 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
         disable_web_page_preview=True,
     )
 
-    await callback.answer(lang.request_sent_alert, show_alert=True)
+    await callback.answer(lang.kirim_sent_alert, show_alert=True)
 
     matches = re.match(r"(\d+) (\d+)\s?(\d+)?", f"{anime_id} {user.id}")
     callback.matches = [matches]
