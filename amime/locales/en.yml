@@ -341,7 +341,7 @@ ongoing_text: |
   Ini merupakan jadwal yang kami Proses, berdasarkan perkiraan dari rilisan fansub, bukan studio.
   Berikut jadwal anime yang kami garap akan rilis - <i>Perkiraan</i>
 
-  <b>Kamis</b> : 
+  <b>Kamis</b> :
   <code>Summer Time Render</code>
   <code>Tate no Yuusha no Nariagari Season 2</code>
   <code>Paripi Koumei </code>
@@ -352,13 +352,19 @@ ongoing_text: |
   <code>Kaguya-sama wa Kokurasetai: Ultra Romantic </code>
   <code>Date A Live IV </code>
   <code>Rikei ga Koi ni Ochita no de Shoumei shitemita. r=1-sinθ (Heart)</code>
+  <code>Aharen-san wa Hakarenai</code>
 
   <b>Minggu</b> : 
   <code>SPY×FAMILY  </code>
+  <code>Kakkou no Iinazuke</code>
 
-  <i>Anime ongoing yang digarap, jangan berharap tepat waktu, karena kami belum terlalu fokus ongoing. Tetapi kami usahakan secepatnya.</i>
+  <i>Anime ongoing yang digarap, jangan berharap tepat waktu, karena kami belum terlalu fokus ongoing. Tetapi kami usahakan secepatnya sesuai jadwal.</i>
 
 anime_satu: Date A Live IV
+
+anime_aharen: Aharen-san wa Hakarenai
+
+anime_kakkou: Kakkou no Iinazuke
 
 anime_dua: Kaguya-sama S2
 
