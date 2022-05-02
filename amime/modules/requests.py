@@ -54,6 +54,10 @@ async def request_get(bot: Amime, callback: CallbackQuery):
                         f"request drop {content_type} {content_id} {language} {user.id}",
                     ),
                     (
+                        "⌧ Hapus",
+                        f"neko_delete, {user.id}",
+                    ),
+                    (
                         "✅ Done",
                         f"request done {content_type} {content_id} {language} {user.id}",
                     ),
@@ -80,12 +84,12 @@ async def request_drop(bot: Amime, callback: CallbackQuery):
 
     text_splited = message.text.html.splitlines()
     text = "\n".join(text_splited[: len(text_splited) - 3])
-    text += "\n\n#REQ"
+    text += "\n\n"
 
     await message.edit_text(
         text,
         reply_markup=ikb(
-            [[("🆙 Get", f"request get {content_type} {content_id} {language}"), ("⌧ Hapus", f"neko_delete, {user.id}")]]
+            [[("🆙 Proses", f"request get {content_type} {content_id} {language}")]]
         ),
         disable_web_page_preview=True,
     )

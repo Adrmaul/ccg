@@ -645,6 +645,8 @@ report_text: Put down the information of your report.
 
 oke_sent_alert: oke bruh, coba cek masuk enggak, kalau enggak lapor grup.
 
+pilih_notif: Silahkan pilih, mau notif apaan (awas salah 😏)..
+
 report_button: ⛔ Report
 
 notif_admin_text: Silahkan untuk admin, pilih yang sesuai dengan apa yang diupload.
@@ -654,9 +656,11 @@ request_content_text: |
 
   Silahkan untuk cek urutan request anime, di grup kami @otakuindonew.
 
-  dengan mencari hastag #REQ, Disana akan muncul list request an kalian itu statusnya diproses atau belum., jika tidak ada berarti kami menolaknya.
+  Dengan mencari hastag #REQ, Disana akan muncul list request an kalian itu statusnya diproses atau belum, jika tidak ada berarti kami menolaknya.
 
-  silahkan untuk chat langsung digrup, jika memang sangat ingin di upload.
+  Jika tidak ada notifikasi dari bot ketika sudah kami garap/ingin mengecek status requestan kalian, silahkan cari digrup dengan hastag #selesai.
+
+  Silahkan untuk chat langsung digrup, jika memang sangat ingin di upload.
 
   Mohon untuk cek anime terlebih dahulu, kami akan memproses request an jika admin tidak sibuk, ataupun sedang tidak memproses anime lain.
   harap mengertilah. ~ Terimakasih...
