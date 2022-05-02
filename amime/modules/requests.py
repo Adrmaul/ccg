@@ -40,6 +40,7 @@ async def request_get(bot: Amime, callback: CallbackQuery):
     language = callback.matches[0].group(3)
 
     text_splited = message.text.html.splitlines()
+    text = "\n".join(text_splited[: len(text_splited) - 2])
     text += f"\n<b>Diproses oleh</b>: {user.mention()}"
     text += "\n"
     disable_web_page_preview=True
@@ -83,6 +84,7 @@ async def request_drop(bot: Amime, callback: CallbackQuery):
     language = callback.matches[0].group(3)
 
     text_splited = message.text.html.splitlines()
+    text = "\n".join(text_splited[: len(text_splited) - 2])
     text += f"\n<b>Diproses oleh</b>: {user.mention()}"
     text += "\n"
 
