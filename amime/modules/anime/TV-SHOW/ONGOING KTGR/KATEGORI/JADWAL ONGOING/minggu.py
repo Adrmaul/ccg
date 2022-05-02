@@ -29,7 +29,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
             (lang.anime_enam, f"menu 140960"),
         ],
         [
-            (lang.anime_Kakkou, f"menu 132052"),
+            (lang.anime_kakkou, f"menu 132052"),
         ],
 
 
