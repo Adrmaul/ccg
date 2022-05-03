@@ -168,8 +168,8 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if is_private:
             buttons.append(
                     (
-                        lang.tes,
-                        f"https://t.me/s/downloadanimebatch?q={anime.id}",
+                        lang.Batch,
+                        f"https://t.me/s/downloadanimebatch?q={anime.title.romaji}",
                         "url",
                     )
                 )
