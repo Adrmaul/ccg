@@ -35,8 +35,8 @@ from amime.modules.favorites import get_favorite_button
 from amime.modules.notify import get_notify_button
 
 
-@Amime.on_message(filters.cmd(r"menu (.+)"))
-@Amime.on_callback_query(filters.regex(r"^menu (\d+)\s?(\d+)?\s?(\d+)?"))
+@Amime.on_message(filters.cmd(r"notifikasi (.+)"))
+@Amime.on_callback_query(filters.regex(r"^notifikasi (\d+)\s?(\d+)?\s?(\d+)?"))
 async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
@@ -128,34 +128,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if hasattr(anime, "studios"):
             text += f"\n⋟ <b>{lang.studios}</b>: <code>{', '.join(anime.studios)}</code>"
             text += f"\n─────── ∘°❉°∘ ───────"
-        buttons = [
-            (
-                        lang.view_more_button,
-                        f"anime more {anime.id} {user.id}"
-                    )       
-        ]
-         
-
-        if len(episodes) > 0:
-            if is_private:
-                if anime.format.lower() == "movie":
-                    buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
-                else:
-                    buttons.append(
-                        (
-                            lang.watch_button,
-                            f"episodes {anime.id} {episodes[0].season} 1",
-                        )
-                    )
-            else:
-                buttons.append(
-                    (
-                        lang.watch_button,
-                        f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
-                        "url",
-                    )
-                )      
-
 
 
        # if is_private and is_collaborator:
@@ -165,47 +137,19 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
        #             f"manage anime {anime.id} 0 1 {language} 1",
        #         )
        #     )
-
         if is_private and is_collaborator:
             buttons.append(
                 (
-                    lang.Notifikasi,
-                    f"notifikasi more {anime.id} {user.id}",
-                )
+                    lang.MEDIA,
+                    f"notif episodes {anime.id} {language}",
+                ),
+                (
+                (
+                    lang.ONGOING,
+                    f"ongoing episodes {anime.id} {language}",
+                ),
             )
-
-        if is_private and not anime.status.lower() == "not_yet_released":        
-            buttons.append(
-                    (
-                        lang.Download_text, 
-                        f"download more {anime.id} {user.id}"
-                    ),
-                )
-        
-        if is_private:       
-            buttons.append(
-                    (
-                        lang.Hapus_text, 
-                        f"neko_delete, {user.id}"
-                    ),
-                )         
-
-
-        if is_private and not anime.status.lower() == "not_yet_released":
-            button = (
-                lang.request_content_button,
-                f"request episodes {anime.id} {language}",
             )
-            if anime.status.lower() == "releasing":
-                if hasattr(anime, "next_airing"):
-                    next_episode = anime.next_airing.episode
-                    if len(episodes) < (next_episode - 1):
-                        buttons.append(button)
-                else:
-                    buttons.append(button)
-            elif hasattr(anime, "episodes"):
-                if len(episodes) < anime.episodes:
-                    buttons.append(button)
 
         keyboard = array_chunk(buttons, 2)
 
@@ -231,28 +175,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 reply_markup=ikb(keyboard),
             )
 
-
-@Amime.on_callback_query(filters.regex(r"^anime more (\d+) (\d+)"))
-async def anime_view_more(bot: Amime, callback: CallbackQuery):
-    message = callback.message
-    user = callback.from_user
-    lang = callback._lang
-
-    anime_id = int(callback.matches[0].group(1))
-    user_id = int(callback.matches[0].group(2))
-
-    if user_id != user.id:
-        return
-
-    async with anilist.AsyncClient() as client:
-        anime = await client.get(anime_id, "anime")
-
-        buttons = [
-            (lang.Login, f"desc_{anime.id}_ANI_True_{user_id}"),
-            (lang.Guest, f"desc_{anime.id}_ANI_False_{user_id}"),
-            #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
-        ]
-
        # if hasattr(anime, "trailer"):
             #if hasattr(anime.trailer, "url"):
        #         buttons.append((lang.trailer_button, anime.trailer.url, "url"))
@@ -267,101 +189,3 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
             lang.view_more_text,
             reply_markup=ikb(keyboard),
         )
-
-
-@Amime.on_callback_query(filters.regex(r"anime description (\d+) (\d+) (\d+)"))
-async def anime_view_description(bot: Amime, callback: CallbackQuery):
-    message = callback.message
-    chat = message.chat
-    user = callback.from_user
-    lang = callback._lang
-
-    anime_id = int(callback.matches[0].group(1))
-    user_id = int(callback.matches[0].group(2))
-    page = int(callback.matches[0].group(3))
-
-    if user_id != user.id:
-        return
-
-    async with anilist.AsyncClient() as client:
-        anime = await client.get(anime_id, "anime")
-
-        description = anime.description
-        amount = 1024
-        page = 1 if page <= 0 else page
-        offset = (page - 1) * amount
-        stop = offset + amount
-        pages = math.ceil(len(description) / amount)
-        description = description[offset - (3 if page > 1 else 0) : stop]
-
-        page_buttons = []
-        if page > 1:
-            page_buttons.append(
-                ("⬅️", f"anime description {anime_id} {user_id} {page - 1}")
-            )
-        if not page == pages:
-            description = description[: len(description) - 3] + "..."
-            page_buttons.append(
-                ("➡️", f"anime description {anime_id} {user_id} {page + 1}")
-            )
-
-        keyboard = []
-        if len(page_buttons) > 0:
-            keyboard.append(page_buttons)
-
-        keyboard.append([(lang.back_button, f"anime more {anime_id} {user_id}")])
-
-        await message.edit_text(
-            description,
-            reply_markup=ikb(keyboard),
-        )
-
-
-@Amime.on_callback_query(filters.regex(r"^anime characters (\d+) (\d+)"))
-async def anime_view_characters(bot: Amime, callback: CallbackQuery):
-    message = callback.message
-    chat = message.chat
-    user = callback.from_user
-    lang = callback._lang
-
-    anime_id = int(callback.matches[0].group(1))
-    user_id = int(callback.matches[0].group(2))
-
-    if user_id != user.id:
-        return
-
-    async with anilist.AsyncClient() as client:
-        anime = await client.get(anime_id, "anime")
-
-        keyboard = [
-            [
-                (lang.back_button, f"anime more {anime_id} {user_id}"),
-            ],
-        ]
-
-        text = lang.characters_text
-
-        characters = sorted(anime.characters, key=lambda character: character.id)
-        for character in characters:
-            text += f"\n• <code>{character.id}</code> - <a href='https://t.me/{bot.me.username}/?start=character_{character.id}'>{character.name.full}</a> (<i>{character.role}</i>)"
-
-        await message.edit_text(
-            text,
-            reply_markup=ikb(keyboard),
-        )
-
-
-@Amime.on_callback_query(filters.regex(r"^anime studios (\d+) (\d+)"))
-async def anime_view_studios(bot: Amime, callback: CallbackQuery):
-    message = callback.message
-    chat = message.chat
-    user = callback.from_user
-    lang = callback._lang
-
-    anime_id = int(callback.matches[0].group(1))
-    user_id = int(callback.matches[0].group(2))
-
-    if user_id != user.id:
-        return
-
-    await callback.answer(lang.unfinished_function_alert, show_alert=True)
