@@ -258,8 +258,19 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
         buttons = [
             (lang.Video, f"{anime.title.romaji} | video", "switch_inline_query_current_chat"),
             (lang.Audio, f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"),
+            
+            
             #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
         ]
+    if is_private and is_collaborator and not anime.status.lower() == "releasing":  
+        
+        buttons.append(
+                    (
+                        lang.Batch,
+                        f"https://t.me/s/downloadanimebatch?q={anime.title.romaji} id",
+                        "url",
+                    )
+                )
 
        # if hasattr(anime, "trailer"):
             #if hasattr(anime.trailer, "url"):
