@@ -173,7 +173,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     f"notif episodes {anime.id} {language}",
                 )
             )
-        if is_private and is_collaborator and not anime.status.lower() == "finished":    
+        if is_private and is_collaborator and not anime.status.lower() == "finished" and not anime.format.lower() == "movie":    
             buttons.append(
                 (
                     lang.notif_ongoing_text,
