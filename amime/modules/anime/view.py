@@ -165,12 +165,11 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
        #             f"manage anime {anime.id} 0 1 {language} 1",
        #         )
        #     )
-
         if is_private and is_collaborator:
             buttons.append(
                 (
                     lang.Notifikasi,
-                    f"notif episodes {anime.id} {language}",
+                    f"notifikasi more",
                 )
             )
 
@@ -230,7 +229,41 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 caption=text,
                 reply_markup=ikb(keyboard),
             )
+@Amime.on_callback_query(filters.regex(r"^notifikasi more"))
+async def anime_view_more(bot: Amime, callback: CallbackQuery):
+    message = callback.message
+    user = callback.from_user
+    lang = callback._lang
 
+    anime_id = int(callback.matches[0].group(1))
+    user_id = int(callback.matches[0].group(2))
+
+    if user_id != user.id:
+        return
+
+    async with anilist.AsyncClient() as client:
+        anime = await client.get(anime_id, "anime")
+
+        buttons = [
+            (lang.Media, f"notif episodes {anime.id} {language}"),
+            (lang.Ongoing, f"notif episodes {anime.id} {language}")
+            #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
+        ]
+
+       # if hasattr(anime, "trailer"):
+            #if hasattr(anime.trailer, "url"):
+       #         buttons.append((lang.trailer_button, anime.trailer.url, "url"))
+
+        #buttons.append(("🐢 Anilist", anime.url, "url"))
+
+        keyboard = array_chunk(buttons, 2)
+
+        keyboard.append([(lang.back_button, f"menu {anime_id} {user_id}")])
+
+        await message.edit_text(
+            lang.view_more_text,
+            reply_markup=ikb(keyboard),
+        )
 
 @Amime.on_callback_query(filters.regex(r"^anime more (\d+) (\d+)"))
 async def anime_view_more(bot: Amime, callback: CallbackQuery):
