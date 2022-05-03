@@ -165,6 +165,14 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
        #             f"manage anime {anime.id} 0 1 {language} 1",
        #         )
        #     )
+        if is_private:
+            buttons.append(
+                    (
+                        lang.tes,
+                        f"https://t.me/s/downloadanimebatch?q={anime.id}",
+                        "url",
+                    )
+                )
 
         if is_private and is_collaborator and not anime.status.lower() == "releasing":    
             buttons.append(
