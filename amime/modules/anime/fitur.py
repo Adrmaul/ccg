@@ -190,7 +190,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     ),
                 )
         if is_private and is_collaborator and not anime.status.lower() == "finished" and not anime.format.lower() == "movie":        
-         buttons.append(
+            buttons.append(
                     (
                         lang.Batch,
                         f"https://t.me/s/downloadanimebatch?q={anime.title.romaji} id",
