@@ -17,4 +17,4 @@ telegraph==1.4.1
 typing-extensions==3.10.0.0
 Pyrogram==1.4.16
 
-git+https://github.com/AmanoTeam/python-anilist
+git+https://github.com/AmanoTeam/python-anilist.git#egg=python-anilist
