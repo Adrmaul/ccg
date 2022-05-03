@@ -169,7 +169,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             buttons.append(
                 (
                     lang.Notifikasi,
-                    f"notifikasi more",
+                    f"notifikasi more {anime.id} {user.id}",
                 )
             )
 
@@ -229,7 +229,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 caption=text,
                 reply_markup=ikb(keyboard),
             )
-@Amime.on_callback_query(filters.regex(r"^notifikasi more"))
+@Amime.on_callback_query(filters.regex(r"^notifikasi more (\d+) (\d+)"))
 async def anime_view_more(bot: Amime, callback: CallbackQuery):
     message = callback.message
     user = callback.from_user
