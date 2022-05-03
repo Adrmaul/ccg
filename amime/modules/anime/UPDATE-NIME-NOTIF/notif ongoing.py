@@ -119,10 +119,25 @@ async def request_episodes_confirm(bot: Amime, callback: CallbackQuery):
     text += "\n\n#ONGOING - <a href='https://t.me/downloadanimebatch'>ᴀɴɪᴍᴇ 𝕏 ʙᴀᴛᴄʜ</a>"
 
     await bot.send_message(
-        CHATS["notifikasi1"],
+        CHATS["ccgnimex"],
         text,
         disable_web_page_preview=True,
     )    
+    await bot.send_message(
+        CHATS["anireborn"],
+        text,
+        disable_web_page_preview=True,
+    )  
+    await bot.send_message(
+        CHATS["music"],
+        text,
+        disable_web_page_preview=True,
+    )  
+    await bot.send_message(
+        CHATS["trid"],
+        text,
+        disable_web_page_preview=True,
+    )              
 
     await callback.answer(lang.kirim_sent_alert, show_alert=True)
 

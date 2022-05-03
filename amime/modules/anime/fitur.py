@@ -128,12 +128,11 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if hasattr(anime, "studios"):
             text += f"\n⋟ <b>{lang.studios}</b>: <code>{', '.join(anime.studios)}</code>"
             text += f"\n─────── ∘°❉°∘ ───────"
-
         buttons = [
             (
                         lang.view_more_button,
                         f"anime more {anime.id} {user.id}"
-            )    
+                    )       
         ]
          
 
@@ -155,7 +154,8 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                         f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
                         "url",
                     )
-                )     
+                )      
+
 
 
        # if is_private and is_collaborator:
@@ -166,16 +166,22 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
        #         )
        #     )
 
-
-
-        if is_private and is_collaborator:
+        if is_private and is_collaborator and not anime.status.lower() == "releasing":    
             buttons.append(
                 (
-                    lang.Notifikasi,
+                    lang.media_text,
                     f"notif episodes {anime.id} {language}",
                 )
             )
-                  
+        if is_private and is_collaborator and not anime.status.lower() == "finished" and not anime.format.lower() == "movie":    
+            buttons.append(
+                (
+                    lang.notif_ongoing_text,
+                    f"ongoing episodes {anime.id} {language}",
+                )
+            )   
+             
+
         if is_private and not anime.status.lower() == "not_yet_released":        
             buttons.append(
                     (
@@ -190,7 +196,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                         lang.Hapus_text, 
                         f"neko_delete, {user.id}"
                     ),
-                )        
+                )         
 
 
         if is_private and not anime.status.lower() == "not_yet_released":
