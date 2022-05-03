@@ -189,6 +189,15 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                         f"download more {anime.id} {user.id}"
                     ),
                 )
+        if is_private and is_collaborator and not anime.status.lower() == "finished" and not anime.format.lower() == "movie":        
+         buttons.append(
+                    (
+                        lang.Batch,
+                        f"https://t.me/s/downloadanimebatch?q={anime.title.romaji} id",
+                        "url",
+                    )
+                )
+                
         
         if is_private:       
             buttons.append(
@@ -262,15 +271,6 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
             
             #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
         ]
-    if is_private and is_collaborator and not anime.status.lower() == "releasing":  
-        
-        buttons.append(
-                    (
-                        lang.Batch,
-                        f"https://t.me/s/downloadanimebatch?q={anime.title.romaji} id",
-                        "url",
-                    )
-                )
 
        # if hasattr(anime, "trailer"):
             #if hasattr(anime.trailer, "url"):
