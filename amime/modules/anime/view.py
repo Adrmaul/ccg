@@ -166,7 +166,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
        #         )
        #     )
 
-        if is_private and not anime.status.lower() == "releasing" and not anime.status.lower() == "not_yet_released":  
+        if is_private and not anime.status.lower() == "releasing" and not anime.status.lower() == "not_yet_released" and not anime.genres() == "hentai": 
             buttons.append(
                     (
                         lang.batch_text_button,
@@ -191,7 +191,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             )   
              
 
-        if is_private and not anime.status.lower() == "not_yet_released":        
+        if is_private and not anime.status.lower() == "not_yet_released" and not anime.genres() == "hentai":        
             buttons.append(
                     (
                         lang.Download_text, 
@@ -208,7 +208,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )         
 
 
-        if is_private and not anime.status.lower() == "not_yet_released":
+        if is_private and not anime.status.lower() == "not_yet_released" and not anime.genres() == "hentai": 
             button = (
                 lang.request_content_button,
                 f"request episodes {anime.id} {language}",
