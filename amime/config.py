@@ -10,7 +10,7 @@ CHANNELS: Dict = {
     "pt": -1001706431524,
 }
 CHATS: Dict = {
-    "backup": -1001535057794,
+    "backup": -1001559315851,
     "anireborn": -1001204586138,
     "ccgnimex": -1001519273319,
     "music": -1001587917801,
