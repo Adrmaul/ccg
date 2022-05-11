@@ -23,7 +23,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 query="""
                 query($page: Int, $perPage: Int) {
                     Page(page: $page, perPage: $perPage) {
-                        media(type: ANIME, format: TV, sort: TRENDING_DESC, year: 2021, season: FALL) {
+                        media(type: ANIME, format: TV, sort: TRENDING_DESC, seasonYear: 2021, season: FALL) {
                             id
                             title {
                                 romaji
