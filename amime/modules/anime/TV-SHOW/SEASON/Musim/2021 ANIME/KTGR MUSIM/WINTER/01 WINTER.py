@@ -8,7 +8,7 @@ from pyromod.nav import Pagination
 from amime.amime import Amime
 
 
-@Amime.on_callback_query(filters.regex(r"^fall_20212-2 anime (?P<page>\d+)"))
+@Amime.on_callback_query(filters.regex(r"^winter_2021 anime (?P<page>\d+)"))
 async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
@@ -22,8 +22,8 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             json=dict(
                 query="""
                 query($page: Int, $perPage: Int) {
-                    Page(page: 3, perPage: $perPage) {
-                        media(type: ANIME, format: TV, sort: TRENDING_DESC, seasonYear: 2021, season: FALL) {
+                    Page(page: $page, perPage: $perPage) {
+                        media(type: ANIME, format: TV, sort: TRENDING_DESC, seasonYear: 2021, season: WINTER) {
                             id
                             title {
                                 romaji
@@ -57,14 +57,13 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 suggestions,
                 item_data=lambda i, pg: f"menu {i.id}",
                 item_title=lambda i, pg: i.title.romaji,
-                page_data=lambda pg: f"fall_2021-2 anime {pg}",
+                page_data=lambda pg: f"winter_2021 anime {pg}",
             )
 
             lines = layout.create(page, lines=8)
 
             if len(lines) > 0:
                 keyboard += lines
-    keyboard.append([(lang.Prev, "fall_2021-1 anime 1"), (lang.Next, "fall_20212-3 anime 1")])
     keyboard.append([(lang.back_button, "2021_se")])
 
     await message.edit_text(

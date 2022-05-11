@@ -319,6 +319,17 @@ about_text: |
 
 about_button: 👥 About
 
+musim_text: |
+  <b>Berikut Kategori Musim yang bisa kalian pilih:</b>
+
+  Anime Spring (Kuartal Pertama) : Rentang Waktu Mulai dari Bulan Maret Hingga April pada tahun tersebut.
+
+  Anime Summer (Kuartal Kedua) : Rentang Waktu Mulai dari Bulan Juni Hingga Agustus.
+
+  Anime Fall (Kuartal Ketiga) : Rentang Waktu Mulai dari Bulan September Hingga November.
+
+  Anime Winter (Kuartal Keempat) : Rentang Waktu Mulai dari Bulan Desember Hingga Februari.
+
 musim_salju: WINTER
 
 musim_panas: SUMMER
