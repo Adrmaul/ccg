@@ -40,7 +40,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
         keyboard.append([(lang.back_button, "jadwal")])
 
     await (message.edit_text if is_callback else message.reply_text)(
-        lang.ongoing_tidak_text,
+        lang.ongoing_text,
         reply_markup=ikb(keyboard),
     )
 
