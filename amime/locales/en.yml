@@ -367,11 +367,13 @@ ongoing_text: |
   Berikut jadwal anime yang kami garap akan rilis - <i>Perkiraan</i>
 
   <b>Kamis</b> :
-  <code>Summer Time Render</code>
   <code>Tate no Yuusha no Nariagari Season 2</code>
-  <code>Paripi Koumei </code>
   <code>Shijou Saikyou no Daimaou, Murabito A ni Tensei suru</code>
   <code>Komi-san wa, Komyushou desu. 2</code>
+
+  <b>Jumat</b> :
+  <code>Summer Time Render</code>
+  <code>Paripi Koumei </code>
 
   <b>Sabtu</b> : 
   <code>Kaguya-sama wa Kokurasetai: Ultra Romantic </code>
@@ -759,7 +761,7 @@ add_in_batch_button: 🔢 Add in batch
 
 Hapus_text: ⌧ Hapus
 
-Download_text: 〧 Unduh
+Download_text: 💾 Media
 
 no_found_episodes_text: |
   Oops! I did not find any episode, if it is a mistake, inform those responsible.

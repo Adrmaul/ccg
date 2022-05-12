@@ -25,6 +25,12 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
     lang = union._lang
 
     keyboard = [
+        [
+            (lang.anime_tujuh, f"menu 129201"),
+        ],
+        [
+            (lang.anime_tiga, f"menu 141774"),
+        ],
         
 
 
