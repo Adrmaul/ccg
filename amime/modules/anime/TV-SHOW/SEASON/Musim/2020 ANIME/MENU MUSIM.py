@@ -7,8 +7,8 @@ from pyromod.helpers import ikb
 from amime.amime import Amime
 
 
-@Amime.on_message(filters.cmd(r"2023_se$") & filters.private)
-@Amime.on_callback_query(filters.regex(r"^2023_se$"))
+@Amime.on_message(filters.cmd(r"2020_se$") & filters.private)
+@Amime.on_callback_query(filters.regex(r"^2020_se$"))
 async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
@@ -16,13 +16,13 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
 
     keyboard = [
         [
-            (lang.musim_salju, "winter_2023 anime 1"),
-            (lang.musim_gugur, "spring_2023 anime 1"),
+            (lang.musim_salju, "winter_2020 anime 1"),
+            (lang.musim_gugur, "spring_2020 anime 1"),
 
         ],
         [
-            (lang.musim_panas, "summer_2023 anime 1"),
-            (lang.musim_semi, "fall_2023 anime 1"),
+            (lang.musim_panas, "summer_2020 anime 1"),
+            (lang.musim_semi, "fall_2020 anime 1"),
 
         ],   
     ]

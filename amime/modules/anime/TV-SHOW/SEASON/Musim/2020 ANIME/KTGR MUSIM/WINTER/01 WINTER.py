@@ -8,7 +8,7 @@ from pyromod.nav import Pagination
 from amime.amime import Amime
 
 
-@Amime.on_callback_query(filters.regex(r"^winter_2022 anime (?P<page>\d+)"))
+@Amime.on_callback_query(filters.regex(r"^winter_2020 anime (?P<page>\d+)"))
 async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
@@ -23,7 +23,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 query="""
                 query($page: Int, $perPage: Int) {
                     Page(page: $page, perPage: $perPage) {
-                        media(type: ANIME, format: TV, sort: TRENDING_DESC, seasonYear: 2022, season: WINTER) {
+                        media(type: ANIME, format: TV, sort: TRENDING_DESC, seasonYear: 2020, season: WINTER) {
                             id
                             title {
                                 romaji
@@ -57,14 +57,14 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 suggestions,
                 item_data=lambda i, pg: f"menu {i.id}",
                 item_title=lambda i, pg: i.title.romaji,
-                page_data=lambda pg: f"winter_2022 anime {pg}",
+                page_data=lambda pg: f"winter_2020 anime {pg}",
             )
 
             lines = layout.create(page, lines=8)
 
             if len(lines) > 0:
                 keyboard += lines
-    keyboard.append([(lang.back_button, "2022_se")])
+    keyboard.append([(lang.back_button, "2020_se")])
 
     await message.edit_text(
         lang.suggestions_text,
