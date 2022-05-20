@@ -52,7 +52,11 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
             reply_markup=ikb(
                 [
                     [
-                        (lang.search_button, "", "switch_inline_query_current_chat"),
+                        (
+                            lang.addgrup_button,
+                            f"http://t.me/ccgnimeX_bot?startgroup=true",
+                            "url",
+                        ),
                     ],
                     [
                         (lang.anime_button, "menu"),

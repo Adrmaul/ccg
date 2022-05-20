@@ -52,6 +52,9 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
                 (lang.Tambahan, "tambahan"),
             ],
             [
+                (lang.pluginadd, "help1"),
+            ],
+            [
                 (lang.channelhelp_button, "channel"),
             ],
             [
