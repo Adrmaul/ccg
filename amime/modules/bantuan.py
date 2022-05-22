@@ -30,19 +30,14 @@ from amime.amime import Amime
 from amime.config import CHANNELS, GROUPS
 
 
-@Amime.on_message(filters.cmd(r"bantuan$"))
+@Amime.on_message(filters.cmd(r"bantuan$") & filters.private)
 @Amime.on_callback_query(filters.regex(r"^bantuan$"))
-async def about(bot: Amime, union: Union[CallbackQuery, Message]):
+async def bantuan(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
-    user = union.from_user
     lang = union._lang
 
-    kwargs: Dict = {}
-
-    is_private = await filters.private(bot, message)
-    if is_private and is_callback:
-        keyboard = [
+    keyboard = [
             [
                 (lang.Dasar, "dasar"),
                 (lang.Anilist, "anilist"),
@@ -61,7 +56,9 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
                 (lang.back_button, "start"),
             ],
         ]
-        kwargs["reply_markup"] = ikb(keyboard)
+
+    if is_callback:
+        keyboard.append([(lang.back_button, "start")])
 
     await (message.edit_text if is_callback else message.reply_text)(
         lang.bantuan_text.format(
