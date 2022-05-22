@@ -31,7 +31,6 @@ from pyromod.helpers import ikb
 from amime.amime import Amime
 from amime.modules.anime.view import anime_view
 from amime.modules.anime.start import anime_start
-from amime.modules.anime.bantuan import about
 from amime.modules.character.view import character_view
 from amime.modules.manga.view import manga_view
 
