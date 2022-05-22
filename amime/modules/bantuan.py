@@ -32,7 +32,7 @@ from amime.config import CHANNELS, GROUPS
 
 @Amime.on_message(filters.cmd(r"bantuan$"))
 @Amime.on_callback_query(filters.regex(r"^bantuan$"))
-async def about(bot: Amime, union: Union[CallbackQuery, Message]):
+async def bantuan(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
     user = union.from_user
