@@ -31,6 +31,7 @@ from pyromod.helpers import ikb
 from amime.amime import Amime
 from amime.modules.anime.view import anime_view
 from amime.modules.anime.start import anime_start
+from amime.module.anime.bantuan import about
 from amime.modules.character.view import character_view
 from amime.modules.manga.view import manga_view
 
@@ -138,16 +139,3 @@ async def menu(bot: Amime, message: Message):
         await anime_start(bot, message)
     elif content_type == "bantuan":  
         await about(bot, message)
-        reply_markup=ikb(
-                [
-                    [
-                        (
-                            lang.Bantuan,
-                            f"bantuan",
-                        ),
-                        (lang.Disclaimer, "about"),
-                        (lang.Donasi, "donasi"),
-                    ],
-
-                ]
-            ),
