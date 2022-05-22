@@ -31,6 +31,7 @@ from pyromod.helpers import ikb
 from amime.amime import Amime
 from amime.modules.anime.view import anime_view
 from amime.modules.anime.start import anime_start
+from amime.modules.anime.bantuan import about
 from amime.modules.character.view import character_view
 from amime.modules.manga.view import manga_view
 
@@ -121,7 +122,7 @@ async def view(bot: Amime, message: Message):
         await anime_view(bot, message)
     elif content_type == "character":
         await character_view(bot, message)
-    elif content_type == "bantuan":  
+    if content_type == "bantuan":  
         await bantuan(bot, message)      
     else:
         await manga_view(bot, message)
