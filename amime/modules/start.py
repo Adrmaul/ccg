@@ -135,9 +135,5 @@ async def menu(bot: Amime, message: Message):
 
     if content_type == "menu":
         await anime_start(bot, message)
-
-async def bantuan(bot: Amime, message: Message):
-    content_type = message.matches[0]["content_type"]
-
-    if content_type == "bantuan":
-        await bantuan(bot, message)        
+    elif content_type == "bantuan":  
+        await bantuan(bot, message)
