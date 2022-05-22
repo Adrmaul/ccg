@@ -75,5 +75,4 @@ async def bantuan(bot: Amime, union: Union[CallbackQuery, Message]):
 
         ),
         disable_web_page_preview=True,
-        **kwargs,
     )
