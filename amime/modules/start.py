@@ -120,11 +120,10 @@ async def view(bot: Amime, message: Message):
     if content_type == "menu":
         await anime_view(bot, message)
     elif content_type == "character":
-        await character_view(bot, message)
-    if content_type == "bantuan":  
-        await bantuan(bot, message)      
+        await character_view(bot, message)     
     else:
         await manga_view(bot, message)
+        await bantuan(bot, message) 
 
 
 @Amime.on_message(
@@ -136,5 +135,5 @@ async def menu(bot: Amime, message: Message):
 
     if content_type == "menu":
         await anime_start(bot, message)
-    if content_type == "bantuan":  
+    elif content_type == "bantuan":  
         await bantuan(bot, message)
