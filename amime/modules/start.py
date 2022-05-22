@@ -137,4 +137,17 @@ async def menu(bot: Amime, message: Message):
     if content_type == "menu":
         await anime_start(bot, message)
     elif content_type == "bantuan":  
-        await about(bot, message)  
+        await about(bot, message)
+        reply_markup=ikb(
+                [
+                    [
+                        (
+                            lang.Bantuan,
+                            f"bantuan",
+                        ),
+                        (lang.Disclaimer, "about"),
+                        (lang.Donasi, "donasi"),
+                    ],
+
+                ]
+            ),
