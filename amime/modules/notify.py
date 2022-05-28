@@ -42,9 +42,9 @@ async def get_notify_button(
         type=content_type,
     )
     if notify is None:
-        status = "🔔"
-    else:
         status = "🔕"
+    else:
+        status = "🔔"
     return (
         f"{status} {lang.notify}",
         f"notify {content_type} {content_id} {recipient_type} {recipient.id}",
