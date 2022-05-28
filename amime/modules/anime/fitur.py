@@ -138,25 +138,25 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         
 
-         #if len(episodes) > 0:
-        #    if is_private:
-        #        if anime.format.lower() == "movie":
-        #            buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
-        #        else:
-        #            buttons.append(
-        #                (
-        #                    lang.watch_button,
-        #                    f"episodes {anime.id} {episodes[0].season} 1",
-        #                )
-        #            )
-        #    else:
-        #        buttons.append(
-        #            (
-        #                lang.watch_button,
-        #                f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
-        #                "url",
-        #            )
-        #        )      
+        if len(episodes) > 0:
+            if is_private and is_collaborator:
+                if anime.format.lower() == "movie":
+                    buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
+                else:
+                    buttons.append(
+                        (
+                            lang.watch_button,
+                            f"episodes {anime.id} {episodes[0].season} 1",
+                        )
+                    )
+            else:
+                buttons.append(
+                    (
+                        lang.watch_button,
+                        f"https://t.me/{bot.me.username}/?start=menu_{anime.id}",
+                        "url",
+                    )
+                )      
 
 
 

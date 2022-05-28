@@ -95,7 +95,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
                 text += f"\n<b>{lang.notes}</b>: <i>{episode.notes}</i>"
 
             viewed = await Viewed.filter(item=episode.id, type="anime")
-            text += f"\n\n<b>{len(viewed)} {lang.views.lower()}</b>"
+            text += f"\n\n<b>{len(viewed)}{len(viewed)}+ {lang.views.lower()}</b>"
 
             previous_button = await get_previous_episode_button(
                 lang, episodes, all_episodes, anime_id, season, number, language
