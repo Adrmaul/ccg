@@ -33,7 +33,7 @@ from amime.amime import Amime
 from amime.database import Episodes, Users
 from amime.modules.favorites import get_favorite_button
 from amime.modules.notify import get_notify_button
-from amime.database import Episodes, Users, Viewed, Watched
+
 
 
 @Amime.on_callback_query(filters.regex(r"^fitur (\d+)\s?(\d+)?\s?(\d+)?"))
@@ -184,14 +184,15 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )
             )   
              
-    if len(episodes) > 0:
-        if is_private and not anime.status.lower() == "not_yet_released":        
-            buttons.append(
-                    (
-                        lang.Download_text, 
-                        f"download more {anime.id} {user.id}"
-                    ),
-                )         
+
+        if len(episodes) > 0:
+            if is_private and not anime.status.lower() == "not_yet_released":        
+                buttons.append(
+                        (
+                            lang.Download_text, 
+                            f"download more {anime.id} {user.id}"
+                        ),
+                    )         
 
 
         if is_private:
@@ -267,11 +268,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
 
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
-        
-        
-        viewed = await Viewed.filter(item=episode.id, type="anime")
-        text += f"\n\n<b>{len(viewed)} {lang.views.lower()}</b>"
-        
+
         buttons = [
             (lang.Video, f"{anime.title.romaji} | video", "switch_inline_query_current_chat"),
             (lang.Audio, f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"),
@@ -293,7 +290,6 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
         await message.edit_text(
             lang.download_more_text,
             reply_markup=ikb(keyboard),
-            
         )        
 
 
