@@ -137,7 +137,7 @@ async def connect_database():
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "postgres://admin:Cinangka3@116.193.191.56:5432/anime"
+                    "DATABASE_URL", "postgres://admin:Cinangka3@116.193.191.56:80/anime"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
