@@ -8,6 +8,7 @@ GROUPS: Dict = {
 CHANNELS: Dict = {
     "en": -1001728558641,
     "pt": -1001706431524,
+    "ani01": -1001706431524,
 }
 CHATS: Dict = {
     "backup": -1001501672138,
