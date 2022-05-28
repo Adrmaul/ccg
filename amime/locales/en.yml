@@ -726,10 +726,10 @@ video_button: ▷ Video
 audio_button: ♪ Music
 
 notify_users_anime_subbed_text: |
-  Oops! The anime <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added subtitled!
+  <b>{title}</b> (<b>ID</b>: <code>{id}</code>) Sudah Tersedia!
 
 notify_users_anime_dubbed_text: |
-  Oops! The anime <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added dubbed!
+  <b>{title}</b> (<b>ID</b>: <code>{id}</code>)
 
 notify_users_episode_subbed_text: |
   Oops! The new <code>{number}</code> (subtitled) episode of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!

@@ -24,7 +24,7 @@ import asyncio
 import concurrent.futures
 import datetime
 import logging
-
+import pytz
 import aiocron
 import pyromod.listen
 from pyrogram import Client, __version__
@@ -71,7 +71,7 @@ class Amime(Client):
         self.sudos = SUDO_USERS
 
         self.start_datetime = datetime.datetime.now().replace(
-            tzinfo=datetime.timezone.utc
+            pytz.timezone('Asia/Jakarta'
         )
 
     async def start(self):

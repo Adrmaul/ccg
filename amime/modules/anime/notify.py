@@ -146,7 +146,7 @@ async def notify_episodes_confirm(bot: Amime, callback: CallbackQuery):
         [
             (
                 lang.watch_button,
-                f"https://t.me/{bot.me.username}/?start=anime_{anime_id}",
+                f"https://t.me/{bot.me.username}/?start=menu_{anime_id}",
                 "url",
             ),
         ]
@@ -172,7 +172,7 @@ async def notify_episodes_confirm(bot: Amime, callback: CallbackQuery):
 
             keyboard = [
                 [
-                    (lang.watch_button, f"anime {anime_id}"),
+                    (lang.watch_button, f"menu {anime_id}"),
                 ]
             ]
         else:
