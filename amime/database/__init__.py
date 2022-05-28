@@ -137,7 +137,7 @@ async def connect_database():
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "sqlite://amime/database/database.sqlite"
+                    "DATABASE_URL", "postgres://jfvtyxiqquffaw:f661cb1f4e9f2af25fbfb2a11bf84f132f8a72c861f77a74a2f2c725a2b3a13f@ec2-52-48-159-67.eu-west-1.compute.amazonaws.com:5432/d9kesoohsvr8ef"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},

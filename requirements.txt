@@ -19,6 +19,4 @@ Pyrogram==1.4.16
 pysqlite3
 db-sqlite3
 sqlite-utils
-pysqlite
-
 git+https://github.com/AmanoTeam/python-anilist.git#egg=python-anilist
