@@ -868,9 +868,9 @@ async def anime_episode_batch_confirm(bot: Amime, callback: CallbackQuery):
         if len(caption) == 0:
             continue
 
-        name, number, unified_until = (None,) * 3
+        number, name, unified_until = (None,) * 3
 
-        query = caption.split(" - ")
+        query = caption.split("-")
 
         query[0] = query[0].split()[0]
         if "-" in query[0]:
