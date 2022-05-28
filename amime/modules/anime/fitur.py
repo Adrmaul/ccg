@@ -136,6 +136,8 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         ]
          
 
+        
+
         if len(episodes) > 0:
             if is_private:
                 if anime.format.lower() == "movie":
@@ -158,13 +160,13 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
 
 
-       # if is_private and is_collaborator:
-       #     buttons.append(
-       #         (
-       #             lang.manage_button,
-       #             f"manage anime {anime.id} 0 1 {language} 1",
-       #         )
-       #     )
+        if is_private and is_collaborator:
+            buttons.append(
+                (
+                    lang.manage_button,
+                    f"manage anime {anime.id} 0 1 {language} 1",
+                )
+            )
 
         if is_private and is_collaborator and not anime.status.lower() == "releasing":    
             buttons.append(
