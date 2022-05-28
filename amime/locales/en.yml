@@ -732,13 +732,13 @@ notify_users_anime_dubbed_text: |
   <b>{title}</b> (<b>ID</b>: <code>{id}</code>)
 
 notify_users_episode_subbed_text: |
-  Oops! The new <code>{number}</code> (subtitled) episode of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
+  Episode <code>{number}</code> <b>{title}</b> (Sub Indo) - (<b>ID</b>: <code>{id}</code>) Sudah Tersedia!
 
 notify_users_episode_dubbed_text: |
   Oops! The new <code>{number}</code> (dubbed) episode of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
 
 notify_users_episode_season_subbed_text: |
-  Oops! The new <code>{number}</code> episode of <b>{season}</b> (subtitled) season of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
+  Episode <code>{number}</code> <b>{title}</b> {season} (Sub Indo) - (<b>ID</b>: <code>{id}</code>) Sudah Tersedia!
 
 notify_users_episode_season_dubbed_text: |
   Oops! The new <code>{number}</code> episode of <b>{season}</b> (dubbed) season of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
