@@ -469,7 +469,7 @@ async def anime_episode_edit(bot: Amime, callback: CallbackQuery):
                 lang.cancel_button,
                 f"manage episode {anime_id} {season} {number} {int(subtitled)} {language} {page}",
             ),
-            (lang.Video, f"{anime.title.romaji} | video", "switch_inline_query_current_chat"),
+            
         ],
     ]
 
