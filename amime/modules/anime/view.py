@@ -166,6 +166,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                )
             )
 
+    if len(episodes) > 0:
         if is_private and is_collaborator and not anime.status.lower() == "releasing":    
             buttons.append(
                 (
