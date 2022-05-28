@@ -166,15 +166,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
        #         )
        #     )
 
-        if is_private and not anime.status.lower() == "releasing" and not anime.status.lower() == "not_yet_released":  
-            buttons.append(
-                    (
-                        lang.batch_text_button,
-                        f"https://t.me/s/downloadanimebatch?q=https://anilist.co/anime/{anime.id}",
-                        "url",
-                    )
-                )
-
         if is_private and is_collaborator and not anime.status.lower() == "releasing":    
             buttons.append(
                 (
@@ -182,6 +173,27 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     f"notif episodes {anime.id} {language}",
                 )
             )
+
+        if len(episodes) > 0:
+            if is_private:
+                if anime.format.lower() == "movie":
+                    buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
+                else:
+                    buttons.append(
+                        (
+                            lang.watch_button,
+                            f"episodes {anime.id} {episodes[0].season} 1",
+                        )
+                    )
+            else:
+                buttons.append(
+                    (
+                        lang.watch_button,
+                        f"https://t.me/{bot.me.username}/?start=menu_{anime.id}",
+                        "url",
+                    )
+                )
+
         if is_private and is_collaborator and not anime.status.lower() == "finished" and not anime.format.lower() == "movie":    
             buttons.append(
                 (
@@ -198,14 +210,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                         f"download more {anime.id} {user.id}"
                     ),
                 )
-        
-        if is_private:       
-            buttons.append(
-                    (
-                        lang.Hapus_text, 
-                        f"neko_delete, {user.id}"
-                    ),
-                )  
 
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
@@ -232,6 +236,14 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             elif hasattr(anime, "episodes"):
                 if len(episodes) < anime.episodes:
                     buttons.append(button)
+
+        if is_private:       
+            buttons.append(
+                    (
+                        lang.Hapus_text, 
+                        f"neko_delete, {user.id}"
+                    ),
+                )
 
         keyboard = array_chunk(buttons, 2)
 
