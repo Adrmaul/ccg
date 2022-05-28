@@ -209,6 +209,16 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )         
 
 
+        if is_private:
+            buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
+        
+        if is_private and not anime.status.lower() == "finished" and not anime.format.lower() == "movie":
+            buttons.append(
+                await get_notify_button(
+                    lang, user if is_private else chat, "anime", anime.id
+                )
+            )
+
         if is_private and not anime.status.lower() == "not_yet_released":
             button = (
                 lang.request_content_button,

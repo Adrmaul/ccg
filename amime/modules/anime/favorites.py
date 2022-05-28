@@ -49,7 +49,7 @@ async def anime_favorites(bot: Amime, callback: CallbackQuery):
 
         layout = Pagination(
             results,
-            item_data=lambda i, pg: f"anime {i[0].item}",
+            item_data=lambda i, pg: f"menu {i[0].item}",
             item_title=lambda i, pg: i[1].title.romaji,
             page_data=lambda pg: f"favorites anime {pg}",
         )
