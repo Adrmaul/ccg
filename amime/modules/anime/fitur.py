@@ -33,7 +33,7 @@ from amime.amime import Amime
 from amime.database import Episodes, Users
 from amime.modules.favorites import get_favorite_button
 from amime.modules.notify import get_notify_button
-
+from amime.database import Episodes, Users, Viewed, Watched
 
 
 @Amime.on_callback_query(filters.regex(r"^fitur (\d+)\s?(\d+)?\s?(\d+)?"))
@@ -138,25 +138,25 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         
 
-        if len(episodes) > 0:
-            if is_private:
-                if anime.format.lower() == "movie":
-                    buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
-                else:
-                    buttons.append(
-                        (
-                            lang.watch_button,
-                            f"episodes {anime.id} {episodes[0].season} 1",
-                        )
-                    )
-            else:
-                buttons.append(
-                    (
-                        lang.watch_button,
-                        f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
-                        "url",
-                    )
-                )      
+         #if len(episodes) > 0:
+        #    if is_private:
+        #        if anime.format.lower() == "movie":
+        #            buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
+        #        else:
+        #            buttons.append(
+        #                (
+        #                    lang.watch_button,
+        #                    f"episodes {anime.id} {episodes[0].season} 1",
+        #                )
+        #            )
+        #    else:
+        #        buttons.append(
+        #            (
+        #                lang.watch_button,
+        #                f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
+        #                "url",
+        #            )
+        #        )      
 
 
 
@@ -167,8 +167,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     f"manage anime {anime.id} 0 1 {language} 1",
                 )
             )
-    if len(episodes) > 0:
-        if is_private and is_collaborator and not anime.status.lower() == "releasing":    
+        if is_private:
             buttons.append(
                 (
                     lang.media_text,
@@ -185,7 +184,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )
             )   
              
-
+    if len(episodes) > 0:
         if is_private and not anime.status.lower() == "not_yet_released":        
             buttons.append(
                     (
@@ -268,7 +267,11 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
 
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
-
+        
+        
+        viewed = await Viewed.filter(item=episode.id, type="anime")
+        text += f"\n\n<b>{len(viewed)} {lang.views.lower()}</b>"
+        
         buttons = [
             (lang.Video, f"{anime.title.romaji} | video", "switch_inline_query_current_chat"),
             (lang.Audio, f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"),
@@ -290,6 +293,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
         await message.edit_text(
             lang.download_more_text,
             reply_markup=ikb(keyboard),
+            
         )        
 
 
