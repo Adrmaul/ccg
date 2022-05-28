@@ -136,7 +136,7 @@ async def manga_view(bot: Amime, union: Union[CallbackQuery, Message]):
                         f"neko_delete, {user.id}"
                     ),
                 )  
-           # buttons.append(await get_favorite_button(lang, user, "manga", manga.id)) # menu add favorit.
+            buttons.append(await get_favorite_button(lang, user, "manga", manga.id)) # menu add favorit.
 
         #buttons.append(
          #   await get_notify_button(
