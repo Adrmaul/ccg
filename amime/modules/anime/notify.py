@@ -181,6 +181,7 @@ async def notify_episodes_confirm(bot: Amime, callback: CallbackQuery):
             keyboard = [
                 [
                     (lang.watch_button, f"menu {anime_id}"),
+                    (Tutup, f"close_data"),
                 ]
             ]
         else:
