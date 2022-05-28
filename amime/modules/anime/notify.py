@@ -159,6 +159,15 @@ async def notify_episodes_confirm(bot: Amime, callback: CallbackQuery):
             text,
             reply_markup=ikb(keyboard),
         )
+    
+     try:
+        await bot.send_photo(
+            CHANNELS[ani01],
+            f"https://img.anili.st/media/{anime.id}",
+            text,
+            reply_markup=ikb(keyboard),
+        )
+
     except (ChannelInvalid, ChatWriteForbidden):
         pass
 
