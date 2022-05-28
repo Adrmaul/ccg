@@ -166,23 +166,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                )
             )
 
-        if is_private:   
-            buttons.append(
-                (
-                    lang.media_text,
-                    f"notif episodes {anime.id} {language}",
-                )
-            )
-
-
-
-        if is_private and is_collaborator and not anime.status.lower() == "finished" and not anime.format.lower() == "movie":    
-            buttons.append(
-                (
-                    lang.notif_ongoing_text,
-                    f"ongoing episodes {anime.id} {language}",
-                )
-            )   
+   
              
         if len(episodes) > 0:
             if is_private and not anime.status.lower() == "not_yet_released":        
@@ -196,7 +180,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
         
-        if is_private and not anime.status.lower() == "finished" and not anime.format.lower() == "movie":
+        if is_private:
             buttons.append(
                 await get_notify_button(
                     lang, user if is_private else chat, "anime", anime.id
