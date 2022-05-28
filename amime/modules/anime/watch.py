@@ -123,7 +123,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
                     [
                         (
                             lang.back_button,
-                            f"anime {anime_id} {user.id}",
+                            f"menu {anime_id} {user.id}",
                         )
                     ]
                 )
@@ -141,6 +141,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
                 InputMediaVideo(
                     episode.file_id,
                     caption=text,
+                    protect_content=True,
                 ),
                 reply_markup=ikb(keyboard),
             )

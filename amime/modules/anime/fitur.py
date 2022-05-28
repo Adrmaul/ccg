@@ -148,15 +148,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                             lang.watch_button,
                             f"episodes {anime.id} {episodes[0].season} 1",
                         )
-                    )
-            else:
-                buttons.append(
-                    (
-                        lang.watch_button,
-                        f"https://t.me/{bot.me.username}/?start=menu_{anime.id}",
-                        "url",
-                    )
-                )      
+                    )     
 
 
 

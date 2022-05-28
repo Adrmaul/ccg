@@ -619,12 +619,12 @@ mv_button: MUSIC-AV
 watch_list_anime_text: |
   Below are all available episodes. Have a good time.
 
-  <b>About emojis</b>:
-      🙈 - Never open
-      👁️ - Just seen
-      ✅ - Watched
+  <b>Tentang Emoji</b>:
+      🙈 - Belum Dibuka
+      👁️ - Hanya Dilihat
+      ✅ - Ditonton
 
-watch_button: 📺 Watch
+watch_button: Lihat Anime
 
 description_button: 📜 Description
 
@@ -650,18 +650,18 @@ season_text: |
 
 season_button: 🌡️ Season
 
-add_button: ➕ Add
+add_button: ➕ Tambah
 
-del_button: ✖️ Delete
+del_button: ✖️ Hapus
 
-del_season_button: ✖️ Delete season
+del_season_button: ✖️ Hapus Season
 
 confirm_text: |
   To continue, confirm using the button below.
 
-confirm_button: ✔️ Confirm
+confirm_button: ✔️ Konfirmasi
 
-cancel_button: ✖️ Cancel
+cancel_button: ✖️ Batal
 
 send_me_the_item_text: |
   Send me the item: <b>{item}</b>.
@@ -676,13 +676,13 @@ next_button: ⏩ Next
 
 dot_button: ⏺️
 
-report_text: Put down the information of your report.
+report_text: Berikan Informasi laporan anda.
 
-oke_sent_alert: oke bruh, coba cek masuk enggak, kalau enggak lapor grup.
+oke_sent_alert: oke bruh
 
 pilih_notif: Silahkan pilih, mau notif apaan (awas salah 😏)..
 
-report_button: ⛔ Report
+report_button: ⛔ Lapor
 
 notif_admin_text: Silahkan untuk admin, pilih yang sesuai dengan apa yang diupload.
 
@@ -743,23 +743,23 @@ notify_users_episode_season_subbed_text: |
 notify_users_episode_season_dubbed_text: |
   Oops! The new <code>{number}</code> episode of <b>{season}</b> (dubbed) season of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
 
-notify_users_button: 🛎️ Notify users
+notify_users_button: 🛎️ Berikan Notifikasi
 
 collaborator_button: 👷‍♀️ Collaborator
 
 add_in_batch_text: |
-  Send me all episodes with the caption in the following format: <b>Number | Title</b>
-  Ex:
-      <b>1 | Uzumaki Naruto Arriving</b>
+  Kirimi saya semua episode dengan teks dalam format berikut: <b>Nomor | Judul</b>
+   Mantan:
+       <b>1 | Uzumaki Naruto Tiba</b>
 
-  After that, use the <b>{confirm_button}</b> button.
+   Setelah itu, gunakan tombol <b>{confirm_button}</b>.
 
-  Note: <i>only the episode number is required</i>.
+   Catatan: <i>hanya nomor episode yang diperlukan</i>.
 
 add_in_batch_videos_text: |
-  <b>{count}</b> videos were detected, starting batch addition...
+  <b>{count}</b> Video, yang terdeteksi, sedang proses....
 
-add_in_batch_button: 🔢 Add in batch
+add_in_batch_button: 🔢 Tambahkan batch
 
 Hapus_text: ⌧ Hapus
 
