@@ -52,6 +52,9 @@ async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
             (lang.mv_button, "mv_menu"),
             (lang.search_button, "", "switch_inline_query_current_chat"),
         ],
+        [
+            (lang.favorites_button, "favorites anime 1"),
+        ],
     ]
 
     if is_callback:

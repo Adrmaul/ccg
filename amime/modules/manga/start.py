@@ -43,6 +43,7 @@ async def manga_start(bot: Amime, union: Union[CallbackQuery, Message]):
         ],
         [
             (lang.upcoming_button, "upcoming manga 1"),
+            (lang.favorites_button, "favorites manga 1"),
         ],
     ]
 
