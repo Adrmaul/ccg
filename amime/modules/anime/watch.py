@@ -142,6 +142,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
                     episode.file_id,
                     caption=text,
                 ),
+                protect_content=True,
                 reply_markup=ikb(keyboard),
                 
             )
