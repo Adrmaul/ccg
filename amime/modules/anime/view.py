@@ -160,14 +160,13 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
    
              
-        if len(episodes) > 0:
-            if is_private and not anime.status.lower() == "not_yet_released":        
-                buttons.append(
-                        (
-                            lang.Download_text, 
-                            f"download more {anime.id} {user.id}"
-                        ),
-                    )
+        if is_private and not anime.status.lower() == "not_yet_released":        
+             buttons.append(
+                (
+                    lang.Download_text, 
+                    f"download more {anime.id} {user.id}"
+               ),
+             )
 
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
