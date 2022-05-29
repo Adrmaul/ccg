@@ -160,24 +160,16 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )
             )
 
-
-        if is_private and is_collaborator and not anime.status.lower() == "finished" and not anime.format.lower() == "movie":    
-            buttons.append(
-                (
-                    lang.notif_ongoing_text,
-                    f"ongoing episodes {anime.id} {language}",
-                )
-            )   
+ 
              
 
-        if len(episodes) > 0:
-            if is_private and not anime.status.lower() == "not_yet_released":        
-                buttons.append(
-                        (
-                            lang.Download_text, 
-                            f"download more {anime.id} {user.id}"
-                        ),
-                    )         
+        if is_private and not anime.status.lower() == "not_yet_released" and not hasattr(anime, "genres") == "Hentai":         
+            buttons.append(
+                    (
+                        lang.Download_text, 
+                        f"download more {anime.id} {user.id}"
+                    ),
+                )         
 
 
         if is_private:
