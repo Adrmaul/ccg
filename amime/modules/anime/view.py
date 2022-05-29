@@ -82,7 +82,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 keyboard = []
                 for result in results:
                     keyboard.append(
-                        [(result.title.romaji, f"anime {result.id} {user.id} 1")]
+                        [(result.title.romaji, f"menu {result.id} {user.id} 1")]
                     )
                 await message.reply_text(
                     lang.search_results_text(
@@ -213,18 +213,21 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 InputMediaPhoto(
                     photo,
                     caption=text,
+                protect_content=True,
                 ),
                 reply_markup=ikb(keyboard),
             )
         elif bool(message.photo) and not bool(message.via_bot):
             await message.edit_text(
                 text,
+                protect_content=True,
                 reply_markup=ikb(keyboard),
             )
         else:
             await message.reply_photo(
                 photo,
                 caption=text,
+                protect_content=True,
                 reply_markup=ikb(keyboard),
             )
 

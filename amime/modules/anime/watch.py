@@ -175,7 +175,7 @@ async def watched_callback(bot: Amime, callback: CallbackQuery):
         await Watched.create(user=user.id, episode=episode_id)
     else:
         await watched.delete()
-    
+
     keyboard = bki(message.reply_markup)
 
     for line, column in enumerate(keyboard):
@@ -187,7 +187,7 @@ async def watched_callback(bot: Amime, callback: CallbackQuery):
                     episode_id,
                 )
 
-    await callback.edit_message_reply_markup(ikb(keyboard), protect_content=True, )
+    await callback.edit_message_reply_markup(ikb(keyboard))
 
 
 async def get_previous_episode_button(
