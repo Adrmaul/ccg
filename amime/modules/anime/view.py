@@ -88,7 +88,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     lang.search_results_text(
                         query=query,
                     ),
-                    protect_content=True,
                     reply_markup=ikb(keyboard),
                 )
                 return
@@ -219,6 +218,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         elif bool(message.photo) and not bool(message.via_bot):
             await message.edit_text(
                 text,
+                protect_content=True,
                 reply_markup=ikb(keyboard),
             )
         else:
