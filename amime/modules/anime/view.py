@@ -213,7 +213,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     photo,
                     caption=text,
                 ),
-                protect_content=True,
                 reply_markup=ikb(keyboard),
             )
         elif bool(message.photo) and not bool(message.via_bot):
