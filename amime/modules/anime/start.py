@@ -62,6 +62,7 @@ async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
 
     await (message.edit_text if is_callback else message.reply_text)(
         lang.anime_text,
+        protect_content=True,
         reply_markup=ikb(keyboard),
      )
 
