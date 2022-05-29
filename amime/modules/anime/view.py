@@ -209,23 +209,25 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         photo = f"https://img.anili.st/media/{anime.id}"
 
         if bool(message.video) and is_callback:
-            await union.edit_message_media(
+            await (union.edit_message_media)(
                 InputMediaPhoto(
                     photo,
                     caption=text,
-                protect_content=True,
                 ),
+                protect_content=True,
                 reply_markup=ikb(keyboard),
             )
         elif bool(message.photo) and not bool(message.via_bot):
-            await message.edit_text(
+            await (message.edit_text if is_callback else message.reply_text)(
                 text,
+                protect_content=True,
                 reply_markup=ikb(keyboard),
             )
         else:
-            await message.reply_photo(
+            await (message.reply_photo)(
                 photo,
                 caption=text,
+                protect_content=True,
                 reply_markup=ikb(keyboard),
             )
 
