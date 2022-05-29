@@ -140,7 +140,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
        #     if is_private and is_collaborator:
          #       if anime.format.lower() == "movie":
         #            buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
-                else:
+          #      else:
           #          buttons.append(
                        (
              #               lang.watch_button,
