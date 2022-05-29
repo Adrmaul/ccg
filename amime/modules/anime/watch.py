@@ -141,9 +141,9 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
                 InputMediaVideo(
                     episode.file_id,
                     caption=text,
-                    protect_content=True,
                 ),
                 reply_markup=ikb(keyboard),
+                protect_content=True,
                 
             )
 
