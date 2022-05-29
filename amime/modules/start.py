@@ -49,7 +49,6 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                 user_mention=user.mention(),
                 bot_name=bot.me.first_name,
             ),
-            protect_content=True,
             reply_markup=ikb(
                 [
                     [
@@ -94,7 +93,6 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                 user_mention=user.mention(),
                 bot_name=bot.me.first_name,
             ),
-            protect_content=True,
             reply_markup=ikb(
                 [
                     [
