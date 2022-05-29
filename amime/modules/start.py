@@ -44,11 +44,10 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
     lang = union._lang
 
     if await filters.private(bot, message):
-        await (message.edit_text if is_callback else message.reply_text)(
+        await (message.edit_text if is_callback else message.reply_text )(
             lang.start_text_2.format(
                 user_mention=user.mention(),
                 bot_name=bot.me.first_name,
-                protect_content=True,
             ),
             reply_markup=ikb(
                 [
@@ -94,6 +93,7 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                 user_mention=user.mention(),
                 bot_name=bot.me.first_name,
             ),
+            protect_content=True,
             reply_markup=ikb(
                 [
                     [

@@ -33,7 +33,7 @@ from amime.database import Episodes, Users, Viewed, Watched
 
 
 @Amime.on_callback_query(filters.regex(r"^episode (\d+) (\d+) (\d+)"))
-async def anime_episode(bot: Amime, callback: CallbackQuery, protect_content:True):
+async def anime_episode(bot: Amime, callback: CallbackQuery):
     user = callback.from_user
     lang = callback._lang
 
