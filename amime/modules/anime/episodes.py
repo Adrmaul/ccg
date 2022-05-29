@@ -164,6 +164,7 @@ async def episodes_season(bot: Amime, callback: CallbackQuery):
 
     await message.edit_text(
         lang.season_text,
+        protect_content=True,
         reply_markup=ikb(keyboard),
     )
 
