@@ -122,6 +122,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             f"https://img.anili.st/media/{anime_id}",
             caption=lang.watch_list_anime_text,
         ),
+        protect_content=True,
         reply_markup=ikb(keyboard),
     )
 
@@ -164,7 +165,6 @@ async def episodes_season(bot: Amime, callback: CallbackQuery):
 
     await message.edit_text(
         lang.season_text,
-        protect_content=True,
         reply_markup=ikb(keyboard),
     )
 
