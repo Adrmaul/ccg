@@ -15,7 +15,7 @@ TgCrypto==1.2.2
 tortoise-orm==0.17.6
 telegraph==1.4.1
 typing-extensions==3.10.0.0
-Pyrogram=2.0.10
+Pyrogram==2.0.10
 pysqlite3
 db-sqlite3
 sqlite-utils
