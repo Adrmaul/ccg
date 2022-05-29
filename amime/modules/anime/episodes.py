@@ -122,7 +122,6 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             f"https://img.anili.st/media/{anime_id}",
             caption=lang.watch_list_anime_text,
         ),
-        protect_content=True,
         reply_markup=ikb(keyboard),
     )
 

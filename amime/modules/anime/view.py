@@ -87,8 +87,8 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 await message.reply_text(
                     lang.search_results_text(
                         query=query,
-                    ),
                     protect_content=True,
+                    ),
                     reply_markup=ikb(keyboard),
                 )
                 return
