@@ -220,14 +220,12 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         elif bool(message.photo) and not bool(message.via_bot):
             await message.edit_text(
                 text,
-                protect_content=True,
                 reply_markup=ikb(keyboard),
             )
         else:
             await message.reply_photo(
                 photo,
                 caption=text,
-                protect_content=True,
                 reply_markup=ikb(keyboard),
             )
 
