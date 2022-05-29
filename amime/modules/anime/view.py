@@ -225,6 +225,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             await message.reply_photo(
                 photo,
                 caption=text,
+                protect_content=True,
                 reply_markup=ikb(keyboard),
             )
 
