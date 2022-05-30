@@ -27,11 +27,11 @@ from pyromod.helpers import ikb
 from pyromod.nav import Pagination
 
 from amime.amime import Amime
-from amime.database import mylists
+from amime.database import Mylists
 
 
-@Amime.on_callback_query(filters.regex(r"mylist anime (?P<page>\d+)"))
-async def anime_mylist(bot: Amime, callback: CallbackQuery):
+@Amime.on_callback_query(filters.regex(r"mylists anime (?P<page>\d+)"))
+async def anime_mylists(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
     message = callback.message
@@ -40,7 +40,7 @@ async def anime_mylist(bot: Amime, callback: CallbackQuery):
 
     keyboard = []
     async with anilist.AsyncClient() as client:
-        mylist = await mylist.filter(user=user.id, type="anime")
+        mylists = await Mylists.filter(user=user.id, type="anime")
 
         results = []
         for mylist in mylists:
@@ -51,7 +51,7 @@ async def anime_mylist(bot: Amime, callback: CallbackQuery):
             results,
             item_data=lambda i, pg: f"menu {i[0].item}",
             item_title=lambda i, pg: i[1].title.romaji,
-            page_data=lambda pg: f"mylist anime {pg}",
+            page_data=lambda pg: f"mylists anime {pg}",
         )
 
         lines = layout.create(page, lines=8)
@@ -62,6 +62,6 @@ async def anime_mylist(bot: Amime, callback: CallbackQuery):
     keyboard.append([(lang.back_button, "menu")])
 
     await message.edit_text(
-        lang.mylist_text,
+        lang.mylists_text,
         reply_markup=ikb(keyboard),
     )

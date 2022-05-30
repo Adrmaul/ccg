@@ -54,8 +54,6 @@ async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
         ],
         [
             (lang.favorites_button, "favorites anime 1"),
-        ],
-        [
             (lang.mylists_button, "mylists anime 1"),
         ],
     ]
