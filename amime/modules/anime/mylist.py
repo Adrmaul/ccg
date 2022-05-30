@@ -62,6 +62,6 @@ async def anime_mylists(bot: Amime, callback: CallbackQuery):
     keyboard.append([(lang.back_button, "menu")])
 
     await message.edit_text(
-        lang.mylists_text,
+        lang.mylist_text,
         reply_markup=ikb(keyboard),
     )
