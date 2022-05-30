@@ -32,7 +32,7 @@ from pyromod.helpers import array_chunk, ikb
 from amime.amime import Amime
 from amime.database import Episodes, Users
 from amime.modules.favorites import get_favorite_button
-from amime.modules.mylist import get_mylist_button
+from amime.modules.mylists import get_mylist_button
 from amime.modules.notify import get_notify_button
 
 
