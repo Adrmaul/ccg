@@ -173,6 +173,9 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
         
         if is_private:
+            buttons.append(await get_mylist_button(lang, user, "anime", anime.id))
+        
+        if is_private:
             buttons.append(
                 await get_notify_button(
                     lang, user if is_private else chat, "anime", anime.id
@@ -194,9 +197,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             elif hasattr(anime, "episodes"):
                 if len(episodes) < anime.episodes:
                     buttons.append(button)
-
-        if is_private:
-            buttons.append(await get_mylist_button(lang, user, "anime", anime.id))
 
 
         if is_private:       
