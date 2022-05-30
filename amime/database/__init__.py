@@ -61,6 +61,12 @@ class Favorites(Model):
     item = fields.IntField()
     type = fields.CharField(max_length=7)
 
+class mylists(Model):
+    id = fields.IntField(pk=True)
+    user = fields.IntField()
+    item = fields.IntField()
+    type = fields.CharField(max_length=7)
+
 
 class Notifications(Model):
     id = fields.IntField(pk=True)

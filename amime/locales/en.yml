@@ -75,6 +75,8 @@ short_description: Short description
 
 favorite: Favorite
 
+mylist: Watch List
+
 notify: Notify
 
 duration: Duration
@@ -439,9 +441,14 @@ suggestions_button: 🍬 Trending
 progress_button: ♨️ ONGOING
 
 favorites_text: |
-  Di bawah ini adalah semua item yang ditandai sebagai favorit.
+  Dibawah ini adalah semua item yang ditandai sebagai favorit.
+
+mylist_text: |
+  Dibawah ini adalah daftar semua list anime yang ingin kalian tonton/diminati.
 
 favorites_button: ⭐ Favorites
+
+mylists_button: 👁‍🗨 Watch List
 
 batch_button: ⎙ Batch File
 
@@ -822,6 +829,10 @@ read_button: 📒 Read
 added_to_favorites_alert: Item successfully added to your favorites list!
 
 removed_from_favorites_alert: Item successfully removed from your favorites list!
+
+added_to_mylists_alert: Item successfully added to your favorites list!
+
+removed_from_mylists_alert: Item successfully removed from your favorites list!
 
 notifications_linked_alert: Notifications successfully linked!
 
