@@ -143,7 +143,7 @@ async def connect_database():
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "postgres://postgres:PxrUcMf7brn4szZINknQ@containers-us-west-57.railway.app:5851/railway"
+                    "DATABASE_URL", "postgres://brctoxboaccntd:6e5ee4489d246cde117fc756ab1ac14748bbf4b830b58c80c295c78aea6992ff@ec2-3-226-163-72.compute-1.amazonaws.com:5432/d54vm0k01b1ojg"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
