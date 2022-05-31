@@ -365,3 +365,38 @@ async def anime_view_studios(bot: Amime, callback: CallbackQuery):
         return
 
     await callback.answer(lang.unfinished_function_alert, show_alert=True)
+
+
+@Amime.on_callback_query(filters.regex(r"filter okey (\d+) (\d+)"))
+async def anime_view_more(bot: Amime, callback: CallbackQuery):
+    message = callback.message
+    user = callback.from_user
+    lang = callback._lang
+
+    anime_id = int(callback.matches[0].group(1))
+    user_id = int(callback.matches[0].group(2))
+
+    if user_id != user.id:
+        return
+
+    async with anilist.AsyncClient() as client:
+        anime = await client.get(anime_id, "anime")
+
+       # if hasattr(anime, "trailer"):
+            #if hasattr(anime.trailer, "url"):
+       #         buttons.append((lang.trailer_button, anime.trailer.url, "url"))
+
+        #buttons.append(("🐢 Anilist", anime.url, "url"))
+
+        keyboard = array_chunk(buttons, 2)
+
+        keyboard.append([(lang.back_button, f"download more {anime_id} {user_id}")])
+
+        await message.edit_text(
+            lang.filter_more_text,
+            reply_markup=ikb(keyboard),
+        )
+
+
+
+
