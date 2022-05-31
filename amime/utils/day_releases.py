@@ -30,7 +30,7 @@ from amime.database import Episodes
 
 
 async def load(bot):
-    now = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
+    now = datetime.datetime.now()
 
     #sent = await bot.send_message(CHATS["staff"], "Checking the day's releases...")
 
@@ -57,7 +57,7 @@ async def load(bot):
                     number = anime.next_airing.episode
                     date = datetime.datetime.fromtimestamp(
                         anime.next_airing.at
-                    ).replace(tzinfo=datetime.timezone.utc)
+                    )
 
                     if date.day == now.day:
                         animes[anime_id] = [
@@ -79,7 +79,7 @@ async def load(bot):
 
 
 async def reload(bot):
-    now = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
+    now = datetime.datetime.now()
 
     animes = bot.day_releases
 

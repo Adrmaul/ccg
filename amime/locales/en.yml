@@ -487,16 +487,15 @@ download_more_text: |
   jika susah untuk mencari episode / error, silahkan lapor ke grup.
 
   Anime yang ada tanda (., !, :, dan simbol lainnya.)
-  Jika Video tidak ada tetapi ada dilist, silahkan ketik manual judulnya. 
+  Jika Video tidak ada tetapi ada dilist, silahkan ketik manual judulnya. tanpa tanda itu.
   Biasanya tidak terfilter oleh database.
 
   Seperti : Kobato. menjadi Kobato
 
+  <b>Alternatif : Silahkan salin/ketik judul dan kirim langsung kebot (ingat hanya judul!) , nanti bot akan memberikan daftar list episode.</b>
+
   <b>Note:</b> Jika video tidak bisa diputar/tidak muncul subtitlenya, 
   Silahkan untuk mendownload nya dan gunakan app mx player ataupun sejenisnya.
-
-  Dan jika yang ingin streaming/download via link, silahkan forward videonya ke bot @nimexLink_bot, salin linknya.
-
   Masih bingung? atau ada kendala? - hubungi admin di @otakuindonew.
 
 anime1_button: SPY×FAMILY
@@ -664,7 +663,7 @@ del_button: ✖️ Hapus
 del_season_button: ✖️ Hapus Season
 
 confirm_text: |
-  To continue, confirm using the button below.
+  Untuk melanjutkan, konfirmasi menggunakan tombol di bawah.
 
 confirm_button: ✔️ Konfirmasi
 
@@ -750,7 +749,7 @@ notify_users_episode_season_subbed_text: |
 notify_users_episode_season_dubbed_text: |
   Oops! The new <code>{number}</code> episode of <b>{season}</b> (dubbed) season of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
 
-notify_users_button: 🛎️ Berikan Notifikasi
+notify_users_button: 🛎️ Kirim Notifikasi
 
 collaborator_button: 👷‍♀️ Collaborator
 
@@ -826,27 +825,27 @@ next_episode_button: 🎦 Next episode
 read_button: 📒 Read
 
 # Alerts
-added_to_favorites_alert: Item successfully added to your favorites list!
+added_to_favorites_alert: Item Berhasil ditambahkan ke daftar favorit! >_<
 
-removed_from_favorites_alert: Item successfully removed from your favorites list!
+removed_from_favorites_alert: Item Berhasil dihapus di daftar favorit! >_<
 
-added_to_mylists_alert: Item successfully added to your favorites list!
+added_to_mylists_alert: Item Berhasil ditambahkan ke daftar tonton! >_<
 
-removed_from_mylists_alert: Item successfully removed from your favorites list!
+removed_from_mylists_alert: Item Berhasil dihapus di daftar tonton! >_<
 
-notifications_linked_alert: Notifications successfully linked!
+notifications_linked_alert: Notifikasi untuk item ini, sudah tersambung!, kami akan memberikan pemberitahuan secara otomatis!
 
-notifications_turned_off_alert: Notifications turned off successfully!
+notifications_turned_off_alert: Notifikasi berhasil dinonaktifkan, sekarang anda, sudah tidak mendapatkan notifikasi dari item ini!
 
 unfinished_function_alert: Oops! This function is not yet ready, wait for updates and stay tuned on our channel.
 
-episode_already_exists_alert: An episode with the same number already exists.
+episode_already_exists_alert: Episode dengan nomor yang sama sudah ada.
 
 confirm_save_episode_alert: The episode was successfully saved!
 
-confirm_delete_episode_alert: The episode was successfully deleted!
+confirm_delete_episode_alert: Episode berhasil disimpan!
 
-very_short_video_alert: The uploaded video is too short.
+very_short_video_alert: Video yang diunggah terlalu pendek.
 
 reported_in_last_24h_alert: |
   Anda telah melaporkan sebuah anime dalam 24 jam terakhir.
@@ -866,7 +865,7 @@ requested_in_last_24h_alert: |
 
 notified_users_alert: Pengguna telah berhasil diberi tahu!
 
-only_1_episode_not_allowed_alert: Only batches over 1 episode are allowed.
+only_1_episode_not_allowed_alert: Hanya batch lebih dari 1 episode yang diperbolehkan.
 
 moviemenu_text: |
   Anda sekarang berada dimenu movie, dibawah ini ada beberapa tombol yang bisa kalian pilih.

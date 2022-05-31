@@ -191,7 +191,7 @@ class VideoQueue(object):
                         width=video.width,
                         height=video.height,
                         thumb=thumb,
-                        file_name=f"{anime.title.romaji} - {episode.number} - {self.bot.me.username}.{extension}",
+                        file_name=f"{anime.title.romaji} {episode.number}.{extension}",
                         supports_streaming=True,
                     )
                 ).video
