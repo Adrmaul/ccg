@@ -262,7 +262,8 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
             #if hasattr(anime.trailer, "url"):
        #         buttons.append((lang.trailer_button, anime.trailer.url, "url"))
 
-        #buttons.append(("🐢 Anilist", anime.url, "url"))
+        
+        buttons.append((lang.List, f"filter okey {anime_id} {user_id}"))
 
         keyboard = array_chunk(buttons, 2)
 
