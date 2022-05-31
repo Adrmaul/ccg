@@ -257,12 +257,6 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
             
             #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
         ]
-        buttons.append(
-                (
-                    lang.manage_button,
-                    f"filter more {anime_id} {user_id}",
-               )
-            )
         
 
        # if hasattr(anime, "trailer"):
@@ -272,7 +266,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
         #buttons.append(("🐢 Anilist", anime.url, "url"))
 
         keyboard = array_chunk(buttons, 2)
-
+        keyboard.append([(lang.List, f"filter more {anime_id} {user_id}")])
         keyboard.append([(lang.back_button, f"fitur {anime_id} {user_id}")])
 
         await message.edit_text(
