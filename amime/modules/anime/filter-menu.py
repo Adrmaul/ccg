@@ -36,8 +36,8 @@ from amime.modules.mylists import get_mylist_button
 from amime.modules.notify import get_notify_button
 
 
-@Amime.on_message(filters.cmd(r"menu (.+)"))
-@Amime.on_callback_query(filters.regex(r"^menu (\d+)\s?(\d+)?\s?(\d+)?"))
+@Amime.on_message(filters.cmd(r"filter (.+)"))
+@Amime.on_callback_query(filters.regex(r"^filter (\d+)\s?(\d+)?\s?(\d+)?"))
 async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
@@ -209,28 +209,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         keyboard = array_chunk(buttons, 2)
 
-        photo = f"https://img.anili.st/media/{anime.id}"
-
-        if bool(message.video) and is_callback:
-            await union.edit_message_media(
-                InputMediaPhoto(
-                    photo,
-                    caption=text,
-                ),
-                reply_markup=ikb(keyboard),
-            )
-        elif bool(message.photo) and not bool(message.via_bot):
-            await message.edit_text(
-                text,
-                reply_markup=ikb(keyboard),
-            )
-        else:
-            await message.reply_photo(
-                photo,
-                caption=text,
-                reply_markup=ikb(keyboard),
-            )
-
 
 @Amime.on_callback_query(filters.regex(r"^anime more (\d+) (\d+)"))
 async def anime_view_more(bot: Amime, callback: CallbackQuery):
@@ -261,7 +239,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
 
         keyboard = array_chunk(buttons, 2)
 
-        keyboard.append([(lang.back_button, f"menu {anime_id} {user_id}")])
+        keyboard.append([(lang.back_button, f"filter {anime_id} {user_id}")])
 
         await message.edit_text(
             lang.view_more_text,
@@ -367,7 +345,7 @@ async def anime_view_studios(bot: Amime, callback: CallbackQuery):
     await callback.answer(lang.unfinished_function_alert, show_alert=True)
 
 
-@Amime.on_callback_query(filters.regex(r"filter (\d+) (\d+)"))
+@Amime.on_callback_query(filters.regex(r"filter okey (\d+) (\d+)"))
 async def anime_view_more(bot: Amime, callback: CallbackQuery):
     message = callback.message
     user = callback.from_user
@@ -381,7 +359,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
 
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
-
+        
         buttons = [
             (lang.Video, f"{anime.title.romaji} | video", "switch_inline_query_current_chat"),
             (lang.Audio, f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"),
