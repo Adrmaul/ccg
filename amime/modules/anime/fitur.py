@@ -255,7 +255,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
             (lang.Audio, f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"),
             
             
-            #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
+            (lang.characters_button, f"filter more {anime_id} {user_id}"),
         ]
         
 
@@ -266,7 +266,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
         #buttons.append(("🐢 Anilist", anime.url, "url"))
 
         keyboard = array_chunk(buttons, 2)
-        keyboard.append([(lang.List, f"filter more {anime_id} {user_id}")])
+
         keyboard.append([(lang.back_button, f"fitur {anime_id} {user_id}")])
 
         await message.edit_text(
