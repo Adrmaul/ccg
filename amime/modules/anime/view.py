@@ -367,7 +367,7 @@ async def anime_view_studios(bot: Amime, callback: CallbackQuery):
     await callback.answer(lang.unfinished_function_alert, show_alert=True)
 
 
-@Amime.on_callback_query(filters.regex(r"filter (\d+) (\d+)"))
+@Amime.on_callback_query(filters.regex(r"filter okey (\d+) (\d+)"))
 async def anime_view_more(bot: Amime, callback: CallbackQuery):
     message = callback.message
     user = callback.from_user
@@ -381,7 +381,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
 
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
-
+        
         buttons = [
             (lang.Video, f"{anime.title.romaji} | video", "switch_inline_query_current_chat"),
             (lang.Audio, f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"),
