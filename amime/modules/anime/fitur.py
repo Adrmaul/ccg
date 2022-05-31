@@ -253,10 +253,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
         buttons = [
             (lang.Video, f"{anime.title.romaji} | video", "switch_inline_query_current_chat"),
             (lang.Audio, f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"),
-            (
-                        lang.filter_text, 
-                        f"filter more {anime.id} {user.id}"
-                    ),
+            (lang.List, f"filter more {anime.id} {user.id}"),
             
             
             #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
