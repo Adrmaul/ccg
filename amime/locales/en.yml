@@ -479,6 +479,9 @@ view_more_text: |
   Perbedaanya, jika kalian user guest, menekan tombol login, 
   kalian tidak bisa mengklik tombol (Back) untuk menambahkan list-an.
 
+filter_more_text: |
+  {title}
+
 download_more_text: |
   Silahkan untuk mendownload/streaming.
   Untuk Mencari episode, silahkan kalian tambahkan angka (EPS) diinline keyboard.
