@@ -29,7 +29,7 @@ import shutil
 from typing import Union
 
 import anilist
-from pyrogram.types import Video
+from pyrogram.types import Document, Video
 
 from amime.config import CHATS
 from amime.database import Episodes
@@ -42,7 +42,7 @@ class VideoQueue(object):
         self.queue = asyncio.Queue()
         self.is_running = False
 
-    async def add(self, id: int, video):
+    async def add(self, id: int, video: Union[Document, Video]):
         item = dict(
             id=id,
             video=video,
@@ -51,7 +51,7 @@ class VideoQueue(object):
 
         if not self.running():
             pool = concurrent.futures.ThreadPoolExecutor(
-                max_workers=self.bot.workers - 100
+                max_workers=self.bot.workers - 4
             )
             future = self.loop.run_in_executor(
                 pool, asyncio.ensure_future(self.next()), id
@@ -138,7 +138,7 @@ class VideoQueue(object):
                     if re.search(r"\((\w+)\): subtitle: (\w+)", line):
                         softsubbed = True
 
-                if isinstance(video):
+                if isinstance(video, Document):
                     if extension == "mkv":
                         new_path = path.replace(".mkv", ".mp4")
                         crf = "-crf 18 " if codec == "hevc" else ""
