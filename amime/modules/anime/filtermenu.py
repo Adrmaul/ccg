@@ -31,9 +31,6 @@ from pyromod.helpers import array_chunk, ikb
 
 from amime.amime import Amime
 from amime.database import Episodes, Users
-from amime.modules.favorites import get_favorite_button
-from amime.modules.mylists import get_mylist_button
-from amime.modules.notify import get_notify_button
 
 
 @Amime.on_message(filters.cmd(r"filternime (.+)"))
@@ -119,4 +116,31 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
              #               lang.watch_button,
               #              f"episodes {anime.id} {episodes[0].season} 1",
                    #     )
-              #      
+              #      )
+
+
+   
+             
+
+
+        photo = f"https://img.anili.st/media/{anime.id}"
+
+        if bool(message.video) and is_callback:
+            await union.edit_message_media(
+                InputMediaPhoto(
+                    photo,
+                    caption=text,
+                ),
+                reply_markup=ikb(keyboard),
+            )
+        elif bool(message.photo) and not bool(message.via_bot):
+            await message.edit_text(
+                text,
+                reply_markup=ikb(keyboard),
+            )
+        else:
+            await message.reply_photo(
+                photo,
+                caption=text,
+                reply_markup=ikb(keyboard),
+            )
