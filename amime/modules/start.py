@@ -33,7 +33,7 @@ from amime.modules.anime.view import anime_view
 from amime.modules.anime.start import anime_start
 from amime.modules.character.view import character_view
 from amime.modules.manga.view import manga_view
-from amime.modules.anime.startnime import anime_start
+from amime.modules.anime.startfilternime import anime_start
 from amime.modules.anime.filtermenu import anime_view
 
 
