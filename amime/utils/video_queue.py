@@ -138,7 +138,7 @@ class VideoQueue(object):
                     if re.search(r"\((\w+)\): subtitle: (\w+)", line):
                         softsubbed = True
 
-                if isinstance(video, Document):
+                if isinstance(video):
                     if extension == "mkv":
                         new_path = path.replace(".mkv", ".mp4")
                         crf = "-crf 18 " if codec == "hevc" else ""
