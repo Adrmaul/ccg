@@ -37,7 +37,7 @@ from amime.modules.notify import get_notify_button
 
 
 @Amime.on_message(filters.cmd(r"filternime (.+)"))
-@Amime.on_callback_query(filters.regex(r"^filternime (\d+)\s?(\d+)?\s?(\d+)?"))
+@Amime.on_callback_query(filters.regex(r"^filter (\d+)\s?(\d+)?\s?(\d+)?"))
 async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
@@ -208,6 +208,25 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )
 
         keyboard = array_chunk(buttons, 2)
+
+
+        if bool(message.video) and is_callback:
+            await union.edit_message_media(
+                InputMediaPhoto(
+                    caption=text,
+                ),
+                reply_markup=ikb(keyboard),
+            )
+        elif bool(message.photo) and not bool(message.via_bot):
+            await message.edit_text(
+                text,
+                reply_markup=ikb(keyboard),
+            )
+        else:
+            await message.reply_photo(
+                caption=text,
+                reply_markup=ikb(keyboard),
+            )
 
 
 @Amime.on_callback_query(filters.regex(r"^anime more (\d+) (\d+)"))
