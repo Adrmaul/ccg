@@ -33,6 +33,8 @@ from amime.modules.anime.view import anime_view
 from amime.modules.anime.start import anime_start
 from amime.modules.character.view import character_view
 from amime.modules.manga.view import manga_view
+from amime.modules.anime.startnime import anime_start
+from amime.modules.anime.filtermenu import anime_view
 
 
 @Amime.on_message(filters.cmd(r"start$"))
@@ -108,7 +110,7 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
 
 
 @Amime.on_message(
-    filters.cmd(r"start (?P<content_type>menu|character|manga|bantuan)_(\d+)")
+    filters.cmd(r"start (?P<content_type>menu|character|manga|bantuan|filternime)_(\d+)")
     & filters.private
 )
 async def view(bot: Amime, message: Message):
@@ -124,10 +126,12 @@ async def view(bot: Amime, message: Message):
     else:
         await manga_view(bot, message)
         await bantuan_view(bot, message) 
+    if content_type == "filternime":
+        await anime_view(bot, message)
 
 
 @Amime.on_message(
-    filters.cmd(r"start (?P<content_type>menu|bantuan)")
+    filters.cmd(r"start (?P<content_type>menu|bantuan|filternime)")
     & filters.private
 )
 async def menu(bot: Amime, message: Message):
@@ -137,3 +141,9 @@ async def menu(bot: Amime, message: Message):
         await anime_start(bot, message)
     elif content_type == "bantuan":  
         await bantuan(bot, message)
+
+async def filternime(bot: Amime, message: Message):
+    content_type = message.matches[0]["content_type"]
+
+    if content_type == "filternime":
+        await anime_start(bot, message)

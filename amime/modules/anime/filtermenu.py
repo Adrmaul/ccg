@@ -32,8 +32,8 @@ from pyromod.helpers import array_chunk, ikb
 from amime.amime import Amime
 
 
-@Amime.on_message(filters.cmd(r"filter (.+)"))
-@Amime.on_callback_query(filters.regex(r"^filter (\d+)\s?(\d+)?\s?(\d+)?"))
+@Amime.on_message(filters.cmd(r"filternime (.+)"))
+@Amime.on_callback_query(filters.regex(r"^filternime (\d+)\s?(\d+)?\s?(\d+)?"))
 async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
@@ -125,26 +125,13 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if hasattr(anime, "studios"):
             text += f"\n⋟ <b>{lang.studios}</b>: <code>{', '.join(anime.studios)}</code>"
             text += f"\n─────── ∘°❉°∘ ───────"
-        
-
-
-        if is_private and is_collaborator:
-            buttons.append(
-                (
-                    lang.manage_button,
-                    f"manage anime {anime.id} 0 1 {language} 1",
-               )
-            )
-
-   
-             
-        if is_private and not anime.status.lower() == "not_yet_released" and not hasattr(anime, "genres") == "Hentai":        
-             buttons.append(
-                (
-                    lang.Download_text, 
-                    f"download more {anime.id} {user.id}"
-               ),
-             )
+        buttons = [
+            (
+                        lang.view_more_button,
+                        f"anime more {anime.id} {user.id}"
+                    )       
+        ]
+         
 
 
         if is_private:       
@@ -157,4 +144,24 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         keyboard = array_chunk(buttons, 2)
 
+        photo = f"https://img.anili.st/media/{anime.id}"
 
+        if bool(message.video) and is_callback:
+            await union.edit_message_media(
+                InputMediaPhoto(
+                    photo,
+                    caption=text,
+                ),
+                reply_markup=ikb(keyboard),
+            )
+        elif bool(message.photo) and not bool(message.via_bot):
+            await message.edit_text(
+                text,
+                reply_markup=ikb(keyboard),
+            )
+        else:
+            await message.reply_photo(
+                photo,
+                caption=text,
+                reply_markup=ikb(keyboard),
+            )
