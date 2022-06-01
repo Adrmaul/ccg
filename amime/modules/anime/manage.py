@@ -257,10 +257,9 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
         if not ("id" in episode.keys() and episode["id"] == episode_db.id):
             episode["id"] = episode_db.id
             episode["video"] = episode_db.file_id
-            episode["document"] = episode_db.file_id
             episode["name"] = episode_db.name
             episode["notes"] = episode_db.notes
-            episode["duration"] = episode_db.duration
+            #episode["duration"] = episode_db.duration
             episode["unified_until"] = episode_db.unified_until
 
             EPISODES[str(user.id)][str(anime_id)] = episode
@@ -503,9 +502,9 @@ async def anime_episode_edit(bot: Amime, callback: CallbackQuery):
                         continue
 
                 episode["video"] = answer.video
-                episode["duration"] = duration // 60
+                #episode["duration"] = duration // 60
             elif bool(answer.document):
-                episode["document"] = answer.document
+                episode["video"] = answer.document
 
             if bool(answer.forward_from) and answer.forward_from.id == bot.me.id:
                 episode["update_video"] = False
@@ -619,10 +618,9 @@ async def anime_episode_save(bot: Amime, callback: CallbackQuery):
         id = episode["id"]
 
     video = episode["video"]
-    document = episode["document"]
 
-    if isinstance(episode["document"], Document):
-        episode["file_id"] = episode["document"].file_id
+    if isinstance(episode["video"], Document):
+        episode["file_id"] = ""
     elif isinstance(episode["video"], Video):
         episode["file_id"] = episode["video"].file_id
     del episode["video"]
@@ -860,11 +858,11 @@ async def anime_episode_batch_confirm(bot: Amime, callback: CallbackQuery):
         caption = msg.caption
 
         file_id = ""
-        duration = 0
+        #duration = 0
         if bool(msg.video):
             video = msg.video
             file_id = video.file_id
-            duration = video.duration
+            #duration = video.duration
         else:
             video = msg.document
 
@@ -906,7 +904,7 @@ async def anime_episode_batch_confirm(bot: Amime, callback: CallbackQuery):
             added_by=user.id,
             season=season,
             number=number,
-            duration=duration // 60,
+            #duration=duration // 60,
             language=language,
             unified_until=unified_until or "0",
             subtitled=subtitled,
