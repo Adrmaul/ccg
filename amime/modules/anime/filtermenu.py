@@ -209,28 +209,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         keyboard = array_chunk(buttons, 2)
 
-        photo = f"https://img.anili.st/media/{anime.id}"
-
-        if bool(message.video) and is_callback:
-            await union.edit_message_media(
-                InputMediaPhoto(
-                    photo,
-                    caption=text,
-                ),
-                reply_markup=ikb(keyboard),
-            )
-        elif bool(message.photo) and not bool(message.via_bot):
-            await message.edit_text(
-                text,
-                reply_markup=ikb(keyboard),
-            )
-        else:
-            await message.reply_photo(
-                photo,
-                caption=text,
-                reply_markup=ikb(keyboard),
-            )
-
 
 @Amime.on_callback_query(filters.regex(r"^anime more (\d+) (\d+)"))
 async def anime_view_more(bot: Amime, callback: CallbackQuery):
