@@ -250,19 +250,16 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
 
+
         if hasattr(anime, "trailer"):
             if hasattr(anime.trailer, "url"):
-                buttons.append((lang.trailer_button, anime.trailer.url, "url")),
+                buttons.append((lang.trailer_button, anime.trailer.url, "url"))
 
-        buttons.append([lang.characters_button, f"anime characters {anime.id} {user_id}"]),
-
-        
         buttons = [
             (lang.Video, f"{anime.title.romaji} | video", "switch_inline_query_current_chat"),
             (lang.Audio, f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"),
-            
-            
-            #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
+        ],[
+            (lang.characters_button, f"anime characters {anime_id} {user_id}"),
         ]
 
         
@@ -343,7 +340,7 @@ async def anime_view_characters(bot: Amime, callback: CallbackQuery):
 
         keyboard = [
             [
-                (lang.back_button, f"download more {anime_id} {user_id}"),
+                (lang.back_button, f"anime more {anime_id} {user_id}"),
             ],
         ]
 
