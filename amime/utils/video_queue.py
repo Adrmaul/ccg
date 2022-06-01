@@ -138,6 +138,11 @@ class VideoQueue(object):
                     if re.search(r"\((\w+)\): subtitle: (\w+)", line):
                         softsubbed = True
 
+                if isinstance(Document):
+                    if extension == "rar":
+                        new_path = path.replace(".rar", ".zip")
+                        await proc.communicate()
+
                 if isinstance(video):
                     if extension == "mkv":
                         new_path = path.replace(".mkv", ".mp4")
