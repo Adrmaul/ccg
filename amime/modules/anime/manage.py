@@ -257,6 +257,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
         if not ("id" in episode.keys() and episode["id"] == episode_db.id):
             episode["id"] = episode_db.id
             episode["video"] = episode_db.file_id
+            episode["document"] = episode_db.file_id
             episode["name"] = episode_db.name
             episode["notes"] = episode_db.notes
             episode["duration"] = episode_db.duration
@@ -504,7 +505,7 @@ async def anime_episode_edit(bot: Amime, callback: CallbackQuery):
                 episode["video"] = answer.video
                 episode["duration"] = duration // 60
             elif bool(answer.document):
-                episode["video"] = answer.document
+                episode["document"] = answer.document
 
             if bool(answer.forward_from) and answer.forward_from.id == bot.me.id:
                 episode["update_video"] = False
@@ -618,9 +619,10 @@ async def anime_episode_save(bot: Amime, callback: CallbackQuery):
         id = episode["id"]
 
     video = episode["video"]
+    document = episode["document"]
 
-    if isinstance(episode["video"], Document):
-        episode["file_id"] = ""
+    if isinstance(episode["document"], Document):
+        episode["file_id"] = episode["document"].file_id
     elif isinstance(episode["video"], Video):
         episode["file_id"] = episode["video"].file_id
     del episode["video"]
