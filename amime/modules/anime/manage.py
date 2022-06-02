@@ -21,7 +21,8 @@
 # SOFTWARE.
 
 import asyncio
-import datetime, timedelta, timezone 
+from datetime import datetime
+from pytz import timezone
 import logging
 import re
 
@@ -636,16 +637,15 @@ async def anime_episode_save(bot: Amime, callback: CallbackQuery):
         episode_db = await Episodes.create(**episode)
         id = episode_db.id
 
-        now_date = datetime.datetime.now()
-        tz = timezone(timedelta(hours=7))
-        new_time = now_date.astimezone(tz)
+        
+        now_date = datetime.astimezone(timezone('Asia/Jakarta'))
         await Notifications.create(
             item=anime_id,
             type="anime",
             season=season,
             number=number,
             language=language,
-            datetime=new_time,
+            datetime=now_date,
         )
 
     if "update_video" in episode.keys() and episode["update_video"] is True:
@@ -913,16 +913,14 @@ async def anime_episode_batch_confirm(bot: Amime, callback: CallbackQuery):
         )
         video_id = episode.id
 
-        now_date = datetime.datetime.now()
-        tz = timezone(timedelta(hours=7))
-        new_time = now_date.astimezone(tz)
+        now_date = datetime.astimezone(timezone('Asia/Jakarta'))
         await Notifications.create(
             item=anime_id,
             type="anime",
             season=season,
             number=number,
             language=language,
-            datetime=new_time,
+            datetime=now_date,
         )
 
         await bot.video_queue.add(video_id, video)
