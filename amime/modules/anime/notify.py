@@ -140,7 +140,7 @@ async def notify_episodes_confirm(bot: Amime, callback: CallbackQuery):
                 text += f"-{season[1][-1]}"
             text += "</code>\n"
 
-    text += f"\n<b>Tanggal Diproses</b>: {date}"
+    text += f"\n<b>Tanggal Diproses</b>: {date} UTC"
 
     keyboard = [
         [
