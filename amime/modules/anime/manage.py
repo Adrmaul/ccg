@@ -914,13 +914,15 @@ async def anime_episode_batch_confirm(bot: Amime, callback: CallbackQuery):
         video_id = episode.id
 
         now_date = datetime.datetime.now()
+        tz = timezone(timedelta(hours=7))
+        new_time = now_date.astimezone(tz)
         await Notifications.create(
             item=anime_id,
             type="anime",
             season=season,
             number=number,
             language=language,
-            datetime=now_date,
+            datetime=new_time,
         )
 
         await bot.video_queue.add(video_id, video)
