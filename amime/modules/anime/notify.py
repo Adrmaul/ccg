@@ -154,14 +154,7 @@ async def notify_episodes_confirm(bot: Amime, callback: CallbackQuery):
 
     try:
         await bot.send_photo(
-            CHANNELS[lang.code],
-            f"https://img.anili.st/media/{anime.id}",
-            text,
-            reply_markup=ikb(keyboard),
-        )
-    
-        await bot.send_photo(
-            CHANNELS["ani01"],
+            CHANNELS["admin"],
             f"https://img.anili.st/media/{anime.id}",
             text,
             reply_markup=ikb(keyboard),

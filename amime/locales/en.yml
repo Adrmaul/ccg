@@ -75,7 +75,7 @@ short_description: Short description
 
 favorite: Favorite
 
-mylist: Watch List
+mylist: Watchlist
 
 notify: Notify
 
@@ -448,7 +448,7 @@ mylist_text: |
 
 favorites_button: ⭐ Favorites
 
-mylists_button: 👁‍🗨 Watch List
+mylists_button: 👁‍🗨 Watchlist
 
 batch_button: ⎙ Batch File
 
@@ -844,9 +844,9 @@ unfinished_function_alert: Oops! This function is not yet ready, wait for update
 
 episode_already_exists_alert: Episode dengan nomor yang sama sudah ada.
 
-confirm_save_episode_alert: The episode was successfully saved!
+confirm_save_episode_alert: Epsiode Ini berhasil disimpan!
 
-confirm_delete_episode_alert: Episode berhasil disimpan!
+confirm_delete_episode_alert: Episode berhasil dihapus!
 
 very_short_video_alert: Video yang diunggah terlalu pendek.
 

@@ -22,6 +22,7 @@
 
 import asyncio
 import datetime
+import pytz
 import logging
 import re
 
@@ -37,6 +38,7 @@ from pyrogram.types import (
 )
 from pyromod.helpers import array_chunk, ikb
 from pyromod.nav import Pagination
+from pytz_deprecation_shim import timezone
 
 from amime.amime import Amime
 from amime.database import Episodes, Notifications
@@ -636,14 +638,14 @@ async def anime_episode_save(bot: Amime, callback: CallbackQuery):
         episode_db = await Episodes.create(**episode)
         id = episode_db.id
 
-        now_date = datetime.datetime.now()
+        tz = pytz.timezone("Asia/Jakarta")
         await Notifications.create(
             item=anime_id,
             type="anime",
             season=season,
             number=number,
             language=language,
-            datetime=now_date,
+            datetime=tz,
         )
 
     if "update_video" in episode.keys() and episode["update_video"] is True:
@@ -911,14 +913,14 @@ async def anime_episode_batch_confirm(bot: Amime, callback: CallbackQuery):
         )
         video_id = episode.id
 
-        now_date = datetime.datetime.now()
+        tz = pytz.timezone("Asia/Jakarta")
         await Notifications.create(
             item=anime_id,
             type="anime",
             season=season,
             number=number,
             language=language,
-            datetime=now_date,
+            datetime=tz,
         )
 
         await bot.video_queue.add(video_id, video)
