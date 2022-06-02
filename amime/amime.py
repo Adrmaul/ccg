@@ -23,6 +23,7 @@
 import asyncio
 import concurrent.futures
 import datetime
+import pytz
 import logging
 
 import aiocron
@@ -70,10 +71,7 @@ class Amime(Client):
 
         self.sudos = SUDO_USERS
 
-        self.start_datetime = datetime.datetime.now().replace(
-            tzinfo=datetime.timezone.utc
-        )
-
+        self.start_datetime = datetime.datetime.now(pytz.timezone('Asia/Jakarta'))
     async def start(self):
         await super().start()
 
