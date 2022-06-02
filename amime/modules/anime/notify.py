@@ -119,7 +119,7 @@ async def notify_episodes_confirm(bot: Amime, callback: CallbackQuery):
         else:
             text = lang.notify_users_anime_dubbed_text
         text = text(title=anime.title.romaji, id=anime_id)
-        text += f"\n<b>{lang.episode}s</b>:\n"
+        text += f"\n<b>{lang.episode}</b>:\n"
 
         seasons = {}
         for notification in notifications:
@@ -140,7 +140,7 @@ async def notify_episodes_confirm(bot: Amime, callback: CallbackQuery):
                 text += f"-{season[1][-1]}"
             text += "</code>\n"
 
-    text += f"\n<b>{lang.date}</b>: {date}"
+    text += f"\n<b>Tanggal Diproses</b>: {date}"
 
     keyboard = [
         [
@@ -154,7 +154,14 @@ async def notify_episodes_confirm(bot: Amime, callback: CallbackQuery):
 
     try:
         await bot.send_photo(
-            CHANNELS["admin"],
+            CHANNELS[lang.code],
+            f"https://img.anili.st/media/{anime.id}",
+            text,
+            reply_markup=ikb(keyboard),
+        )
+    
+        await bot.send_photo(
+            CHANNELS["ani01"],
             f"https://img.anili.st/media/{anime.id}",
             text,
             reply_markup=ikb(keyboard),
