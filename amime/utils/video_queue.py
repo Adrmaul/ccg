@@ -51,7 +51,7 @@ class VideoQueue(object):
 
         if not self.running():
             pool = concurrent.futures.ThreadPoolExecutor(
-                max_workers=self.bot.workers - 25
+                max_workers=self.bot.workers - 10
             )
             future = self.loop.run_in_executor(
                 pool, asyncio.ensure_future(self.next()), id
