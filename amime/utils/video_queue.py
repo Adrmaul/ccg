@@ -186,12 +186,12 @@ class VideoQueue(object):
                     await self.bot.send_video(
                         CHATS["videos"],
                         path,
-                        f"{episode.number} | <b>{anime.title.romaji}</b> {episode['name']} - @{self.bot.me.username} ",
+                        f"{episode.number} | <b>{anime.title.romaji}</b> {language} - @{self.bot.me.username} ",
                         duration=video.duration,
                         width=video.width,
                         height=video.height,
                         thumb=thumb,
-                        file_name=f"{anime.title.romaji} {episode.number} {episode['name']}.{extension}",
+                        file_name=f"{anime.title.romaji} {episode.number} {language}.{extension}",
                         supports_streaming=True,
                     )
                 ).video
