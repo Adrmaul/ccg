@@ -51,7 +51,7 @@ class VideoQueue(object):
 
         if not self.running():
             pool = concurrent.futures.ThreadPoolExecutor(
-                max_workers=self.bot.workers - 4
+                max_workers=self.bot.workers - 25
             )
             future = self.loop.run_in_executor(
                 pool, asyncio.ensure_future(self.next()), id
@@ -186,12 +186,12 @@ class VideoQueue(object):
                     await self.bot.send_video(
                         CHATS["videos"],
                         path,
-                        f"{episode.number} | <b>{anime.title.romaji}</b> {episode.name} - @{self.bot.me.username} ",
+                        f"{episode.number} | <b>{anime.title.romaji}</b> - @{self.bot.me.username} ",
                         duration=video.duration,
                         width=video.width,
                         height=video.height,
                         thumb=thumb,
-                        file_name=f"{anime.title.romaji} {episode.number} {episode.name}.{extension}",
+                        file_name=f"{anime.title.romaji} {episode.number}.{extension}",
                         supports_streaming=True,
                     )
                 ).video
