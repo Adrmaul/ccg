@@ -637,9 +637,7 @@ async def anime_episode_save(bot: Amime, callback: CallbackQuery):
         episode_db = await Episodes.create(**episode)
         id = episode_db.id
 
-
-        now_utc = datetime.datetime.now()
-        now_date = now_utc.astimezone(timezone('Asia/jakarta'))
+        now_date = datetime.datetime.now()
         await Notifications.create(
             item=anime_id,
             type="anime",
@@ -914,8 +912,7 @@ async def anime_episode_batch_confirm(bot: Amime, callback: CallbackQuery):
         )
         video_id = episode.id
 
-        now_utc = datetime.datetime.now()
-        now_date = now_utc.astimezone(timezone('Asia/jakarta'))
+        now_date = datetime.datetime.now()
         await Notifications.create(
             item=anime_id,
             type="anime",
