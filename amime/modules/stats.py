@@ -22,7 +22,6 @@
 
 import datetime
 import os
-import pytz
 import platform
 import shutil
 
@@ -114,7 +113,7 @@ async def stats_view(bot: Amime, message: Message):
 async def today_releases_view(bot: Amime, message: Message):
     lang = message._lang
 
-    now = datetime.datetime.now().replace(pytz.timezone('Asia/Jakarta'))
+    now = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
     text = lang.day_releases_text(date=now.strftime("%H:%M:%S"))
 
     animes = bot.day_releases
