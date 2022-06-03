@@ -22,6 +22,7 @@
 
 import asyncio
 import datetime
+import pytz
 
 import anilist
 
@@ -30,7 +31,7 @@ from amime.database import Episodes
 
 
 async def load(bot):
-    now = datetime.datetime.now()
+    now = datetime.datetime.now(pytz.timezone('Asia/Jakarta'))
 
     #sent = await bot.send_message(CHATS["staff"], "Checking the day's releases...")
 
@@ -79,7 +80,7 @@ async def load(bot):
 
 
 async def reload(bot):
-    now = datetime.datetime.now()
+    now = datetime.datetime.now(pytz.timezone('Asia/Jakarta'))
 
     animes = bot.day_releases
 
