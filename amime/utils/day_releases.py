@@ -56,7 +56,7 @@ async def load(bot):
             if anime.status.lower() == "releasing":
                 if hasattr(anime, "next_airing"):
                     number = anime.next_airing.episode
-                    date = date = datetime.datetime.fromtimestamp(
+                    date = datetime.datetime.fromtimestamp(
                         anime.next_airing.at
                     ).replace(tzinfo=datetime.timezone.utc)
 

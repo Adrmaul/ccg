@@ -53,6 +53,7 @@ async def bantuan(bot: Amime, union: Union[CallbackQuery, Message]):
             ],
             [
                 (lang.pluginadd, "help1"),
+                (lang.Mirror, "original_help"),
             ],
             [
                 (lang.channelhelp_button, "channel"),
