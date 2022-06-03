@@ -22,6 +22,7 @@
 
 import asyncio
 import datetime
+import pytz
 import io
 import os
 import sys
@@ -236,9 +237,9 @@ async def execute_message(bot: Amime, message: Message):
 @Amime.on_message(filters.cmd(r"reload$") & filters.sudo)
 async def reload_message(bot: Amime, message: Message):
     sent = await message.reply_text("Reloading modules...")
-    first = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
+    first = datetime.datetime.now().replace(pytz.timezone('Asia/Jakarta'))
     modules.reload(bot)
-    second = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
+    second = datetime.datetime.now().replace(pytz.timezone('Asia/Jakarta'))
     await sent.edit_text(
         f"Modules reloaded in <code>{(second - first).microseconds / 1000}ms</code>."
     )
