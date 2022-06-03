@@ -71,7 +71,7 @@ class Amime(Client):
 
         self.sudos = SUDO_USERS
 
-        self.start_datetime = datetime.datetime.now().replace(tzinfo=datetime.timezone('Asia/Jakarta'))
+        self.start_datetime = datetime.datetime.now().replace(tzinfo=timezone('Asia/Jakarta'))
     async def start(self):
         await super().start()
 
