@@ -673,7 +673,7 @@ confirm_button: ✔️ Konfirmasi
 cancel_button: ✖️ Batal
 
 send_me_the_item_text: |
-  Send me the item: <b>{item}</b>.
+  Kirim saya item: <b>{item}</b>.
 
 mark_as_watched_button: ✅ Tandai telah ditonton
 
