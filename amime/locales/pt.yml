@@ -1,5 +1,5 @@
 LANGUAGE_CODE: pt
-LANGUAGE_NAME: Rendah
+LANGUAGE_NAME: Resolusi Rendah
 
 back_button: 🔙 Back
 
@@ -352,7 +352,7 @@ language_text: |
 language_changed_text: |
   Language changed successfully!
 
-language_button: Resolusi
+language_button: Tipe
 
 search_button: 🔎 Search
 
