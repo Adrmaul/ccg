@@ -46,6 +46,9 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
     lang = union._lang
 
     is_private = await filters.private(bot, message)
+    is_administrator = await filter_administrator(bot, union) or await filters.administrator(
+        bot, union
+    )
     is_collaborator = await filters.collaborator(bot, union) or await filters.sudo(
         bot, union
     )
@@ -138,7 +141,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
          
 
         if len(episodes) > 0:
-            if is_private and is_collaborator:
+            if is_private and is_administrator:
                 if anime.format.lower() == "movie":
                     buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
                 else:

@@ -77,7 +77,7 @@ class Amime(Client):
 
         self.me = await self.get_me()
         logger.info(
-            "AmimeWatch running with Pyrogram v%s (Layer %s) started on @%s. Hi.",
+            "ccgnimex running with Pyrogram v%s (Layer %s) started on @%s. Hi.",
             __version__,
             layer,
             self.me.username,
