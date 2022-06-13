@@ -698,16 +698,10 @@ notif_admin_text: Silahkan untuk admin, pilih yang sesuai dengan apa yang diuplo
 request_content_text: |
   Pilih Tipe yang Anda inginkan untuk request terhadap anime ini, <i>Tipe tergantung ketersediaan dari sumber.</i>
 
-  Silahkan untuk cek urutan request anime, di grup kami @otakuindonew.
-
-  Dengan mencari hastag #REQ, Disana akan muncul list request an kalian itu statusnya diproses atau belum, jika tidak ada berarti kami menolaknya.
-
-  Jika tidak ada notifikasi dari bot ketika sudah kami garap/ingin mengecek status requestan kalian, silahkan cari digrup dengan hastag #selesai.
-
-  Silahkan untuk chat langsung digrup, jika memang sangat ingin di upload.
-
   Mohon untuk cek anime terlebih dahulu, kami akan memproses request an jika admin tidak sibuk, ataupun sedang tidak memproses anime lain.
   harap mengertilah. ~ Terimakasih...
+
+  Harap hubungi admin @otakuindonew, jika memiliki kendala & ingin fast respon.
 
 request_content_done_text: |
   Permintaan Anda untuk anime <b>{title}</b>, sudah kami proses..
@@ -821,7 +815,7 @@ how_to_use_text: |
 
 how_to_use_button: ❓ How to use?
 
-subtitled_button: 🈁 Subtitled
+subtitled_button: 🈁 Subtitle
 
 next_episode_button: 🎦 Next episode
 
