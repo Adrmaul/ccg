@@ -1,5 +1,5 @@
 LANGUAGE_CODE: en
-LANGUAGE_NAME: 480p
+LANGUAGE_NAME: Resolusi Tinggi (Hardsub)
 
 back_button: 🔙 Back
 
@@ -91,7 +91,7 @@ name: Name
 
 season: Season
 
-language: Resolusi
+language: Tipe
 
 notes: Notes
 
@@ -352,7 +352,7 @@ language_text: |
 language_changed_text: |
   Language changed successfully!
 
-language_button: Resolusi
+language_button: Tipe
 
 search_button: 🔎 Search
 
@@ -633,7 +633,7 @@ watch_list_anime_text: |
       👁️ - Hanya Dilihat
       ✅ - Ditonton
 
-watch_button: Stream
+watch_button: 🎥 Stream
 
 description_button: 📜 Description
 

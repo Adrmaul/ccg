@@ -1,11 +1,15 @@
 LANGUAGE_CODE: 1080p
-LANGUAGE_NAME: 1080p
+LANGUAGE_NAME: Resolusi Tinggi (Softsub)
 
 back_button: 🔙 Back
 
 # Words
 
 channel: Channel
+
+addgrup_button: ➕ Tambahkan Bot Ke Grup ➕
+
+pluginadd: Plugin Tambahan
 
 group: Group
 
@@ -71,6 +75,8 @@ short_description: Short description
 
 favorite: Favorite
 
+mylist: Watch list
+
 notify: Notify
 
 duration: Duration
@@ -85,7 +91,7 @@ name: Name
 
 season: Season
 
-language: Resolusi
+language: Tipe
 
 notes: Notes
 
@@ -119,9 +125,9 @@ date: Date
 
 invalid_user: Invalid user
 
-episodes_viewed: Seen episodes
+episodes_viewed: Melihat episode
 
-episodes_watched: Watched episodes
+episodes_watched: Episode yang ditonton
 
 similarity: Similarity
 
@@ -139,120 +145,589 @@ tags: Tags
 
 start_text: |
   Hello {user_mention}, saya bot <b>{bot_name}</b>, a bot dedicated to <i>otakus</i>, tap the button below and learn more.
+
 start_text_2: |
-  Hello {user_mention}, saya bot <b>{bot_name}</b>, untuk penggunaan lebih lanjut, silahkan untuk ketik /help disini.
-  Jika kalian suka dengan bot ini, silahkan dukung kami dengan cara,support kami & juga berdonasi agar server tetap hidup & kami terus memberikan kalian anime.
+  Hello {user_mention}, saya bot <b>{bot_name}</b>, untuk penggunaan lebih lanjut, silahkan klik tombol bantuan dibawah!.
+
+  Jika kalian suka dengan bot ini, silahkan dukung kami dengan cara, share bot ini, ataupun support kami & juga berdonasi agar server tetap hidup & kami meningkatkan bot ini lebih baik.
+
   Saya sarankan, Silahkan Daftar/Login Anilist terlebih dahulu (/auth), untuk menikmati fitur bot ini sepenuhnya.
+
 start_button: 🔏 PM
-grup_button: ≛ grup
+
+tingkat_button: Tingkat Lanjut
+
+channelhelp_button: Tutorial Untuk Channel
+
+grup_button: ≛ Grup
 
 channel_button: 〄 Channel
 
 help_button: 👮‍♀️ Help
 
+bantuan_text: |
+  <b>MENU BANTUAN BOT</b>
+
+  Silahkan Untuk pilih, daftar menu bantuan, yang kalian butuhkan.
+  harap untuk dibaca semua, agar memahami bot ini sepenuhnya.
+
+dasar_text: |
+  Ini merupakan menu bantuan dasar, terkait penggunaan bot ini,
+
+  Gunakan /ping atau !ping cmd untuk memeriksa apakah bot sedang online.
+  Gunakan /start atau !start cmd untuk memulai bot di grup atau pm.
+  Gunakan /feedback cmd untuk menghubungi pemilik bot.
+
+anilist_text: |
+  Ini merupakan menu bantuan anilist, terkait penggunaan bot ini,
+
+  Di bawah ini adalah daftar cmd anilist dasar untuk mendownload/ mengambil info anime, karakter, manga, dll.
+
+  /anime - Gunakan cmd ini untuk mendapatkan info & mendownload anime tertentu menggunakan kata kunci (nama anime) atau ID Anilist
+  (Dapat mencari info tentang sekuel dan prekuel)
+
+  /anilist - Gunakan perintah ini untuk memilih di antara beberapa anime dengan nama serupa yang terkait dengan kueri yang dicari
+  (Tidak termasuk tombol untuk prekuel dan sekuel)
+
+  /character - Gunakan perintah ini untuk mendapatkan info tentang karakter
+
+  /manga - Gunakan perintah ini untuk mendapatkan info tentang manga
+
+  /airing - Gunakan perintah ini untuk mendapatkan info status penayangan anime
+
+  /top - Gunakan cmd ini untuk mencari anime teratas dari genre/tag atau dari semua anime
+  (Untuk mendapatkan daftar tag atau genre yang tersedia, kirim /gettags atau /getgenres
+  '/gettags nsfw' untuk tag nsfw)
+
+  /user - Gunakan perintah ini untuk mendapatkan info tentang pengguna anilist
+
+  /browse - Gunakan perintah ini untuk mendapatkan pembaruan tentang anime terbaru/top/upcoming.
+
+  /menu - untuk mengarahkan ke menu anime.
+
+  /manga_s - untuk mengarahkan ke menu manga.
+
+tingkat_text: |
+  Ini merupakan menu bantuan tambahan serta fitur canggih, terkait penggunaan bot ini,
+
+  Gunakan /auth atau !auth untuk login/daftar akun Anilist Anda dengan bot.
+
+  Otorisasi diri Anda membuka fitur-fitur canggih bot seperti:
+
+  - menambahkan anime/karakter/manga ke favorit
+  - melihat data anilist Anda yang terkait dengan anime/manga dalam pencarian Anda yang mencakup skor, status, dan favorit
+  - buka /flex, /me, /activity and /favourites 
+  - menambahkan/memperbarui entri anilis seperti selesai atau berencana untuk menonton/membaca
+  - menghapus entri anilis
+
+  Gunakan /flex or !flex cmd untuk mendapatkan statistik anilist Anda
+
+  Gunakan /logout or !logout cmd untuk memutuskan akun Anilist Anda
+
+  Gunakan /me atau !me cmd untuk mendapatkan aktivitas terbaru anilist Anda
+  bisa juga /activity or !activity
+
+  Gunakan /favourites cmd untuk mendapatkan favorit anilis Anda.
+
+  <b>Mengganti foto/sampul anda </b>
+
+  Silahkan kunjungi https://anilist.co/settings, lalu pilih foto dan terapkan.
+
+  <b>Bagaimana masalah terhadap, riwayat, atau list
+  yang belum muncul ?</b> 
+
+  Normalnya kalian harus menunggu 1 hari saat kalian list,
+  agar tampil di menu /flex, /me dan lainnya.
+
+  Solusinya yang ingin menambahkan dengan manual/cepat, silahkan klik ini : https://anilist.co/settings/lists 
+
+  Cari text "Stats", klik tombol Update stats.
+
+tambahan_text: |
+  Gunakan /reverse untuk mencari anime melalui tracemoepy API, yang dimana bot ini akan memberikan judul/info terkait anime tersebut.
+
+  <i>Catatan: Ini berfungsi paling baik pada gambar anime yang tidak dipotong,
+  ketika digunakan pada media yang kepotong, Anda mungkin mendapatkan hasil tetapi mungkin tidak akurat.</i>
+
+  Gunakan perintah /schedule untuk mendapatkan anime terjadwal berdasarkan hari kerja
+
+  Gunakan perintah /watch untuk mendapatkan urutan tontonan anime yang dicari
+
+  Gunakan /fillers cmd untuk mendapatkan daftar pengisi untuk anime
+
+  Gunakan /quote cmd untuk mendapatkan kutipan acak
+
+  Gunakan /wallpaper untuk mendapatkan file/gambar wallpaper anime secara random (API)
+
+  Gunakan /waifu untuk mendapatkan gambar waifu (neko) secara random (API)
+
+  <b>Mendownload VIDEO/AUDIO dari Youtube.</b>
+
+  Silahkan aktifkan bot @vid nya terlebih dahulu, lalu kembali kebot ini.
+
+  Setelah itu, kalian ketik <code>@vid "judul/nama" </code> yang ingin
+
+  kalian download/streaming.
+
+  lalu, klik video tersebut, nanti otomatis bot ini akan memprosesnya.
+
+  <b>Stream/Download External</b> 
+
+  Saya sarankan gunakan bot ini @nimexLink_bot
+
+  fungsinya itu, untuk menconvert, file dokumen/video dari telegram,
+  ke link yang bisa kalian download mengunakan browser maupun sejenisnya.
+  tidak hanya itu, selain mendownload, kalian bisa streaming via link.
+
+  ....
+channel_text: |
+  Ini merupakan menu bantuan Channel,
+
+  Masih Progress...
+
+media_text: 📢 Selesai
+
+notif_ongoing_text: 📢 Ongoing
+
 about_text: |
-  <b>{bot_name}</b> is a bot developed in <i>Python</i> with the <b>MTProto Pyrogram</b> library, made to be fast, stable and complete when it comes to animes.
+  <b>Disclaimer untuk bot ccgnimex.</b>
+
+  Ada beberapa yang mungkin harus kalian pahami terkait bot ini, agar nantinya kalian memahami sepenuhnya bot ini.
+  Bot ini merupakan bot yang terhubung dengan website anilist.co, yang dimana kalian bisa menggunakan bot ini untuk list, anime, manga, dan lainnya.
+  adapun beberapa fitur yang kami pakai, yaitu mendownload/streaming anime..
+
+  <b>Mendownload/Streaming</b>
+
+  Perlu kalian ketahui, mendownload/streaming video disini, merupakan tindakan ilegal/tidak dibenarkan, artinya kenapa?
+  Pada dasarnya kami tidak mempunyai izin, untuk mempublish/share anime, bisa dibilang ini BAJAKAN.
+  Jadi saran kami, lebih baik kalian melihat anime ke situs/app yang sudah legal, seperti MUSE INDONESIA, NETFLIX,dan lainnya.
+
+  <b>Tujuan Membuat bot ini?</b>
+
+  Karena ingin memudahkan admin pribadi untuk melist anime dan menonton anime, walaupun ini melanggar. 
+  tetapi kami pun juga tetap mendukung anime legal. dan menontonnya.
+
+  <b>Dapat dari mana sumber file anime?</b>
+  Kami, mendapatkan file anime dari berbagai macam website, berikut ini listnya:
+
+  {otakudesu} | {kusonime} | {koenime} | {samehadaku} | {oplovers} | {bakadame} | ...   
+
+  <i>Jadi kami mengucapkan terimakasih kepada mereka yang sudah memberikan anime,
+  silahkan untuk mendukungnya, kalian bisa kunjungi website mereka.</i>
+
+  <b>KESIMPULAN</b>
+
+  Bot ini memang tujuannya untuk memudahkan kita, dan tentunya membantu kita khusus nya bagi para pecinta anime.
+  dan jika memang ada pihak yang keberatan dengan adanya bot/konten dari kami, silahkan lapor, agar kami proses.
+  intinya buat kalian, jika kalian mampu menonton yang legal, lakukan. karena, itupun merupakan salah satu support ke pembuat anime tersebut. 
+
   Links: {github} | {channel} | {group}
+
 about_button: 👥 About
+
+musim_text: |
+  <b>Berikut Kategori Musim yang bisa kalian pilih:</b>
+
+  Anime Spring (Kuartal Pertama) : Rentang Waktu Mulai dari Bulan Maret Hingga April pada tahun tersebut.
+
+  Anime Summer (Kuartal Kedua) : Rentang Waktu Mulai dari Bulan Juni Hingga Agustus.
+
+  Anime Fall (Kuartal Ketiga) : Rentang Waktu Mulai dari Bulan September Hingga November.
+
+  Anime Winter (Kuartal Keempat) : Rentang Waktu Mulai dari Bulan Desember Hingga Februari.
+
+musim_salju: WINTER
+
+musim_panas: SUMMER
+
+musim_semi: FALL
+
+musim_gugur: SPRING
+
+batch_text_button: ⎙ Versi Batch
+
 language_text: |
   Choose the desired language below.
+
 language_changed_text: |
   Language changed successfully!
-language_button: Resolusi
+
+language_button: Tipe
+
 search_button: 🔎 Search
 
 anime_text: |
   Anda berada di bagian anime, gunakan tombol di bawah untuk melakukan apa yang Anda inginkan, cek beberapa saran anime, upcoming dari kami, cari anime/database, dll...
   Harap gunakan /help jika belum mengerti.
+
   <i>note: Menu ini masih dalam tahap pengembangan, jadi mungkin ada beberapa bug.</i>
+
+progress_text: |
+  Silahkan pilih kategori yang ingin kalian cari terhadap semua anime ongoing yang sedang tayang.
+
+ongoing_tidak_text: Mohon maaf, jadwal ini, tidak tersedia untuk sekarang..😇
+
+ongoing_text: |
+
+  Ini merupakan jadwal yang kami Proses, berdasarkan perkiraan dari rilisan fansub, bukan studio.
+  Berikut jadwal anime yang kami garap akan rilis - <i>Perkiraan</i>
+
+  <b>Kamis</b> :
+  <code>Tate no Yuusha no Nariagari Season 2</code>
+  <code>Shijou Saikyou no Daimaou, Murabito A ni Tensei suru</code>
+  <code>Komi-san wa, Komyushou desu. 2</code>
+
+  <b>Jumat</b> :
+  <code>Summer Time Render</code>
+  <code>Paripi Koumei </code>
+
+  <b>Sabtu</b> : 
+  <code>Kaguya-sama wa Kokurasetai: Ultra Romantic </code>
+  <code>Date A Live IV </code>
+  <code>Rikei ga Koi ni Ochita no de Shoumei shitemita. r=1-sinθ (Heart)</code>
+  <code>Aharen-san wa Hakarenai</code>
+
+  <b>Minggu</b> : 
+  <code>SPY×FAMILY  </code>
+  <code>Kakkou no Iinazuke</code>
+
+  <i>Anime ongoing yang digarap, jangan berharap tepat waktu, karena kami belum terlalu fokus ongoing. Tetapi kami usahakan secepatnya sesuai jadwal.</i>
+
+anime_satu: Date A Live IV
+
+anime_aharen: Aharen-san wa Hakarenai
+
+anime_kakkou: Kakkou no Iinazuke
+
+anime_dua: Kaguya-sama S2
+
+anime_tiga: Paripi Koumei
+
+anime_empat: Shijou Saikyou no Daimaou
+
+anime_lima: RikeKoi S2
+
+anime_enam: SPY x FAMILY
+
+anime_tujuh: Summer Time Render
+
+anime_delapan: Tate no Yuusha S2
+
+anime_sembilan: Komi Can't Communicate S2
+
+anime_sepuluh:
+
+anime_sebelas:
+
+anime_duabelas:
+
 anime_button: 👸 Anime
+
+manga_more_text: Silahkan kalian pilih menu, yang ingin kalian pilih, - (Semua fitur bot ini masih tahap pengembangan).
+
+manga_beta_text: Menu manga ini, untuk sekarang belum bisa mendownload / direct link. [BETA] ~ doain aja semoga nanti bisa.
+
 manga_text: |
   Anda berada di bagian manga, gunakan tombol di bawah untuk melakukan apa yang Anda inginkan, cek beberapa saran manga, upcoming dari kami, dll...
   Harap gunakan /help jika belum mengerti.
+
   <i>note: Menu ini masih dalam tahap pengembangan, jadi mungkin ada beberapa bug.</i>
 manga_button: 📖 Manga
 suggestions_text: |
   Dibawah ini adalah <b>50</b> anime yang admin rekomendasikan, semoga kalian menyukainya.
+
 suggestions_button: 🍬 Trending
+
+progress_button: ♨️ ONGOING
+
 favorites_text: |
-  Di bawah ini adalah semua item yang ditandai sebagai favorit.
+  Dibawah ini adalah semua item yang ditandai sebagai favorit.
+
+mylist_text: |
+  Dibawah ini adalah daftar semua list anime yang ingin kalian tonton/diminati.
+
 favorites_button: ⭐ Favorites
+
+mylists_button: 👁‍🗨 Watch list
+
+batch_button: ⎙ Batch File
+
 categories_text: |
   Di bawah ini adalah beberapa kategori, pilih salah satu dan temukan sesuatu yang Anda sukai
+
   <i>note: Menu ini masih dalam tahap pengembangan, jadi mungkin ada beberapa bug.</i>
+
 categorie_text: |
   Dibawah ini adalah <b>50</b> anime, hasil dari kategori <b>{genre}</b>.
+
 categories_button: 🐛 Categories
+
 upcoming_text: |
   Dibawah ini adalah urutan <b>50</b> anime, yang akan rilis
+
 upcoming_button: 🆕 Upcoming
+
 donate_button: 🩸 Donate
 
 view_more_text: |
-  Here you will be able to see the description, characters, staff and some other things, make good use of it. 🙃
-view_more_button: ⎆ Lihat Anime
-manga_more_button: ⎆ Lihat Manga
+  Dibawah ini ada 2 pilihan yang bisa kalian gunakan :
+
+  Login : Bagi user yang sudah menautkan akun anilistnya ke bot dengan cara /auth.
+
+  Guest : Bagi user yang tidak menautkan akun anilistnya.
+
+  Perbedaanya, jika kalian user guest, menekan tombol login, 
+  kalian tidak bisa mengklik tombol (Back) untuk menambahkan list-an.
+
+filter_more_text: |
+  {title}
+
+download_more_text: |
+  Silahkan untuk mendownload/streaming.
+  Untuk Mencari episode, silahkan kalian tambahkan angka (EPS) diinline keyboard.
+
+  Seperti : <code>Naruto 133</code>, atau jika tidak keluar, <code>133 naruto</code> dan sebagiannya.
+  jika susah untuk mencari episode / error, silahkan lapor ke grup.
+
+  Anime yang ada tanda (., !, :, dan simbol lainnya.)
+  Jika Video tidak ada tetapi ada dilist, silahkan ketik manual judulnya. tanpa tanda itu.
+  Biasanya tidak terfilter oleh database.
+
+  Seperti : Kobato. menjadi Kobato
+
+  <b>Alternatif : Silahkan salin/ketik judul dan kirim langsung kebot (ingat hanya judul!) , nanti bot akan memberikan daftar list episode.</b>
+
+  <b>Note:</b> Jika video tidak bisa diputar/tidak muncul subtitlenya, 
+  Silahkan untuk mendownload nya dan gunakan app mx player ataupun sejenisnya.
+  Masih bingung? atau ada kendala? - hubungi admin di @otakuindonew.
+
+anime1_button: SPY×FAMILY
+
+anime2_button: Kaguya-sama S3
+
+anime3_button: Komi-san wa, S2
+
+anime4_button: Aharen-san wa Hakarenai
+
+anime5_button: Date A Live IV
+
+anime6_button: Yuusha, Yamemasu
+
+anime7_button: Rikekoi S2
+
+anime8_button: Koi wa Sekai Seifuku
+
+view_more_button: ⎆ Menu Anime
+
+manga_more_button: ⎆ Menu Manga
+
+lebih24_button: EPS 20 - 30
+
+lebih25_button: EPS 31 - 50
+
+lebih50_button: EPS 51 - 75
+
+lebih75_button: EPS 76 - 100
+
+lebih100_button: EPS 101 - 1000 +
+
+kurang24_button: EPS 1 - 19
+
+pagedua_button: Next (2)
+
+pagesatu_button: Prev (1)
+
+enam_button: 2006
+
+tujuh_button: 2007
+
+delapan_button: 2008
+
+sembilan_button: 2009
+
+sepuluh_button: 2010
+
+sebelas_button: 2011
+
+duabls_button: 2012
+
+tigabls_button: 2013
+
+empatbls_button: 2014
+
+limabls_button: 2015
+
+enambls_button: 2016
+
+tujuhbls_button: 2017
+
+delapanbls_button: 2018
+
+sembilanbls_button: 2019
+
+duapuluh_button: 2020
+
+duasatu_button: 2021
+
+duadua_button: 2022
+
+duatiga_button: 2023
+
+enam1_button: 1988
+
+tujuh1_button: 1989
+
+delapan1_button: 1990
+
+sembilan1_button: 1991
+
+sepuluh1_button: 1992
+
+sebelas1_button: 1993
+
+duabls1_button: 1994
+
+tigabls1_button: 1995
+
+empatbls1_button: 1996
+
+limabls1_button: 1997
+
+enambls1_button: 1998
+
+tujuhbls1_button: 1999
+
+delapanbls1_button: 2000
+
+sembilanbls1_button: 2001
+
+duapuluh1_button: 2002
+
+duasatu1_button: 2003
+
+duadua1_button: 2004
+
+duatiga1_button: 2005
 
 checknimex_button: ✅ Cek Anime
 
+tv_button: TV-SHOW
+
+tvs_button: TV-SHORT
+
+movie_button: MOVIE
+
+ova_button: OVA
+
+ona_button: ONA
+
+spesial_button: SPECIAL
+
+mv_button: MUSIC-AV
+
 watch_list_anime_text: |
-  Below are all available episodes. Have a good time.
-  <b>About emojis</b>:
-      🙈 - Never open
-      👁️ - Just seen
-      ✅ - Watched
-watch_button: 📺 Watch
+  Di bawah ini adalah semua episode yang tersedia. Selamat bersenang-senang.
+
+  <b>Tentang Emoji</b>:
+      🙈 - Belum Dibuka
+      👁️ - Hanya Dilihat
+      ✅ - Ditonton
+
+watch_button: 🎥 Stream
+
 description_button: 📜 Description
 
 characters_text: |
   Below are some characters from the item in question.
+
 characters_button: 🧑‍🤝‍🧑 Characters
+
 studios_button: 🌆 Studios
 
 trailer_button: 🎦 Trailer
 
 manage_anime_text: |
   Below are all the added episodes.
+
 manage_episode_text: |
   Below is all the information from the episode (this is just a preview).
+
 manage_button: 💼 Manage
+
 season_text: |
   Below are all available seasons, choose one.
+
 season_button: 🌡️ Season
-add_button: ➕ Add
 
-del_button: ✖️ Delete
+add_button: ➕ Tambah
 
-del_season_button: ✖️ Delete season
+del_button: ✖️ Hapus
+
+del_season_button: ✖️ Hapus Season
 
 confirm_text: |
-  To continue, confirm using the button below.
-confirm_button: ✔️ Confirm
-cancel_button: ✖️ Cancel
+  Untuk melanjutkan, konfirmasi menggunakan tombol di bawah.
+
+confirm_button: ✔️ Konfirmasi
+
+cancel_button: ✖️ Batal
 
 send_me_the_item_text: |
   Send me the item: <b>{item}</b>.
-mark_as_watched_button: ✅ Mark as watched
-mark_as_unwatched_button: 👁️ Mark as unwatched
 
-previous_button: ⏪ Previous
+mark_as_watched_button: ✅ Tandai telah ditonton
 
-next_button: ⏩ Next
+mark_as_unwatched_button: 👁️ Tandai belum ditonton
+
+previous_button: ⏪ Sebelumnya
+
+next_button: ⏩ Lanjut
 
 dot_button: ⏺️
 
-report_text: Put down the information of your report.
+report_text: Berikan Informasi laporan anda.
 
-report_button: ⛔ Report
+oke_sent_alert: oke bruh
+
+pilih_notif: Silahkan pilih, mau notif apaan (awas salah 😏)..
+
+report_button: ⛔ Lapor
+
+notif_admin_text: Silahkan untuk admin, pilih yang sesuai dengan apa yang diupload.
 
 request_content_text: |
-  Pilih Resolusi yang Anda inginkan untuk request video anime di bawah ini, <i>Resolusi tergantung ketersediaan dari sumber.</i>
-  Silahkan untuk cek daftar urutan request anime, di grup kami @otakuindonew.
-  Mohon untuk cek anime terlebih dahulu, sebelum request, ada atau tidak, dan jangan spam request, agar nanti tidak kami ban!.
+  Pilih Tipe yang Anda inginkan untuk request terhadap anime ini, <i>Tipe tergantung ketersediaan dari sumber.</i>
+
+  Silahkan untuk cek urutan request anime, di grup kami @otakuindonew.
+
+  Dengan mencari hastag #REQ, Disana akan muncul list request an kalian itu statusnya diproses atau belum, jika tidak ada berarti kami menolaknya.
+
+  Jika tidak ada notifikasi dari bot ketika sudah kami garap/ingin mengecek status requestan kalian, silahkan cari digrup dengan hastag #selesai.
+
+  Silahkan untuk chat langsung digrup, jika memang sangat ingin di upload.
+
+  Mohon untuk cek anime terlebih dahulu, kami akan memproses request an jika admin tidak sibuk, ataupun sedang tidak memproses anime lain.
+  harap mengertilah. ~ Terimakasih...
+
 request_content_done_text: |
   Permintaan Anda untuk anime <b>{title}</b>, sudah kami proses..
   <b>sekarang sudah tersedia!!, silahkan untuk download/streaming.</b>
-request_content_button: 🙋‍♀️ Request Anime
+
+request_content_button: 🙋‍♀️ Request
+
+donasi_text: |
+  Terimakasih kepada user yang sudah menggunakan bot kami, walaupun masih bisa dibilang belum sempurna,
+
+  tetapi kami ingin terus membuat bot ini lebih bagus lagi kedepannya, maka dari itu kami mohon untuk
+
+  support kami terus, entah itu dalam bentuk donasi ataupun dukungan, agar admin bisa lebih semangat lagi untuk
+
+  menambahkan fitur-fitur terbaru. dan juga update anime.
+
+  Untuk yang ingin berdonasi, silahkan kunjungi link https://trakteer.id/ccgnimeX.
+
+  untuk itu, kami sekali lagi berterimakasih. kepada kalian semua...
+
 serupa_button: ⌭ Anime terkait
 
 video_button: ▷ Video
@@ -260,60 +735,92 @@ video_button: ▷ Video
 audio_button: ♪ Music
 
 notify_users_anime_subbed_text: |
-  Oops! The anime <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added subtitled!
+  <b>{title}</b> (<b>ID</b>: <code>{id}</code>) Sudah Tersedia!
+
 notify_users_anime_dubbed_text: |
-  Oops! The anime <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added dubbed!
+  <b>{title}</b> (<b>ID</b>: <code>{id}</code>)
+
 notify_users_episode_subbed_text: |
-  Oops! The new <code>{number}</code> (subtitled) episode of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
+  Episode <code>{number}</code> <b>{title}</b> (Sub Indo) - (<b>ID</b>: <code>{id}</code>) Sudah Tersedia!
+
 notify_users_episode_dubbed_text: |
   Oops! The new <code>{number}</code> (dubbed) episode of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
+
 notify_users_episode_season_subbed_text: |
-  Oops! The new <code>{number}</code> episode of <b>{season}</b> (subtitled) season of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
+  Episode <code>{number}</code> <b>{title}</b> {season} (Sub Indo) - (<b>ID</b>: <code>{id}</code>) Sudah Tersedia!
+
 notify_users_episode_season_dubbed_text: |
   Oops! The new <code>{number}</code> episode of <b>{season}</b> (dubbed) season of <b>{title}</b> (<b>ID</b>: <code>{id}</code>) has been added!
-notify_users_button: 🛎️ Notify users
+
+notify_users_button: 🛎️ Kirim Notifikasi
+
 collaborator_button: 👷‍♀️ Collaborator
 
 add_in_batch_text: |
-  Send me all episodes with the caption in the following format: <b>Number | Title</b>
-  Ex:
-      <b>1 | Uzumaki Naruto Arriving</b>
-  After that, use the <b>{confirm_button}</b> button.
-  Note: <i>only the episode number is required</i>.
+  Kirimi saya semua episode dengan teks dalam format berikut: <b>Nomor | Judul</b>
+   Mantan:
+       <b>1 | Uzumaki Naruto Tiba</b>
+
+   Setelah itu, gunakan tombol <b>{confirm_button}</b>.
+
+   Catatan: <i>hanya nomor episode yang diperlukan</i>.
+
 add_in_batch_videos_text: |
-  <b>{count}</b> videos were detected, starting batch addition...
-add_in_batch_button: 🔢 Add in batch
+  <b>{count}</b> Video, yang terdeteksi, sedang proses....
+
+add_in_batch_button: 🔢 Tambahkan batch
+
+Hapus_text: ⌧ Hapus
+
+Download_text: 💾 Media
+
 no_found_episodes_text: |
   Oops! I did not find any episode, if it is a mistake, inform those responsible.
+
 search_results_text: |
   Search results: <b>{query}</b>
+
 media_not_found_text: |
   No media was found in this message.
+
 scanning_media_text: |
   Scanning media...
+
 searching_media_text: |
   Searching media...
+
 no_results_text: |
   No results were found.
+
 day_releases_text: |
   Next episodes. - <code>{date}</code>
+
 timed_out_text: |
   Timeout exceeded.
+
 api_down_text: |
   The API is unavailable, please try again later.
+
 api_overuse_text: |
   Excessive use of the API, please try again later.
+
 empty_message_text: |
   The message cannot be empty.
+
 no_chat_found_text: |
   No chat was found, check if everything is right.
+
 sending_alert_text: |
   The alert is being sent, please wait...
+
 alert_sent_text: |
   The alert was successfully sent to <code>{success}</code> chats and failed to send in <code>{failed}</code> chats.
+
 how_to_use_text: |
   Watch the animation above and see how to use me.
+
 how_to_use_button: ❓ How to use?
+
 subtitled_button: 🈁 Subtitled
 
 next_episode_button: 🎦 Next episode
@@ -321,32 +828,67 @@ next_episode_button: 🎦 Next episode
 read_button: 📒 Read
 
 # Alerts
-added_to_favorites_alert: Item successfully added to your favorites list!
+added_to_favorites_alert: Item Berhasil ditambahkan ke daftar favorit! >_<
 
-removed_from_favorites_alert: Item successfully removed from your favorites list!
+removed_from_favorites_alert: Item Berhasil dihapus di daftar favorit! >_<
 
-notifications_linked_alert: Notifications successfully linked!
+added_to_mylists_alert: Item Berhasil ditambahkan ke daftar tonton! >_<
 
-notifications_turned_off_alert: Notifications turned off successfully!
+removed_from_mylists_alert: Item Berhasil dihapus di daftar tonton! >_<
+
+notifications_linked_alert: Notifikasi untuk item ini, sudah tersambung!, kami akan memberikan pemberitahuan secara otomatis!
+
+notifications_turned_off_alert: Notifikasi berhasil dinonaktifkan, sekarang anda, sudah tidak mendapatkan notifikasi dari item ini!
 
 unfinished_function_alert: Oops! This function is not yet ready, wait for updates and stay tuned on our channel.
 
-episode_already_exists_alert: An episode with the same number already exists.
+episode_already_exists_alert: Episode dengan nomor yang sama sudah ada.
 
-confirm_save_episode_alert: The episode was successfully saved!
+confirm_save_episode_alert: Epsiode Ini berhasil disimpan!
 
-confirm_delete_episode_alert: The episode was successfully deleted!
+confirm_delete_episode_alert: Episode berhasil dihapus!
 
-very_short_video_alert: The uploaded video is too short.
+very_short_video_alert: Video yang diunggah terlalu pendek.
 
 reported_in_last_24h_alert: |
   Anda telah melaporkan sebuah anime dalam 24 jam terakhir.
+
    Tanggal: {date}
+
 episode_successfully_reported_alert: anime berhasil dilaporkan!
-request_sent_alert: Permintaan Anda telah dikirim ke grup kami, jika anime memang sudah rilis/ada, akan kami tambahkan, harap tunggu dalam beberapa hari kedepan, tergantung banyaknya permintaan...
+
+request_sent_alert: Permintaan Anda telah dikirim ke grup @otakuindonew, jika anime memang sudah rilis/ada, akan kami tambahkan, harap tunggu dalam beberapa hari kedepan. atau kalau ingin cepat pm admin digrup!.
+
+kirim_sent_alert: oke sip, makasih ya.... udah ngirim notifikasi...
 
 requested_in_last_24h_alert: |
   Anime ini telah menerima permintaan konten dalam 24 jam terakhir.
+
    Tanggal: {date}
+
 notified_users_alert: Pengguna telah berhasil diberi tahu!
-only_1_episode_not_allowed_alert: Only batches over 1 episode are allowed.
+
+only_1_episode_not_allowed_alert: Hanya batch lebih dari 1 episode yang diperbolehkan.
+
+moviemenu_text: |
+  Anda sekarang berada dimenu movie, dibawah ini ada beberapa tombol yang bisa kalian pilih.
+  Mulai dari kategori per genre, anime terbaik, trending, maupun yang akan rilis.
+
+  <i>(Semua list yang terdapat dibot ini, diupdate otomatis berdasarkan anilist)</i>
+
+movieup_text: |
+  Dibawah ini adalah daftar list movie yang akan rilis berdasarkan info dari anilist.
+
+movietop_text: |
+  Dibawah ini adalah daftar list movie yang terbaik berdasarkan info dari anilist.
+
+  <b>Total list</b>
+  <code>Anime : 550 movie
+  Daftar : 11 halaman</code>
+
+movietrend_text: |
+  Dibawah ini adalah daftar list movie yang sedang hangat/Trending berdasarkan info dari anilist.
+
+  <b>Total list</b>
+  <code>Anime : 550 movie
+  Daftar : 11 halaman</code>

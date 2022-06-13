@@ -139,17 +139,17 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         
 
-        if len(episodes) > 0:
-            if is_private and is_collaborator:
-                if anime.format.lower() == "movie":
-                   buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
-                else:
-                    buttons.append(
-                        (
-                            lang.watch_button,
-                            f"episodes {anime.id} {episodes[0].season} 1",
-                        )
-                    )     
+        #if len(episodes) > 0:
+            #if is_private and is_collaborator:
+             #   if anime.format.lower() == "movie":
+             #      buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
+              #  else:
+             #       buttons.append(
+              #          (
+               #             lang.watch_button,
+                #            f"episodes {anime.id} {episodes[0].season} 1",
+               #         )
+               #     )     
 
 
 
@@ -164,7 +164,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
  
              
 
-        if is_private and not anime.status.lower() == "not_yet_released" and not hasattr(anime, "genres") == "Hentai" and len(episodes) < 1:         
+        if is_private and not anime.status.lower() == "not_yet_released" and not hasattr(anime, "genres") == "Hentai":      
             buttons.append(
                     (
                         lang.Download_text, 
@@ -250,13 +250,26 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
 
-        buttons = [
-            (lang.Video, f"{anime.title.romaji} | video", "switch_inline_query_current_chat"),
-            (lang.Audio, f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"),
+        if is_private:
+            buttons = [
+                (lang.Video, f"{anime.title.romaji} | video", "switch_inline_query_current_chat"),
+                (lang.Audio, f"{anime.title.romaji} | audio", "switch_inline_query_current_chat"),
             
             
             #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
         ]
+
+        if len(episodes) > 0:
+            if is_private and is_collaborator:
+                if anime.format.lower() == "movie":
+                   buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
+                else:
+                    buttons.append(
+                        (
+                            lang.watch_button,
+                            f"episodes {anime.id} {episodes[0].season} 1",
+                        )
+                    )
 
         if hasattr(anime, "trailer"):
             if hasattr(anime.trailer, "url"):

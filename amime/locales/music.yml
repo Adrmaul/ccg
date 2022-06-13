@@ -85,7 +85,7 @@ name: Name
 
 season: Season
 
-language: Resolusi
+language: Tipe
 
 notes: Notes
 
@@ -160,7 +160,7 @@ language_text: |
   Choose the desired language below.
 language_changed_text: |
   Language changed successfully!
-language_button: Resolusi
+language_button: Tipe
 
 search_button: 🔎 Search
 
