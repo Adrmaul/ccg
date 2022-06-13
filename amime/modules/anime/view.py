@@ -137,17 +137,17 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         ]
          
 
-     #   if len(episodes) > 0:
-       #     if is_private and is_collaborator:
-         #       if anime.format.lower() == "movie":
-        #            buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
-          #      else:
-          #          buttons.append(
-            #           (
-             #               lang.watch_button,
-              #              f"episodes {anime.id} {episodes[0].season} 1",
-                   #     )
-              #      )
+        if len(episodes) > 0:
+            if is_private and is_collaborator:
+                if anime.format.lower() == "movie":
+                    buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
+                else:
+                    buttons.append(
+                       (
+                            lang.watch_button,
+                            f"episodes {anime.id} {episodes[0].season} 1",
+                        )
+                    )
 
 
 
@@ -161,7 +161,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
    
              
-        if is_private and not anime.status.lower() == "not_yet_released" and not hasattr(anime, "genres") == "Hentai":        
+        if is_private and not anime.status.lower() == "not_yet_released" and not hasattr(anime, "genres") == "Hentai" and len(episodes) < 1:        
              buttons.append(
                 (
                     lang.Download_text, 

@@ -75,7 +75,7 @@ short_description: Short description
 
 favorite: Favorite
 
-mylist: Watchlist
+mylist: Watch list
 
 notify: Notify
 
@@ -125,9 +125,9 @@ date: Date
 
 invalid_user: Invalid user
 
-episodes_viewed: Seen episodes
+episodes_viewed: Melihat episode
 
-episodes_watched: Watched episodes
+episodes_watched: Episode yang ditonton
 
 similarity: Similarity
 
@@ -448,7 +448,7 @@ mylist_text: |
 
 favorites_button: ⭐ Favorites
 
-mylists_button: 👁‍🗨 Watchlist
+mylists_button: 👁‍🗨 Watch list
 
 batch_button: ⎙ Batch File
 
@@ -626,14 +626,14 @@ spesial_button: SPECIAL
 mv_button: MUSIC-AV
 
 watch_list_anime_text: |
-  Below are all available episodes. Have a good time.
+  Di bawah ini adalah semua episode yang tersedia. Selamat bersenang-senang.
 
   <b>Tentang Emoji</b>:
       🙈 - Belum Dibuka
       👁️ - Hanya Dilihat
       ✅ - Ditonton
 
-watch_button: Lihat Anime
+watch_button: Stream
 
 description_button: 📜 Description
 
@@ -675,13 +675,13 @@ cancel_button: ✖️ Batal
 send_me_the_item_text: |
   Send me the item: <b>{item}</b>.
 
-mark_as_watched_button: ✅ Mark as watched
+mark_as_watched_button: ✅ Tandai telah ditonton
 
-mark_as_unwatched_button: 👁️ Mark as unwatched
+mark_as_unwatched_button: 👁️ Tandai belum ditonton
 
-previous_button: ⏪ Previous
+previous_button: ⏪ Sebelumnya
 
-next_button: ⏩ Next
+next_button: ⏩ Lanjut
 
 dot_button: ⏺️
 
