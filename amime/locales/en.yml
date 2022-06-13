@@ -347,10 +347,10 @@ musim_gugur: SPRING
 batch_text_button: ⎙ Versi Batch
 
 language_text: |
-  Choose the desired language below.
+  Pilih Tipe yang diinginkan di bawah ini.
 
 language_changed_text: |
-  Language changed successfully!
+  Tipe berhasil diubah!
 
 language_button: Tipe
 
