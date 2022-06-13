@@ -72,7 +72,12 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
         if episode is not None:
             await Viewed.get_or_create(user=user.id, item=episode.id, type="anime")
 
-            keyboard = [[await get_watched_button(lang, user, episode.id)]]
+            keyboard = [[await get_watched_button(lang, user, episode.id)], [
+                    (
+                        lang.report_button,
+                        f"report episode {anime_id} {season} {number} -1",
+                    )
+                ]]
 
             if len(episode.name) > 0:
                 text += f"\n<b>{lang.name}</b>: <code>{episode.name}</code>"
@@ -109,14 +114,14 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             ):
                 keyboard.append([previous_button, next_button])
 
-            keyboard.append(
-                [
-                    (
-                        lang.report_button,
-                        f"report episode {anime_id} {season} {number} -1",
-                    )
-                ]
-            )
+            #keyboard.append(
+            #    [
+            #        (
+            #            lang.report_button,
+            #            f"report episode {anime_id} {season} {number} -1",
+            #        )
+            #    ]
+            #)
 
             if anime.format.lower() == "movie":
                 keyboard.append(

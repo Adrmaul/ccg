@@ -191,16 +191,16 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 lang.request_content_button,
                 f"request episodes {anime.id} {language}",
             )
-            #if anime.status.lower() == "releasing":
-            #    if hasattr(anime, "next_airing"):
-            #        next_episode = anime.next_airing.episode
-            #        if len(episodes) < (next_episode - 1):
-            #            buttons.append(button)
-            #    else:
-            #        buttons.append(button)
-            #elif hasattr(anime, "episodes"):
-            #    if len(episodes) < anime.episodes:
-            #        buttons.append(button)
+            if anime.status.lower() == "releasing":
+                if hasattr(anime, "next_airing"):
+                    next_episode = anime.next_airing.episode
+                    if len(episodes) < (next_episode - 1):
+                        buttons.append(button)
+                else:
+                    buttons.append(button)
+            elif hasattr(anime, "episodes"):
+                if len(episodes) < anime.episodes:
+                    buttons.append(button)
         
         if is_private:       
             buttons.append(
