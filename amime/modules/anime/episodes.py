@@ -66,6 +66,13 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             f"episodes subtitled {anime_id} {season} {page}",
         )
     )
+    
+    buttons.append(
+                    (
+                        lang.Download_text, 
+                        f"download more {anime.id} {user.id}"
+                    ),
+                )
 
     keyboard = array_chunk(buttons, 2)
 

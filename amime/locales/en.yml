@@ -1,5 +1,5 @@
 LANGUAGE_CODE: en
-LANGUAGE_NAME: Tinggi
+LANGUAGE_NAME: Reso Tinggi
 
 back_button: 🔙 Back
 
@@ -109,15 +109,15 @@ yes: Yes
 
 no: No
 
-episodes_added: Added episodes
+episodes_added: Menambahkan episode
 
-bad_quality: Bad quality
+bad_quality: Kualitas Buruk
 
-wrong_episode: Wrong episode
+wrong_episode: Episode Salah
 
-wrong_title: Wrong title
+wrong_title: Judul Salah
 
-other: Other
+other: Lainnya
 
 type: Type
 
@@ -133,7 +133,7 @@ similarity: Similarity
 
 at: At
 
-views: Views
+views: Dilihat
 
 page: Page
 

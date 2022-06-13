@@ -207,8 +207,8 @@ async def report_episode_confirm(bot: Amime, callback: CallbackQuery):
         datetime=now_date,
     )
 
-    text = "<b>New report</b>"
-    text += f"\n<b>From</b>: {user.mention()}"
+    text = "<b>Laporan Terbaru</b>"
+    text += f"\n<b>Dari</b>: {user.mention()}"
     text += "\n<b>Anime</b>:"
     text += f"\n    <b>ID</b>: <code>{anime.id}</code>"
     text += f"\n    <b>Name</b>: <code>{anime.title.romaji}</code>"
@@ -218,13 +218,13 @@ async def report_episode_confirm(bot: Amime, callback: CallbackQuery):
         text += f"\n    <b>Episode</b>: <code>{number}</code>"
     text += f"\n    <b>Subtitled</b>: <code>{'yes' if subtitled else 'no'}</code>"
     text += (
-        f"\n    <b>Language</b>: <code>{lang.strings[language]['LANGUAGE_NAME']}</code>"
+        f"\n    <b>Tipe</b>: <code>{lang.strings[language]['LANGUAGE_NAME']}</code>"
     )
 
     text += "\n\n<b>Report</b>:"
-    text += f"\n    <b>Type</b>: <code>{lang.strings['en'][REPORT_TYPES[report_type]]}</code>"
+    text += f"\n    <b>Tipe</b>: <code>{lang.strings['en'][REPORT_TYPES[report_type]]}</code>"
     if "notes" in reporting.keys():
-        text += f"\n    <b>Notes</b>: <i>{reporting['notes']}</i>"
+        text += f"\n    <b>Catatan</b>: <i>{reporting['notes']}</i>"
     text += "\n\n#REPORT #EPISODE"
 
     await bot.send_message(CHATS["requests"], text)
