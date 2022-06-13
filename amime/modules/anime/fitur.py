@@ -139,17 +139,17 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         
 
-        #if len(episodes) > 0:
-            #if is_private and is_collaborator:
-             #   if anime.format.lower() == "movie":
-             #      buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
-              #  else:
-             #       buttons.append(
-              #          (
-               #             lang.watch_button,
-                #            f"episodes {anime.id} {episodes[0].season} 1",
-               #         )
-               #     )     
+        if len(episodes) > 0:
+            if is_private and is_collaborator:
+                if anime.format.lower() == "movie":
+                   buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
+                else:
+                    buttons.append(
+                        (
+                            lang.watch_button,
+                            f"episodes {anime.id} {episodes[0].season} 1",
+                        )
+                    )     
 
 
 
@@ -257,18 +257,6 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
             
             #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
         ]
-
-        if len(episodes) > 0:
-            if is_private and is_collaborator:
-                if anime.format.lower() == "movie":
-                   buttons.append((lang.watch_button, f"episode {anime.id} 0 1"))
-                else:
-                    buttons.append(
-                        (
-                            lang.watch_button,
-                            f"episodes {anime.id} {episodes[0].season} 1",
-                        )
-                    )
 
         if hasattr(anime, "trailer"):
             if hasattr(anime.trailer, "url"):
