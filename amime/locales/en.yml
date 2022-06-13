@@ -633,7 +633,7 @@ watch_list_anime_text: |
       👁️ - Hanya Dilihat
       ✅ - Ditonton
 
-watch_button: 🎥 Media
+watch_button: ⎙ Media
 
 description_button: 📜 Description
 
@@ -772,7 +772,7 @@ add_in_batch_button: 🔢 Tambahkan batch
 
 Hapus_text: ⌧ Hapus
 
-Download_text: 💾 Media
+Download_text: ⎙ Media
 
 no_found_episodes_text: |
   Oops! I did not find any episode, if it is a mistake, inform those responsible.
