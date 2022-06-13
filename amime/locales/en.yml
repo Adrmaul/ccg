@@ -675,9 +675,9 @@ cancel_button: ✖️ Batal
 send_me_the_item_text: |
   Kirim saya item: <b>{item}</b>.
 
-mark_as_watched_button: ✅ Tandai telah ditonton
+mark_as_watched_button: ✅ Selesai
 
-mark_as_unwatched_button: 👁️ Tandai belum ditonton
+mark_as_unwatched_button: ❌ Batalkan
 
 previous_button: ⏪ Sebelumnya
 
