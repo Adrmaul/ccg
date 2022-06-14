@@ -79,7 +79,7 @@ mylist: Watch list
 
 notify: Notify
 
-duration: Duration
+duration: Durasi
 
 episode: Episode
 
@@ -87,7 +87,7 @@ volume: Volume
 
 chapter: Chapter
 
-name: Name
+name: Nama
 
 season: Season
 
@@ -626,12 +626,18 @@ spesial_button: SPECIAL
 mv_button: MUSIC-AV
 
 watch_list_anime_text: |
-  Di bawah ini adalah semua episode yang tersedia. Selamat bersenang-senang.
+  Di bawah ini adalah Episode & menu yang tersedia.
+  Silahkan pilih tipe yang dibutukan.
+
+  Reso Tinggi : 1080p atau 720p
+  Reso Rendah : 360p atau 480p
 
   <b>Tentang Emoji</b>:
       🙈 - Belum Dibuka
       👁️ - Hanya Dilihat
       ✅ - Ditonton
+
+  Jika tidak ada tipe yang dibutukan, silahkan request dimenu.
 
 watch_button: 📹 Watch
 

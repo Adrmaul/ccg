@@ -122,8 +122,6 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if len(lines) > 0:
         keyboard += lines
 
-    keyboard.append([(lang.back_button, f"menu {anime_id}")])
-
     await callback.edit_message_media(
         InputMediaPhoto(
             f"https://img.anili.st/media/{anime_id}",
