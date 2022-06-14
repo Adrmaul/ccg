@@ -28,10 +28,8 @@ from pyromod.helpers import array_chunk, ikb
 from pyromod.nav import Pagination
 
 from amime.amime import Amime
-from amime.amime import fitur
 from amime.database import Episodes, Users, Viewed, Watched
 
-import anilist
 from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 
 
@@ -55,22 +53,6 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             f"episodes1 language {anime_id} {season} {language} {page}",
         ),
     ]
-
-    if len(episodes) > 0 and not anime.status.lower() == "not_yet_released":
-            button = (
-                lang.request_content_button,
-                f"request episodes {anime.id} {language}",
-            )
-            if anime.status.lower() == "releasing":
-                if hasattr(anime, "next_airing"):
-                    next_episode = anime.next_airing.episode
-                    if len(episodes) < (next_episode - 1):
-                        buttons.append(button)
-                else:
-                    buttons.append(button)
-            elif hasattr(anime, "episodes"):
-                if len(episodes) < anime.episodes:
-                    buttons.append(button)
 
     if season > 0:
         buttons.append(
@@ -136,7 +118,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         keyboard += lines
 
     keyboard.append([
-        (lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
+        (lang.Menu, f"fitur {anime_id}"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
 
     await callback.edit_message_media(
         InputMediaPhoto(
