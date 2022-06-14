@@ -109,7 +109,12 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         text = f"Silahkan untuk pilih tombol yang tersedia." 
 
-
+        buttons = [
+            (
+                        lang.view_more_button,
+                        f"btn_{anime.id}_True_{user.id}"
+                    )       
+        ]
 
         if is_private and is_collaborator:
             buttons.append(
