@@ -62,14 +62,14 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
         )
         all_episodes = sorted(all_episodes, key=lambda episode: episode.number)
 
-        episode = await Episodes.get_or_none(
+        episode1 = await Episodes.get_or_none(
             anime=anime_id,
             season=season,
             number=number,
             language=language,
             subtitled=subtitled,
         )
-        if episode is not None:
+        if episode1 is not None:
             await Viewed.get_or_create(user=user.id, item=episode.id, type="anime")
 
             keyboard = [[await get_watched_button(lang, user, episode.id), (
@@ -208,8 +208,8 @@ async def get_previous_episode_button(
     if not n > 0:
         seasons = []
 
-        for episode1 in all_episodes:
-            if episode1.season not in seasons:
+        for episode in all_episodes:
+            if episode.season not in seasons:
                 seasons.append(episode.season)
 
         for _s in seasons:
@@ -218,8 +218,8 @@ async def get_previous_episode_button(
                 episodes, key=lambda episode: episode.number, reverse=True
             )
 
-            for episode1 in episodes:
-                if episode1.season < season:
+            for episode in episodes:
+                if episode.season < season:
                     s = episode.season
                     n = episode.number
                     break
@@ -228,7 +228,7 @@ async def get_previous_episode_button(
                 break
 
     if n > 0:
-        return (lang.previous_button, f"episode {anime} {s} {n}")
+        return (lang.previous_button, f"episode1 {anime} {s} {n}")
     else:
         return (lang.dot_button, "noop")
 
@@ -253,6 +253,6 @@ async def get_next_episode_button(
                 break
 
     if n > 0:
-        return (lang.next_button, f"episode {anime} {s} {n}")
+        return (lang.next_button, f"episode1 {anime} {s} {n}")
     else:
         return (lang.dot_button, "noop")
