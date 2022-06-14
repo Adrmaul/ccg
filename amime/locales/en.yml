@@ -521,7 +521,7 @@ anime8_button: Koi wa Sekai Seifuku
 
 view_more_button: ⎆ Menu Anime
 
-menu_login : ⎆ Menu
+menu_login : ⚙️ Settings
 
 manga_more_button: ⎆ Menu Manga
 
@@ -629,23 +629,33 @@ spesial_button: SPECIAL
 
 mv_button: MUSIC-AV
 
-watch_list_anime_text: |
+watch_list_anime_login_text: |
   Di bawah ini adalah Episode & menu yang tersedia.
-  Silahkan pilih tipe yang dibutuhkan.
+  Silahkan pilih tipe yang kalian inginkan.
 
   Reso Tinggi : 1080p atau 720p
   Reso Rendah : 360p atau 480p
-
-  <b> Mode Inline</b> :
-      ▷ Judul | Video - Untuk filter Pencarian Video
-      ♪ Judul | Audio - Untuk Filter Pencarian Audio
       
   <b>Tentang Emoji</b>:
       🙈 - Belum Dibuka
       👁️ - Hanya Dilihat
       ✅ - Ditonton
 
-  Jika tidak ada tipe yang dibutuhkan, silahkan request dimenu.
+  Jika tidak ada tipe yang kalian inginkan, silahkan request ditombol Settings.
+
+watch_list_anime_text: |
+  Di bawah ini adalah Episode & menu yang tersedia.
+  Silahkan pilih tipe yang kalian inginkan.
+
+  Reso Tinggi : 1080p atau 720p
+  Reso Rendah : 360p atau 480p
+      
+  <b>Tentang Emoji</b>:
+      🙈 - Belum Dibuka
+      👁️ - Hanya Dilihat
+      ✅ - Ditonton
+
+  Jika tidak ada tipe yang kalian inginkan, silahkan request dimenu.
 
 watch_button: 📹 Watch
 
