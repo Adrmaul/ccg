@@ -95,7 +95,7 @@ language: Tipe
 
 notes: Notes
 
-added_by: Added by
+added_by: Ditambahkan oleh
 
 video: Video
 
@@ -653,15 +653,15 @@ studios_button: 🌆 Studios
 trailer_button: 🎦 Trailer
 
 manage_anime_text: |
-  Below are all the added episodes.
+  Di bawah ini adalah semua episode yang ditambahkan.
 
 manage_episode_text: |
-  Below is all the information from the episode (this is just a preview).
+  Di bawah ini adalah semua informasi dari episode (ini hanya preview).
 
 manage_button: 💼 Manage
 
 season_text: |
-  Below are all available seasons, choose one.
+  Di bawah ini adalah semua musim yang tersedia, pilih salah satu.
 
 season_button: 🌡️ Season
 
