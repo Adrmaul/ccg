@@ -89,7 +89,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             text += f"\n<b>{lang.episode}</b>: <code>{episode_number}</code>"
             text += f"\n<b>{lang.duration}</b>: <code>{episode.duration}m</code>"
             text += f"\n<b>{lang.language}</b>: <code>{lang.strings[episode.language]['LANGUAGE_NAME']}</code>"
-            text += f"\n<b>{lang.added_by}</b>: <b>{episode.added_by}</b>"
+            text += f"\n<b>{lang.added_by}</b>: <b>@{episode.added_by}</b>"
 
             #if len(episode.added_by) > 0:
             #    if not episode.added_by.isdecimal():

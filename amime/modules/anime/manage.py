@@ -612,7 +612,7 @@ async def anime_episode_save(bot: Amime, callback: CallbackQuery):
     episode["anime"] = anime_id
     episode["season"] = season
     episode["language"] = language
-    episode["added_by"] = str(user.first_name)
+    episode["added_by"] = str(user.username)
 
     id = -1
     if "id" in episode.keys():
@@ -902,7 +902,7 @@ async def anime_episode_batch_confirm(bot: Amime, callback: CallbackQuery):
             anime=anime_id,
             file_id=file_id,
             name=name or "",
-            added_by=user.first_name,
+            added_by=user.username,
             season=season,
             number=number,
             duration=duration // 60,
