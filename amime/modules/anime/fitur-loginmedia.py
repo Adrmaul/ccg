@@ -48,7 +48,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     buttons = [
         (
             f"{lang.language_button}: {lang.strings[language]['LANGUAGE_NAME']}",
-            f"episodes language {anime_id} {season} {language} {page}",
+            f"episodes1 language {anime_id} {season} {language} {page}",
         ),
     ]
 
@@ -157,7 +157,7 @@ async def episodes_season(bot: Amime, callback: CallbackQuery):
     for _season in seasons:
         text = ("✅" if _season == season else "") + f" {_season}"
         data = (
-            "noop" if _season == season else f"episodes season {anime_id} {_season} 1"
+            "noop" if _season == season else f"episodes1 season {anime_id} {_season} 1"
         )
         buttons.append((text, data))
 
