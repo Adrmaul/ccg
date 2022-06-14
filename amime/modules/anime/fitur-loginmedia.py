@@ -118,7 +118,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         keyboard += lines
 
     keyboard.append([
-        (lang.Menu, f"fitur {anime_id}"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
+        (lang.menu_login, f"fitur {anime_id}"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
 
     await callback.edit_message_media(
         InputMediaPhoto(
