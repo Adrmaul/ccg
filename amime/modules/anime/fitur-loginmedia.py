@@ -107,7 +107,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "🙈")
         + f" {i[0].number}"
         + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
-        page_data=lambda pg: f"episodes {anime_id} {season} {pg}",
+        page_data=lambda pg: f"episodes1 {anime_id} {season} {pg}",
     )
 
     lines = layout.create(page, lines=5, columns=3)
@@ -157,7 +157,7 @@ async def episodes_season(bot: Amime, callback: CallbackQuery):
     for _season in seasons:
         text = ("✅" if _season == season else "") + f" {_season}"
         data = (
-            "noop" if _season == season else f"episodes1 season {anime_id} {_season} 1"
+            "noop" if _season == season else f"episodes season {anime_id} {_season} 1"
         )
         buttons.append((text, data))
 
