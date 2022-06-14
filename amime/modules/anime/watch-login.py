@@ -62,14 +62,14 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
         )
         all_episodes = sorted(all_episodes, key=lambda episode: episode.number)
 
-        episode1 = await Episodes.get_or_none(
+        episode = await Episodes.get_or_none(
             anime=anime_id,
             season=season,
             number=number,
             language=language,
             subtitled=subtitled,
         )
-        if episode1 is not None:
+        if episode is not None:
             await Viewed.get_or_create(user=user.id, item=episode.id, type="anime")
 
             keyboard = [[await get_watched_button(lang, user, episode.id), (
@@ -239,15 +239,15 @@ async def get_next_episode_button(
     s = 0
     n = 0
 
-    for episode1 in episodes:
-        if episode1.number > number:
+    for episode in episodes:
+        if episode.number > number:
             s = season
             n = episode.number
             break
 
     if not n > 0:
-        for episode1 in all_episodes:
-            if episode1.season > season:
+        for episode in all_episodes:
+            if episode.season > season:
                 s = episode.season
                 n = episode.number
                 break
