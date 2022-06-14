@@ -48,7 +48,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     buttons = [
         (
             f"{lang.language_button}: {lang.strings[language]['LANGUAGE_NAME']}",
-            f"episodes language {anime_id} {season} {language} {page}",
+            f"episodes1 language {anime_id} {season} {language} {page}",
         ),
     ]
 
@@ -56,14 +56,14 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         buttons.append(
             (
                 f"{lang.season_button}: {season}",
-                f"episodes season {anime_id} {season} {page}",
+                f"episodes1 season {anime_id} {season} {page}",
             )
         )
 
     buttons.append(
         (
             f"{lang.subtitled_button}: {lang.yes if subtitled else lang.no}",
-            f"episodes subtitled {anime_id} {season} {page}",
+            f"episodes1 subtitled {anime_id} {season} {page}",
         )
     )
 
@@ -129,7 +129,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     )
 
 
-@Amime.on_callback_query(filters.regex(r"^episodes season (\d+) (\d+) (\d+)"))
+@Amime.on_callback_query(filters.regex(r"^episodes1 season (\d+) (\d+) (\d+)"))
 async def episodes_season(bot: Amime, callback: CallbackQuery):
     message = callback.message
     chat = message.chat
@@ -157,7 +157,7 @@ async def episodes_season(bot: Amime, callback: CallbackQuery):
     for _season in seasons:
         text = ("✅" if _season == season else "") + f" {_season}"
         data = (
-            "noop" if _season == season else f"episodes season {anime_id} {_season} 1"
+            "noop" if _season == season else f"episodes1 season {anime_id} {_season} 1"
         )
         buttons.append((text, data))
 
@@ -171,7 +171,7 @@ async def episodes_season(bot: Amime, callback: CallbackQuery):
     )
 
 
-@Amime.on_callback_query(filters.regex(r"^episodes subtitled (\d+) (\d+) (\d+)"))
+@Amime.on_callback_query(filters.regex(r"^episodes1 subtitled (\d+) (\d+) (\d+)"))
 async def episodes_subtitled(bot: Amime, callback: CallbackQuery):
     message = callback.message
     chat = message.chat
