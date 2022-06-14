@@ -28,7 +28,11 @@ from pyromod.helpers import array_chunk, ikb
 from pyromod.nav import Pagination
 
 from amime.amime import Amime
+from amime.amime import fitur
 from amime.database import Episodes, Users, Viewed, Watched
+
+import anilist
+from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 
 
 @Amime.on_callback_query(filters.regex(r"^episodes1 (\d+) (\d+) (\d+)"))
@@ -131,7 +135,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if len(lines) > 0:
         keyboard += lines
 
-    keyboard.append([(lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
+    keyboard.append([
+        (lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
 
     await callback.edit_message_media(
         InputMediaPhoto(
