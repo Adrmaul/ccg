@@ -208,8 +208,8 @@ async def get_previous_episode_button(
     if not n > 0:
         seasons = []
 
-        for episode in all_episodes:
-            if episode.season not in seasons:
+        for episode1 in all_episodes:
+            if episode1.season not in seasons:
                 seasons.append(episode.season)
 
         for _s in seasons:
@@ -218,8 +218,8 @@ async def get_previous_episode_button(
                 episodes, key=lambda episode: episode.number, reverse=True
             )
 
-            for episode in episodes:
-                if episode.season < season:
+            for episode1 in episodes:
+                if episode1.season < season:
                     s = episode.season
                     n = episode.number
                     break
@@ -239,15 +239,15 @@ async def get_next_episode_button(
     s = 0
     n = 0
 
-    for episode in episodes:
-        if episode.number > number:
+    for episode1 in episodes:
+        if episode1.number > number:
             s = season
             n = episode.number
             break
 
     if not n > 0:
-        for episode in all_episodes:
-            if episode.season > season:
+        for episode1 in all_episodes:
+            if episode1.season > season:
                 s = episode.season
                 n = episode.number
                 break
