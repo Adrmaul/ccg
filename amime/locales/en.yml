@@ -346,6 +346,8 @@ musim_gugur: SPRING
 
 batch_text_button: ⎙ Versi Batch
 
+inline : 🔍 Inline
+
 language_text: |
   Pilih Tipe yang diinginkan di bawah ini.
 
@@ -627,17 +629,21 @@ mv_button: MUSIC-AV
 
 watch_list_anime_text: |
   Di bawah ini adalah Episode & menu yang tersedia.
-  Silahkan pilih tipe yang dibutukan.
+  Silahkan pilih tipe yang dibutuhkan.
 
   Reso Tinggi : 1080p atau 720p
   Reso Rendah : 360p atau 480p
 
+  <b> Mode Inline</b> :
+      ▷ Judul | Video - Untuk filter Pencarian Video
+      ♪ Judul | Audio - Untuk Filter Pencarian Audio
+      
   <b>Tentang Emoji</b>:
       🙈 - Belum Dibuka
       👁️ - Hanya Dilihat
       ✅ - Ditonton
 
-  Jika tidak ada tipe yang dibutukan, silahkan request dimenu.
+  Jika tidak ada tipe yang dibutuhkan, silahkan request dimenu.
 
 watch_button: 📹 Watch
 
