@@ -138,17 +138,17 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
 
     keyboard = array_chunk(buttons, 2)
 
-    layout = Pagination(
-        episodes,
-        item_data=lambda i, pg: f"manage_user episode {i.anime} {i.season} {i.number} {int(subtitled)} {language} {pg}",
-        item_title=lambda i, pg: f"📝 {i.number}",
-        page_data=lambda pg: f"manage_user anime {anime_id} {season} {int(subtitled)} {language} {pg}",
-    )
+    #layout = Pagination(
+    #    episodes,
+    #    item_data=lambda i, pg: f"manage_user episode {i.anime} {i.season} {i.number} {int(subtitled)} {language} {pg}",
+    #    item_title=lambda i, pg: f"📝 {i.number}",
+    #    page_data=lambda pg: f"manage_user anime {anime_id} {season} {int(subtitled)} {language} {pg}",
+    #)
 
-    lines = layout.create(page, lines=5, columns=3)
+    #lines = layout.create(page, lines=5, columns=3)
 
-    if len(lines) > 0:
-        keyboard += lines
+    #if len(lines) > 0:
+    #    keyboard += lines
 
     keyboard.append([(lang.back_button, f"settings_login {anime_id}")])
 
