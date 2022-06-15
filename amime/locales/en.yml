@@ -95,7 +95,9 @@ language: Tipe
 
 notes: Notes
 
-added_by: Ditambahkan oleh
+added_by: Ditambahkan / diedit oleh
+
+support_by : Support Uploader
 
 video: Video
 
@@ -681,6 +683,17 @@ manage_episode_text: |
   Di bawah ini adalah semua informasi dari episode (ini hanya preview).
 
 manage_button: 💼 Manage
+
+manage_user_anime_text : |
+  Dibawah ini ada alat & episode yang bisa ditambahkan maupun edit.
+
+  Harap baca ini terlebih dahulu :
+  Kalian bebas menambahkan video anime dibot ini, dengan syarat sesuai ketentuan kami.
+  Silahkan klik tombol S&K DIbawah.
+
+manage_user_button: 📤 Submit
+
+s_k_user_button : ⚠️ S&K
 
 season_text: |
   Di bawah ini adalah semua musim yang tersedia, pilih salah satu.

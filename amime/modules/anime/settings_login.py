@@ -124,6 +124,14 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     lang.manage_button,
                     f"manage1 anime {anime.id} 0 1 {language} 1",
                 )
+            )
+
+        if not is_collaborator:
+            buttons.append(
+                (
+                    lang.manage_user_button,
+                    f"manage_user anime {anime.id} 0 1 {language} 1",
+                )
             )        
 
 
