@@ -89,7 +89,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             text += f"\n<b>{lang.episode}</b>: <code>{episode_number}</code>"
             text += f"\n<b>{lang.duration}</b>: <code>{episode.duration}m</code>"
             text += f"\n<b>{lang.language}</b>: <code>{lang.strings[episode.language]['LANGUAGE_NAME']}</code>"
-            text += f"\n<b>{lang.added_by}</b>: @<b>{episode.added_by}</b>"
+            text += f"\n<b>{lang.added_by}</b>: <code>{episode.added_by}</code>"
 
             #if len(episode.added_by) > 0:
             #    if not episode.added_by.isdecimal():
@@ -99,7 +99,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
                 text += f"\n<b>{lang.notes}</b>: <i>{episode.notes}</i>"
 
             viewed = await Viewed.filter(item=episode.id, type="anime")
-            text += f"\n\n<b>{len(viewed)}{len(viewed)}+ {lang.views.lower()}</b> - @ccgnimex_bot"
+            text += f"\n\n<b>{len(viewed)}{len(viewed)}+ {lang.views.lower()}</b> - ccgnimex_bot"
             vieweds = await Viewed.filter(user=user.id, type="anime")
             text += f"\n<b>{lang.episodes_viewed}</b>: <code>{len(vieweds)}</code>"
             watcheds = await Watched.filter(user=user.id)
