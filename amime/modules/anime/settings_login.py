@@ -107,7 +107,9 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         episodes = sorted(episodes, key=lambda episode: episode.number)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
-        text = f"Silahkan untuk pilih tombol yang tersedia." 
+        text = f"Silahkan untuk pilih tombol yang tersedia."
+        if anime.status.lower() == "not_yet_released":
+            text += f"\n⋟ Informasi terkait anime ini : <b>{lang.status}</b>: <code>{anime.status} | {anime.nextAiringEpisode}</code>" 
 
         buttons = [
             (

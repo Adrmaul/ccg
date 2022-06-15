@@ -142,7 +142,7 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
     if len(lines) > 0:
         keyboard += lines
 
-    keyboard.append([(lang.back_button, f"episodes1 {anime_id} 0 1")])
+    keyboard.append([(lang.back_button, f"settings_login {anime_id}")])
 
     if bool(message.photo):
         await message.edit_text(

@@ -104,7 +104,7 @@ async def language_set(bot: Amime, callback: CallbackQuery):
 
 @Amime.on_callback_query(
     filters.regex(
-        r"^manage (?P<content_type>anime|manga) language (\d+) (\d+) (\d+) (\w+) (\d+)"
+        r"^manage1 (?P<content_type>anime|manga) language (\d+) (\d+) (\d+) (\w+) (\d+)"
     )
 )
 async def language_manage(bot: Amime, callback: CallbackQuery):
@@ -135,7 +135,7 @@ async def language_manage(bot: Amime, callback: CallbackQuery):
         data = (
             "noop"
             if _language == language
-            else f"manage {content_type} language {content_id} {season} {int(subtitled)} {_language} 1"
+            else f"manage1 {content_type} language {content_id} {season} {int(subtitled)} {_language} 1"
         )
         buttons.append((text, data))
 
@@ -145,7 +145,7 @@ async def language_manage(bot: Amime, callback: CallbackQuery):
         [
             (
                 lang.back_button,
-                f"manage {content_type} {content_id} {season} {int(subtitled)} {language} {page}",
+                f"manage1 {content_type} {content_id} {season} {int(subtitled)} {language} {page}",
             )
         ]
     )

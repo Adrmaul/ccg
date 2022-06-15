@@ -60,7 +60,7 @@ async def request_episodes(bot: Amime, callback: CallbackQuery):
     keyboard.append(
         [
             (lang.confirm_button, f"request1 episodes confirm {anime_id} {language}"),
-            (lang.back_button, f"episodes1 {anime_id}"),
+            (lang.back_button, f"settings_login {anime_id}"),
         ]
     )
 
