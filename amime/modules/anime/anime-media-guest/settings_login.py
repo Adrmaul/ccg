@@ -37,7 +37,7 @@ from amime.modules.notify import get_notify_button
 
 
 
-@Amime.on_callback_query(filters.regex(r"^settings_login1 (\d+)\s?(\d+)?\s?(\d+)?"))
+@Amime.on_callback_query(filters.regex(r"^settings_login2 (\d+)\s?(\d+)?\s?(\d+)?"))
 async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union

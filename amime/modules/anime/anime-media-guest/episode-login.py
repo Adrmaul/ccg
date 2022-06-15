@@ -123,7 +123,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     await callback.edit_message_media(
         InputMediaPhoto(
             f"https://img.anili.st/media/{anime_id}",
-            caption=lang.watch_list_anime_login_text,
+            caption=lang.watch_list_anime_login_tidakada_text,
         ),
         reply_markup=ikb(keyboard),
     )
