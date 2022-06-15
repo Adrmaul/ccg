@@ -116,11 +116,11 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     )       
         ]
 
-        if is_private and is_collaborator:
+        if is_collaborator:
             buttons.append(
                 (
                     lang.manage_button,
-                    f"manage anime {anime.id} 0 1 {language} 1",
+                    f"manage1 anime {anime.id} 0 1 {language} 1",
                 )
             )        
 
@@ -141,7 +141,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if is_private and not anime.status.lower() == "not_yet_released":
             button = (
                 lang.request_content_button,
-                f"request episodes {anime.id} {language}",
+                f"request1 episodes {anime.id} {language}",
             )
             if anime.status.lower() == "releasing":
                 if hasattr(anime, "next_airing"):
@@ -155,14 +155,13 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     buttons.append(button)
         
 
-        if len(episodes) > 0:
-            if is_private:
-                buttons.append(
-                    (
-                        lang.back_button,
-                        f"episodes1 {anime.id} {episodes[0].season} 1",
-                    )
-                ) 
+        if is_private:
+            buttons.append(
+                (
+                    lang.back_button,
+                    f"episodes1 {anime.id} {episodes[0].season} 1",
+                )
+            ) 
 
         keyboard = array_chunk(buttons, 2)
 
