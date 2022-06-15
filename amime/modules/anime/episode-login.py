@@ -126,7 +126,6 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             caption=lang.watch_list_anime_login_text,
         ),
         reply_markup=ikb(keyboard),
-        protect_content=True,
     )
 
 
