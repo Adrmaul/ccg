@@ -126,13 +126,13 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )
             )
 
-        if  is_collaborator and not anime.status.lower() == "not_yet_released":
-            buttons.append(
-                (
-                    lang.manage_user_button,
-                    f"manage_user2 anime {anime.id} 0 1 {language} 1",
-                )
-            )        
+        #if  is_collaborator and not anime.status.lower() == "not_yet_released":
+        #    buttons.append(
+        #        (
+        #            lang.manage_user_button,
+        #            f"manage_user2 anime {anime.id} 0 1 {language} 1",
+        #        )
+        #    )        
 
 
         if is_private:
