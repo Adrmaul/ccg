@@ -111,12 +111,13 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if anime.status.lower() == "not_yet_released":
             text += f"\n⋟ Informasi terkait anime ini : <b>{lang.status}</b>: <code>{anime.status} | {anime.nextAiringEpisode}</code>" 
 
-        buttons = [
-            (
-                        lang.view_more_button,
-                        f"btn_{anime.id}_True_{user.id}"
-                    )       
-        ]
+        if is_private and len(episodes) > 0:
+            buttons = [
+                (
+                            lang.view_more_button,
+                            f"btn_{anime.id}_True_{user.id}"
+                        )       
+            ]
 
         if is_collaborator:
             buttons.append(
@@ -157,11 +158,19 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     buttons.append(button)
         
 
-        if is_private:
+        if is_private and len(episodes) > 0:
             buttons.append(
                 (
                     lang.back_button,
                     f"episodes1 {anime.id} {episodes[0].season} 1",
+                )
+            )
+
+        if is_private and len(episodes) < 1:
+            buttons.append(
+                (
+                    lang.back_button,
+                    f"btn_{anime.id}_True_{user_id}",
                 )
             ) 
 
