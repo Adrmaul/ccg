@@ -90,35 +90,28 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
     )
     episodes = sorted(episodes, key=lambda episode: episode.number)
 
-    if len(episodes) >= 2:
-        buttons.append(
-            (
-                lang.del_season_button,
-                f"manage_user episode delete {anime_id} {season} -1 {int(subtitled)} {language} {page}",
-            )
-        )
-    else:
-        if page > 0:
-            page -= 1
-            matches = re.search(
-                r"(\d+) (\d+) (\d+) (\w+) (\d+)",
-                f"{anime_id} {season} {int(subtitled)} {language} {page}",
-            )
-            callback.matches = [matches]
-            await anime_manage(bot, callback)
-            return
+    #if len(episodes) >= 2:
+    #    buttons.append(
+    #        (
+    #            lang.del_season_button,
+    #            f"manage_user episode delete {anime_id} {season} -1 {int(subtitled)} {language} {page}",
+    #        )
+    #    )
+    #else:
+    #    if page > 0:
+    #        page -= 1
+    #        matches = re.search(
+    #            r"(\d+) (\d+) (\d+) (\w+) (\d+)",
+    #            f"{anime_id} {season} {int(subtitled)} {language} {page}",
+    #        )
+    #        callback.matches = [matches]
+    #        await anime_manage(bot, callback)
+    #        return
 
     buttons.append(
         (
             lang.add_in_batch_button,
             f"manage_user episode batch {anime_id} {season} {int(subtitled)} {language} {page}",
-        )
-    )
-
-    buttons.append(
-        (
-            lang.s_k_user_button,
-            f"s_k_user {anime_id}",
         )
     )
 
@@ -154,14 +147,14 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
 
     if bool(message.photo):
         await message.edit_text(
-            lang.manage_anime_text,
+            lang.manage_user_anime_text,
             reply_markup=ikb(keyboard),
         )
     else:
         await callback.edit_message_media(
             InputMediaPhoto(
                 f"https://img.anili.st/media/{anime_id}",
-                caption=lang.manage_anime_text,
+                caption=lang.manage_user_anime_text,
             ),
             reply_markup=ikb(keyboard),
         )

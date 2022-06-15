@@ -686,10 +686,19 @@ manage_button: 💼 Manage
 
 manage_user_anime_text : |
   Dibawah ini ada alat & episode yang bisa ditambahkan maupun edit.
+  Kami untuk sekarang membuat semua user dapat, mengupload/menyimpan dibot ini.
+  Terkait Syarat & ketentuannya, mohon harap dibaca sepenuhnya, agar kalian paham!
 
-  Harap baca ini terlebih dahulu :
-  Kalian bebas menambahkan video anime dibot ini, dengan syarat sesuai ketentuan kami.
-  Silahkan klik tombol S&K DIbawah.
+  Peraturan :
+    > Kalian Hanya boleh submit anime, yang belum ada dibot ini, entah itu resolusinya ataupun seasonnya."
+    > Dilarang mengupload anime NFSW, jika kalian submit, kami bakal banned permanen."
+    > Harap pasang username telegram kalian, agar nantinya dalam proses upload, nanti divideo bakal tampil username kalian, jadi yang menonton tau, itu hasil upload siapa." 
+    > Harap pastikan video yang kalian upload benar, Soalnya jika sudah Submit, kalian tidak bisa mengedit & merubahnya. dikarenakan fitur lengkapnya kami batasi."
+    
+    <b>Diingatkan sekali lagi, Jika ada user yang sengaja/tidak sengaja melanggar peraturan kami. kami banned & jika banyak user yg melanggar, kami bakal tutup akses ini, Mohon pengertiannya.</b>
+    <i>Jika kalian mengedit atau memasukan video, video tersebut, bakal otomatis masuk ke channel admin kami. jadi kami tau apa saja yang kalian ubah/submit.</i>
+
+    Jika ada pertanyaan ataupun masalah, silahkan dengan senang hati hubungi admin di @otakuindonew, kami para admin, bakal menjawab dengan senang hati.
 
 manage_user_button: 📤 Submit
 
@@ -792,19 +801,19 @@ notify_users_button: 🛎️ Kirim Notifikasi
 collaborator_button: 👷‍♀️ Collaborator
 
 add_in_batch_text: |
-  Kirimi saya semua episode dengan teks dalam format berikut: <b>Nomor | Judul</b>
-   Mantan:
-       <b>1 | Uzumaki Naruto Tiba</b>
+  Kirimkan saya semua episode dengan teks file/caption dalam format berikut: <b>Nomor | Judul</b>
+   Contoh:
+       <b>1 | kocak bet lu njir</b>
 
-   Setelah itu, gunakan tombol <b>{confirm_button}</b>.
+   Setelah dikirim kebot & sudah memastikan eps sudah masuk silahkan, gunakan tombol <b>{confirm_button}</b>.
 
-   Catatan: <i>hanya nomor episode yang diperlukan</i>.
+   Catatan: <i>hanya nomor episode yang diperlukan, jika ada text dicaption, harap edit dan masukan angka epsnya didepan.</i>,
+            <i>kami sarankan gunakan apk telegram mod, seperti @NekogramX, dan gunakan fitur teruskan.
 
 add_in_batch_videos_text: |
   <b>{count}</b> Video, yang terdeteksi, sedang proses....
 
-add_in_batch_button: 🔢 Tambahkan batch
-
+add_in_batch_button: 🔢 Tambah Batch
 Hapus_text: ⌧ Hapus
 
 Download_text: ⎙ Media
