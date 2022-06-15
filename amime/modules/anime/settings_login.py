@@ -109,13 +109,10 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         text = f"Silahkan untuk pilih tombol yang tersedia."
         if anime.status.lower() == "not_yet_released":
-            text += f"\n⋟ Informasi terkait anime ini : <b>{lang.status}</b>: <code>{anime.status} | {anime.nextAiringEpisode}</code>" 
+            text += f"\n⋟ Informasi terkait anime ini : <b>{lang.status}</b>: <code>{anime.status}" 
 
         buttons = [
-            (
-                        lang.view_more_button,
-                        f"btn_{anime.id}_True_{user.id}"
-                    )       
+            buttons.append(await get_mylist_button(lang, user, "anime", anime.id))     
         ]
 
         if is_collaborator:
@@ -129,9 +126,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
-        
-        if is_private:
-            buttons.append(await get_mylist_button(lang, user, "anime", anime.id))
         
         if is_private:
             buttons.append(
@@ -169,7 +163,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             buttons.append(
                 (
                     lang.back_button,
-                    f"btn_{anime.id}_True_{user_id}",
+                    f"btn_{anime.id}_True_{user.id}",
                 )
             ) 
 
