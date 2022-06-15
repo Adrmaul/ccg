@@ -647,7 +647,7 @@ watch_list_anime_login_text: |
       👁️ - Hanya Dilihat
       ✅ - Ditonton
 
-  Jika tidak ada tipe yang kalian inginkan, silahkan request ditombol Settings.
+  Jika tidak ada tipe yang kalian inginkan, silahkan request ditombol Settings atau kalian proses sendiri.
 
 watch_list_anime_text: |
   Di bawah ini adalah Episode & menu yang tersedia.
@@ -696,9 +696,6 @@ manage_user_anime_text : |
     > Harap pastikan video yang kalian upload benar, Soalnya jika sudah Submit, kalian tidak bisa mengedit & merubahnya. dikarenakan fitur lengkapnya kami batasi."
     
     <b>Diingatkan sekali lagi, Jika ada user yang sengaja/tidak sengaja melanggar peraturan kami. kami banned & jika banyak user yg melanggar, kami bakal tutup akses ini, Mohon pengertiannya.</b>
-    <i>Jika kalian mengedit atau memasukan video, video tersebut, bakal otomatis masuk ke channel admin kami. jadi kami tau apa saja yang kalian ubah/submit.</i>
-
-    Jika ada pertanyaan ataupun masalah, silahkan dengan senang hati hubungi admin di @otakuindonew, kami para admin, bakal menjawab dengan senang hati.
 
 manage_user_button: 📤 Submit
 
