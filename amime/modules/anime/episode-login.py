@@ -121,13 +121,14 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         (lang.menu_login, f"settings_login {anime_id}"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
     
     if len(lines) > 0:
-        await callback.edit_message_media(
+        await callback.edit_message_media_(
             InputMediaPhoto(
                 f"https://img.anili.st/media/{anime_id}",
                 caption=lang.watch_list_anime_login_text,
                 protect_content=True,
             ),
         reply_markup=ikb(keyboard),
+        protect_content=True,
     )
 
     if len(lines) < 1:
