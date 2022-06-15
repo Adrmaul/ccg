@@ -95,7 +95,7 @@ language: Tipe
 
 notes: Notes
 
-added_by: Ditambahkan / diedit oleh
+added_by: Diproses oleh
 
 support_by : Support Uploader
 
@@ -127,15 +127,15 @@ date: Date
 
 invalid_user: Invalid user
 
-episodes_viewed: Melihat episode
+episodes_viewed: Episode Ditonton
 
-episodes_watched: Episode yang ditonton
+episodes_watched: Episode Ditonton
 
 similarity: Similarity
 
 at: At
 
-views: Dilihat
+views: 👁
 
 page: Page
 
@@ -802,14 +802,15 @@ notify_users_button: 🛎️ Kirim Notifikasi
 collaborator_button: 👷‍♀️ Collaborator
 
 add_in_batch_text: |
-  Kirimkan saya semua episode dengan teks file/caption dalam format berikut: <b>Nomor | Judul</b>
-   Contoh:
-       <b>1 | kocak bet lu njir</b>
+  Kirimkan saya semua episode dengan caption dalam format berikut: <b>Nomor | Judul</b>
+  Contoh:
+      <b>1 | kocak bet lu njir</b> atau begini saja 01 judul, dll intinya nomornya didepan.
 
-   Setelah dikirim kebot & sudah memastikan eps sudah masuk silahkan, gunakan tombol <b>{confirm_button}</b>.
+  Setelah dikirim kebot & sudah memastikan eps sudah benar silahkan, gunakan tombol <b>{confirm_button}</b>.
 
-   Catatan: <i>hanya nomor episode yang diperlukan, jika ada text dicaption, harap edit dan masukan angka epsnya didepan.</i>,
-            <i>kami sarankan gunakan apk telegram mod, seperti @NekogramX, dan gunakan fitur teruskan.
+  Catatan: <i>intinya, dicaption harus ada nomor episode didepan. terkait judul atau lainnya. tidak diwajibkan & dikirim tidak berurutkan tidak masalah.
+
+  kami sarankan gunakan apk telegram mod, untuk ubah caption, seperti @NekogramX, dan gunakan fitur teruskan.
 
 add_in_batch_videos_text: |
   <b>{count}</b> Video, yang terdeteksi, sedang proses....
