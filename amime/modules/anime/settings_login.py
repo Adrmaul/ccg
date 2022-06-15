@@ -112,7 +112,10 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             text += f"\n⋟ Informasi terkait anime ini : <b>{lang.status}</b>: <code>{anime.status}" 
 
         buttons = [
-            buttons.append(await get_mylist_button(lang, user, "anime", anime.id))     
+            (
+                        lang.Hapus_text, 
+                        f"neko_delete, {user.id}"
+                    ),       
         ]
 
         if is_collaborator:
@@ -126,6 +129,9 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
+        
+        if is_private:
+            buttons.append(await get_mylist_button(lang, user, "anime", anime.id))
         
         if is_private:
             buttons.append(
