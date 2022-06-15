@@ -86,11 +86,10 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             episode_number = f"{episode.number}"
             if episode.unified_until > 0:
                 episode_number += f"-{episode.unified_until}"
-            text += f"\n╭━━━━━━━━━━━━━━━━━</code>"
-            text += f"\n┟ <b>{lang.episode}</b>: <code>{episode_number}</code>"
-            text += f"\n┟ <b>{lang.duration}</b>: <code>{episode.duration}m</code>"
-            text += f"\n┟ <b>{lang.language}</b>: <code>{lang.strings[episode.language]['LANGUAGE_NAME']}</code>"
-            text += f"\n┟ <b>{lang.added_by}</b>: <code>{episode.added_by}</code>"
+            text += f"\n<b>{lang.episode}</b>: <code>{episode_number}</code>"
+            text += f"\n<b>{lang.duration}</b>: <code>{episode.duration}m</code>"
+            text += f"\n<b>{lang.language}</b>: <code>{lang.strings[episode.language]['LANGUAGE_NAME']}</code>"
+            text += f"\n<b>{lang.added_by}</b>: <code>{episode.added_by}</code>"
 
 
             #if len(episode.added_by) > 0:
@@ -98,16 +97,17 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             #        text += f"\n<b>{lang.added_by}</b>: <b>{episode.added_by}</b>"
 
             if len(episode.notes) > 0:
-                text += f"\n┞◈ <b>{lang.notes}</b>: <i>{episode.notes}</i>"
+                text += f"\n<b>{lang.notes}</b>: <i>{episode.notes}</i>"
 
             viewed = await Viewed.filter(item=episode.id, type="anime")
-            text += f"\n┟\n<b>{len(viewed)}{len(viewed)}+ {lang.views.lower()}</b> - @ccgnimex_bot"
+            text += f"\n\n<b>{len(viewed)}{len(viewed)}+ {lang.views.lower()}</b> - @ccgnimex_bot"
             vieweds = await Viewed.filter(user=user.id, type="anime")
-            text += f"\n┟</code>"
-            text += f"\n┞◈ <b>Profile</b>: <code>{user.username}</code>"
-            text += f"\n┟◈ <b>{lang.episodes_viewed}</b>: <code>{len(vieweds)}</code>"
+            text += f"\n\n┏━━━━━━━━━━━━━━━━━━━━━</code>"
+            text += f"\n┣❏ <b>Profil Saya</b>: <code>{user.username}</code> - {user.first_name}"
+            text += f"\n┣❏ <b>{lang.episodes_viewed}</b>: <code>{len(vieweds)} Eps</code>"
             watcheds = await Watched.filter(user=user.id)
-            text += f" | <b>{lang.episodes_watched}Eps</b>: <code>{len(watcheds)}</code>" 
+            text += f" | <b>{lang.episodes_watched}</b>: <code>{len(watcheds)} Eps</code>" 
+            text += f"\n┗━━━━━━━━━━━━━━━━━━━━━</code>"
 
             previous_button = await get_previous_episode_button(
                 lang, episodes, all_episodes, anime_id, season, number, language
