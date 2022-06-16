@@ -12,7 +12,7 @@ CHANNELS: Dict = {
     "admin": -1001559315851,
 }
 CHATS: Dict = {
-    "backup": -1001501672138,
+    "backup": -1001559315851,
     "anireborn": -1001204586138,
     "ccgnimex": -1001519273319,
     "requests": -1001519273319, 
