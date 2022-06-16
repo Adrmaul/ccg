@@ -44,7 +44,8 @@ async def upgrade_message(bot: Amime, message: Message):
 
     await (await asyncio.create_subprocess_shell("git remote add ccg https://github.com/Adrmaul/ccg.git")).communicate()
     proc = await asyncio.create_subprocess_shell(
-        "git log HEAD..ccg/main",
+        "git remote add ccg https://github.com/Adrmaul/ccg.git",
+        "git fetch ccg",
         stdout=asyncio.subprocess.PIPE,
         stderr=asyncio.subprocess.STDOUT,
     )

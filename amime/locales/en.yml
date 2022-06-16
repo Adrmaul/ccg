@@ -633,7 +633,11 @@ mv_button: MUSIC-AV
 
 
 watch_list_anime_login_tidakada_text: |
-  Media disini masih dalam pengembangan & pendataan, untuk sementara, gunakan inline di menu > main menu.
+  Media disini masih dalam pengembangan & pendataan.
+  hanya user login (/auth) & admin saja yang hanya bisa mengakses episode list.
+  proses mendata anime ada disini https://t.me/otakuindonew/49696
+
+  Untuk user guest, silahkan gunakan inline.
 
 watch_list_anime_login_text: |
   Di bawah ini adalah Episode & menu yang tersedia.
@@ -647,7 +651,7 @@ watch_list_anime_login_text: |
       👁️ - Hanya Dilihat
       ✅ - Ditonton
 
-  Jika tidak ada tipe yang kalian inginkan, silahkan request ditombol Settings atau kalian proses sendiri.
+  Jika tidak ada tipe yang kalian inginkan, silahkan request atau proses sendiri di menu settings.
 
 watch_list_anime_text: |
   Di bawah ini adalah Episode & menu yang tersedia.

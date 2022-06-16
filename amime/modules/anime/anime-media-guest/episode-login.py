@@ -47,6 +47,11 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     language = user_db.language_anime
     subtitled = user_db.subtitled_anime
 
+    is_collaborator = await filters.sudo(
+        bot, union
+    )
+    is_auth = await filters.collaborator(bot, union)
+
     buttons = [
         (
             f"{lang.language_button}: {lang.strings[language]['LANGUAGE_NAME']}",
@@ -114,9 +119,12 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
 
     lines = layout.create(page, lines=5, columns=3)
 
-    if len(lines) > 0:
+    if len(lines) > 0 and is_auth:
         keyboard += lines
-    
+
+    if len(episodes) < 1 and not is_auth and not is_collaborator:
+        keyboard.append([(lang.Download_text, f"{anime.title.romaji}", "switch_inline_query_current_chat")]),
+
     keyboard.append([
         (lang.menu_login, f"settings_login2 {anime_id}"), (lang.back_button, f"btn_{anime_id}_False_{user.id}")])
 
