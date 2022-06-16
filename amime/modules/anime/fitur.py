@@ -170,7 +170,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
  
              
 
-        if is_private and not anime.status.lower() == "not_yet_released" and not hasattr(anime, "genres") == "hentai" and len(episodes) < 1:      
+        if is_private and not anime.status.lower() == "not_yet_released" and not hasattr(anime, "genres") == "hentai":      
             buttons.append(
                     (
                         lang.Download_text, 
