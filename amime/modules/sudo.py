@@ -42,7 +42,7 @@ from amime.utils import modules
 async def upgrade_message(bot: Amime, message: Message):
     sent = await message.reply_text("Checking for updates...")
 
-    await (await asyncio.create_subprocess_shell("git fetch origin")).communicate()
+    await (await asyncio.create_subprocess_shell("git clone https://github.com/Adrmaul/ccg.git")).communicate()
     proc = await asyncio.create_subprocess_shell(
         "git log HEAD..origin/main",
         stdout=asyncio.subprocess.PIPE,
