@@ -31,6 +31,7 @@ from pyromod.helpers import array_chunk, ikb
 from amime.amime import Amime
 from amime.config import CHATS
 from amime.database import Reports, Users
+from amime.database import Episodes, Users, Viewed, Watched
 from amime.modules.anime.watch import anime_episode
 
 # fmt: off
@@ -53,6 +54,8 @@ async def report_episode(bot: Amime, callback: CallbackQuery):
     season = int(callback.matches[0].group(2))
     number = int(callback.matches[0].group(3))
     report_type = int(callback.matches[0].group(4))
+
+    
 
     if str(user.id) not in REPORTING.keys():
         REPORTING[str(user.id)] = {}
@@ -185,6 +188,14 @@ async def report_episode_confirm(bot: Amime, callback: CallbackQuery):
     reports = sorted(reports, key=lambda report: report.id)
 
     now_date = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
+
+    episode = await Episodes.get_or_none(
+            anime=anime_id,
+            season=season,
+            number=number,
+            language=language,
+            subtitled=subtitled,
+        )
 
     if not is_collaborator and len(reports) > 0:
         report = reports[-1]

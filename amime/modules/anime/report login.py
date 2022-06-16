@@ -186,6 +186,14 @@ async def report_episode_confirm(bot: Amime, callback: CallbackQuery):
 
     now_date = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
 
+    episode = await Episodes.get_or_none(
+            anime=anime_id,
+            season=season,
+            number=number,
+            language=language,
+            subtitled=subtitled,
+        )
+
     if not is_collaborator and len(reports) > 0:
         report = reports[-1]
         report_date = report.datetime
