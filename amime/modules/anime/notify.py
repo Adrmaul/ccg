@@ -140,7 +140,6 @@ async def notify_episodes_confirm(bot: Amime, callback: CallbackQuery):
                 text += f"-{season[1][-1]}"
             text += "</code>\n"
 
-    text += f"\n<b>{lang.added_by}</b>: <code>{episode.added_by}</code>"
     text += f"\n© 𝘤𝘤𝘨𝘯𝘪𝘮𝘦𝘹"
 
     keyboard = [
