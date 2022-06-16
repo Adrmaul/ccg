@@ -53,6 +53,10 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
         language = user_db.language_anime
         subtitled = user_db.subtitled_anime
 
+        is_collaborator = user_db.is_collaborator or bot.is_sudo(user)
+        if is_collaborator:
+            episodes = await Episodes.filter(added_by=user.id)
+
         episodes = await Episodes.filter(
             anime=anime_id, season=season, language=language, subtitled=subtitled
         )
@@ -99,14 +103,17 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             if len(episode.notes) > 0:
                 text += f"\n<b>{lang.notes}</b>: <i>{episode.notes}</i>"
 
-            viewed = await Viewed.filter(item=episode.id, type="anime")
-            text += f"\n\n<b>{len(viewed)}{len(viewed)}+ {lang.views.lower()}</b> - @ccgnimex_bot"
+            if is_collaborator:
+                viewed = await Viewed.filter(item=episode.id, type="anime")
+                text += f"\n\n<b>{len(viewed)}{len(viewed)}+ {lang.views.lower()}</b> - (Hanya admin yang bisa melihat)"
             vieweds = await Viewed.filter(user=user.id, type="anime")
             text += f"\n\n┏━━━━━━━━━━━━━━━━━━━━━</code>"
             text += f"\n┣❏ <b>Profil Saya</b>: <code>{user.username}</code> - {user.first_name}"
             text += f"\n┣❏ <b>{lang.episodes_viewed}</b>: <code>{len(vieweds)} Eps</code>"
             watcheds = await Watched.filter(user=user.id)
-            text += f" | <b>{lang.episodes_watched}</b>: <code>{len(watcheds)} Eps</code>" 
+            text += f" | <b>{lang.episodes_watched}</b>: <code>{len(watcheds)} Eps</code>"
+            if is_collaborator:
+                text += f"\n┣❏ Anda Adalah Admin: <code>{len(episodes)}Eps ditambahkan</code>"
             text += f"\n┗━━━━━━━━━━━━━━━━━━━━━</code>"
 
             previous_button = await get_previous_episode_button(

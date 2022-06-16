@@ -30,8 +30,8 @@ from amime.amime import Amime
 from amime.database import Chats, Collaborators, Episodes, Users
 
 
-@Amime.on_message(filters.cmd(r"language$"))
-@Amime.on_callback_query(filters.regex(r"^language$"))
+@Amime.on_message(filters.cmd(r"tipe$"))
+@Amime.on_callback_query(filters.regex(r"^tipe$"))
 async def language(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
