@@ -46,9 +46,9 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
     lang = union._lang
 
     is_private = await filters.private(bot, message)
-    is_collaborator = await filters.collaborator(bot, union) or await filters.sudo(
-        bot, union
-    )
+    is_collaborator = await filters.sudo(bot, union)
+
+    is_auth = await filters.collaborator(bot, union)
 
     query = union.matches[0].group(1)
 
@@ -126,7 +126,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )
             )
 
-        if not is_collaborator and not anime.status.lower() == "not_yet_released":
+        if is_auth and not anime.status.lower() == "not_yet_released":
             buttons.append(
                 (
                     lang.manage_user_button,

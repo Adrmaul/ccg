@@ -90,23 +90,23 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
     )
     episodes = sorted(episodes, key=lambda episode: episode.number)
 
-    if len(episodes) >= 2:
-        buttons.append(
-            (
-                lang.del_season_button,
-                f"manage_user episode delete {anime_id} {season} -1 {int(subtitled)} {language} {page}",
-            )
-        )
-    else:
-        if page > 0:
-            page -= 1
-            matches = re.search(
-                r"(\d+) (\d+) (\d+) (\w+) (\d+)",
-                f"{anime_id} {season} {int(subtitled)} {language} {page}",
-            )
-            callback.matches = [matches]
-            await anime_manage(bot, callback)
-            return
+    #if len(episodes) >= 2:
+    #    buttons.append(
+    #        (
+    #            lang.del_season_button,
+    #            f"manage_user episode delete {anime_id} {season} -1 {int(subtitled)} {language} {page}",
+    #        )
+    #    )
+    #else:
+    #    if page > 0:
+    #        page -= 1
+    #        matches = re.search(
+    #            r"(\d+) (\d+) (\d+) (\w+) (\d+)",
+    #            f"{anime_id} {season} {int(subtitled)} {language} {page}",
+    #        )
+    #        callback.matches = [matches]
+    #        await anime_manage(bot, callback)
+    #        return
 
     buttons.append(
         (
@@ -120,13 +120,13 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
         type="anime",
         language=language,
     )
-    if len(notifications) > 0:
-        buttons.append(
-            (
-                lang.notify_users_button,
-                f"notify episodes {anime_id} {season} {int(subtitled)} {language} {page}",
-            )
-        )
+    #if len(notifications) > 0:
+    #    buttons.append(
+    #        (
+    #            lang.notify_users_button,
+    #            f"notify episodes {anime_id} {season} {int(subtitled)} {language} {page}",
+    #        )
+    #    )
 
     keyboard = array_chunk(buttons, 2)
 
