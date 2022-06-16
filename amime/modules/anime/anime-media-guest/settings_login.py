@@ -108,9 +108,8 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
         text = f"Silahkan untuk pilih tombol yang tersedia."
-        text = f"\nSebelum Submit, silahkan pilih resolusi/tipe defaultnya dengan cara /tipe"
         if anime.status.lower() == "not_yet_released":
-            text += f"\n⋟ Informasi terkait anime ini : <b>{lang.status}</b>: <code>{anime.status}" 
+            text += f"\n⋟ anda belum bisa submit anime ini, karena : <code>{anime.status}" 
 
         buttons = [
             (
@@ -127,7 +126,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )
             )
 
-        if  not is_collaborator and not anime.status.lower() == "not_yet_released" and not anime.genre.lower() == "hentai":
+        if  not is_collaborator and not anime.status.lower() == "not_yet_released":
             buttons.append(
                 (
                     lang.manage_user_button,

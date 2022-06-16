@@ -111,8 +111,6 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             text += f"\n┣❏ <b>{lang.episodes_viewed}</b>: <code>{len(vieweds)} Eps</code>"
             watcheds = await Watched.filter(user=user.id)
             text += f" | <b>{lang.episodes_watched}</b>: <code>{len(watcheds)} Eps</code>"
-            if is_collaborator:
-                text += f"\n┣❏ Anda Adalah Admin: <code>{len(episodes)}Eps ditambahkan</code>"
             text += f"\n┗━━━━━━━━━━━━━━━━━━━━━</code>"
 
             previous_button = await get_previous_episode_button(

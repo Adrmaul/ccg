@@ -116,7 +116,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
 
     if len(lines) > 0:
         keyboard += lines
-
+    
     keyboard.append([
         (lang.menu_login, f"settings_login2 {anime_id}"), (lang.back_button, f"btn_{anime_id}_False_{user.id}")])
 
