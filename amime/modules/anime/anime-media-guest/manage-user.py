@@ -67,10 +67,10 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
         del VIDEOS[str(user.id)][str(anime_id)]
 
     buttons = [
-        #(
-        #    f"{lang.language_button}: {lang.strings[language]['LANGUAGE_NAME']}",
-        #    f"manage_user2 anime language {anime_id} {season} {int(subtitled)} {language} {page}",
-        #),
+        (
+            f"{lang.language_button}: {lang.strings[language]['LANGUAGE_NAME']}",
+            f"manage_user2 anime language {anime_id} {season} {int(subtitled)} {language} {page}",
+        ),
         (
             f"{lang.season_button}: {season}",
             f"manage_user2 anime season {anime_id} {season} {int(subtitled)} {language} {page}",
