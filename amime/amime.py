@@ -33,6 +33,7 @@ from pyrogram.raw.all import layer
 from pyrogram.types import User
 
 from amime.config import SUDO_USERS
+from amime.config import COLLABORATOR_USERS
 from amime.utils import (
     backup,
     day_releases,
@@ -70,6 +71,7 @@ class Amime(Client):
         )
 
         self.sudos = SUDO_USERS
+        self.collab = COLLABORATOR_USERS
 
         self.start_datetime = datetime.datetime.now(pytz.timezone('Asia/Jakarta'))
     async def start(self):
@@ -109,3 +111,6 @@ class Amime(Client):
 
     def is_sudo(self, user: User) -> bool:
         return user.id in self.sudos
+    
+    def is_collaborator(self, user: User) -> bool:
+        return user.id in self.collab
