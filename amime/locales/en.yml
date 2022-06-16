@@ -75,7 +75,7 @@ short_description: Short description
 
 favorite: Favorite
 
-mylist: Watch list
+mylist: Watch List
 
 notify: Notify
 
@@ -452,7 +452,7 @@ mylist_text: |
 
 favorites_button: ⭐ Favorites
 
-mylists_button: 👁‍🗨 Watch list
+mylists_button: 👁‍🗨 Watch List
 
 batch_button: ⎙ Batch File
 
