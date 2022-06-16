@@ -122,7 +122,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if len(lines) > 0 and is_auth:
         keyboard += lines
 
-    if len(episodes) < 1 and not is_auth and not is_collaborator:
+    if len(episodes) < 1:
         keyboard.append([(lang.Download_text, f"{anime.title.romaji}", "switch_inline_query_current_chat")]),
 
     keyboard.append([
