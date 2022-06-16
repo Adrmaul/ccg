@@ -209,6 +209,7 @@ async def report_episode_confirm(bot: Amime, callback: CallbackQuery):
 
     text = "<b>Laporan Terbaru</b>"
     text += f"\n<b>Dari</b>: {user.mention()}"
+    text += f"\n<b>Kepada</b>: @{episode.added_by} atau admin disini."
     text += "\n<b>Anime</b>:"
     text += f"\n    <b>ID</b>: <code>{anime.id}</code>"
     text += f"\n    <b>Name</b>: <code>{anime.title.romaji}</code>"
