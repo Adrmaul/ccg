@@ -186,14 +186,6 @@ async def report_episode_confirm(bot: Amime, callback: CallbackQuery):
 
     now_date = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
 
-    episode = await Episodes.get_or_none(
-            anime=anime_id,
-            season=season,
-            number=number,
-            language=language,
-            subtitled=subtitled,
-        )
-
     if not is_collaborator and len(reports) > 0:
         report = reports[-1]
         report_date = report.datetime
@@ -217,7 +209,7 @@ async def report_episode_confirm(bot: Amime, callback: CallbackQuery):
 
     text = "<b>Laporan Terbaru</b>"
     text += f"\n<b>Dari</b>: {user.mention()}"
-    text += f"\n<b>Kepada</b>: @{episode.added_by} atau admin disini."
+    text += f"\n<b>Kepada</b>: @admin"
     text += "\n<b>Anime</b>:"
     text += f"\n    <b>ID</b>: <code>{anime.id}</code>"
     text += f"\n    <b>Name</b>: <code>{anime.title.romaji}</code>"
