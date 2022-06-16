@@ -153,7 +153,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                         lang.watch_button,
                         f"episodes {anime.id} {episodes[0].season} 1",
                     )
-                )
+                )    
 
 
 
@@ -162,18 +162,19 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 (
                     lang.manage_button,
                     f"manage anime {anime.id} 0 1 {language} 1",
-               )
+                )
             )
 
-   
+ 
              
-        if is_private and not anime.status.lower() == "not_yet_released" and not hasattr(anime, "genres") == "hentai" and len(episodes) < 1:      
-             buttons.append(
-                (
-                    lang.Download_text, 
-                    f"download more {anime.id} {user.id}"
-               ),
-             )
+
+        if is_private and not anime.status.lower() == "not_yet_released" and not hasattr(anime, "genres") == "hentai":      
+            buttons.append(
+                    (
+                        lang.Download_text, 
+                        f"download more {anime.id} {user.id}"
+                    ),
+                )
 
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "anime", anime.id))

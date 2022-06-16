@@ -20,7 +20,7 @@ CHATS: Dict = {
     "staff": -1001519273319,
 }
 
-COLLABORATOR_USERS: List[int] = [2108383947]
+COLLABORATOR_USERS: List[int] = [1765145]
 SUDO_USERS: List[int] = [1765145725, 1457083910, 1808809023, 784985038]  # @AndrielFR, @Hitalo and @VegaZS
 PREFIXES: List[str] = ["!", "/"] # Like !start or /start
 #tes
