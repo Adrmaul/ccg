@@ -73,7 +73,7 @@ async def filter_collaborator(_, bot, union: Union[CallbackQuery, Message]) -> b
     user = union.from_user
     if not user:
         return False
-    return bot.is_collaborator(user)
+    return (await Users.get(id=user.id)).is_collaborator
 
 
 async def filter_administrator(_, bot, union: Union[CallbackQuery, Message]) -> bool:
