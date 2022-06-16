@@ -90,22 +90,23 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
     )
     episodes = sorted(episodes, key=lambda episode: episode.number)
 
-    #if len(episodes) >= 2:
-    #    buttons.append(
-    #        (
-    #            lang.del_season_button,
-    #            f"manage_user episode delete {anime_id} {season} -1 {int(subtitled)} {language} {page}",
-    #        )
-    #    )
-    if page > 0:
-        page -= 1
-        matches = re.search(
-            r"(\d+) (\d+) (\d+) (\w+) (\d+)",
-            f"{anime_id} {season} {int(subtitled)} {language} {page}",
+    if len(episodes) >= 2:
+        buttons.append(
+            (
+                lang.del_season_button,
+                f"manage_user episode delete {anime_id} {season} -1 {int(subtitled)} {language} {page}",
+            )
         )
-        callback.matches = [matches]
-        await anime_manage(bot, callback)
-        return
+    else:
+        if page > 0:
+            page -= 1
+            matches = re.search(
+                r"(\d+) (\d+) (\d+) (\w+) (\d+)",
+                f"{anime_id} {season} {int(subtitled)} {language} {page}",
+            )
+            callback.matches = [matches]
+            await anime_manage(bot, callback)
+            return
 
     buttons.append(
         (
@@ -114,46 +115,45 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
         )
     )
 
-    #notifications = await Notifications.filter(
-    #    item=anime_id,
-    #    type="anime",
-    #    language=language,
-    #)
+    notifications = await Notifications.filter(
+        item=anime_id,
+        type="anime",
+        language=language,
+    )
+    if len(notifications) > 0:
+        buttons.append(
+            (
+                lang.notify_users_button,
+                f"notify episodes {anime_id} {season} {int(subtitled)} {language} {page}",
+            )
+        )
 
-    #if len(notifications) > 0:
-    #    buttons.append(
-    #        (
-    #            lang.notify_users_button,
-    #            f"notify episodes {anime_id} {season} {int(subtitled)} {language} {page}",
-    #        )
-    #    )
+    keyboard = array_chunk(buttons, 2)
 
-    #keyboard = array_chunk(buttons, 2)
+    layout = Pagination(
+        episodes,
+        item_data=lambda i, pg: f"manage_user episode {i.anime} {i.season} {i.number} {int(subtitled)} {language} {pg}",
+        item_title=lambda i, pg: f"📝 {i.number}",
+        page_data=lambda pg: f"manage_user anime {anime_id} {season} {int(subtitled)} {language} {pg}",
+    )
 
-    #layout = Pagination(
-    #    episodes,
-    #    item_data=lambda i, pg: f"manage_user episode {i.anime} {i.season} {i.number} {int(subtitled)} {language} {pg}",
-    #    item_title=lambda i, pg: f"📝 {i.number}",
-    #    page_data=lambda pg: f"manage_user anime {anime_id} {season} {int(subtitled)} {language} {pg}",
-    #)
+    lines = layout.create(page, lines=5, columns=3)
 
-    #lines = layout.create(page, lines=5, columns=3)
-
-    #if len(lines) > 0:
-    #    keyboard += lines
+    if len(lines) > 0:
+        keyboard += lines
 
     keyboard.append([(lang.back_button, f"settings_login {anime_id}")])
 
     if bool(message.photo):
         await message.edit_text(
-            lang.manage_user_anime_text,
+            lang.manage_anime_text,
             reply_markup=ikb(keyboard),
         )
     else:
         await callback.edit_message_media(
             InputMediaPhoto(
                 f"https://img.anili.st/media/{anime_id}",
-                caption=lang.manage_user_anime_text,
+                caption=lang.manage_anime_text,
             ),
             reply_markup=ikb(keyboard),
         )
