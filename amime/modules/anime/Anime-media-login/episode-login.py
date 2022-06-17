@@ -48,6 +48,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     language = user_db.language_anime
     subtitled = user_db.subtitled_anime
 
+    episodes = await Episodes.filter(added_by=user.id)
+
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
 
