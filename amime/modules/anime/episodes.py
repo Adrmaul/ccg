@@ -26,6 +26,7 @@ from pyrogram import filters
 from pyrogram.types import CallbackQuery, InputMediaPhoto
 from pyromod.helpers import array_chunk, ikb
 from pyromod.nav import Pagination
+import anilist
 
 from amime.amime import Amime
 from amime.database import Episodes, Users, Viewed, Watched
