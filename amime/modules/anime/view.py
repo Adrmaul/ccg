@@ -216,11 +216,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         keyboard = array_chunk(buttons, 2)
 
-        photo: str = ""
-        if hasattr(anime, "banner"):
-            photo = anime.banner
-        elif hasattr(anime, "media"):
-            photo = f"https://img.anili.st/media/{anime.id}"
+        photo = f"https://img.anili.st/media/{anime.id}"
 
         if bool(message.video) and is_callback:
             await union.edit_message_media(

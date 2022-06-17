@@ -120,10 +120,14 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
                         f"download more {anime_id} {user.id}"
                     ), (lang.back_button, f"menu {anime_id}")])
 
+    photo: str = ""
+    if hasattr(anime, "banner"):
+        photo = anime.banner
+
     await callback.edit_message_media(
         InputMediaPhoto(
-            f"https://img.anili.st/media/{anime_id}",
-            caption=lang.watch_list_anime_text,
+            photo,
+            caption=lang.watch_list_anime_login_text,
         ),
         reply_markup=ikb(keyboard),
     )

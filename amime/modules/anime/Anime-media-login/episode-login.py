@@ -46,6 +46,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     user_db = await Users.get(id=user.id)
     language = user_db.language_anime
     subtitled = user_db.subtitled_anime
+    
 
     buttons = [
         (
@@ -70,6 +71,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     )
 
     keyboard = array_chunk(buttons, 2)
+    
 
     episodes = await Episodes.filter(
         anime=anime_id, season=season, language=language, subtitled=subtitled
@@ -120,13 +122,18 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     keyboard.append([
         (lang.menu_login, f"settings_login {anime_id}"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
 
+    photo: str = ""
+    if hasattr(anime, "banner"):
+        photo = anime.banner
+
     await callback.edit_message_media(
         InputMediaPhoto(
-            f"https://img.anili.st/media/{anime_id}",
+            photo,
             caption=lang.watch_list_anime_login_text,
         ),
         reply_markup=ikb(keyboard),
     )
+    
 
 
 @Amime.on_callback_query(filters.regex(r"^episodes1 season (\d+) (\d+) (\d+)"))
