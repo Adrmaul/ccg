@@ -132,9 +132,9 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         return
 
     text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)\n"
-    if len(episode) > 0:
+    if len(episodes) > 0:
         text += f"\n<b>Tersedia</b>: <code>{len(episodes)}Eps Ditambahkan.</code>"
-    if len(episode) < 1:
+    if len(episodes) < 1:
         text += f"\nEpisode belum tersedia, silahkan request."
 
     photo: str = ""
