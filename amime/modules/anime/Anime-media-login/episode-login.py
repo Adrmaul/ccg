@@ -125,6 +125,12 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         (lang.menu_login, f"settings_login {anime_id}"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
 
     anime = await client.get(anime_id, "anime")
+    
+    if anime is None:
+        return
+
+    text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)\n"
+
     photo: str = ""
     if hasattr(anime, "banner"):
         photo = anime.banner
@@ -139,6 +145,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     await callback.edit_message_media(
         InputMediaPhoto(
             photo,
+            caption=text,
         ),
         reply_markup=ikb(keyboard),
     )
