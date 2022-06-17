@@ -21,6 +21,7 @@
 # SOFTWARE.
 
 import math
+from pydoc import text
 
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, InputMediaPhoto
@@ -129,10 +130,16 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if hasattr(anime, "banner"):
         photo = anime.banner
 
+    text += f"<b>{lang.name}</b>: <code>{episode.name}</code>"
+    if len(episodes) > 0:
+        text += f"\n<b>Terkait Anime ini</b>: Sudah admin tambahkan <code>{len(episodes)} item.</code>"
+    if len(episodes) < 1:
+        text += f"\n<b>Terkait Anime ini</b>: belum admin tambahkan atau tidak sesuai kriteria kami.\nSilahkan Request."
+
     await callback.edit_message_media(
         InputMediaPhoto(
             photo,
-            caption=lang.watch_list_anime_login_text,
+            caption=text,
         ),
         reply_markup=ikb(keyboard),
     )
