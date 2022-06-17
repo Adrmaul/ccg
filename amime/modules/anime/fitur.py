@@ -159,7 +159,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
 
 
-        if is_private and is_collaborator:
+        if is_collaborator:
             buttons.append(
                 (
                     lang.manage_button,
