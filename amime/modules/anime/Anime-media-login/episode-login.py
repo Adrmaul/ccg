@@ -128,8 +128,13 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     photo: str = ""
     if hasattr(anime, "banner"):
         photo = anime.banner
-    elif hasattr(anime, "banner"):
-        photo = f"https://img.anili.st/media/{anime.id}"
+    elif hasattr(anime, "cover"):
+            if hasattr(anime.cover, "extra_large"):
+                photo = anime.cover.extra_large
+            elif hasattr(anime.cover, "large"):
+                photo = anime.cover.large
+            elif hasattr(anime.cover, "medium"):
+                photo = anime.cover.medium
 
     await callback.edit_message_media(
         InputMediaPhoto(
