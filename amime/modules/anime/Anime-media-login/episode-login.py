@@ -49,11 +49,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     subtitled = user_db.subtitled_anime
 
     async with anilist.AsyncClient() as client:
-        if not query.isdecimal():
-            results = await client.search(query, "anime", 10)
-            if results is None:
-                await asyncio.sleep(0.5)
-                results = await client.search(query, "anime", 10)
+        anime = await client.get(anime_id, "anime")
 
     buttons = [
         (
@@ -127,6 +123,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
 
     keyboard.append([
         (lang.menu_login, f"settings_login {anime_id}"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
+
+    anime = await client.get(anime_id, "manga")
 
     photo: str = ""
     if hasattr(anime, "banner"):
