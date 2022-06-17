@@ -20,6 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from audioop import add
 import math
 
 from pyrogram import filters
@@ -49,6 +50,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     subtitled = user_db.subtitled_anime
 
     episodes = await Episodes.filter(added_by=user.id)
+
+    languages = await language.filter(added_by=user.id)
 
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
@@ -132,10 +135,10 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         return
 
     text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
-    if len(language) > 0:
-        text += f"\n<b>Tersedia</b>: <code>{len(language)}</code>"
+    if len(episodes) > 0:
+        text += f"\n<b>Tersedia</b>: <code>{len(languages)}</code>"
     if len(episodes) < 1:
-        text += f"\nTersedia</b>: <code>{len(language)}</code>"
+        text += f"\nBelum tersedia untuk anime ini"
 
     photo: str = ""
     if hasattr(anime, "banner"):
