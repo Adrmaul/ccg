@@ -45,6 +45,10 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     language = user_db.language_anime
     subtitled = user_db.subtitled_anime
 
+    photo: str = ""
+    if hasattr(anime, "banner"):
+        photo = anime.banner
+
     buttons = [
         (
             f"{lang.language_button}: {lang.strings[language]['LANGUAGE_NAME']}",
@@ -120,9 +124,6 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
                         f"download more {anime_id} {user.id}"
                     ), (lang.back_button, f"menu {anime_id}")])
 
-    photo: str = ""
-    if hasattr(anime, "banner"):
-        photo = anime.banner
 
     await callback.edit_message_media(
         InputMediaPhoto(

@@ -46,6 +46,10 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     user_db = await Users.get(id=user.id)
     language = user_db.language_anime
     subtitled = user_db.subtitled_anime
+
+    photo: str = ""
+    if hasattr(anime, "banner"):
+        photo = anime.banner
     
 
     buttons = [
@@ -121,10 +125,6 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
 
     keyboard.append([
         (lang.menu_login, f"settings_login {anime_id}"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
-
-    photo: str = ""
-    if hasattr(anime, "banner"):
-        photo = anime.banner
 
     await callback.edit_message_media(
         InputMediaPhoto(
