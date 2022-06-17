@@ -26,7 +26,6 @@ from pyrogram import filters
 from pyrogram.types import CallbackQuery, InputMediaPhoto
 from pyromod.helpers import array_chunk, ikb
 from pyromod.nav import Pagination
-import anilist
 
 from amime.amime import Amime
 from amime.database import Episodes, Users, Viewed, Watched
@@ -45,10 +44,6 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     user_db = await Users.get(id=user.id)
     language = user_db.language_anime
     subtitled = user_db.subtitled_anime
-
-    photo: str = ""
-    if hasattr(anime, "banner"):
-        photo = anime.banner
 
     buttons = [
         (
@@ -125,11 +120,10 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
                         f"download more {anime_id} {user.id}"
                     ), (lang.back_button, f"menu {anime_id}")])
 
-
     await callback.edit_message_media(
         InputMediaPhoto(
-            photo,
-            caption=lang.watch_list_anime_login_text,
+            f"https://img.anili.st/media/{anime_id}",
+            caption=lang.watch_list_anime_text,
         ),
         reply_markup=ikb(keyboard),
     )

@@ -48,10 +48,12 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     language = user_db.language_anime
     subtitled = user_db.subtitled_anime
 
-    photo: str = ""
-    if hasattr(anime, "banner"):
-        photo = anime.banner
-    
+    async with anilist.AsyncClient() as client:
+        if not query.isdecimal():
+            results = await client.search(query, "anime", 10)
+            if results is None:
+                await asyncio.sleep(0.5)
+                results = await client.search(query, "anime", 10)
 
     buttons = [
         (
@@ -76,7 +78,6 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     )
 
     keyboard = array_chunk(buttons, 2)
-    
 
     episodes = await Episodes.filter(
         anime=anime_id, season=season, language=language, subtitled=subtitled
@@ -127,6 +128,10 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     keyboard.append([
         (lang.menu_login, f"settings_login {anime_id}"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
 
+    photo: str = ""
+    if hasattr(anime, "banner"):
+        photo = anime.banner
+
     await callback.edit_message_media(
         InputMediaPhoto(
             photo,
@@ -134,7 +139,6 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         ),
         reply_markup=ikb(keyboard),
     )
-    
 
 
 @Amime.on_callback_query(filters.regex(r"^episodes1 season (\d+) (\d+) (\d+)"))
