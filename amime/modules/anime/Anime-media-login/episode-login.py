@@ -124,8 +124,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     keyboard.append([
         (lang.menu_login, f"settings_login {anime_id}"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
 
-    anime = await client.get(anime_id, "manga")
-
+    anime = await client.get(anime_id, "anime")
     photo: str = ""
     if hasattr(anime, "banner"):
         photo = anime.banner
