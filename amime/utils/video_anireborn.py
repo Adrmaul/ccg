@@ -186,14 +186,14 @@ class VideoQueue(object):
 
                 video = (
                     await self.bot.send_video(
-                        CHATS["chanireborn"],
+                        CHATS["chanireborn", "videos"],
                         path,
                         f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {episode.language}\nChannel: @Anime_sub_indo_ar",
                         duration=video.duration,
                         width=video.width,
                         height=video.height,
                         thumb=thumb,
-                        file_name=f"{anime.title.romaji} {episode.number}.{extension}",
+                        file_name=f"{anime.title.romaji} {episode.number} - @ccgnimex_bot.{extension}",
                         supports_streaming=True,
                     )
                 ).video
