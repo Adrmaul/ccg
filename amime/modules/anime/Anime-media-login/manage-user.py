@@ -46,7 +46,7 @@ logger = logging.getLogger(__name__)
 
 
 EPISODES = {}
-VIDEOS = {}
+CHANIREBORN = {}
 
 
 @Amime.on_callback_query(filters.regex(r"^manage_user anime (\d+) (\d+) (\d+) (\w+) (\d+)"))
@@ -62,9 +62,9 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
     language = callback.matches[0].group(4)
     page = int(callback.matches[0].group(5))
 
-    if str(user.id) in VIDEOS.keys() and str(anime_id) in VIDEOS[str(user.id)].keys():
+    if str(user.id) in CHANIREBORN.keys() and str(anime_id) in CHANIREBORN[str(user.id)].keys():
         chat.cancel_listener()
-        del VIDEOS[str(user.id)][str(anime_id)]
+        del CHANIREBORN[str(user.id)][str(anime_id)]
 
     buttons = [
         (
@@ -777,13 +777,13 @@ async def anime_episode_batch(bot: Amime, callback: CallbackQuery):
         reply_markup=ikb(keyboard),
     )
 
-    if str(user.id) not in VIDEOS.keys():
-        VIDEOS[str(user.id)] = {}
-    if str(anime_id) not in VIDEOS[str(user.id)].keys():
-        VIDEOS[str(user.id)][str(anime_id)] = []
+    if str(user.id) not in CHANIREBORN.keys():
+        CHANIREBORN[str(user.id)] = {}
+    if str(anime_id) not in CHANIREBORN[str(user.id)].keys():
+        CHANIREBORN[str(user.id)][str(anime_id)] = []
 
     while True:
-        if len(VIDEOS[str(user.id)][str(anime_id)]) >= 30:
+        if len(CHANIREBORN[str(user.id)][str(anime_id)]) >= 30:
             await anime_episode_batch_confirm(bot, callback)
             break
 
@@ -793,7 +793,7 @@ async def anime_episode_batch(bot: Amime, callback: CallbackQuery):
             break
 
         if bool(msg.video):
-            VIDEOS[str(user.id)][str(anime_id)].append(msg)
+            CHANIREBORN[str(user.id)][str(anime_id)].append(msg)
 
 
 @Amime.on_callback_query(
@@ -813,19 +813,19 @@ async def anime_episode_batch_confirm(bot: Amime, callback: CallbackQuery):
 
     chat.cancel_listener()
 
-    videos = VIDEOS[str(user.id)][str(anime_id)]
+    CHANIREBORN = CHANIREBORN[str(user.id)][str(anime_id)]
 
-    if len(videos) == 1:
+    if len(CHANIREBORN) == 1:
         await callback.answer(lang.only_1_episode_not_allowed_alert, show_alert=True)
 
-        del VIDEOS[str(user.id)][str(anime_id)]
+        del CHANIREBORN[str(user.id)][str(anime_id)]
 
         await anime_manage(bot, callback)
         return
-    elif len(videos) > 0:
+    elif len(CHANIREBORN) > 0:
         await message.edit_text(
             lang.add_in_batch_videos_text(
-                count=len(videos),
+                count=len(CHANIREBORN),
             ),
         )
     else:
@@ -845,7 +845,7 @@ async def anime_episode_batch_confirm(bot: Amime, callback: CallbackQuery):
         return
 
     numbers_added = []
-    for msg in videos:
+    for msg in CHANIREBORN:
         caption = msg.caption
 
         file_id = ""
@@ -922,12 +922,12 @@ async def anime_episode_batch_confirm(bot: Amime, callback: CallbackQuery):
     logger.debug(
         "%s added %s episodes on the anime %s (%s)",
         user.first_name,
-        len(videos),
+        len(CHANIREBORN),
         anime_id,
         language,
     )
 
-    del VIDEOS[str(user.id)][str(anime_id)]
+    del CHANIREBORN[str(user.id)][str(anime_id)]
 
     await callback.answer(lang.confirm_save_episode_alert, show_alert=True)
 

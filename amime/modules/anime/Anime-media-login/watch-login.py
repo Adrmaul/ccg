@@ -119,7 +119,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             if is_auth:
                 text += f"\n┣❏ <b>Status</b> : Premium (Lifetime)"
             if not is_auth and not is_admin:
-                text += f"\n┣❏ <b>Status</b> : Trial User - <a href='t.me/akuiiki'>Order Premium (Lifetime)</a>"
+                text += f"\n┣❏ <b>Status</b> : Trial User - <a href='t.me/akuiiki'>Order Premium</a>"
             text += f"\n┗━━━━━━━━━━━━━━━━━━━━━</code>"
 
             previous_button = await get_previous_episode_button(

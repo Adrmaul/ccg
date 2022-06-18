@@ -155,6 +155,12 @@ start_text_2: |
 
   Saya sarankan, Silahkan Daftar/Login Anilist terlebih dahulu (/auth), untuk menikmati fitur bot ini sepenuhnya.
 
+start_text_3: |
+  Hello {user_mention}, Selamat datang didunia kita.
+  bot ini bisa untuk mendownload,streaming, dan mengecek info, rekomendasi, upcoming anime & manga lainnya. kami berencana untuk menjadikan bot ini, menjadi tempat istirahat para otaku.
+
+  <b>Status</b> : Free User
+
 start_button: 🔏 PM
 
 tingkat_button: Tingkat Lanjut
