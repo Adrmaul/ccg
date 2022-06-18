@@ -111,7 +111,6 @@ class VideoQueue(object):
                     anime = await anilist.AsyncClient().get(episode.anime, "anime")
                     await asyncio.sleep(5)
                 
-                lang = callback._lang
 
                 codec = None
                 softsubbed = False
@@ -189,7 +188,7 @@ class VideoQueue(object):
                     await self.bot.send_video(
                         CHATS["chanireborn"],
                         path,
-                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {lang.strings[episode.language]['LANGUAGE_NAME']}\nChannel: @Anime_sub_indo_ar",
+                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {episode.language}\nChannel: @Anime_sub_indo_ar",
                         duration=video.duration,
                         width=video.width,
                         height=video.height,
