@@ -108,7 +108,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             vieweds = await Viewed.filter(user=user.id, type="anime")
             text += f"\n\n┏━━━━━━━━━━━━━━━━━━━━━</code>"
             text += f"\n┣❏ <b>Profil Saya</b>: <code>{user.username}</code> - {user.first_name}"
-            text += f"\n┣❏ <b>{lang.episodes_viewed}</b>: <code>{len(vieweds)} Eps</code>"
+            text += f"\n┣❏ <b>Dicek</b>: <code>{len(vieweds)} Eps</code>"
             watcheds = await Watched.filter(user=user.id)
             text += f" | <b>{lang.episodes_watched}</b>: <code>{len(watcheds)} Eps</code>"
             text += f"\n┗━━━━━━━━━━━━━━━━━━━━━</code>"

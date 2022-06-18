@@ -57,6 +57,8 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
         if is_collaborator:
             episodes = await Episodes.filter(added_by=user.id)
 
+        is_auth = bot.is_collaborator(user)
+
         episodes = await Episodes.filter(
             anime=anime_id, season=season, language=language, subtitled=subtitled
         )
@@ -112,6 +114,12 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             text += f"\n┣❏ <b>{lang.episodes_viewed}</b>: <code>{len(vieweds)} Eps</code>"
             watcheds = await Watched.filter(user=user.id)
             text += f" | <b>{lang.episodes_watched}</b>: <code>{len(watcheds)} Eps</code>"
+            if is_collaborator:
+                text += f"/n┣❏Status : Admin"
+            if is_auth:
+                text += f"/n┣❏Status : Premium (Lifetime)"
+            if not is_auth and is_collaborator:
+                text += f"/n┣❏Status : Free User - <a href='t.me/akuiiki'>Order Premium</a>"
             text += f"\n┗━━━━━━━━━━━━━━━━━━━━━</code>"
 
             previous_button = await get_previous_episode_button(
