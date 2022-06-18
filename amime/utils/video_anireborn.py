@@ -67,7 +67,7 @@ class VideoQueue(object):
 
         directory = f"./downloads/anireborn/{random.randint(0, 9999)}/"
         while os.path.exists(directory):
-            directory = f"./downloads/anireborn{random.randint(0, 9999)}/"
+            directory = f"./downloads/anireborn/{random.randint(0, 9999)}/"
 
         episode = await Episodes.get_or_none(id=id)
 
@@ -187,7 +187,7 @@ class VideoQueue(object):
                     await self.bot.send_video(
                         CHATS["chanireborn"],
                         path,
-                        f"<b>{anime.title.romaji}</b>\n\nEpisode: {episode.number}\nChannel: @Anime_sub_indo_ar",
+                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {lang.strings[episode.language]['LANGUAGE_NAME']}\nChannel: @Anime_sub_indo_ar",
                         duration=video.duration,
                         width=video.width,
                         height=video.height,
