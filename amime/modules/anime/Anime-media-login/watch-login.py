@@ -107,7 +107,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
 
             if is_admin:
                 viewed = await Viewed.filter(item=episode.id, type="anime")
-                text += f"\n\n<b>{len(viewed)}{len(viewed)}+ {lang.views.lower()}</b> - (Hanya admin yang bisa melihat)"
+                text += f"\n\n<b>{len(viewed)}+ {lang.views.lower()}</b> - (Hanya admin yang bisa melihat)"
             vieweds = await Viewed.filter(user=user.id, type="anime")
             text += f"\n\n┏━━━━━━━━━━━━━━━━━━━━━</code>"
             text += f"\n┣❏ <b>Profil Saya</b>: <code>{user.username}</code> - <a href='t.me/{user.username}'>{user.id}</a>"
@@ -115,10 +115,11 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             watcheds = await Watched.filter(user=user.id)
             text += f" | <b>{lang.episodes_watched}</b>: <code>{len(watcheds)} Eps</code>"
             if is_admin:
-                text += f"\n┣❏Status : Admin"
+                text += f"\n┣❏ <b>Status</b> : Admin"
             if is_auth:
-                text += f"\n┣❏Status : Premium (Lifetime)"
-            text += f"\n┣❏Status : Free User - <a href='t.me/akuiiki'>Order Premium</a>"
+                text += f"\n┣❏ <b>Status</b> : Premium (Lifetime)"
+            if not is_auth and not is_admin:
+                text += f"\n┣❏ <b>Status</b> : Trial User - <a href='t.me/akuiiki'>Order Premium (Lifetime)</a>"
             text += f"\n┗━━━━━━━━━━━━━━━━━━━━━</code>"
 
             previous_button = await get_previous_episode_button(
