@@ -92,24 +92,6 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                 ]
             ),
         )
-    else:
-        await message.reply_text(
-            lang.start_text.format(
-                user_mention=user.mention(),
-                bot_name=bot.me.first_name,
-            ),
-            reply_markup=ikb(
-                [
-                    [
-                        (
-                            lang.start_button,
-                            f"https://t.me/{bot.me.username}?start=",
-                            "url",
-                        )
-                    ]
-                ]
-            ),
-        )
 
     if is_private and is_collaborator:
         await (message.edit_text if is_callback else message.reply_text )(
@@ -148,24 +130,6 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
                         (lang.Donasi, "donasi"),
                     ],
 
-                ]
-            ),
-        )
-    else:
-        await message.reply_text(
-            lang.start_text.format(
-                user_mention=user.mention(),
-                bot_name=bot.me.first_name,
-            ),
-            reply_markup=ikb(
-                [
-                    [
-                        (
-                            lang.start_button,
-                            f"https://t.me/{bot.me.username}?start=",
-                            "url",
-                        )
-                    ]
                 ]
             ),
         )
