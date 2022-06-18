@@ -43,7 +43,7 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
     user = union.from_user
     lang = union._lang
 
-    if await filters.private(bot, message):
+    if await filters.private and not filter.sudo(bot, message):
         await (message.edit_text if is_callback else message.reply_text )(
             lang.start_text_2.format(
                 user_mention=user.mention(),
@@ -51,6 +51,14 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
             ),
             reply_markup=ikb(
                 [
+                    [
+                        (
+                            lang.addgrup_button,
+                            f"http://t.me/ccgnimeX_bot?startgroup=true",
+                            "url",
+                        ),
+                    ],
+                    
                     [
                         (
                             lang.addgrup_button,
@@ -106,6 +114,72 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
             ),
         )
 
+    if await filters.private and filter.sudo(bot, message):
+        await (message.edit_text if is_callback else message.reply_text )(
+            lang.start_text_2.format(
+                user_mention=user.mention(),
+                bot_name=bot.me.first_name,
+            ),
+            reply_markup=ikb(
+                [
+                    [
+                        (lang.Premium, "premium"),
+                    ],
+                    
+                    [
+                        (
+                            lang.addgrup_button,
+                            f"http://t.me/ccgnimeX_bot?startgroup=true",
+                            "url",
+                        ),
+                    ],
+                    [
+                        (lang.anime_button, "menu"),
+                        (lang.manga_button, "manga_s"),
+                    ],
+                    [
+                        (
+                            lang.grup_button,
+                            f"https://t.me/otakuindonew",
+                            "url",
+                        ),
+                        (
+                            lang.channel_button,
+                            f"https://t.me/downloadanimebatch/302",
+                            "url",
+                        )
+                    ],
+
+                    [
+                        (
+                            lang.Bantuan,
+                            f"bantuan",
+                        ),
+                        (lang.Disclaimer, "about"),
+                        (lang.Donasi, "donasi"),
+                    ],
+
+                ]
+            ),
+        )
+    else:
+        await message.reply_text(
+            lang.start_text.format(
+                user_mention=user.mention(),
+                bot_name=bot.me.first_name,
+            ),
+            reply_markup=ikb(
+                [
+                    [
+                        (
+                            lang.start_button,
+                            f"https://t.me/{bot.me.username}?start=",
+                            "url",
+                        )
+                    ]
+                ]
+            ),
+        )
 
 @Amime.on_message(
     filters.cmd(r"start (?P<content_type>menu|character|manga|bantuan)_(\d+)")
