@@ -90,23 +90,23 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
     )
     episodes = sorted(episodes, key=lambda episode: episode.number)
 
-    #if len(episodes) >= 2:
-    #    buttons.append(
-    #        (
-    #            lang.del_season_button,
-    #            f"manage1 episode delete {anime_id} {season} -1 {int(subtitled)} {language} {page}",
-    #       )
-    #    )
-    #else:
-    #    if page > 0:
-    #       page -= 1
-    #        matches = re.search(
-    #            r"(\d+) (\d+) (\d+) (\w+) (\d+)",
-    #            f"{anime_id} {season} {int(subtitled)} {language} {page}",
-    #        )
-    #        callback.matches = [matches]
-    #        await anime_manage(bot, callback)
-    #        return
+    if len(episodes) >= 2:
+        buttons.append(
+            (
+                lang.del_season_button,
+                f"manage1 episode delete {anime_id} {season} -1 {int(subtitled)} {language} {page}",
+            )
+        )
+    else:
+        if page > 0:
+            page -= 1
+            matches = re.search(
+                r"(\d+) (\d+) (\d+) (\w+) (\d+)",
+                f"{anime_id} {season} {int(subtitled)} {language} {page}",
+            )
+            callback.matches = [matches]
+            await anime_manage(bot, callback)
+            return
 
     buttons.append(
         (
