@@ -128,7 +128,7 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
     #        )
     #    )
 
-    keyboard = array_chunk(buttons, 2)
+    #keyboard = array_chunk(buttons, 2)
 
     #layout = Pagination(
     #    episodes,
