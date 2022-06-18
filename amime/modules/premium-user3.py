@@ -30,7 +30,7 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
         kwargs["reply_markup"] = ikb(keyboard)
 
     await (message.edit_text if is_callback else message.reply_text)(
-        lang.premium1_text.format(
+        lang.premium2_text.format(
             bot_name=bot.me.first_name,
             github="<a href='t.me/Rizki_Wahyudi03'>Owner</a>",
             channel=f"<a href='https://t.me/downloadanimebatch/'>{lang.channel}</a>",

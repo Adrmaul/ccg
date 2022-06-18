@@ -120,7 +120,7 @@ async def language_manage(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0].group(6))
 
     languages = []
-    if await filters.sudo(bot, callback):
+    if await filters.collaborator(bot, callback):
         languages = [*lang.strings.keys()]
     else:
         for collaborator in await Collaborators.filter(user=user.id):
