@@ -291,6 +291,50 @@ media_text: 📢 Selesai
 
 notif_ongoing_text: 📢 Ongoing
 
+premium_text : |
+  Ketentuan layanan & fitur bot mulai tanggal 1 Juli 2022 Memberlakukan fitur Premium.
+
+  Berikut list kategori yang didapatkan untuk setiap pengguna.
+
+  Free User :
+  - Menggunakan bot & fitur pencarian anime dan fitur plugin lainnya.
+  - untuk mendownload/stream Episode, hanya anime ongoing saja.
+
+  Premium User :
+  - Dapat mendownload/streaming dari berbagai macam anime bagi kami, menambahkan 1000 eps itu mudah & cepat.
+
+  Metode untuk menonton mempunyai 3 fitur : inline, list episode, dan auto filter.
+
+  - info statistik ketika menonton anime 
+  - banner anime yang berubah ketika memilih eps
+  - memunculkan tombol favorit & list daftar tonton
+  - Mensubmit anime yang ingin kalian simpan disini.
+  - dan fitur lainnya ataupun plugin, yang akan kami tingkatkan lagi kedepannya.
+
+premium1_text : |
+  FAQ - Pertanyaan yang mungkin banyak ditanyakan.
+
+  <b>Kenapa harus ada fitur premium?</b>
+  - Untuk mensuport admin disini, karena kami butuh waktu & tenaga untuk menciptakan & mengurus bot ini. semakin banyak yang beralih ke premium.
+  maka semakin rajin admin mengupload/mengurus bot ini.
+
+  - Dengan membayar 10K untuk membeli premium, kalian sudah mendapatkan fitur yang luar biasa.
+
+  <b>Jika bot ini dibanned, apakah yang akan terjadi?</b>
+  - terkait hal itu, semua kami sudah pertimbangkan dan mengujinya. terkait database anime, kami selalu membackup databasenya. jadi seandainya dibanned, data" tidak hilang termasuk video.
+
+premium1_text : |
+ <b>Bagaimana submit anime untuk premium user dan apa yang nanti didapatkan?</b>
+
+  - terkait untuk memasukan anime secara 1 per satu atau all in one, cukup mudah dan cepat. silahkan gabung kegrup kami @otakuindonew dan hubungi admin untuk tutorialnya.
+
+  - mungkin manfaatnya bagi kalian, bisa menyimpan anime dibot & bisa terlist rapih + setiap anime yang kalian submit, bakal muncul username kalian ketika dimenu episode.
+
+  Sampai kami fitur premium habis?
+  - Untuk sekarang kami menerapkan lifetime (seumur hidup). mungkin habisnya, jika telegram sudah tidak ada.
+
+Jika ada pertanyaan lainnya, silahkan hubungi admin kami untuk lebih lanjutnya.
+
 about_text: |
   <b>Disclaimer untuk bot ccgnimex.</b>
 
