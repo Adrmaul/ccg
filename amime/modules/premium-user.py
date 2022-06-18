@@ -41,12 +41,9 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
 
     is_private = await filters.private(bot, message)
     if is_private and is_callback:
-        keyboard = [[
-                (lang.Next, "premium1"),
-            ]],
-        [
+        keyboard = [
             [
-                (lang.Order, "order"),
+                (lang.Next, "premium1"),
             ],
             [
                 (lang.back_button, "start"),
@@ -88,7 +85,10 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
                 (lang.Next, "premium2"),
             ],
             [
-                (lang.back_button, "premium1"),
+                (lang.Prev, "premium1"),
+            ],
+            [
+                (lang.back_button, "start"),
             ],
         ]
         kwargs["reply_markup"] = ikb(keyboard)
@@ -124,7 +124,10 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
     if is_private and is_callback:
         keyboard = [
             [
-                (lang.back_button, "premium1"),
+                (lang.Prev, "premium1"),
+            ],
+            [
+                (lang.back_button, "start"),
             ],
         ]
         kwargs["reply_markup"] = ikb(keyboard)
