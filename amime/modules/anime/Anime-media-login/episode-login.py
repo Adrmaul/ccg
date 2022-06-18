@@ -121,7 +121,15 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             page_data=lambda pg: f"episodes1 {anime_id} {season} {pg}",
         )
 
-    lines = layout.create(page, lines=4, columns=3)
+        lines = layout.create(page, lines=4, columns=3)
+    if not is_admin:
+        buttons.append(
+        (
+            lang.Order,
+            f"http://t.me/akuiiki",
+            "url",
+        ),
+    )
 
     if len(lines) > 0:
         keyboard += lines
