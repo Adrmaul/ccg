@@ -49,7 +49,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     subtitled = user_db.subtitled_anime
 
     is_admin = bot.is_sudo(user)
-    
+
     episodes = await Episodes.filter(added_by=user.id)
 
     async with anilist.AsyncClient() as client:
@@ -125,6 +125,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
 
     if len(lines) > 0:
         keyboard += lines
+    
 
     keyboard.append([
         (lang.menu_login, f"settings_login {anime_id}"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
