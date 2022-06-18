@@ -122,6 +122,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         )
 
         lines = layout.create(page, lines=4, columns=3)
+
     if not is_admin:
         buttons.append(
         (
@@ -131,7 +132,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         ),
     )
 
-    if len(lines) > 0:
+    if len(lines) > 0 and is_admin:
         keyboard += lines
     
 
