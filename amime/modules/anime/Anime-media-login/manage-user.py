@@ -638,7 +638,7 @@ async def anime_episode_save(bot: Amime, callback: CallbackQuery):
         )
 
     if "update_video" in episode.keys() and episode["update_video"] is True:
-        await bot.video_queue.add(id, video)
+        await bot.video_anireborn.add(id, video)
 
     await callback.answer(lang.confirm_save_episode_alert, show_alert=True)
 
@@ -912,7 +912,7 @@ async def anime_episode_batch_confirm(bot: Amime, callback: CallbackQuery):
             datetime=now_date,
         )
 
-        await bot.video_queue.add(video_id, video)
+        await bot.video_anireborn.add(video_id, video)
 
         try:
             await msg.delete()
