@@ -42,6 +42,7 @@ from amime.utils import (
     modules,
     scrapper,
     video_queue,
+    video_anireborn,
 )
 
 logging.basicConfig(
@@ -90,6 +91,7 @@ class Amime(Client):
         langs.load()
         modules.load(self)
         self.video_queue = video_queue.VideoQueue(self, loop)
+        self.video_anireborn = video_anireborn.VideoQueue(self, loop)
         self.scrapper = scrapper.Scrapper()
 
         self.day_releases = None
