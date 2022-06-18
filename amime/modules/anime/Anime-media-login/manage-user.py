@@ -118,7 +118,7 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
     #notifications = await Notifications.filter(
     #    item=anime_id,
     #    type="anime",
-    #    language=language,
+    #   language=language,
     #)
     #if len(notifications) > 0:
     #    buttons.append(
@@ -128,7 +128,7 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
     #        )
     #    )
 
-    #keyboard = array_chunk(buttons, 2)
+    keyboard = array_chunk(buttons, 2)
 
     #layout = Pagination(
     #    episodes,
@@ -137,7 +137,7 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
     #    page_data=lambda pg: f"manage_user anime {anime_id} {season} {int(subtitled)} {language} {pg}",
     #)
 
-    #lines = layout.create(page, lines=5, columns=3)
+    lines = layout.create(page, lines=5, columns=3)
 
     if len(lines) > 0:
         keyboard += lines
