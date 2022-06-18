@@ -57,7 +57,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
         if is_admin:
             episodes = await Episodes.filter(added_by=user.id)
 
-        is_auth = bot.is_admin(user)
+        is_auth = bot.is_collaborator(user)
 
         episodes = await Episodes.filter(
             anime=anime_id, season=season, language=language, subtitled=subtitled
