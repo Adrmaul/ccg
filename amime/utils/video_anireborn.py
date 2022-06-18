@@ -110,6 +110,8 @@ class VideoQueue(object):
                 while anime is None:
                     anime = await anilist.AsyncClient().get(episode.anime, "anime")
                     await asyncio.sleep(5)
+                
+                lang = callback._lang
 
                 codec = None
                 softsubbed = False
