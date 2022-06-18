@@ -53,11 +53,11 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
         language = user_db.language_anime
         subtitled = user_db.subtitled_anime
 
-        is_collaborator = user_db.is_collaborator or bot.is_sudo(user)
-        if is_collaborator:
+        is_admin = bot.is_sudo(user)
+        if is_admin:
             episodes = await Episodes.filter(added_by=user.id)
 
-        is_auth = bot.is_collaborator(user)
+        is_auth = bot.is_admin(user)
 
         episodes = await Episodes.filter(
             anime=anime_id, season=season, language=language, subtitled=subtitled
@@ -105,21 +105,20 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             if len(episode.notes) > 0:
                 text += f"\n<b>{lang.notes}</b>: <i>{episode.notes}</i>"
 
-            if is_collaborator:
+            if is_admin:
                 viewed = await Viewed.filter(item=episode.id, type="anime")
                 text += f"\n\n<b>{len(viewed)}{len(viewed)}+ {lang.views.lower()}</b> - (Hanya admin yang bisa melihat)"
             vieweds = await Viewed.filter(user=user.id, type="anime")
             text += f"\n\n┏━━━━━━━━━━━━━━━━━━━━━</code>"
-            text += f"\n┣❏ <b>Profil Saya</b>: <code>{user.username}</code> - {user.first_name}"
+            text += f"\n┣❏ <b>Profil Saya</b>: <code>{user.username}</code> - <a href='t.me/{user.username}'>{user.id}</a>"
             text += f"\n┣❏ <b>{lang.episodes_viewed}</b>: <code>{len(vieweds)} Eps</code>"
             watcheds = await Watched.filter(user=user.id)
             text += f" | <b>{lang.episodes_watched}</b>: <code>{len(watcheds)} Eps</code>"
-            if is_collaborator:
-                text += f"/n┣❏Status : Admin"
+            if is_admin:
+                text += f"\n┣❏Status : Admin"
             if is_auth:
-                text += f"/n┣❏Status : Premium (Lifetime)"
-            if not is_auth and is_collaborator:
-                text += f"/n┣❏Status : Free User - <a href='t.me/akuiiki'>Order Premium</a>"
+                text += f"\n┣❏Status : Premium (Lifetime)"
+            text += f"\n┣❏Status : Free User - <a href='t.me/akuiiki'>Order Premium</a>"
             text += f"\n┗━━━━━━━━━━━━━━━━━━━━━</code>"
 
             previous_button = await get_previous_episode_button(

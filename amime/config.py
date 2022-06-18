@@ -21,6 +21,6 @@ CHATS: Dict = {
 }
 
 COLLABORATOR_USERS: List[int] = [1891259266, 1765145725] # @satyo @liveuser
-SUDO_USERS: List[int] = [1765145725, 1177818563, 1457083910, ]  # @yudi, @adrian and @anggi
+SUDO_USERS: List[int] = [784985038, 1177818563, 1457083910, ]  # @yudi, @adrian and @anggi
 PREFIXES: List[str] = ["!", "/"] # Like !start or /start
 #tes
