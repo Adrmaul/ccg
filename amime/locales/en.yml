@@ -301,10 +301,9 @@ premium_text : |
   - untuk mendownload/stream Episode, hanya anime ongoing saja.
 
   Premium User :
-  - Dapat mendownload/streaming dari berbagai macam anime bagi kami, menambahkan 1000 eps itu mudah & cepat.
+  - Dapat mendownload/streaming dari berbagai macam anime dan resolusi.
 
   Metode untuk menonton mempunyai 3 fitur : inline, list episode, dan auto filter.
-
   - info statistik ketika menonton anime 
   - banner anime yang berubah ketika memilih eps
   - memunculkan tombol favorit & list daftar tonton
@@ -323,7 +322,7 @@ premium1_text : |
   <b>Jika bot ini dibanned, apakah yang akan terjadi?</b>
   - terkait hal itu, semua kami sudah pertimbangkan dan mengujinya. terkait database anime, kami selalu membackup databasenya. jadi seandainya dibanned, data" tidak hilang termasuk video.
 
-premium1_text : |
+premium2_text : |
  <b>Bagaimana submit anime untuk premium user dan apa yang nanti didapatkan?</b>
 
   - terkait untuk memasukan anime secara 1 per satu atau all in one, cukup mudah dan cepat. silahkan gabung kegrup kami @otakuindonew dan hubungi admin untuk tutorialnya.

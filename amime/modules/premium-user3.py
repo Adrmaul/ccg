@@ -8,8 +8,8 @@ from amime.amime import Amime
 from amime.config import CHANNELS, GROUPS
 
 
-@Amime.on_message(filters.cmd(r"premium$"))
-@Amime.on_callback_query(filters.regex(r"^premium$"))
+@Amime.on_message(filters.cmd(r"premium2$"))
+@Amime.on_callback_query(filters.regex(r"^premium2$"))
 async def about(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
@@ -21,14 +21,7 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
     if is_private and is_callback:
         keyboard = [
             [
-                (
-                    lang.Order,
-                    f"https://t.me/akuiiki",
-                    "url",
-                )
-            ],
-            [
-                (lang.Next, "premium1"),
+                (lang.Prev, "premium1"),
             ],
             [
                 (lang.back_button, "start"),
@@ -37,7 +30,7 @@ async def about(bot: Amime, union: Union[CallbackQuery, Message]):
         kwargs["reply_markup"] = ikb(keyboard)
 
     await (message.edit_text if is_callback else message.reply_text)(
-        lang.premium_text.format(
+        lang.premium1_text.format(
             bot_name=bot.me.first_name,
             github="<a href='t.me/Rizki_Wahyudi03'>Owner</a>",
             channel=f"<a href='https://t.me/downloadanimebatch/'>{lang.channel}</a>",
