@@ -152,17 +152,34 @@ async def notify_episodes_confirm(bot: Amime, callback: CallbackQuery):
         ]
     ]
 
+    async with anilist.AsyncClient() as client:
+        anime = await client.get(anime_id, "anime")
+    
+    if anime is None:
+        return
+
+    photo: str = ""
+    if hasattr(anime, "banner"):
+        photo = anime.banner
+    elif hasattr(anime, "cover"):
+            if hasattr(anime.cover, "extra_large"):
+                photo = anime.cover.extra_large
+            elif hasattr(anime.cover, "large"):
+                photo = anime.cover.large
+            elif hasattr(anime.cover, "medium"):
+                photo = anime.cover.medium
+
     try:
         await bot.send_photo(
             CHANNELS[lang.code],
-            f"https://img.anili.st/media/{anime.id}",
+            photo,
             text,
             reply_markup=ikb(keyboard),
         )
     
         await bot.send_photo(
             CHANNELS["ani01"],
-            f"https://img.anili.st/media/{anime.id}",
+            photo,
             text,
             reply_markup=ikb(keyboard),
         )
@@ -200,7 +217,7 @@ async def notify_episodes_confirm(bot: Amime, callback: CallbackQuery):
             try:
                 await bot.send_photo(
                     chat.recipient,
-                    f"https://img.anili.st/media/{anime.id}",
+                    photo,
                     text,
                     reply_markup=ikb(keyboard),
                 )
