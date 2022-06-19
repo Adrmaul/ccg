@@ -49,7 +49,6 @@ class VideoQueue(object):
         )
         self.queue.put_nowait(item)
 
-
         if not self.running():
             pool = concurrent.futures.ThreadPoolExecutor(
                 max_workers=self.bot.workers - 4
@@ -64,12 +63,10 @@ class VideoQueue(object):
 
         item = self.queue.get_nowait()
         id, video = item.values()
-        
-        lang = union._lang
 
-        directory = f"./downloads/anireborn/{random.randint(0, 9999)}/"
+        directory = f"./downloads/{random.randint(0, 9999)}/"
         while os.path.exists(directory):
-            directory = f"./downloads/anireborn/{random.randint(0, 9999)}/"
+            directory = f"./downloads/{random.randint(0, 9999)}/"
 
         episode = await Episodes.get_or_none(id=id)
 
@@ -112,7 +109,6 @@ class VideoQueue(object):
                 while anime is None:
                     anime = await anilist.AsyncClient().get(episode.anime, "anime")
                     await asyncio.sleep(5)
-                
 
                 codec = None
                 softsubbed = False
@@ -186,12 +182,11 @@ class VideoQueue(object):
                         else None
                     )
 
-
                 video = (
                     await self.bot.send_video(
                         CHATS["chanireborn"],
                         path,
-                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {lang.strings[episode.language]['LANGUAGE_NAME']}\nChannel: @Anime_sub_indo_ar",
+                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {LANGUAGE_NAME}\nChannel: @Anime_sub_indo_ar",
                         duration=video.duration,
                         width=video.width,
                         height=video.height,
