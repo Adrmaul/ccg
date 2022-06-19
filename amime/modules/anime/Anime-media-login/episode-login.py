@@ -70,6 +70,16 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             )
         )
 
+    if not is_admin:
+        buttons.append(
+            (
+                lang.Order,
+                f"http://t.me/akuiiki",
+                "url",
+            ),
+        )
+    
+
     buttons.append(
         (
             f"{lang.subtitled_button}: {lang.yes if subtitled else lang.no}",
@@ -143,7 +153,11 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if anime is None:
         return
 
-    text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
+    if len(language) > 0:
+        text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
+
+    if len(language) < 1:
+        text = f"<b>{anime.title.romaji}</b> - Belum tersedia untuk tipe ini.\nSilahkan cek tipe lainnya atau request."
 
     photo: str = ""
     if hasattr(anime, "banner"):
