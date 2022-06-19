@@ -42,12 +42,13 @@ class VideoQueue(object):
         self.queue = asyncio.Queue()
         self.is_running = False
 
-    async def add(self, id: int, video: Union[Document, Video]):
+    async def add(self, id: int, callback: CallbackQuery, video: Union[Document, Video]):
         item = dict(
             id=id,
             video=video,
         )
         self.queue.put_nowait(item)
+        lang = callback._lang
 
         if not self.running():
             pool = concurrent.futures.ThreadPoolExecutor(
@@ -58,7 +59,7 @@ class VideoQueue(object):
             )
             await asyncio.gather(future, return_exceptions=True)
 
-    async def next(self, callback: CallbackQuery):
+    async def next(self):
         self.is_running = True
 
         item = self.queue.get_nowait()
@@ -69,7 +70,6 @@ class VideoQueue(object):
             directory = f"./downloads/{random.randint(0, 9999)}/"
 
         episode = await Episodes.get_or_none(id=id)
-        lang = callback._lang
 
         if episode is not None:
             try:
@@ -78,7 +78,7 @@ class VideoQueue(object):
                 while not bool(path):
                     attempts += 1
                     if attempts >= 3:
-                        text = "<b>Proses anime error</b>\n"
+                        text = "<b>Error processing an episode</b>\n"
                         text += "\n<b>Anime</b>:"
                         text += f"\n    <b>ID</b>: <code>{episode.anime}</code>"
                         text += "\n\n<b>Episode</b>:"
