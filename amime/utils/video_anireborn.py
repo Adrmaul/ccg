@@ -42,13 +42,12 @@ class VideoQueue(object):
         self.queue = asyncio.Queue()
         self.is_running = False
 
-    async def add(self, id: int, callback: CallbackQuery, video: Union[Document, Video]):
+    async def add(self, id: int, video: Union[Document, Video]):
         item = dict(
             id=id,
             video=video,
         )
         self.queue.put_nowait(item)
-        lang = callback._lang
 
         if not self.running():
             pool = concurrent.futures.ThreadPoolExecutor(
@@ -70,6 +69,7 @@ class VideoQueue(object):
             directory = f"./downloads/{random.randint(0, 9999)}/"
 
         episode = await Episodes.get_or_none(id=id)
+        lang = self._lang
 
         if episode is not None:
             try:
