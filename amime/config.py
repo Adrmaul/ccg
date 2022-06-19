@@ -18,7 +18,7 @@ CHATS: Dict = {
     "requests": -1001519273319, 
     "videos": -1001763186709,
     "staff": -1001519273319,
-    "chanireborn": -1001519273319,
+    "chanireborn": -1001728558641,
 }
 
 COLLABORATOR_USERS: List[int] = [1891259266, 1765145725] # @satyo @liveuser

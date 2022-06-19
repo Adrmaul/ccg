@@ -775,11 +775,6 @@ send_me_the_item_text: |
 send_me_caption_text: |
   Kirim saya item: <b>{item}</b>.
 
-  Template Caption Anireborn:
-  <code>#judulanime
-  Resolusi : sesuaikan
-  </code>
-
 mark_as_watched_button: ✅ Selesai
 
 mark_as_unwatched_button: ❌ Batalkan
