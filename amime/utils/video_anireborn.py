@@ -57,11 +57,10 @@ class VideoQueue(object):
                 pool, asyncio.ensure_future(self.next()), id
             )
             await asyncio.gather(future, return_exceptions=True)
+    
 
-    async def next(self, callback: CallbackQuery):
+    async def next(self):
         self.is_running = True
-
-        lang = callback._lang
 
         item = self.queue.get_nowait()
         id, video = item.values()
@@ -188,7 +187,7 @@ class VideoQueue(object):
                     await self.bot.send_video(
                         CHATS["chanireborn"],
                         path,
-                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {lang.strings[episode.language]['LANGUAGE_NAME']}\nChannel: @Anime_sub_indo_ar",
+                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {'LANGUAGE_NAME'}\nChannel: @Anime_sub_indo_ar",
                         duration=video.duration,
                         width=video.width,
                         height=video.height,
