@@ -29,7 +29,7 @@ import shutil
 from typing import Union
 
 import anilist
-from pyrogram.types import Document, Video
+from pyrogram.types import Document, Video, CallbackQuery
 
 from amime.config import CHATS
 from amime.database import Episodes
@@ -58,7 +58,7 @@ class VideoQueue(object):
             )
             await asyncio.gather(future, return_exceptions=True)
 
-    async def next(self):
+    async def next(self, callback: CallbackQuery):
         self.is_running = True
 
         item = self.queue.get_nowait()
@@ -69,6 +69,7 @@ class VideoQueue(object):
             directory = f"./downloads/{random.randint(0, 9999)}/"
 
         episode = await Episodes.get_or_none(id=id)
+        lang = callback._lang
 
         if episode is not None:
             try:
@@ -186,7 +187,7 @@ class VideoQueue(object):
                     await self.bot.send_video(
                         CHATS["chanireborn"],
                         path,
-                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {strings[language]['LANGUAGE_NAME']}\nChannel: @Anime_sub_indo_ar",
+                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {lang.strings[language]['LANGUAGE_NAME']}\nChannel: @Anime_sub_indo_ar",
                         duration=video.duration,
                         width=video.width,
                         height=video.height,
