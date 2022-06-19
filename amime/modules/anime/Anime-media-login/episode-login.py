@@ -80,7 +80,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if not is_admin:
         buttons.append(
             (
-                lang.Order,
+                lang.order_button,
                 f"http://t.me/akuiiki",
                 "url",
             ),

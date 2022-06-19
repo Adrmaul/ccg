@@ -400,7 +400,9 @@ batch_text_button: ⎙ Versi Batch
 inline : 🔍 Inline
 
 language_text: |
-  Pilih Tipe yang diinginkan di bawah ini.
+  Pilih Tipe yang tersedia.
+
+order_button: 💳 Order Premium
 
 language_changed_text: |
   Tipe berhasil diubah!
