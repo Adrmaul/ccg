@@ -29,7 +29,7 @@ import shutil
 from typing import Union
 
 import anilist
-from pyrogram.types import Document, Video, CallbackQuery
+from pyrogram.types import Document, Video
 
 from amime.config import CHATS
 from amime.database import Episodes
@@ -68,8 +68,7 @@ class VideoQueue(object):
         while os.path.exists(directory):
             directory = f"./downloads/{random.randint(0, 9999)}/"
 
-        episode = await Episodes.get_or_none(id=id, language=language)
-        
+        episode = await Episodes.get_or_none(id=id)
 
         if episode is not None:
             try:
