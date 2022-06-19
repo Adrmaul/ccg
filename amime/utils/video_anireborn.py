@@ -42,12 +42,13 @@ class VideoQueue(object):
         self.queue = asyncio.Queue()
         self.is_running = False
 
-    async def add(self, id: int, video: Union[Document, Video]):
+    async def add(self, id: int, video: Union[Document, Video], callback: CallbackQuery):
         item = dict(
             id=id,
             video=video,
         )
         self.queue.put_nowait(item)
+        lang = callback._lang
 
         if not self.running():
             pool = concurrent.futures.ThreadPoolExecutor(
@@ -58,8 +59,10 @@ class VideoQueue(object):
             )
             await asyncio.gather(future, return_exceptions=True)
 
-    async def next(self, lang):
+    async def next(self, callback: CallbackQuery):
         self.is_running = True
+
+        lang = callback._lang
 
         item = self.queue.get_nowait()
         id, video = item.values()
