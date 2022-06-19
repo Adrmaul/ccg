@@ -70,6 +70,13 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             )
         )
 
+    buttons.append(
+        (
+            f"{lang.subtitled_button}: {lang.yes if subtitled else lang.no}",
+            f"episodes1 subtitled {anime_id} {season} {page}",
+        )
+    )
+
     if not is_admin:
         buttons.append(
             (
@@ -78,14 +85,6 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
                 "url",
             ),
         )
-    
-
-    buttons.append(
-        (
-            f"{lang.subtitled_button}: {lang.yes if subtitled else lang.no}",
-            f"episodes1 subtitled {anime_id} {season} {page}",
-        )
-    )
 
     keyboard = array_chunk(buttons, 2)
 
@@ -134,15 +133,6 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         lines = layout.create(page, lines=4, columns=3)
         if len(lines) > 0:
             keyboard += lines
-
-    if not is_admin:
-        buttons.append(
-        (
-            lang.Order,
-            f"http://t.me/akuiiki",
-            "url",
-        ),
-    )
     
 
     keyboard.append([
@@ -153,10 +143,10 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if anime is None:
         return
 
-    if len(language) > 0:
-        text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
+    if len(episodes) > 0:
+        text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native} - ✅ Tersedia</code>)"
 
-    if len(language) < 1:
+    if len(episodes) < 1:
         text = f"<b>{anime.title.romaji}</b> - Belum tersedia untuk tipe ini.\nSilahkan cek tipe lainnya atau request."
 
     photo: str = ""
