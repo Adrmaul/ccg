@@ -144,10 +144,10 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         return
 
     if len(episodes) > 0:
-        text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native} - ✅ Tersedia</code>)"
+        text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}/code>)"
 
-    if len(episodes) < 1:
-        text = f"<b>{anime.title.romaji}</b> - Belum tersedia untuk tipe ini.\nSilahkan cek tipe lainnya atau request."
+    if not is_admin:
+        text = f"Untuk Menggunakan Fitur Ini, Silahkan Order Premium\nHanya 10k Lifetime."
 
     photo: str = ""
     if hasattr(anime, "banner"):
