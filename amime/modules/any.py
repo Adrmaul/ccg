@@ -35,11 +35,11 @@ async def set_language_message(bot: Amime, message: Message):
         return
     lang = message._lang
     code: str = ""
-    user_code = user.language_code or "en"
+    user_code = user.language_code or "720p"
     if "." in user_code:
         user_code = user_code.split(".")[0]
     if user_code not in lang.strings.keys():
-        user_code = "en"
+        user_code = "720p"
 
     if await filters.private(bot, message):
         code = (
@@ -60,7 +60,7 @@ async def set_language_message(bot: Amime, message: Message):
                 {
                     "title": chat.title,
                     "username": chat.username or "",
-                    "language": "en",
+                    "language": "720p",
                 },
                 id=chat.id,
             )
@@ -77,11 +77,11 @@ async def set_language_callback(bot: Amime, callback: CallbackQuery):
         return
     lang = callback._lang
     code: str = ""
-    user_code = user.language_code or "en"
+    user_code = user.language_code or "720p"
     if "." in user_code:
         user_code = user_code.split(".")[0]
     if user_code not in lang.strings.keys():
-        user_code = "en"
+        user_code = "720p"
 
     if await filters.private(bot, message):
         code = (
@@ -102,7 +102,7 @@ async def set_language_callback(bot: Amime, callback: CallbackQuery):
                 {
                     "title": chat.title,
                     "username": chat.username or "",
-                    "language": "en",
+                    "language": "720p",
                 },
                 id=chat.id,
             )
@@ -117,11 +117,11 @@ async def set_language_inline_query(bot: Amime, inline_query: InlineQuery):
         return
     lang = inline_query._lang
     code: str = ""
-    user_code = user.language_code or "en"
+    user_code = user.language_code or "720p"
     if "." in user_code:
         user_code = user_code.split(".")[0]
     if user_code not in lang.strings.keys():
-        user_code = "en"
+        user_code = "720p"
 
     code = (
         await Users.get_or_create(
