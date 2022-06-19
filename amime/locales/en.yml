@@ -771,6 +771,14 @@ cancel_button: ✖️ Batal
 send_me_the_item_text: |
   Kirim saya item: <b>{item}</b>.
 
+
+send_me_caption_text: |
+  Kirim saya item: <b>{item}</b>.
+  Template notes :
+  Caption:<i>
+  Resolusi : 
+  </i>
+
 mark_as_watched_button: ✅ Selesai
 
 mark_as_unwatched_button: ❌ Batalkan

@@ -465,7 +465,7 @@ async def anime_episode_edit(bot: Amime, callback: CallbackQuery):
     ]
 
     await message.edit_text(
-        lang.send_me_the_item_text(item=lang.strings[lang.code][item].lower()),
+        lang.send_me_caption_text(item=lang.strings[lang.code][item].lower()),
         reply_markup=ikb(keyboard),
     )
 
