@@ -144,7 +144,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         return
 
     if len(episodes) > 0:
-        text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}/code>)"
+        text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
     if not is_admin:
         text = f"Untuk Menggunakan Fitur Ini, Silahkan Order Premium\nHanya 10k Lifetime."
