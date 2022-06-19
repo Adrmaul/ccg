@@ -29,7 +29,7 @@ import shutil
 from typing import Union
 
 import anilist
-from pyrogram.types import Document, Video
+from pyrogram.types import Document, Video, CallbackQuery
 
 from amime.config import CHATS
 from amime.database import Episodes
