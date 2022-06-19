@@ -36,8 +36,6 @@ from amime.database import Episodes
 from pyrogram import filters
 from pyromod.helpers import bki, ikb
 
-from amime.database import Episodes
-
 
 
 class VideoQueue(object):
@@ -54,6 +52,7 @@ class VideoQueue(object):
         )
         self.queue.put_nowait(item)
 
+
         if not self.running():
             pool = concurrent.futures.ThreadPoolExecutor(
                 max_workers=self.bot.workers - 4
@@ -68,6 +67,8 @@ class VideoQueue(object):
 
         item = self.queue.get_nowait()
         id, video = item.values()
+        
+        lang = union._lang
 
         directory = f"./downloads/anireborn/{random.randint(0, 9999)}/"
         while os.path.exists(directory):
@@ -187,6 +188,7 @@ class VideoQueue(object):
                         if bool(video.thumbs) and len(video.thumbs) > 0
                         else None
                     )
+
 
                 video = (
                     await self.bot.send_video(
