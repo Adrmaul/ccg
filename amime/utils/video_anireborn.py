@@ -69,7 +69,6 @@ class VideoQueue(object):
             directory = f"./downloads/{random.randint(0, 9999)}/"
 
         episode = await Episodes.get_or_none(id=id)
-        lang = self._lang
 
         if episode is not None:
             try:
@@ -187,7 +186,7 @@ class VideoQueue(object):
                     await self.bot.send_video(
                         CHATS["chanireborn"],
                         path,
-                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {lang.strings[language]['LANGUAGE_NAME']}\nChannel: @Anime_sub_indo_ar",
+                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {episode.language}\nChannel: @Anime_sub_indo_ar",
                         duration=video.duration,
                         width=video.width,
                         height=video.height,
