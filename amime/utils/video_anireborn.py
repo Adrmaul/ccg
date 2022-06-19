@@ -78,7 +78,7 @@ class VideoQueue(object):
                 while not bool(path):
                     attempts += 1
                     if attempts >= 3:
-                        text = "<b>Error processing an episode</b>\n"
+                        text = "<b>Proses anime error</b>\n"
                         text += "\n<b>Anime</b>:"
                         text += f"\n    <b>ID</b>: <code>{episode.anime}</code>"
                         text += "\n\n<b>Episode</b>:"
