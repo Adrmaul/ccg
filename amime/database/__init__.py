@@ -31,13 +31,13 @@ class Chats(Model):
     id = fields.IntField(pk=True)
     title = fields.TextField()
     username = fields.CharField(max_length=32)
-    language = fields.CharField(max_length=6, default="720p")
+    language = fields.CharField(max_length=6, default="en")
 
 
 class Collaborators(Model):
     id = fields.IntField(pk=True)
     user = fields.IntField()
-    language = fields.CharField(max_length=6, default="720p")
+    language = fields.CharField(max_length=6, default="en")
 
 
 class Episodes(Model):
@@ -74,7 +74,7 @@ class Notifications(Model):
     type = fields.CharField(max_length=7)
     season = fields.IntField()
     number = fields.IntField()
-    language = fields.CharField(max_length=6, default="720p")
+    language = fields.CharField(max_length=6, default="en")
     datetime = fields.DatetimeField()
 
 
@@ -84,7 +84,7 @@ class Notify(Model):
     recipient_type = fields.CharField(max_length=5)
     item = fields.IntField()
     type = fields.CharField(max_length=7)
-    language = fields.CharField(max_length=6, default="720p")
+    language = fields.CharField(max_length=6, default="en")
 
 
 class nHentai(Model):
@@ -119,8 +119,8 @@ class Users(Model):
     id = fields.IntField(pk=True)
     name = fields.TextField()
     username = fields.CharField(max_length=32)
-    language_bot = fields.CharField(max_length=6, default="720p")
-    language_anime = fields.CharField(max_length=6, default="720p")
+    language_bot = fields.CharField(max_length=6, default="en")
+    language_anime = fields.CharField(max_length=6, default="en")
     is_collaborator = fields.BooleanField(default=False)
     subtitled_anime = fields.BooleanField(default=True)
 

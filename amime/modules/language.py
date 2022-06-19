@@ -38,7 +38,7 @@ async def language(bot: Amime, union: Union[CallbackQuery, Message]):
     chat = message.chat
     user = union.from_user
     lang = union._lang
-    current_code: str = "720p"
+    current_code: str = "en"
 
     is_private = await filters.private(bot, message)
     if not is_private:
