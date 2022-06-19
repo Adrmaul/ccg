@@ -33,6 +33,11 @@ from pyrogram.types import Document, Video
 
 from amime.config import CHATS
 from amime.database import Episodes
+from pyrogram import filters
+from pyromod.helpers import bki, ikb
+
+from amime.amime import Amime
+from amime.database import Episodes, Users, Viewed, Watched
 
 
 
@@ -188,7 +193,7 @@ class VideoQueue(object):
                     await self.bot.send_video(
                         CHATS["chanireborn"],
                         path,
-                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {episode.language}\nChannel: @Anime_sub_indo_ar",
+                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {lang.strings[episode.language]['LANGUAGE_NAME']}\nChannel: @Anime_sub_indo_ar",
                         duration=video.duration,
                         width=video.width,
                         height=video.height,
