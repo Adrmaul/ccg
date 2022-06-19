@@ -29,7 +29,7 @@ import shutil
 from typing import Union
 
 import anilist
-from pyrogram.types import Document, Video, CallbackQuery
+from pyrogram.types import Document, Video
 
 from amime.config import CHATS
 from amime.database import Episodes
@@ -57,7 +57,6 @@ class VideoQueue(object):
                 pool, asyncio.ensure_future(self.next()), id
             )
             await asyncio.gather(future, return_exceptions=True)
-    
 
     async def next(self):
         self.is_running = True
@@ -187,7 +186,7 @@ class VideoQueue(object):
                     await self.bot.send_video(
                         CHATS["chanireborn"],
                         path,
-                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\n\nEpisode: {episode.number}\nResolusi: {episode.language['LANGUAGE_NAME']}\nChannel: @Anime_sub_indo_ar",
+                        f"<b>{anime.title.romaji}</b> - #{episode.notes}\nEpisode: {episode.number}\nChannel: @Anime_sub_indo_ar",
                         duration=video.duration,
                         width=video.width,
                         height=video.height,
