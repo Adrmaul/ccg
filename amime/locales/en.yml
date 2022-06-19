@@ -774,10 +774,11 @@ send_me_the_item_text: |
 
 send_me_caption_text: |
   Kirim saya item: <b>{item}</b>.
-  Template notes :
-  Caption:<i>
-  Resolusi : 
-  </i>
+
+  Template Caption Anireborn:
+  <code>#judulanime
+  Resolusi : sesuaikan
+  </code>
 
 mark_as_watched_button: ✅ Selesai
 
