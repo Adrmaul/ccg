@@ -33,9 +33,6 @@ from pyrogram.types import Document, Video
 
 from amime.config import CHATS
 from amime.database import Episodes
-from pyrogram import filters
-from pyromod.helpers import bki, ikb
-
 
 
 class VideoQueue(object):
