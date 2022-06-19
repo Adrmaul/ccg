@@ -36,8 +36,7 @@ from amime.database import Episodes
 from pyrogram import filters
 from pyromod.helpers import bki, ikb
 
-from amime.amime import Amime
-from amime.database import Episodes, Users, Viewed, Watched
+from amime.database import Episodes
 
 
 
