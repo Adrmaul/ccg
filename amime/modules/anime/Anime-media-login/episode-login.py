@@ -147,7 +147,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
     if not is_admin:
-        text = f" [Beta] - Untuk Menggunakan Fitur Ini, Silahkan Order Premium\nHanya 10k Lifetime. (Belum dibuka)."
+        text = f" [Beta] - Untuk Menggunakan Fitur Ini, Silahkan Order Premium\nHanya 10k Lifetime. (Belum dibuka)"
 
     photo: str = ""
     if hasattr(anime, "banner"):
