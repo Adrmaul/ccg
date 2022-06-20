@@ -79,19 +79,12 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
 
     if not is_admin:
         buttons.append(
-            await lang.order_button(
-                lang.premium_request_alert,
-                ),show_alert=True
+            (
+                lang.order_button,
+                f"http://t.me/akuiiki",
+                "url",
             )
-
-    #if not is_admin:
-    #    buttons.append(
-    #        (
-    #            lang.order_button,
-    #            f"http://t.me/akuiiki",
-    #            "url",
-    #        ),
-    #    )
+        )
 
     keyboard = array_chunk(buttons, 2)
 
@@ -154,7 +147,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
     if not is_admin:
-        text = f"Untuk Menggunakan Fitur Ini, Silahkan Order Premium\nHanya 10k Lifetime."
+        text = f" [Beta] - Untuk Menggunakan Fitur Ini, Silahkan Order Premium\nHanya 10k Lifetime. (Belum dibuka)."
 
     photo: str = ""
     if hasattr(anime, "banner"):
