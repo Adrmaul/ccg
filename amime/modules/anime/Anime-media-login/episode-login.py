@@ -143,7 +143,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if anime is None:
         return
 
-    if len(episodes) > 0:
+    if is_admin:
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
     if not is_admin:
