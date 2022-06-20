@@ -69,7 +69,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
     async with anilist.AsyncClient() as client:
         if not query.isdecimal():
-            results = await client.search(query, "anime", 10)
+            results = await client.search(query, "anime", 30)
             if results is None:
                 await asyncio.sleep(0.5)
                 results = await client.search(query, "anime", 10)
@@ -83,7 +83,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 keyboard = []
                 for result in results:
                     keyboard.append(
-                        [(result.title.romaji, f"anime {result.id} {user.id} 1")]
+                        [(result.title.romaji, f"menu {result.id} {user.id} 1")]
                     )
                 await message.reply_text(
                     lang.search_results_text(
