@@ -160,12 +160,11 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             elif hasattr(anime.cover, "medium"):
                 photo = anime.cover.medium
 
-    await callback.send_media_group(
+    await callback.edit_message_media(
         InputMediaPhoto(
             photo,
             caption=text,
         ),
-        protect_content=True,
         reply_markup=ikb(keyboard),
     )
 
