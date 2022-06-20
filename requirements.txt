@@ -21,4 +21,4 @@ db-sqlite3
 sqlite-utils
 pytz
 asyncpg
-git+https://github.com/AmanoTeam/python-anilist.git#egg=python-anilist
+python-anilist 1.0.5
