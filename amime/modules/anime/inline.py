@@ -44,6 +44,8 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     query = inline_query.matches[0]["query"].strip()
     lang = inline_query._lang
 
+    is_admin = bot.is_sudo(user)
+
     if query.startswith("!"):
         inline_query.continue_propagation()
 
@@ -91,14 +93,12 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 )
             )
 
-    if len(results) > 0:
-        switch_pm_text = f"Support kami ~ ccgnimex"
+    if len(results) > 0 and is_admin:
         try:
             await inline_query.answer(
                 results=results,
                 is_gallery=True,
                 cache_time=3,
-                switch_pm_text=switch_pm_text,
             )
         except QueryIdInvalid:
             pass
