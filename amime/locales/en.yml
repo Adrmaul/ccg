@@ -963,6 +963,11 @@ requested_in_last_24h_alert: |
 
    Tanggal: {date}
 
+requested_in_last_24h_alert: |
+  Silahkan yang ingin mendownload/streaming dan menggunakan fitur list episode, untuk beralih ke premium (Lifetime).
+
+  Mohon hubungi admin kami @akuiiki. untuk order premium.
+
 notified_users_alert: Pengguna telah berhasil diberi tahu!
 
 only_1_episode_not_allowed_alert: Hanya batch lebih dari 1 episode yang diperbolehkan.

@@ -79,12 +79,19 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
 
     if not is_admin:
         buttons.append(
-            (
-                lang.order_button,
-                f"http://t.me/akuiiki",
-                "url",
-            ),
-        )
+            await lang.order_button(
+                lang.premium_request_alert,
+                ),show_alert=True
+            )
+
+    #if not is_admin:
+    #    buttons.append(
+    #        (
+    #            lang.order_button,
+    #            f"http://t.me/akuiiki",
+    #            "url",
+    #        ),
+    #    )
 
     keyboard = array_chunk(buttons, 2)
 
