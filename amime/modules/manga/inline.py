@@ -28,15 +28,9 @@ import anilist
 from pyrogram import filters
 from pyrogram.errors import QueryIdInvalid
 from pyrogram.types import InlineQuery, InlineQueryResultPhoto
-from pyrogram import filters
-from pyromod.helpers import array_chunk, ikb
-from pyromod.nav import Pagination
+from pyromod.helpers import ikb
 
 from amime.amime import Amime
-from amime.database import Episodes, Users, Viewed, Watched
-
-from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
-
 
 
 @Amime.on_inline_query(filters.regex(r"^!m (?P<query>.+)"))
@@ -47,7 +41,7 @@ async def manga_inline(bot: Amime, inline_query: InlineQuery):
     results: List[InlineQueryResultPhoto] = []
 
     async with anilist.AsyncClient() as client:
-        search_results = await client.search(query, "manga", 15)
+        search_results = await client.search(query, "manga", 16)
         while search_results is None:
             search_results = await client.search(query, "manga", 10)
             await asyncio.sleep(5)
