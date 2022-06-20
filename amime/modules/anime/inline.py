@@ -55,16 +55,8 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             if anime is None:
                 continue
 
-            photo: str = ""
-            if hasattr(anime, "banner"):
-                photo = anime.banner
-            elif hasattr(anime, "cover"):
-                if hasattr(anime.cover, "extra_large"):
-                    photo = anime.cover.extra_large
-                elif hasattr(anime.cover, "large"):
-                    photo = anime.cover.large
-                elif hasattr(anime.cover, "medium"):
-                    photo = anime.cover.medium
+            photo = f"https://img.anili.st/media/{anime.id}"
+
 
             description: str = ""
             if hasattr(anime, "description"):
@@ -99,7 +91,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             await inline_query.answer(
                 results=results,
                 is_gallery=True,
-                cache_time=3,
+                cache_time=10,
             )
         except QueryIdInvalid:
             pass
