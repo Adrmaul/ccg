@@ -29,7 +29,7 @@ from pyrogram import filters
 from pyrogram.errors import QueryIdInvalid
 from pyrogram.types import InlineQuery, InlineQueryResultPhoto
 from pyromod.helpers import ikb
-
+from amime.database import Episodes, Users
 from amime.amime import Amime
 
 
@@ -44,7 +44,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     results: List[InlineQueryResultPhoto] = []
 
     async with anilist.AsyncClient() as client:
-        search_results = await client.search(query, "anime", 15)
+        search_results = await client.search(query, "anime", 100)
         while search_results is None:
             search_results = await client.search(query, "anime", 10)
             await asyncio.sleep(5)
@@ -69,9 +69,8 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             keyboard = [
                 [
                     (
-                        lang.view_more_button,
-                        f"https://t.me/{bot.me.username}/?start=menu_{anime.id}",
-                        "url",
+                        lang.watch_button,
+                        f"episodes1 {anime.id} 0 1",
                     )
                 ],
             ]
@@ -91,7 +90,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             await inline_query.answer(
                 results=results,
                 is_gallery=True,
-                cache_time=10,
+                cache_time=300,
             )
         except QueryIdInvalid:
             pass
