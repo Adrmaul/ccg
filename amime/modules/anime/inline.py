@@ -1,25 +1,3 @@
-# MIT License
-#
-# Copyright (c) 2021 Andriel Rodrigues for Amano Team
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 import asyncio
 import re
 from typing import List
@@ -28,23 +6,14 @@ import anilist
 from pyrogram import filters
 from pyrogram.errors import QueryIdInvalid
 from pyrogram.types import InlineQuery, InlineQueryResultPhoto
-from amime.database import Episodes, Users
+from pyromod.helpers import ikb
+
 from amime.amime import Amime
-
-from pyromod.helpers import array_chunk, ikb
-from pyromod.nav import Pagination
-
-from amime.database import Episodes, Users, Viewed, Watched
-
-from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
-
 
 @Amime.on_inline_query(filters.regex(r"^!anime (?P<query>.+)"))
 async def anime_inline(bot: Amime, inline_query: InlineQuery):
     query = inline_query.matches[0]["query"].strip()
     lang = inline_query._lang
-
-    is_admin = bot.is_sudo(user)
 
     if query.startswith("!"):
         inline_query.continue_propagation()
@@ -93,7 +62,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 )
             )
 
-    if len(results) > 0 and is_admin:
+    if len(results) > 0:
         try:
             await inline_query.answer(
                 results=results,
