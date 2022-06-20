@@ -37,6 +37,12 @@ from amime.amime import Amime
 async def anime_inline(bot: Amime, inline_query: InlineQuery):
     query = inline_query.matches[0]["query"].strip()
     lang = inline_query._lang
+    user = inline_query.from_user
+
+    user_id = int(inline_query.matches[0].group(2))
+
+    if user_id != user.id:
+        return
 
     if query.startswith("!"):
         inline_query.continue_propagation()
@@ -44,7 +50,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     results: List[InlineQueryResultPhoto] = []
 
     async with anilist.AsyncClient() as client:
-        search_results = await client.search(query, "anime", 100)
+        search_results = await client.search(query, "anime", 20)
         while search_results is None:
             search_results = await client.search(query, "anime", 10)
             await asyncio.sleep(5)
@@ -70,8 +76,12 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 [
                     (
                         lang.watch_button,
-                        f"episodes1 {anime.id} 0 1",
-                    )
+                        f"menu {anime.id}",
+                    ),
+                    (
+                        lang.Hapus_text, 
+                        f"neko_delete, {user.id}"
+                    ),
                 ],
             ]
 
