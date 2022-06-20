@@ -33,7 +33,7 @@ from pyromod.helpers import ikb
 from amime.amime import Amime
 
 
-@Amime.on_inline_query(filters.regex(r"^(?P<query>.+)"))
+@Amime.on_inline_query(filters.regex(r"^!anime (?P<query>.+)"))
 async def anime_inline(bot: Amime, inline_query: InlineQuery):
     query = inline_query.matches[0]["query"].strip()
     lang = inline_query._lang
@@ -73,35 +73,12 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 description = description[0:260] + "..."
 
             text = f"<b>{anime.title.romaji}</b>"
-            if hasattr(anime.title, "native"):
-                text += f" (<code>{anime.title.native}</code>)"
-            text += f"\n\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
-            if hasattr(anime, "score"):
-                if hasattr(anime.score, "average"):
-                    text += f"\n<b>{lang.score}</b>: <code>{anime.score.average}</code>"
-            text += f"\n<b>{lang.status}</b>: <code>{anime.status}</code>"
-            if hasattr(anime, "genres"):
-                text += (
-                    f"\n<b>{lang.genres}</b>: <code>{', '.join(anime.genres)}</code>"
-                )
-            if hasattr(anime, "studios"):
-                text += (
-                    f"\n<b>{lang.studios}</b>: <code>{', '.join(anime.studios)}</code>"
-                )
-            if hasattr(anime, "format"):
-                text += f"\n<b>{lang.format}</b>: <code>{anime.format}</code>"
-            if not anime.status.lower() == "not_yet_released":
-                text += f"\n<b>{lang.start_date}</b>: <code>{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0}</code>"
-            if not anime.status.lower() in ["not_yet_released", "releasing"]:
-                text += f"\n<b>{lang.end_date}</b>: <code>{anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}</code>"
-
-            text += f"\n\n<b>{lang.short_description}</b>: <i>{description}</i>"
 
             keyboard = [
                 [
                     (
                         lang.view_more_button,
-                        f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
+                        f"https://t.me/{bot.me.username}/?start=menu_{anime.id}",
                         "url",
                     )
                 ],
@@ -121,7 +98,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
         try:
             await inline_query.answer(
                 results=results,
-                is_gallery=False,
+                is_gallery=True,
                 cache_time=3,
             )
         except QueryIdInvalid:
