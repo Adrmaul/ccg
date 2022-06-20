@@ -28,9 +28,15 @@ import anilist
 from pyrogram import filters
 from pyrogram.errors import QueryIdInvalid
 from pyrogram.types import InlineQuery, InlineQueryResultPhoto
-from pyromod.helpers import ikb
+from pyrogram import filters
+from pyromod.helpers import array_chunk, ikb
+from pyromod.nav import Pagination
 
 from amime.amime import Amime
+from amime.database import Episodes, Users, Viewed, Watched
+
+from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
+
 
 
 @Amime.on_inline_query(filters.regex(r"^!m (?P<query>.+)"))
