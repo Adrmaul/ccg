@@ -44,6 +44,8 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     query = inline_query.matches[0]["query"].strip()
     lang = inline_query._lang
 
+    is_auth = await filters.collaborator(bot, inline_query)
+
     if query.startswith("!"):
         inline_query.continue_propagation()
 
@@ -91,12 +93,15 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 )
             )
 
-    if len(results) > 0:
+    if len(results) > 0 and is_auth:
+        switch_pm_text = f"{user.username} - Anda Terdaftar Premium!"
         try:
             await inline_query.answer(
                 results=results,
                 is_gallery=True,
-                cache_time=300,
+                cache_time=3,
+                switch_pm_text=switch_pm_text,
+                switch_pm_parameter="start",
             )
         except QueryIdInvalid:
             pass
