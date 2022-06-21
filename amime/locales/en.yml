@@ -871,7 +871,7 @@ no_found_episodes_text: |
   Oops! I did not find any episode, if it is a mistake, inform those responsible.
 
 search_results_text: |
-  Search results: <b>{query}</b>
+  Hasil pencarian dari: <b>{query}</b>
 
 media_not_found_text: |
   No media was found in this message.
