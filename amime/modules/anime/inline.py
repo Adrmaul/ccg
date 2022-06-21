@@ -52,14 +52,14 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                         f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
                         "url",
                     ),
-                    (lang.search_button, "!anime (?P<query>.+)", "switch_inline_query_current_chat"),
+                    (lang.search_button, "", "switch_inline_query_current_chat"),
 
                 ],
             ]
 
             results.append(
                 InlineQueryResultPhoto(
-                    photo_url=photo,
+                    thumb_url=photo,
                     title=f"{anime.title.romaji} | {anime.format}",
                     description=description,
                     caption=text,
