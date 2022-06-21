@@ -184,13 +184,14 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
  
              
 
-        if is_private and not is_collaborator and not anime.status.lower() == "not_yet_released" and not anime.status.lower() == "releasing":    
-           buttons.append(
-                    (
-                        lang.watch_button,
-                        f"episodes_global {anime.id} {episodes[0].season} 1",
+        if len(episodes) > 0 and not is_collaborator:
+            if is_private and anime.status.lower() == "releasing" and anime.status.lower() == "not_yet_released":    
+                buttons.append(
+                        (
+                            lang.watch_button,
+                            f"episodes_global {anime.id} {episodes[0].season} 1",
+                        )
                     )
-                )
 
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
