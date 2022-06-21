@@ -69,7 +69,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
     async with anilist.AsyncClient() as client:
         if not query.isdecimal():
-            results = await client.search(query, "anime", 30)
+            results = await client.search(query, "anime", 15)
             if results is None:
                 await asyncio.sleep(0.5)
                 results = await client.search(query, "anime", 10)
@@ -83,7 +83,10 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 keyboard = []
                 for result in results:
                     keyboard.append(
-                        [(result.title.romaji, f"menu {result.id} {user.id} 1")]
+                        [(result.title.romaji, f"menu {result.id} {user.id} 1"),(
+                        lang.Hapus_text, 
+                        f"neko_delete, {user.id}"
+                        )]
                     )
                 await message.reply_text(
                     lang.search_results_text(
@@ -107,28 +110,40 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         episodes = sorted(episodes, key=lambda episode: episode.number)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
-        text = f"⌯ <code>{anime.title.romaji}</code>"
-        if hasattr(anime.title, "native"):
-            text += f" (<b>{anime.title.native}</b>)"
-        text += f"\n─────── ∘°❉°∘ ───────"    
-        text += f"\n⋟ <b>ID</b>: <code>{anime.id}</code>"
-        if hasattr(anime, "score"):
-            if hasattr(anime.score, "average"):
-                text += f"\n⋟ <b>{lang.score}</b>: <code>{anime.score.average}% 🌟</code>"
-        if not anime.status.lower() == "not_yet_released":
-            text += f"\n⋟ <b>{lang.status}</b>: <code>{anime.status} | {anime.duration}m</code>"
-        text += f"\n⋟ <b>{lang.format}</b>: <code>{anime.format}</code>"
-        if hasattr(anime, "genres"):
-            text += f"\n⋟ <b>{lang.genres}</b>: <code>{', '.join(anime.genres)}</code>"
-        if not anime.format.lower() == "movie" and hasattr(anime, "episodes"):
-            text += f"\n⋟ <b>{lang.episode}s</b>: <code>{anime.episodes} Eps</code>"
-        if not anime.status.lower() == "not_yet_released":
-            text += f"\n⋟ <b>{lang.start_date}</b>: <code>{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0}</code>"
-        if not anime.status.lower() in ["not_yet_released", "releasing"]:
-            text += f"\n⋟ <b>{lang.end_date}</b>: <code>{anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}</code>"
-        if hasattr(anime, "studios"):
-            text += f"\n⋟ <b>{lang.studios}</b>: <code>{', '.join(anime.studios)}</code>"
-            text += f"\n─────── ∘°❉°∘ ───────"
+        if is_collaborator:
+            if len(episodes) > 0:
+                text = f"✅ Tersedia untuk ditonton. - <code>{anime.title.romaji}"
+                if hasattr(anime.title, "native"):
+                    text += f" (<b>{anime.title.native}</b>)"
+            if len(episodes) < 1 :
+                text = f"\n\n❌ Belum tersedia. - <code>{anime.title.romaji}"
+                if hasattr(anime.title, "native"):
+                    text += f" (<b>{anime.title.native}</b>)"
+
+
+        if not is_collaborator:
+            text = f"⌯ <code>{anime.title.romaji}</code>"
+            if hasattr(anime.title, "native"):
+                text += f" (<b>{anime.title.native}</b>)"
+            text += f"\n─────── ∘°❉°∘ ───────"    
+            text += f"\n⋟ <b>ID</b>: <code>{anime.id}</code>"
+            if hasattr(anime, "score"):
+                if hasattr(anime.score, "average"):
+                    text += f"\n⋟ <b>{lang.score}</b>: <code>{anime.score.average}% 🌟</code>"
+            if not anime.status.lower() == "not_yet_released":
+                text += f"\n⋟ <b>{lang.status}</b>: <code>{anime.status} | {anime.duration}m</code>"
+            text += f"\n⋟ <b>{lang.format}</b>: <code>{anime.format}</code>"
+            if hasattr(anime, "genres"):
+                text += f"\n⋟ <b>{lang.genres}</b>: <code>{', '.join(anime.genres)}</code>"
+            if not anime.format.lower() == "movie" and hasattr(anime, "episodes"):
+                text += f"\n⋟ <b>{lang.episode}s</b>: <code>{anime.episodes} Eps</code>"
+            if not anime.status.lower() == "not_yet_released":
+                text += f"\n⋟ <b>{lang.start_date}</b>: <code>{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0}</code>"
+            if not anime.status.lower() in ["not_yet_released", "releasing"]:
+                text += f"\n⋟ <b>{lang.end_date}</b>: <code>{anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}</code>"
+            if hasattr(anime, "studios"):
+                text += f"\n⋟ <b>{lang.studios}</b>: <code>{', '.join(anime.studios)}</code>"
+                text += f"\n─────── ∘°❉°∘ ───────"
         buttons = [
             (
                         lang.view_more_button,
@@ -216,7 +231,16 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         keyboard = array_chunk(buttons, 2)
 
-        photo = f"https://img.anili.st/media/{anime.id}"
+        photo: str = ""
+        if hasattr(anime, "banner"):
+            photo = anime.banner
+        elif hasattr(anime, "cover"):
+            if hasattr(anime.cover, "extra_large"):
+                photo = anime.cover.extra_large
+            elif hasattr(anime.cover, "large"):
+                photo = anime.cover.large
+            elif hasattr(anime.cover, "medium"):
+                photo = anime.cover.medium
 
         if bool(message.video) and is_callback:
             await union.edit_message_media(

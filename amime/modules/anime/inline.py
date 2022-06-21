@@ -26,7 +26,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
         search_results = await client.search(query, "anime", 30)
         while search_results is None:
             search_results = await client.search(query, "anime", 10)
-            await asyncio.sleep(5)
+            await asyncio.sleep(2)
 
         for result in search_results:
             anime = await client.get(result.id, "anime")
@@ -44,7 +44,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 description = description[0:260] + "..."
 
             text = f"<b>{anime.title.romaji}</b>"
-            text += f"\n\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
+            text += f"\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
 
             keyboard = [
                 [
@@ -53,7 +53,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                         f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
                         "url",
                     ),
-                    (lang.search_button, "", "switch_inline_query_current_chat"),
+                    (lang.search_button, "!anime ", "switch_inline_query_current_chat"),
 
                 ],
             ]
@@ -62,7 +62,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 InlineQueryResultPhoto(
                     photo_url=photo,
                     title=f"{anime.title.romaji} | {anime.format}",
-                    description=description,
+                    #description=description,
                     caption=text,
                     reply_markup=ikb(keyboard),
                 )
