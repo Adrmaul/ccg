@@ -10,20 +10,20 @@ from pyromod.helpers import ikb
 
 from amime.amime import Amime
 
-@Amime.on_inline_query(filters.regex(r"^!anime (?P<query>.+)"))
+@Amime.on_inline_query(filters.regex(r"^!a (?P<query>.+)"))
 async def anime_inline(bot: Amime, inline_query: InlineQuery):
     query = inline_query.matches[0]["query"].strip()
     lang = inline_query._lang
 
     is_collaborator = await filters.sudo(bot, inline_query)
 
-    if query.startswith("!"):
-        inline_query.continue_propagation()
+    #if query.startswith("!"):
+    #    inline_query.continue_propagation()
 
     results: List[InlineQueryResultPhoto] = []
 
     async with anilist.AsyncClient() as client:
-        search_results = await client.search(query, "anime", 30)
+        search_results = await client.search(query, "anime", 60)
         while search_results is None:
             search_results = await client.search(query, "anime", 10)
             await asyncio.sleep(2)
@@ -48,12 +48,8 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
 
             keyboard = [
                 [
-                    (
-                        lang.view_more_button,
-                        f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
-                        "url",
-                    ),
-                    (lang.search_button, "!anime ", "switch_inline_query_current_chat"),
+                    (lang.Audio, f"{anime.title.romaji}", "switch_inline_query_current_chat"),
+                    (lang.search_button, "!a ", "switch_inline_query_current_chat"),
 
                 ],
             ]
