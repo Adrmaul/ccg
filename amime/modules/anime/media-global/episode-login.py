@@ -20,6 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from dataclasses import is_dataclass
 import math
 
 from pyrogram import filters
@@ -77,14 +78,22 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         )
     )
 
+    #if not is_admin:
+    #    buttons.append(
+    #        (
+    #            lang.order_button,
+    #            f"http://t.me/akuiiki",
+    #            "url",
+    #        )
+    #    )
+
     if not is_admin:
         buttons.append(
-            (
-                lang.order_button,
-                f"http://t.me/akuiiki",
-                "url",
+                (
+                        lang.Download_text, 
+                        f"download more {anime.id} {user.id}"
+                )
             )
-        )
 
     keyboard = array_chunk(buttons, 2)
 
@@ -136,7 +145,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     
 
     keyboard.append([
-        (lang.menu_login, f"settings_global {anime_id}"), (lang.back_button, f"btn_{anime_id}_True_{user.id}")])
+        (lang.menu_login, f"settings_global {anime_id}"), (lang.back_button, f"menu {anime_id}")])
 
     anime = await client.get(anime_id, "anime")
     
@@ -147,7 +156,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
     if not is_admin:
-        text = f" [Beta] - Untuk Menggunakan Fitur Ini, Silahkan Order Premium\n\nHanya 10k Lifetime. (Belum dibuka)"
+        text = f" [Beta] - Kami belum merilis fitur List episode anime ini, stay terus dichannel kami!."
 
     photo: str = ""
     if hasattr(anime, "banner"):

@@ -83,7 +83,10 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 keyboard = []
                 for result in results:
                     keyboard.append(
-                        [(result.title.romaji, f"menu {result.id} {user.id} 1")]
+                        [(result.title.romaji, f"menu {result.id} {user.id} 1"),(
+                        lang.Hapus_text, 
+                        f"neko_delete, {user.id}"
+                        )]
                     )
                 await message.reply_text(
                     lang.search_results_text(
@@ -117,10 +120,30 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 if hasattr(anime.title, "native"):
                     text += f" (<b>{anime.title.native}</b>)"
 
+
         if not is_collaborator:
-            text = f"{anime.title.romaji} -"
+            text = f"⌯ <code>{anime.title.romaji}</code>"
             if hasattr(anime.title, "native"):
-                    text += f" (<b>{anime.title.native}</b>)"
+                text += f" (<b>{anime.title.native}</b>)"
+            text += f"\n─────── ∘°❉°∘ ───────"    
+            text += f"\n⋟ <b>ID</b>: <code>{anime.id}</code>"
+            if hasattr(anime, "score"):
+                if hasattr(anime.score, "average"):
+                    text += f"\n⋟ <b>{lang.score}</b>: <code>{anime.score.average}% 🌟</code>"
+            if not anime.status.lower() == "not_yet_released":
+                text += f"\n⋟ <b>{lang.status}</b>: <code>{anime.status} | {anime.duration}m</code>"
+            text += f"\n⋟ <b>{lang.format}</b>: <code>{anime.format}</code>"
+            if hasattr(anime, "genres"):
+                text += f"\n⋟ <b>{lang.genres}</b>: <code>{', '.join(anime.genres)}</code>"
+            if not anime.format.lower() == "movie" and hasattr(anime, "episodes"):
+                text += f"\n⋟ <b>{lang.episode}s</b>: <code>{anime.episodes} Eps</code>"
+            if not anime.status.lower() == "not_yet_released":
+                text += f"\n⋟ <b>{lang.start_date}</b>: <code>{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0}</code>"
+            if not anime.status.lower() in ["not_yet_released", "releasing"]:
+                text += f"\n⋟ <b>{lang.end_date}</b>: <code>{anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}</code>"
+            if hasattr(anime, "studios"):
+                text += f"\n⋟ <b>{lang.studios}</b>: <code>{', '.join(anime.studios)}</code>"
+                text += f"\n─────── ∘°❉°∘ ───────"
         buttons = [
             (
                         lang.view_more_button,
@@ -138,14 +161,23 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     )
                 )
         
-        
-        if is_private and not is_collaborator and not anime.status.lower() == "releasing" and not anime.status.lower() == "not_yet_released":
-            buttons.append(
-                (
-                    lang.watch_button,
-                    f"episodes_global {anime.id} {episodes[0].season} 1",
+        if len(episodes) > 0 and not is_collaborator:
+            if is_private:
+                buttons.append(
+                    (
+                        lang.watch_button,
+                        f"episodes_global {anime.id} {episodes[0].season} 1",
+                    )
                 )
-            )    
+        
+        if len(episodes) > 0 and is_collaborator:
+            if is_private:
+                buttons.append(
+                    (
+                        lang.watch_button,
+                        f"episodes {anime.id} {episodes[0].season} 1",
+                    )
+                )    
 
 
 
@@ -157,7 +189,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )
             )
 
- 
+
 
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
@@ -248,7 +280,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
 
         buttons = [
             (lang.Login, f"btn_{anime.id}_True_{user_id}"),
-            (lang.Guest, f"btn_{anime.id}_False_{user_id}"),
+            (lang.Guest, f"btn_{anime.id}_ANI_False_{user_id}"),
             #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
         ]
 
