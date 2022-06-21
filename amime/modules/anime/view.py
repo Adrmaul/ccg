@@ -161,7 +161,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     )
                 )
         
-        if len(episodes) > 0 and not is_collaborator:
+        if not is_collaborator:
             if is_private:
                 buttons.append(
                     (

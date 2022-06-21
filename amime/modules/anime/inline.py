@@ -9,11 +9,16 @@ from pyrogram.types import InlineQuery, InlineQueryResultPhoto
 from pyromod.helpers import ikb
 
 from amime.amime import Amime
+from amime.database import Episodes
 
 @Amime.on_inline_query(filters.regex(r"^!a (?P<query>.+)"))
 async def anime_inline(bot: Amime, inline_query: InlineQuery):
     query = inline_query.matches[0]["query"].strip()
     lang = inline_query._lang
+
+    episodes = await Episodes.filter(anime=anime.id)
+    episodes = sorted(episodes, key=lambda episode: episode.number)
+    episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
     is_collaborator = await filters.sudo(bot, inline_query)
 
@@ -37,11 +42,14 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             photo = f"https://img.anili.st/media/{anime.id}"
 
 
-            description: str = ""
-            if hasattr(anime, "description"):
-                description = anime.description
-                description = re.sub(re.compile(r"<.*?>"), "", description)
-                description = description[0:260] + "..."
+            average: str = ""
+            if hasattr(anime.score, "average"):
+                text = f"\n<b>{lang.score}</b>: <code>{anime.score.average} | </code>"
+                if len(episodes) > 0:
+                    text += f"✅ Tersedia"
+                if len(episodes) < 1:
+                    text += f"❌"
+            
 
             text = f"<b>{anime.title.romaji}</b>"
             text += f"\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
@@ -62,7 +70,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 InlineQueryResultPhoto(
                     photo_url=photo,
                     title=f"{anime.title.romaji} | {anime.format}",
-                    description=description,
+                    description=average,
                     caption=text,
                     reply_markup=ikb(keyboard),
                 )
@@ -73,7 +81,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             await inline_query.answer(
                 is_personal = True,
                 results=results,
-                is_gallery=True,
+                is_gallery=False,
                 cache_time=0,
             )
         except QueryIdInvalid:
