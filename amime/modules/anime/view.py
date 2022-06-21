@@ -153,7 +153,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                         lang.watch_button,
                         f"episodes {anime.id} {episodes[0].season} 1",
                     )
-                )    
+                )
 
 
 
@@ -172,7 +172,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             buttons.append(
                     (
                         lang.Download_text, 
-                        f"download more {anime.id} {user.id}"
+                        f"episodes_global {anime.id} {episodes[0].season} 1"
                     ),
                 )
 
