@@ -44,6 +44,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 description = description[0:260] + "..."
 
             text = f"<b>{anime.title.romaji}</b>"
+            text += f"\n\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
 
             keyboard = [
                 [
@@ -59,7 +60,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
 
             results.append(
                 InlineQueryResultPhoto(
-                    thumb_url=photo,
+                    photo_url=photo,
                     title=f"{anime.title.romaji} | {anime.format}",
                     description=description,
                     caption=text,
@@ -73,7 +74,8 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 is_personal = True,
                 results=results,
                 is_gallery=True,
-                cache_time=300,
+                cache_time=0,
             )
         except QueryIdInvalid:
             pass
+
