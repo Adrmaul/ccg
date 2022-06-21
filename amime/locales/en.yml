@@ -525,15 +525,10 @@ upcoming_button: 🆕 Upcoming
 donate_button: 🩸 Donate
 
 view_more_text: |
-  Dibawah ini ada 2 pilihan yang bisa kalian gunakan :
+  Pilih yang kalian gunakan.
 
-  Login : Bagi user yang sudah menautkan akun anilistnya ke bot dengan cara /auth.
-
-  Guest : Bagi user yang tidak menautkan akun anilistnya.
-
-  Perbedaanya, jika kalian user guest, menekan tombol login, 
-  kalian tidak bisa mengklik tombol (Back) untuk menambahkan list-an.
-
+  Login = Sudah menautkan akun anilist
+  guest = belum menautkan.
 filter_more_text: |
   {title}
 
@@ -572,11 +567,11 @@ anime7_button: Rikekoi S2
 
 anime8_button: Koi wa Sekai Seifuku
 
-view_more_button: ⎆ Menu Anime
+view_more_button: 🧩 Check
 
 menu_login : ⚙️ Settings
 
-manga_more_button: ⎆ Menu Manga
+manga_more_button: 🧩 Check
 
 lebih24_button: EPS 20 - 30
 

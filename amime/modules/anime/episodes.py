@@ -117,8 +117,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
 
     keyboard.append([(
                         lang.Download_text, 
-                        f"{anime.title.romaji}", "switch_inline_query_current_chat"), 
-                        (lang.back_button, f"menu {anime_id}")])
+                        f"download more {anime_id} {user.id}"
+                    ), (lang.back_button, f"menu {anime_id}")])
 
     await callback.edit_message_media(
         InputMediaPhoto(
