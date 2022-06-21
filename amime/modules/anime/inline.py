@@ -49,7 +49,9 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                         lang.view_more_button,
                         f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
                         "url",
-                    )
+                    ),
+                    (lang.search_button, "!anime {query}", "switch_inline_query_current_chat"),
+
                 ],
             ]
 
@@ -66,9 +68,10 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     if len(results) > 0:
         try:
             await inline_query.answer(
+                is_personal = True,
                 results=results,
                 is_gallery=True,
-                cache_time=3,
+                cache_time=0,
             )
         except QueryIdInvalid:
             pass
