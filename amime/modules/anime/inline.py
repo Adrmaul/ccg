@@ -15,6 +15,8 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     query = inline_query.matches[0]["query"].strip()
     lang = inline_query._lang
 
+    is_collaborator = await filters.sudo(bot, inline_query)
+
     if query.startswith("!"):
         inline_query.continue_propagation()
 
@@ -50,7 +52,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                         f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
                         "url",
                     ),
-                    (lang.search_button, "!anime {query}", "switch_inline_query_current_chat"),
+                    (lang.search_button, "!anime (?P<query>.+)", "switch_inline_query_current_chat"),
 
                 ],
             ]
@@ -65,13 +67,13 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 )
             )
 
-    if len(results) > 0:
+    if is_collaborator and len(results) > 0:
         try:
             await inline_query.answer(
                 is_personal = True,
                 results=results,
                 is_gallery=True,
-                cache_time=0,
+                cache_time=300,
             )
         except QueryIdInvalid:
             pass
