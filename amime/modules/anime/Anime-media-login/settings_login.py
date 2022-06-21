@@ -177,7 +177,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             buttons.append(
                 (
                     lang.back_button,
-                    f"btn_{anime.id}_True_{user.id}",
+                    f"menu {anime.id} {user.id}",
                 )
             ) 
 

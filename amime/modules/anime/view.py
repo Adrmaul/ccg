@@ -161,6 +161,15 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     )
                 )
         
+        if len(episodes) > 0 and not is_collaborator:
+            if is_private:
+                buttons.append(
+                    (
+                        lang.watch_button,
+                        f"episodes1 {anime.id} {episodes[0].season} 1",
+                    )
+                )
+        
         if len(episodes) > 0 and is_collaborator:
             if is_private:
                 buttons.append(
@@ -279,8 +288,8 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
         anime = await client.get(anime_id, "anime")
 
         buttons = [
-            (lang.Login, f"desc_{anime.id}_ANI_True_{user_id}"),
-            (lang.Guest, f"desc_{anime.id}_ANI_False_{user_id}"),
+            (lang.Login, f"btn_{anime.id}_True_{user_id}"),
+            (lang.Guest, f"btn_{anime.id}_False_{user_id}"),
             #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
         ]
 

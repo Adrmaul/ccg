@@ -45,8 +45,6 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     language = user_db.language_anime
     subtitled = user_db.subtitled_anime
 
-    is_admin = bot.is_sudo(user)
-
     buttons = [
         (
             f"{lang.language_button}: {lang.strings[language]['LANGUAGE_NAME']}",
@@ -106,7 +104,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     layout = Pagination(
         episodes_list,
         item_data=lambda i, pg: f"episode {i[0].anime} {i[0].season} {i[0].number}",
-        item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
+        item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "🙈")
         + f" {i[0].number}"
         + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
         page_data=lambda pg: f"episodes {anime_id} {season} {pg}",
@@ -117,32 +115,15 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if len(lines) > 0:
         keyboard += lines
 
-    keyboard.append([(lang.search_button, f"{anime.title.romaji}", "switch_inline_query_current_chat"), (lang.back_button, f"menu {anime_id}")])
-
-    if is_admin:
-        text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
-
-    if not is_admin and not anime.status.lower() == "not_yet_released" and not anime.status.lower() == "releasing":
-        text = f"[Beta] - Fitur untuk anime selesai ini, belum kami buka/rilis."
-    
-    if not is_admin and anime.status.lower() == "releasing":
-        text = f"<b>{anime.title.romaji}</b>\n\n<b>Tentang Emoji:</b>\n 👁️ - Hanya Dilihat\n ✅ - Ditonton"
-
-    photo: str = ""
-    if hasattr(anime, "banner"):
-        photo = anime.banner
-    elif hasattr(anime, "cover"):
-            if hasattr(anime.cover, "extra_large"):
-                photo = anime.cover.extra_large
-            elif hasattr(anime.cover, "large"):
-                photo = anime.cover.large
-            elif hasattr(anime.cover, "medium"):
-                photo = anime.cover.medium
+    keyboard.append([(
+                        lang.Download_text, 
+                        f"download more {anime_id} {user.id}"
+                    ), (lang.back_button, f"menu {anime_id}")])
 
     await callback.edit_message_media(
         InputMediaPhoto(
-            photo,
-            caption=text,
+            f"https://img.anili.st/media/{anime_id}",
+            caption=lang.watch_list_anime_text,
         ),
         reply_markup=ikb(keyboard),
     )

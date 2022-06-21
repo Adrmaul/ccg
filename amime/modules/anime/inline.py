@@ -17,8 +17,8 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
 
     is_collaborator = await filters.sudo(bot, inline_query)
 
-    #if query.startswith("!"):
-    #    inline_query.continue_propagation()
+    if query.startswith("!"):
+        inline_query.continue_propagation()
 
     results: List[InlineQueryResultPhoto] = []
 
@@ -48,7 +48,11 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
 
             keyboard = [
                 [
-                    (lang.Audio, f"{anime.title.romaji}", "switch_inline_query_current_chat"),
+                    (
+                        lang.view_more_button,
+                        f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
+                        "url",
+                    ),
                     (lang.search_button, "!a ", "switch_inline_query_current_chat"),
 
                 ],
