@@ -701,14 +701,10 @@ watch_list_anime_login_text: |
 
 watch_list_anime_text: |
   Di bawah ini adalah Episode & menu yang tersedia.
-  Silahkan pilih tipe yang kalian inginkan.
       
   <b>Tentang Emoji</b>:
-      🙈 - Belum Dibuka
       👁️ - Hanya Dilihat
       ✅ - Ditonton
-
-  Jika tidak ada tipe yang kalian inginkan, silahkan request dimenu.
 
 watch_button: 📹 Watch
 
@@ -963,7 +959,7 @@ requested_in_last_24h_alert: |
 
    Tanggal: {date}
 
-requested_in_last_24h_alert: |
+premium_request_alert: |
   Silahkan yang ingin mendownload/streaming dan menggunakan fitur list episode, untuk beralih ke premium (Lifetime).
 
   Mohon hubungi admin kami @akuiiki. untuk order premium.

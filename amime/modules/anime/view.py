@@ -161,14 +161,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     )
                 )
         
-        if len(episodes) > 0 and not is_collaborator:
-            if is_private:
-                buttons.append(
-                    (
-                        lang.watch_button,
-                        f"episodes1 {anime.id} {episodes[0].season} 1",
-                    )
-                )
         
         if len(episodes) > 0 and is_collaborator:
             if is_private:

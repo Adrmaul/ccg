@@ -10,7 +10,7 @@ from pyromod.helpers import ikb
 
 from amime.amime import Amime
 
-@Amime.on_inline_query(filters.regex(r"^!a (?P<query>.+)"))
+@Amime.on_inline_query(filters.regex(r"^!anime (?P<query>.+)"))
 async def anime_inline(bot: Amime, inline_query: InlineQuery):
     query = inline_query.matches[0]["query"].strip()
     lang = inline_query._lang
@@ -23,7 +23,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     results: List[InlineQueryResultPhoto] = []
 
     async with anilist.AsyncClient() as client:
-        search_results = await client.search(query, "anime", 60)
+        search_results = await client.search(query, "anime", 30)
         while search_results is None:
             search_results = await client.search(query, "anime", 10)
             await asyncio.sleep(2)
@@ -53,7 +53,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                         f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
                         "url",
                     ),
-                    (lang.search_button, "!a ", "switch_inline_query_current_chat"),
+                    (lang.search_button, "!anime", "switch_inline_query_current_chat"),
 
                 ],
             ]
@@ -62,7 +62,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 InlineQueryResultPhoto(
                     photo_url=photo,
                     title=f"{anime.title.romaji} | {anime.format}",
-                    #description=description,
+                    description=description,
                     caption=text,
                     reply_markup=ikb(keyboard),
                 )

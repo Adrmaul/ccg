@@ -104,7 +104,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     layout = Pagination(
         episodes_list,
         item_data=lambda i, pg: f"episode {i[0].anime} {i[0].season} {i[0].number}",
-        item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "🙈")
+        item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
         + f" {i[0].number}"
         + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
         page_data=lambda pg: f"episodes {anime_id} {season} {pg}",
