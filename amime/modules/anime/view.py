@@ -161,14 +161,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     )
                 )
         
-        if not is_collaborator:
-            if is_private:
-                buttons.append(
-                    (
-                        lang.watch_button,
-                        f"episodes_global {anime.id} {episodes[0].season} 1",
-                    )
-                )
         
         if len(episodes) > 0 and is_collaborator:
             if is_private:
@@ -189,7 +181,16 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )
             )
 
+ 
+             
 
+        if is_private and not anime.status.lower() == "not_yet_released" and not anime.status.lower() == "releasing" and not hasattr(anime, "genres") == 'hentai':      
+            buttons.append(
+                    (
+                        lang.Download_text, 
+                        f"download more {anime.id} {user.id}"
+                    ),
+                )
 
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
@@ -231,16 +232,20 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         keyboard = array_chunk(buttons, 2)
 
-        photo: str = ""
-        if hasattr(anime, "banner"):
-            photo = anime.banner
-        elif hasattr(anime, "cover"):
-            if hasattr(anime.cover, "extra_large"):
-                photo = anime.cover.extra_large
-            elif hasattr(anime.cover, "large"):
-                photo = anime.cover.large
-            elif hasattr(anime.cover, "medium"):
-                photo = anime.cover.medium
+        if is_collaborator:
+            photo: str = ""
+            if hasattr(anime, "banner"):
+                photo = anime.banner
+            elif hasattr(anime, "cover"):
+                if hasattr(anime.cover, "extra_large"):
+                    photo = anime.cover.extra_large
+                elif hasattr(anime.cover, "large"):
+                    photo = anime.cover.large
+                elif hasattr(anime.cover, "medium"):
+                    photo = anime.cover.medium
+                    
+        if not is_collaborator:
+            photo = f"https://img.anili.st/media/{anime.id}"
 
         if bool(message.video) and is_callback:
             await union.edit_message_media(

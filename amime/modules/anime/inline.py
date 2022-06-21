@@ -42,13 +42,10 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             photo = f"https://img.anili.st/media/{anime.id}"
 
 
-            average: str = ""
-            if hasattr(anime.score, "average"):
-                text = f"\n<b>{lang.score}</b>: <code>{anime.score.average} | </code>"
-                if len(episodes) > 0:
-                    text += f"✅ Tersedia"
-                if len(episodes) < 1:
-                    text += f"❌"
+            description: str = ""
+            if hasattr(anime, "score"):
+                if hasattr(anime.score, "average"):
+                    text = f"\n{lang.score}: {anime.score.average}"
             
 
             text = f"<b>{anime.title.romaji}</b>"
@@ -70,7 +67,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 InlineQueryResultPhoto(
                     photo_url=photo,
                     title=f"{anime.title.romaji} | {anime.format}",
-                    description=average,
+                    description=description,
                     caption=text,
                     reply_markup=ikb(keyboard),
                 )
@@ -79,7 +76,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     if is_collaborator and len(results) > 0:
         try:
             await inline_query.answer(
-                is_personal = True,
+                is_personal=True,
                 results=results,
                 is_gallery=False,
                 cache_time=0,
