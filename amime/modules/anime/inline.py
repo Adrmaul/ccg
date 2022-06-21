@@ -43,9 +43,10 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
 
 
             description: str = ""
-            if hasattr(anime, "score"):
-                if hasattr(anime.score, "average"):
-                    text = f"\n{lang.score}: {anime.score.average}"
+            if hasattr(anime, "description"):
+                description = anime.description
+                description = re.sub(re.compile(r"<.*?>"), "", description)
+                description = "Deskirpsi: " + description[0:160]
             
 
             text = f"<b>{anime.title.romaji}</b>"
