@@ -80,7 +80,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
 
             keyboard = [[await get_watched_button(lang, user, episode.id), (
                         lang.report_button,
-                        f"report episode {anime_id} {season} {number} -1",
+                        f"report1 episode {anime_id} {season} {number} -1",
                     )]]
 
             if len(episode.name) > 0:
@@ -97,6 +97,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             text += f"\n<b>{lang.language}</b>: <code>{lang.strings[episode.language]['LANGUAGE_NAME']}</code>"
             text += f"\n<b>{lang.added_by}</b>: <code>{episode.added_by}</code>"
 
+
             #if len(episode.added_by) > 0:
             #    if not episode.added_by.isdecimal():
             #        text += f"\n<b>{lang.added_by}</b>: <b>{episode.added_by}</b>"
@@ -104,9 +105,9 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             if len(episode.notes) > 0:
                 text += f"\n<b>{lang.notes}</b>: <i>{episode.notes}</i>"
 
-            if is_collaborator:
+            if is_admin:
                 viewed = await Viewed.filter(item=episode.id, type="anime")
-                text += f"\n\n<b>{len(viewed)}{len(viewed)}+ {lang.views.lower()}</b> - (Hanya admin yang bisa melihat)"
+                text += f"\n\n<b>{len(viewed)}+ {lang.views.lower()}</b> - (Hanya admin yang bisa melihat)"
             vieweds = await Viewed.filter(user=user.id, type="anime")
             text += f"\n\n┏━━━━━━━━━━━━━━━━━━━━━</code>"
             text += f"\n┣❏ <b>Profil Saya</b>: <code>{user.username}</code> - <a href='t.me/{user.username}'>{user.id}</a>"
@@ -147,7 +148,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
                     [
                         (
                             lang.back_button,
-                            f"menu {anime_id} {user.id}",
+                            f"episode {anime_id} 0 1",
                         )
                     ]
                 )
@@ -156,7 +157,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
                     [
                         (
                             lang.back_button,
-                            f"episodes {anime_id} {season} {math.ceil(number / (5 * 3))}",
+                            f"episodes_global {anime_id} {season} {math.ceil(number / (5 * 3))}",
                         )
                     ]
                 )
@@ -164,7 +165,8 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             await callback.edit_message_media(
                 InputMediaVideo(
                     episode.file_id,
-                    caption=text,
+                    caption=lang.watch_list_anime_text,
+                    supports_streaming=True,
                 ),
                 reply_markup=ikb(keyboard),
                 
