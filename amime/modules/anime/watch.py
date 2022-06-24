@@ -157,7 +157,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
                     [
                         (
                             lang.back_button,
-                            f"episodes_global {anime_id} {season} {math.ceil(number / (5 * 3))}",
+                            f"episodes {anime_id} {season} {math.ceil(number / (5 * 3))}",
                         )
                     ]
                 )
@@ -165,7 +165,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             await callback.edit_message_media(
                 InputMediaVideo(
                     episode.file_id,
-                    caption=lang.watch_list_anime_text,
+                    caption=text,
                     supports_streaming=True,
                 ),
                 reply_markup=ikb(keyboard),
