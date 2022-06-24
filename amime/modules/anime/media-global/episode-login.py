@@ -87,13 +87,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     #        )
     #    )
 
-    if not is_admin:
-        buttons.append(
-                (
-                        lang.Download_text, 
-                        f"download more {anime.id} {user.id}"
-                )
-            )
+    if len(episodes) < 1:
+        buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
 
     keyboard = array_chunk(buttons, 2)
 
@@ -129,19 +124,19 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         watched = bool(await Watched.get_or_none(user=user.id, episode=episode.id))
         episodes_list.append((episode, viewed, watched))
 
-    if is_admin:
-        layout = Pagination(
-            episodes_list,
-            item_data=lambda i, pg: f"episode_global {i[0].anime} {i[0].season} {i[0].number}",
-            item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
-            + f" {i[0].number}"
-            + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
-            page_data=lambda pg: f"episodes_global {anime_id} {season} {pg}",
-        )
+    
+    layout = Pagination(
+        episodes_list,
+        item_data=lambda i, pg: f"episode_global {i[0].anime} {i[0].season} {i[0].number}",
+        item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
+        + f" {i[0].number}"
+        + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
+        page_data=lambda pg: f"episodes_global {anime_id} {season} {pg}",
+    )
 
-        lines = layout.create(page, lines=4, columns=3)
-        if len(lines) > 0:
-            keyboard += lines
+    lines = layout.create(page, lines=4, columns=3)
+    if len(lines) > 0:
+        keyboard += lines
     
 
     keyboard.append([
@@ -156,7 +151,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
     if not is_admin:
-        text = f" [Beta] - Kami belum merilis fitur List episode anime ini, stay terus dichannel kami!."
+        text = f"[Beta] - Anda adalah trial user. Fitur ini nantinya hanya untuk user premium."
+        text += f"\nUntuk lebih lanjutnya, silahkan buka tautan ini: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b>"
 
     photo: str = ""
     if hasattr(anime, "banner"):
