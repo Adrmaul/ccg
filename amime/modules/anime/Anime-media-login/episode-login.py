@@ -34,7 +34,7 @@ from amime.database import Episodes, Users, Viewed, Watched
 from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 
 
-mime.on_callback_query(filters.regex(r"^episode1 (\d+) (\d+) (\d+)"))
+mime.on_callback_query(filters.regex(r"^episodes1 (\d+) (\d+) (\d+)"))
 async def anime_episodes(bot: Amime, callback: CallbackQuery):
     message = callback.message
     user = callback.from_user
@@ -58,7 +58,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     buttons = [
         (
             f"{lang.language_button}: {lang.strings[language]['LANGUAGE_NAME']}",
-            f"episode1 language {anime_id} {season} {language} {page}",
+            f"episodes1 language {anime_id} {season} {language} {page}",
         ),
     ]
 
@@ -66,14 +66,14 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         buttons.append(
             (
                 f"{lang.season_button}: {season}",
-                f"episode1 season {anime_id} {season} {page}",
+                f"episodes1 season {anime_id} {season} {page}",
             )
         )
 
     buttons.append(
         (
             f"{lang.subtitled_button}: {lang.yes if subtitled else lang.no}",
-            f"episode1 subtitled {anime_id} {season} {page}",
+            f"episodes1 subtitled {anime_id} {season} {page}",
         )
     )
 
@@ -111,7 +111,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
                     [
                         (
                             f"{lang.next_episode_button}: {lang.episode[0]}{episode.number}",
-                            f"episode1 {anime_id} {episode.season} {episode.number}",
+                            f"episodes1 {anime_id} {episode.season} {episode.number}",
                         )
                     ]
                 )
@@ -126,11 +126,11 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     
     layout = Pagination(
         episodes_list,
-        item_data=lambda i, pg: f"episode1 {i[0].anime} {i[0].season} {i[0].number}",
+        item_data=lambda i, pg: f"episodes1 {i[0].anime} {i[0].season} {i[0].number}",
         item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
         + f" {i[0].number}"
         + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
-        page_data=lambda pg: f"episode1 {anime_id} {season} {pg}",
+        page_data=lambda pg: f"episodes1 {anime_id} {season} {pg}",
     )
 
     lines = layout.create(page, lines=4, columns=3)
