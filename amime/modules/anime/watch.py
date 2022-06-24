@@ -41,6 +41,13 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
     season = int(callback.matches[0].group(2))
     number = int(callback.matches[0].group(3))
 
+    is_admin = bot.is_sudo(user)
+    
+    if is_admin:
+        episodes = await Episodes.filter(added_by=user.id)
+
+    is_auth = bot.is_collaborator(user)
+
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
 
