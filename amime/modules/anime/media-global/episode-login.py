@@ -87,8 +87,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     #        )
     #    )
 
-    if len(episodes) < 1:
-        buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
+    
+    buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
 
     keyboard = array_chunk(buttons, 2)
 

@@ -66,6 +66,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             f"episodes subtitled {anime_id} {season} {page}",
         )
     )
+    
+    buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
 
     keyboard = array_chunk(buttons, 2)
 
@@ -115,10 +117,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if len(lines) > 0:
         keyboard += lines
 
-    keyboard.append([(
-                        lang.Download_text, 
-                        f"download more {anime_id} {user.id}"
-                    ), (lang.back_button, f"menu {anime_id}")])
+    keyboard.append([(lang.back_button, f"menu {anime_id}")])
 
     await callback.edit_message_media(
         InputMediaPhoto(

@@ -109,7 +109,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         if is_private:
             if len(episodes) > 0:
-                text = f"✅ Tersedia untuk ditonton. - <code>{anime.title.romaji}"
+                text = f"✅ List tersedia untuk ditonton. - <code>{anime.title.romaji}"
                 if hasattr(anime.title, "native"):
                     text += f" (<b>{anime.title.native}</b>)"
             if len(episodes) < 1 :

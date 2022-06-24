@@ -107,40 +107,16 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         episodes = sorted(episodes, key=lambda episode: episode.number)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
-        if is_collaborator:
+        if is_private:
             if len(episodes) > 0:
-                text = f"✅ Tersedia untuk ditonton. - <code>{anime.title.romaji}"
+                text = f"✅ List Tersedia untuk ditonton. - <code>{anime.title.romaji}"
                 if hasattr(anime.title, "native"):
                     text += f" (<b>{anime.title.native}</b>)"
             if len(episodes) < 1 :
-                text = f"\n\n❌ Belum tersedia. - <code>{anime.title.romaji}"
+                text = f"\n\n❌ List belum tersedia. - <code>{anime.title.romaji}"
                 if hasattr(anime.title, "native"):
                     text += f" (<b>{anime.title.native}</b>)"
-
-
-        if not is_collaborator:
-            text = f"⌯ <code>{anime.title.romaji}</code>"
-            if hasattr(anime.title, "native"):
-                text += f" (<b>{anime.title.native}</b>)"
-            text += f"\n─────── ∘°❉°∘ ───────"    
-            text += f"\n⋟ <b>ID</b>: <code>{anime.id}</code>"
-            if hasattr(anime, "score"):
-                if hasattr(anime.score, "average"):
-                    text += f"\n⋟ <b>{lang.score}</b>: <code>{anime.score.average}% 🌟</code>"
-            if not anime.status.lower() == "not_yet_released":
-                text += f"\n⋟ <b>{lang.status}</b>: <code>{anime.status} | {anime.duration}m</code>"
-            text += f"\n⋟ <b>{lang.format}</b>: <code>{anime.format}</code>"
-            if hasattr(anime, "genres"):
-                text += f"\n⋟ <b>{lang.genres}</b>: <code>{', '.join(anime.genres)}</code>"
-            if not anime.format.lower() == "movie" and hasattr(anime, "episodes"):
-                text += f"\n⋟ <b>{lang.episode}s</b>: <code>{anime.episodes} Eps</code>"
-            if not anime.status.lower() == "not_yet_released":
-                text += f"\n⋟ <b>{lang.start_date}</b>: <code>{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0}</code>"
-            if not anime.status.lower() in ["not_yet_released", "releasing"]:
-                text += f"\n⋟ <b>{lang.end_date}</b>: <code>{anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}</code>"
-            if hasattr(anime, "studios"):
-                text += f"\n⋟ <b>{lang.studios}</b>: <code>{', '.join(anime.studios)}</code>"
-                text += f"\n─────── ∘°❉°∘ ───────"
+                text += f"\nCek progres: <a href='https://t.me/otakuindonew/49696'>Disini</a></b>"
         buttons = [
             (
                         lang.view_more_button,
@@ -149,25 +125,14 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         ]
          
 
-        if len(episodes) > 0 and not is_collaborator:
-            if is_private and anime.status.lower() == "releasing":
-                buttons.append(
-                    (
-                        lang.watch_button,
-                        f"episodes {anime.id} {episodes[0].season} 1",
-                    )
-                )
-        
-        
-        if len(episodes) > 0 and is_collaborator:
+        if len(episodes) > 0:
             if is_private:
                 buttons.append(
                     (
                         lang.watch_button,
                         f"episodes {anime.id} {episodes[0].season} 1",
                     )
-                )    
-
+                )
 
 
         if is_collaborator:
@@ -181,13 +146,8 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
  
              
 
-        if is_private and not anime.status.lower() == "not_yet_released" and not anime.status.lower() == "releasing" and not hasattr(anime, "genres") == 'hentai':      
-            buttons.append(
-                    (
-                        lang.Download_text, 
-                        f"download more {anime.id} {user.id}"
-                    ),
-                )
+        if len(episodes) < 1 and is_private and not anime.status.lower() == "not_yet_released" and not anime.status.lower() == "releasing" and not hasattr(anime, "genres") == 'hentai':      
+            buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
 
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
