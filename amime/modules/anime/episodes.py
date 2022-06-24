@@ -20,15 +20,19 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
+from dataclasses import is_dataclass
 import math
 
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, InputMediaPhoto
 from pyromod.helpers import array_chunk, ikb
 from pyromod.nav import Pagination
+import anilist
 
 from amime.amime import Amime
 from amime.database import Episodes, Users, Viewed, Watched
+
+from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 
 
 @Amime.on_callback_query(filters.regex(r"^episodes (\d+) (\d+) (\d+)"))
@@ -44,6 +48,9 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     user_db = await Users.get(id=user.id)
     language = user_db.language_anime
     subtitled = user_db.subtitled_anime
+
+    async with anilist.AsyncClient() as client:
+        anime = await client.get(anime_id, "anime")
 
     buttons = [
         (
