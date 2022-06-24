@@ -119,6 +119,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 text = f"\n\n❌ Belum tersedia. - <code>{anime.title.romaji}"
                 if hasattr(anime.title, "native"):
                     text += f" (<b>{anime.title.native}</b>)"
+                text += f"\nCek progres: <a href='https://t.me/otakuindonew/49696'>Disini</a></b>)"
         buttons = [
             (lang.menu_login, f"settings_global {anime_id}")       
         ]
@@ -141,7 +142,9 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                         lang.watch_button,
                         f"episodes_global {anime.id} {episodes[0].season} 1",
                     )
-                )    
+                )
+        if len(episodes) < 1 and is_private:
+            buttons.append((lang.Inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))    
 
 
         if is_private:       
@@ -154,7 +157,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         
         if is_private:       
             buttons.append(
-                    (lang.back_button, f"btn_{anime_id}_False_{user_id}")
+                    (lang.back_button, f"btn_{anime_id}_False_{user.id}")
                 )
 
         keyboard = array_chunk(buttons, 2)

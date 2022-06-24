@@ -83,10 +83,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 keyboard = []
                 for result in results:
                     keyboard.append(
-                        [(result.title.romaji, f"menu {result.id} {user.id} 1"),(
-                        lang.Hapus_text, 
-                        f"neko_delete, {user.id}"
-                        )]
+                        [(result.title.romaji, f"menu {result.id} {user.id} 1")]
                     )
                 await message.reply_text(
                     lang.search_results_text(
