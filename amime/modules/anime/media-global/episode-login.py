@@ -145,7 +145,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     
 
     keyboard.append([
-        (lang.menu_login, f"settings_global {anime_id}"), (lang.back_button, f"menu {anime_id}")])
+        (lang.back_button, f"media {anime_id}")])
 
     anime = await client.get(anime_id, "anime")
     
