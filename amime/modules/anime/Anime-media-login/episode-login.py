@@ -34,7 +34,7 @@ from amime.database import Episodes, Users, Viewed, Watched
 from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 
 
-mime.on_callback_query(filters.regex(r"^episodes1 (\d+) (\d+) (\d+)"))
+@Amime.on_callback_query(filters.regex(r"^episodes1 (\d+) (\d+) (\d+)"))
 async def anime_episodes(bot: Amime, callback: CallbackQuery):
     message = callback.message
     user = callback.from_user
