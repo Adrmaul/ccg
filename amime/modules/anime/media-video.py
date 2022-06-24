@@ -83,10 +83,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 keyboard = []
                 for result in results:
                     keyboard.append(
-                        [(result.title.romaji, f"media {result.id} {user.id} 1"),(
-                        lang.Hapus_text, 
-                        f"neko_delete, {user.id}"
-                        )]
+                        [(result.title.romaji, f"media {result.id} {user.id} 1")]
                     )
                 await message.reply_text(
                     lang.search_results_text(
@@ -116,10 +113,10 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 if hasattr(anime.title, "native"):
                     text += f" (<b>{anime.title.native}</b>)"
             if len(episodes) < 1 :
-                text = f"\n\n❌ Belum tersedia. - <code>{anime.title.romaji}"
+                text = f"\n\n❌ List belum tersedia. - <code>{anime.title.romaji}"
                 if hasattr(anime.title, "native"):
                     text += f" (<b>{anime.title.native}</b>)"
-                text += f"\nCek progres: <a href='https://t.me/otakuindonew/49696'>Disini</a></b>)"
+                text += f"\nCek progres: <a href='https://t.me/otakuindonew/49696'>Disini</a></b>"
         buttons = [
             (lang.menu_login, f"settings_global {anime_id}")       
         ]
