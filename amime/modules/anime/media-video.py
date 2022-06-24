@@ -134,14 +134,13 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if len(episodes) < 1 and is_private:
             buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))    
 
-
-        if is_private:       
-            buttons.append(
-                    (
-                        lang.Hapus_text, 
-                        f"neko_delete, {user.id}"
-                    ),
-                )
+       
+        buttons.append(
+                (
+                    lang.Hapus_text, 
+                    f"neko_delete, {user.id}"
+                ),
+            )
         
         if is_private:       
             buttons.append(
