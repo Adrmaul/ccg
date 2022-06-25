@@ -36,8 +36,8 @@ from amime.modules.mylists import get_mylist_button
 from amime.modules.notify import get_notify_button
 
 
-@Amime.on_message(filters.cmd(r"media (.+)"))
-@Amime.on_callback_query(filters.regex(r"^media (\d+)\s?(\d+)?\s?(\d+)?"))
+@Amime.on_message(filters.cmd(r"media_login (.+)"))
+@Amime.on_callback_query(filters.regex(r"^media_login (\d+)\s?(\d+)?\s?(\d+)?"))
 async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
     message = union.message if is_callback else union
@@ -83,7 +83,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 keyboard = []
                 for result in results:
                     keyboard.append(
-                        [(result.title.romaji, f"media {result.id} {user.id} 1")]
+                        [(result.title.romaji, f"media_login {result.id} {user.id} 1")]
                     )
                 await message.reply_text(
                     lang.search_results_text(
@@ -107,6 +107,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         episodes = sorted(episodes, key=lambda episode: episode.number)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
+        
         if len(episodes) > 0:
             text = f"✅ List tersedia untuk ditonton. - <code>{anime.title.romaji}"
             if hasattr(anime.title, "native"):
@@ -117,7 +118,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 text += f" (<b>{anime.title.native}</b>)"
             text += f"\nCek progres: <a href='https://t.me/otakuindonew/49696'>Disini</a></b>"
         buttons = [
-            (lang.menu_login, f"settings_global {anime_id}")       
+            (lang.menu_login, f"settings_login {anime_id}")       
         ]
          
 
@@ -126,7 +127,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 buttons.append(
                     (
                         lang.watch_button,
-                        f"episodes_global {anime.id} {episodes[0].season} 1",
+                        f"episodes1 {anime.id} {episodes[0].season} 1",
                     )
                 )
         
@@ -143,7 +144,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         
         if is_private:       
             buttons.append(
-                    (lang.back_button, f"btn_{anime_id}_False_{user.id}")
+                    (lang.back_button, f"btn_{anime_id}_True_{user.id}")
                 )
 
         keyboard = array_chunk(buttons, 2)
