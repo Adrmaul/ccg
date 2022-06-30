@@ -51,7 +51,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     is_admin = bot.is_sudo(user)
     
 
-    is_auth = bot.is_collaborator(user)
+    is_auth = await filters.collaborator(bot)
 
     episodes = await Episodes.filter(added_by=user.id)
 
@@ -89,7 +89,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             )
         )
 
-    if is_auth :
+    if is_auth and is_admin:
         buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
 
     keyboard = array_chunk(buttons, 2)
@@ -136,9 +136,9 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             page_data=lambda pg: f"episode1 {anime_id} {season} {pg}",
         )
 
-    lines = layout.create(page, lines=4, columns=3)
-    if len(lines) > 0:
-        keyboard += lines
+        lines = layout.create(page, lines=4, columns=3)
+        if len(lines) > 0:
+            keyboard += lines
     
 
     keyboard.append([
@@ -149,10 +149,10 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if anime is None:
         return
 
-    if is_auth:
+    if is_auth and is_admin:
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
-    if not is_auth:
+    if not is_auth and not is_admin:
         text = f"[Beta] - Anda adalah trial user. Fitur ini nantinya hanya untuk user premium."
         text += f"\nUntuk lebih lanjutnya, silahkan buka tautan ini: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b>"
 
