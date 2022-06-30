@@ -49,9 +49,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     subtitled = user_db.subtitled_anime
 
     is_admin = bot.is_sudo(user)
-    
 
-    is_auth = await filters.collaborator(bot)
+    is_auth = bot.is_collaborator(user)
 
     episodes = await Episodes.filter(added_by=user.id)
 
@@ -80,7 +79,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         )
     )
 
-    if not is_auth and not is_admin:
+    if not is_admin and not is_auth:
         buttons.append(
             (
                 lang.order_button,
@@ -89,8 +88,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             )
         )
 
-    if is_auth and is_admin:
-        buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
+    
+    buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
 
     keyboard = array_chunk(buttons, 2)
 
@@ -119,14 +118,14 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
                     ]
                 )
             break
+    if is_admin and is_auth:
+        episodes_list = []
+        for episode in episodes:
+            viewed = bool(await Viewed.get_or_none(user=user.id, item=episode.id))
+            watched = bool(await Watched.get_or_none(user=user.id, episode=episode.id))
+            episodes_list.append((episode, viewed, watched))
 
-    episodes_list = []
-    for episode in episodes:
-        viewed = bool(await Viewed.get_or_none(user=user.id, item=episode.id))
-        watched = bool(await Watched.get_or_none(user=user.id, episode=episode.id))
-        episodes_list.append((episode, viewed, watched))
-
-    if is_auth and is_admin:
+    
         layout = Pagination(
             episodes_list,
             item_data=lambda i, pg: f"episode1 {i[0].anime} {i[0].season} {i[0].number}",
@@ -136,9 +135,9 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             page_data=lambda pg: f"episode1 {anime_id} {season} {pg}",
         )
 
-        lines = layout.create(page, lines=4, columns=3)
-        if len(lines) > 0:
-            keyboard += lines
+    lines = layout.create(page, lines=4, columns=3)
+    if len(lines) > 0:
+        keyboard += lines
     
 
     keyboard.append([
@@ -149,10 +148,10 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if anime is None:
         return
 
-    if is_auth and is_admin:
+    if is_admin and is_auth:
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
-    if not is_auth and not is_admin:
+    if not is_admin and is_auth:
         text = f"[Beta] - Anda adalah trial user. Fitur ini nantinya hanya untuk user premium."
         text += f"\nUntuk lebih lanjutnya, silahkan buka tautan ini: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b>"
 
