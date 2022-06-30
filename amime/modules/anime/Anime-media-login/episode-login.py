@@ -48,9 +48,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     language = user_db.language_anime
     subtitled = user_db.subtitled_anime
 
-    is_admin = bot.is_sudo(user)
-
-    is_auth = bot.is_collaborator(user)
+    is_admin = bot.is_sudo(user) or await filters.collaborator(bot)
 
     episodes = await Episodes.filter(added_by=user.id)
 
@@ -79,14 +77,14 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         )
     )
 
-    #if not is_admin:
-    #    buttons.append(
-    #        (
-    #            lang.order_button,
-    #            f"http://t.me/akuiiki",
-    #            "url",
-    #        )
-    #    )
+    if not is_admin:
+        buttons.append(
+            (
+                lang.order_button,
+                f"http://t.me/akuiiki",
+                "url",
+            )
+        )
 
     
     buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
@@ -148,7 +146,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if anime is None:
         return
 
-    if is_admin and is_auth:
+    if is_admin:
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
     if not is_admin:
