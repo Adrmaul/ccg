@@ -123,19 +123,19 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         watched = bool(await Watched.get_or_none(user=user.id, episode=episode.id))
         episodes_list.append((episode, viewed, watched))
 
-    
-    layout = Pagination(
-        episodes_list,
-        item_data=lambda i, pg: f"episode1 {i[0].anime} {i[0].season} {i[0].number}",
-        item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
-        + f" {i[0].number}"
-        + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
-        page_data=lambda pg: f"episode1 {anime_id} {season} {pg}",
-    )
+    if is_admin:
+        layout = Pagination(
+            episodes_list,
+            item_data=lambda i, pg: f"episode1 {i[0].anime} {i[0].season} {i[0].number}",
+            item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
+            + f" {i[0].number}"
+            + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
+            page_data=lambda pg: f"episode1 {anime_id} {season} {pg}",
+        )
 
-    lines = layout.create(page, lines=4, columns=3)
-    if len(lines) > 0:
-        keyboard += lines
+        lines = layout.create(page, lines=4, columns=3)
+        if len(lines) > 0:
+            keyboard += lines
     
 
     keyboard.append([
