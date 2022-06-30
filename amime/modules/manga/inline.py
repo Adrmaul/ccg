@@ -38,8 +38,7 @@ async def manga_inline(bot: Amime, inline_query: InlineQuery):
     query = inline_query.matches[0]["query"].strip()
     lang = inline_query._lang
 
-    is_collaborator = await filters.sudo(bot, inline_query)
-    is_auth = await filters.collaborator(bot, inline_query)
+    is_collaborator = await filters.sudo(bot, inline_query) or await filters.collaborator(bot, inline_query)
 
     results: List[InlineQueryResultPhoto] = []
 
@@ -111,7 +110,7 @@ async def manga_inline(bot: Amime, inline_query: InlineQuery):
                 )
             )
 
-    if is_collaborator and is_auth and len(results) > 0:
+    if len(results) > 0:
         try:
             await inline_query.answer(
                 results=results,
