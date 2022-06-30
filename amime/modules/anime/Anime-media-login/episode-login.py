@@ -118,22 +118,22 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
                     ]
                 )
             break
-    if is_admin and is_auth:
-        episodes_list = []
-        for episode in episodes:
-            viewed = bool(await Viewed.get_or_none(user=user.id, item=episode.id))
-            watched = bool(await Watched.get_or_none(user=user.id, episode=episode.id))
-            episodes_list.append((episode, viewed, watched))
+
+    episodes_list = []
+    for episode in episodes:
+        viewed = bool(await Viewed.get_or_none(user=user.id, item=episode.id))
+        watched = bool(await Watched.get_or_none(user=user.id, episode=episode.id))
+        episodes_list.append((episode, viewed, watched))
 
     
-        layout = Pagination(
-            episodes_list,
-            item_data=lambda i, pg: f"episode1 {i[0].anime} {i[0].season} {i[0].number}",
-            item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
-            + f" {i[0].number}"
-            + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
-            page_data=lambda pg: f"episode1 {anime_id} {season} {pg}",
-        )
+    layout = Pagination(
+        episodes_list,
+        item_data=lambda i, pg: f"episode1 {i[0].anime} {i[0].season} {i[0].number}",
+        item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
+        + f" {i[0].number}"
+        + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
+        page_data=lambda pg: f"episode1 {anime_id} {season} {pg}",
+    )
 
     lines = layout.create(page, lines=4, columns=3)
     if len(lines) > 0:
@@ -151,7 +151,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if is_admin and is_auth:
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
-    if not is_admin and is_auth:
+    if not is_admin and not is_auth:
         text = f"[Beta] - Anda adalah trial user. Fitur ini nantinya hanya untuk user premium."
         text += f"\nUntuk lebih lanjutnya, silahkan buka tautan ini: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b>"
 
