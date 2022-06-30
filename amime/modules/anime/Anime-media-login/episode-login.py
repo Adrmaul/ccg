@@ -50,7 +50,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
 
     is_admin = bot.is_sudo(user)
 
-    is_auth = await filters.sudo(bot)
+    is_auth = bot.is_collaborator(user)
 
     episodes = await Episodes.filter(added_by=user.id)
 
