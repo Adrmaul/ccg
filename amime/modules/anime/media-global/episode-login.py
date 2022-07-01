@@ -49,7 +49,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     language = user_db.language_anime
     subtitled = user_db.subtitled_anime
 
-    is_admin = bot.is_sudo(user)
+    is_admin = bot.is_sudo(user) or bot.is_collaborator(user)
 
     episodes = await Episodes.filter(added_by=user.id)
 
@@ -78,14 +78,14 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         )
     )
 
-    #if not is_admin:
-    #    buttons.append(
-    #        (
-    #            lang.order_button,
-    #            f"http://t.me/akuiiki",
-    #            "url",
-    #        )
-    #    )
+    if not is_admin:
+        buttons.append(
+            (
+                lang.order_button,
+                f"http://t.me/akuiiki",
+                "url",
+            )
+        )
 
     
     buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
@@ -124,19 +124,19 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         watched = bool(await Watched.get_or_none(user=user.id, episode=episode.id))
         episodes_list.append((episode, viewed, watched))
 
-    
-    layout = Pagination(
-        episodes_list,
-        item_data=lambda i, pg: f"episode_global {i[0].anime} {i[0].season} {i[0].number}",
-        item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
-        + f" {i[0].number}"
-        + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
-        page_data=lambda pg: f"episodes_global {anime_id} {season} {pg}",
-    )
+    if is_admin:
+        layout = Pagination(
+            episodes_list,
+            item_data=lambda i, pg: f"episode_global {i[0].anime} {i[0].season} {i[0].number}",
+            item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
+            + f" {i[0].number}"
+            + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
+            page_data=lambda pg: f"episode_global {anime_id} {season} {pg}",
+        )
 
-    lines = layout.create(page, lines=4, columns=3)
-    if len(lines) > 0:
-        keyboard += lines
+        lines = layout.create(page, lines=4, columns=3)
+        if len(lines) > 0:
+            keyboard += lines
     
 
     keyboard.append([
