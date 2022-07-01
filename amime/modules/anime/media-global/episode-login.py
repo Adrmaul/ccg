@@ -151,8 +151,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
     if not is_admin:
-        text = f"[Beta] - Anda adalah trial user. Fitur ini nantinya hanya untuk user premium."
-        text += f"\nUntuk lebih lanjutnya, silahkan buka tautan ini: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b>"
+        text = f"Anda adalah Free User, kami membatasi fitur yang tersedia dibot ini.\nSilahkan Order Premium hanya 10K (Lifetime)."
+        text += f"\nUntuk lebih lanjutnya, silahkan buka tautan ini untuk mengetahui fitur: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b>"
 
     photo: str = ""
     if hasattr(anime, "banner"):
