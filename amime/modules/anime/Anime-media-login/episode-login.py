@@ -111,7 +111,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
                     [
                         (
                             f"{lang.next_episode_button}: {lang.episode[0]}{episode.number}",
-                            f"episode1 {anime_id} {episode.season} {episode.number}",
+                            f"episodes1 {anime_id} {episode.season} {episode.number}",
                         )
                     ]
                 )
@@ -150,7 +150,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
     if not is_admin:
-        text = f"[Beta] - Anda adalah trial user. Fitur ini nantinya hanya untuk user premium."
+        text = f"Mohon maaf, untuk list episode tidak tersedia, Karena anda adalah free user, silahkan upgrade status bot hanya 10k (Lifetime)"
         text += f"\nUntuk lebih lanjutnya, silahkan buka tautan ini: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b>"
 
     photo: str = ""
