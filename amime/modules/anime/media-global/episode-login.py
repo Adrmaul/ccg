@@ -131,14 +131,30 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if is_admin:
         layout = Pagination(
             episodes_list,
-            item_data=lambda i, pg: f"episode_global {i[0].anime} {i[0].season} {i[0].number}",
+            item_data=lambda i, pg: f"episode {i[0].anime} {i[0].season} {i[0].number}",
             item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
             + f" {i[0].number}"
             + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
-            page_data=lambda pg: f"episode_global {anime_id} {season} {pg}",
+            page_data=lambda pg: f"episodes {anime_id} {season} {pg}",
         )
 
         lines = layout.create(page, lines=4, columns=3)
+
+        if len(lines) > 0:
+            keyboard += lines
+
+    if not is_admin and anime.status.lower() == "releasing":
+        layout = Pagination(
+            episodes_list,
+            item_data=lambda i, pg: f"episode {i[0].anime} {i[0].season} {i[0].number}",
+            item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
+            + f" {i[0].number}"
+            + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
+            page_data=lambda pg: f"episodes {anime_id} {season} {pg}",
+        )
+
+        lines = layout.create(page, lines=4, columns=3)
+
         if len(lines) > 0:
             keyboard += lines
     
