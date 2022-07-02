@@ -102,7 +102,7 @@ async def report_episode(bot: Amime, callback: CallbackQuery):
             )
         )
 
-    buttons.append((lang.back_button, f"episode {anime_id} {season} {number}"))
+    buttons.append((lang.back_button, f"episodes {anime_id} {season} {number}"))
 
     keyboard += array_chunk(buttons, 2)
 
