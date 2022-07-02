@@ -49,6 +49,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     language = user_db.language_anime
     subtitled = user_db.subtitled_anime
 
+    is_admin = bot.is_sudo(user) or bot.is_collaborator(user)
+
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
 
@@ -110,26 +112,52 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         watched = bool(await Watched.get_or_none(user=user.id, episode=episode.id))
         episodes_list.append((episode, viewed, watched))
 
-    layout = Pagination(
-        episodes_list,
-        item_data=lambda i, pg: f"episode {i[0].anime} {i[0].season} {i[0].number}",
-        item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
-        + f" {i[0].number}"
-        + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
-        page_data=lambda pg: f"episodes {anime_id} {season} {pg}",
-    )
+    if is_admin:
+        layout = Pagination(
+            episodes_list,
+            item_data=lambda i, pg: f"episode {i[0].anime} {i[0].season} {i[0].number}",
+            item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
+            + f" {i[0].number}"
+            + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
+            page_data=lambda pg: f"episodes {anime_id} {season} {pg}",
+        )
 
-    lines = layout.create(page, lines=4, columns=3)
+        lines = layout.create(page, lines=4, columns=3)
 
-    if len(lines) > 0:
-        keyboard += lines
+        if len(lines) > 0:
+            keyboard += lines
+
+    if not is_admin and anime.status.lower() == "releasing":
+        layout = Pagination(
+            episodes_list,
+            item_data=lambda i, pg: f"episode {i[0].anime} {i[0].season} {i[0].number}",
+            item_title=lambda i, pg: ("✅" if i[2] else "👁️" if i[1] else "")
+            + f" {i[0].number}"
+            + (f"-{i[0].unified_until}" if i[0].unified_until > 0 else ""),
+            page_data=lambda pg: f"episodes {anime_id} {season} {pg}",
+        )
+
+        lines = layout.create(page, lines=4, columns=3)
+
+        if len(lines) > 0:
+            keyboard += lines
 
     keyboard.append([(lang.back_button, f"menu {anime_id}")])
+
+    if is_admin:
+        text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
+    
+    if not is_admin and anime.status.lower() == "releasing":
+        text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
+
+    if not is_admin and not anime.status.lower() == "releasing":
+        text = f"Mohon maaf, untuk list episode tidak tersedia, Karena anda adalah free user, silahkan upgrade status bot hanya 10k (Lifetime)"
+        text += f"\nUntuk lebih lanjutnya, silahkan buka tautan ini untuk mengetahui fitur: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b>"
 
     await callback.edit_message_media(
         InputMediaPhoto(
             f"https://img.anili.st/media/{anime_id}",
-            caption=lang.watch_list_anime_text,
+            caption=text,
         ),
         reply_markup=ikb(keyboard),
     )
