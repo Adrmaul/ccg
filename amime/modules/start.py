@@ -48,7 +48,7 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
         bot, union
     )
 
-    if is_private and not is_collaborator:
+    if is_private and is_collaborator:
         await (message.edit_text if is_callback else message.reply_text )(
             lang.start_text_2.format(
                 user_mention=user.mention(),
@@ -93,7 +93,7 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
             ),
         )
 
-    if is_private and is_collaborator:
+    if is_private and not is_collaborator:
         await (message.edit_text if is_callback else message.reply_text )(
             lang.start_text_2.format(
                 user_mention=user.mention(),
@@ -102,7 +102,11 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
             reply_markup=ikb(
                 [
                     [
-                        (lang.Premium, "premium"),
+                        (
+                            lang.Premium,
+                            f"http://telegra.ph/Premium---ccgnimex-06-23",
+                            "url",
+                        )
                     ],
                     [
                         (lang.anime_button, "menu"),

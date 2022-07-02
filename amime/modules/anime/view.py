@@ -47,6 +47,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
     is_private = await filters.private(bot, message)
     is_collaborator = await filters.sudo(bot, union)
+    is_auth = await filters.collaborator(bot, union)
 
     query = union.matches[0].group(1)
 

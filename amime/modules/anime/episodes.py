@@ -76,7 +76,11 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         )
     )
     
-    buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
+    if is_admin:
+        buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
+    
+    if not is_admin and anime.status.lower() == "releasing":
+        buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
 
     keyboard = array_chunk(buttons, 2)
 

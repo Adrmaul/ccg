@@ -88,7 +88,11 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         )
 
     
-    buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
+    if is_admin:
+        buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
+    
+    if not is_admin and anime.status.lower() == "releasing":
+        buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
 
     keyboard = array_chunk(buttons, 2)
 
@@ -154,7 +158,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
     if not is_admin and not anime.status.lower() == "releasing":
-        text = f"Mohon maaf, untuk list episode tidak tersedia, Karena anda adalah free user, silahkan upgrade status bot hanya 10k (Lifetime)"
+        text = f"Mohon maaf, untuk list episode tidak tersedia, Karena anda adalah free user, silahkan upgrade status bot hanya 10k (Lifetime)\n"
         text += f"\nUntuk lebih lanjutnya, silahkan buka tautan ini untuk mengetahui fitur: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b>"
 
     photo: str = ""
