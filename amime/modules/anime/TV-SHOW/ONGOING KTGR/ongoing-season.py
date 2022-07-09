@@ -8,13 +8,12 @@ from pyromod.nav import Pagination
 from amime.amime import Amime
 
 
-@Amime.on_callback_query(filters.regex(r"^ongoing (?P<page>\d+)"))
-@Amime.on_message(filters.cmd(r"ongoing$") & filters.private)
-@Amime.on_callback_query(filters.regex(r"^ongoing$"))
-async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
-    is_callback = isinstance(union, CallbackQuery)
-    message = union.message if is_callback else union
-    lang = union._lang
+@Amime.on_callback_query(filters.regex(r"^tv_ongoing_anime anime (?P<page>\d+)"))
+async def anime_suggestions(bot: Amime, callback: CallbackQuery):
+    page = int(callback.matches[0]["page"])
+
+    message = callback.message
+    lang = callback._lang
 
     keyboard = []
     async with httpx.AsyncClient(http2=True) as client:
@@ -58,14 +57,14 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
                 suggestions,
                 item_data=lambda i, pg: f"menu {i.id}",
                 item_title=lambda i, pg: i.title.romaji,
-                page_data=lambda pg: f"ongoing anime {pg}",
+                page_data=lambda pg: f"tv_ongoing_anime anime {pg}",
             )
 
             lines = layout.create(page, lines=8)
 
             if len(lines) > 0:
                 keyboard += lines
-    keyboard.append([(lang.back_button, "tvshow_menu")])
+    keyboard.append([(lang.back_button, "jadwal")])
 
     await message.edit_text(
         lang.suggestions_text,

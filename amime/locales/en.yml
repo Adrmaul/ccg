@@ -423,30 +423,14 @@ progress_text: |
 ongoing_tidak_text: Mohon maaf, jadwal ini, tidak tersedia untuk sekarang..😇
 
 ongoing_text: |
+  Menu ini merupakan semua anime yang sedang tayang atau ongoing. jadi mungkin ada anime yang tidak kami proses.
+  Kami memberikan kemudahan kepada semua user baik itu premium ataupun free user. untuk berkontribusi menambahkan anime ongoing.
 
-  Ini merupakan jadwal yang kami Proses, berdasarkan perkiraan dari rilisan fansub, bukan studio.
-  Berikut jadwal anime yang kami garap akan rilis - <i>Perkiraan</i>
+  <b>*note:</b> mohon untuk yang ingin memasukan anime kebot. harap cek kembali videonya. jangan sampai salah.
+  
+  Reso tinggi : 1080p atau 720p
+  Reso Rendah : 480p atau 360p
 
-  <b>Kamis</b> :
-  <code>Tate no Yuusha no Nariagari Season 2</code>
-  <code>Shijou Saikyou no Daimaou, Murabito A ni Tensei suru</code>
-  <code>Komi-san wa, Komyushou desu. 2</code>
-
-  <b>Jumat</b> :
-  <code>Summer Time Render</code>
-  <code>Paripi Koumei </code>
-
-  <b>Sabtu</b> : 
-  <code>Kaguya-sama wa Kokurasetai: Ultra Romantic </code>
-  <code>Date A Live IV </code>
-  <code>Rikei ga Koi ni Ochita no de Shoumei shitemita. r=1-sinθ (Heart)</code>
-  <code>Aharen-san wa Hakarenai</code>
-
-  <b>Minggu</b> : 
-  <code>SPY×FAMILY  </code>
-  <code>Kakkou no Iinazuke</code>
-
-  <i>Anime ongoing yang digarap, jangan berharap tepat waktu, karena kami belum terlalu fokus ongoing. Tetapi kami usahakan secepatnya sesuai jadwal.</i>
 
 anime_satu: Date A Live IV
 

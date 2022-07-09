@@ -26,19 +26,10 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
 
     keyboard = [
         [
-            (lang.SENIN, "senin"),
-            (lang.SELASA, "selasa"),
+            (lang.Ongoing, "tv_ongoing_anime"),
         ],
         [
-            (lang.RABU, "rabu"),
-            (lang.KAMIS, "kamis"),
-        ],
-        [
-            (lang.JUMAT, "jumat"),
-            (lang.SABTU, "sabtu"),
-        ],
-        [
-            (lang.MINGGU, "minggu"),
+            (lang.Kategori, "ktgr-ongoing"),
         ],
 
     ]
