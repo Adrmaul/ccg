@@ -26,10 +26,8 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
 
     keyboard = [
         [
-            (lang.Ongoing, "tv_ongoing_anime"),
-        ],
-        [
-            (lang.Kategori, "ktgr-ongoing"),
+            (lang.Ongoing, "tv_ongoing_anime anime 1"),
+            (lang.Kategori, "ktgr-ongoing")
         ],
 
     ]
