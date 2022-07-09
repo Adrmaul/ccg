@@ -17,7 +17,7 @@ from amime.modules.anime.view import anime_view
 
 
 
-@Amime.on_message(filters.cmd(r"jadwal$") & filters.private)
+@Amime.on_message(filters.cmd(r"ongoing$") & filters.private)
 @Amime.on_callback_query(filters.regex(r"^jadwal$"))
 async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
     is_callback = isinstance(union, CallbackQuery)
