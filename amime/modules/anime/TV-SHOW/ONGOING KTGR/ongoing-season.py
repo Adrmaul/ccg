@@ -67,6 +67,6 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     keyboard.append([(lang.back_button, "jadwal")])
 
     await message.edit_text(
-        lang.suggestions_text,
+        lang.jad_text,
         reply_markup=ikb(keyboard),
     )
