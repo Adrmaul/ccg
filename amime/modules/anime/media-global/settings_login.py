@@ -126,11 +126,11 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 )
             )
 
-        if is_auth and not anime.status.lower() == "not_yet_released":
+        if not is_collaborator and not anime.status.lower() == "not_yet_released":
             buttons.append(
                 (
                     lang.manage_user_button,
-                    f"manage_user_global anime {anime.id} 0 1 {language} 1",
+                    f"manage_global_user anime {anime.id} 0 1 {language} 1",
                 )
             )        
 
