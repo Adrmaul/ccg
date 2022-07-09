@@ -11,11 +11,10 @@ from amime.amime import Amime
 @Amime.on_callback_query(filters.regex(r"^ongoing (?P<page>\d+)"))
 @Amime.on_message(filters.cmd(r"ongoing$") & filters.private)
 @Amime.on_callback_query(filters.regex(r"^ongoing$"))
-async def anime_suggestions(bot: Amime, callback: CallbackQuery):
-    page = int(callback.matches[0]["page"])
-
-    message = callback.message
-    lang = callback._lang
+async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
+    is_callback = isinstance(union, CallbackQuery)
+    message = union.message if is_callback else union
+    lang = union._lang
 
     keyboard = []
     async with httpx.AsyncClient(http2=True) as client:
