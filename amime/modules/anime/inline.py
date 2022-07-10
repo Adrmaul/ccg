@@ -20,8 +20,8 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     is_collaborator = await filters.sudo(bot, inline_query) or await filters.collaborator(bot, inline_query)
 
 
-    if query.startswith("!"):
-        inline_query.continue_propagation()
+    #if query.startswith("!"):
+        #inline_query.continue_propagation()
 
     results: List[InlineQueryResultPhoto] = []
 
