@@ -26,7 +26,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     results: List[InlineQueryResultPhoto] = []
 
     async with anilist.AsyncClient() as client:
-        search_results = await client.search(query, "anime", 30)
+        search_results = await client.search(query, "anime", 25)
         while search_results is None:
             search_results = await client.search(query, "anime", 10)
             await asyncio.sleep(6)
