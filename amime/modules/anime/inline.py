@@ -35,7 +35,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             anime = await client.get(result.id, "anime")
 
             if anime is None:
-                return
+                continue
 
             episodes = await Episodes.filter(anime=anime.id)
             episodes = sorted(episodes, key=lambda episode: episode.number)
