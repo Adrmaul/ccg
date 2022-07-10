@@ -56,13 +56,15 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                     photo = anime.cover.medium
 
             
-            if len(episodes) > 0 and hasattr(anime, "genres"):
-                description = f"✅ Tersedia | {anime.episodes} Eps ({anime.format})"
+            if len(episodes) > 0 and hasattr(anime, "genres") and hasattr(anime.score, "average"):
+                description = f"✅ Tersedia | {anime.episodes} Eps ({anime.format}) - {anime.score.average}% 🌟"
                 description += f"\nGenre: {', '.join(anime.genres)}"
+                description += f"\n{lang.end_date}: {anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}"
 
-            if len(episodes) < 1 and hasattr(anime, "genres"):
-                description = f"❌ Tidak Ada | {anime.episodes} Eps ({anime.format})"    
-                description += f"\nGenre: {', '.join(anime.genres)}"        
+            if len(episodes) < 1 and hasattr(anime, "genres") and hasattr(anime.score, "average"):
+                description = f"❌ Tidak Ada | {anime.episodes} Eps ({anime.format}) - {anime.score.average}% 🌟"
+                description += f"\nGenre: {', '.join(anime.genres)}"
+                description += f"\n{lang.end_date}: {anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}"        
 
             text = f"<b>{anime.title.romaji}</b>"
             text += f"\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
