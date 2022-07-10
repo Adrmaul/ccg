@@ -35,7 +35,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             anime = await client.get(result.id, "anime")
 
             if anime is None:
-                continue
+                return
 
             episodes = await Episodes.filter(anime=anime.id)
             episodes = sorted(episodes, key=lambda episode: episode.number)
@@ -46,10 +46,11 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
 
             #
             
+            
             if len(episodes) > 0:
-                description = f"✅ Tersedia"
+                description = f"✅ Tersedia | {anime.episodes} Eps ({anime.format})\nGenre: {', '.join(anime.genres)}"
             if len(episodes) < 1:
-                description = f"Belum Tersedia"            
+                description = f"❌ Tidak Tersedia | {anime.episodes} Eps ({anime.format})\nGenre: {', '.join(anime.genres)}"            
 
             text = f"<b>{anime.title.romaji}</b>"
             text += f"\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
@@ -69,7 +70,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             results.append(
                 InlineQueryResultPhoto(
                     photo_url=photo,
-                    title=f"{anime.title.romaji} | {anime.format}",
+                    title=f"{anime.title.romaji}",
                     description=description,
                     caption=text,
                     reply_markup=ikb(keyboard),
