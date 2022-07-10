@@ -26,10 +26,10 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     results: List[InlineQueryResultPhoto] = []
 
     async with anilist.AsyncClient() as client:
-        search_results = await client.search(query, "anime", 25)
+        search_results = await client.search(query, "anime", 30)
         while search_results is None:
             search_results = await client.search(query, "anime", 10)
-            await asyncio.sleep(7)
+            await asyncio.sleep(6)
 
         for result in search_results:
             anime = await client.get(result.id, "anime")
@@ -60,7 +60,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 description = f"✅ Tersedia | {anime.episodes} Eps ({anime.format}) - 🌟 {anime.score.average}%"
                 description += f"\n{', '.join(anime.genres)}"
                 if not anime.status.lower() == "not_yet_released":
-                    description += f"\n{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0} s/d"
+                    description += f"\n{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0} s/d"
                 if not anime.status.lower() in ["not_yet_released", "releasing"]:
                     description += f" {anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}"
 
@@ -68,9 +68,9 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 description = f"❌ Tidak Ada | {anime.episodes} Eps ({anime.format}) - 🌟 {anime.score.average}%"
                 description += f"\n{', '.join(anime.genres)}"
                 if not anime.status.lower() == "not_yet_released":
-                    description += f"\n{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0} s/d"
+                    description += f"\n{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0}"
                 if not anime.status.lower() in ["not_yet_released", "releasing"]:
-                    description += f" {anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}"        
+                    description += f" s/d {anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}"        
 
             text = f"<b>{anime.title.romaji}</b>"
             text += f"\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
@@ -102,7 +102,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             await inline_query.answer(
                 results=results,
                 is_gallery=False,
-                cache_time=3,
+                cache_time=50,
             )
         except QueryIdInvalid:
             pass
