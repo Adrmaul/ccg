@@ -20,8 +20,8 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     is_collaborator = await filters.sudo(bot, inline_query) or await filters.collaborator(bot, inline_query)
 
 
-    if query.startswith("!"):
-        inline_query.continue_propagation()
+    #if query.startswith("!"):
+    #    inline_query.continue_propagation()
 
     results: List[InlineQueryResultPhoto] = []
 
@@ -29,7 +29,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
         search_results = await client.search(query, "anime", 20)
         while search_results is None:
             search_results = await client.search(query, "anime", 10)
-            await asyncio.sleep(0.5)
+            await asyncio.sleep(5)
 
         for result in search_results:
             anime = await client.get(result.id, "anime")
@@ -42,19 +42,26 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
           
 
-            photo = f"https://img.anili.st/media/{anime.id}"
-
-
-            #
+            #photo = f"https://img.anili.st/media/{anime.id}"
             
-            
+            photo: str = ""
+            if hasattr(anime, "banner"):
+                photo = anime.banner
+            elif hasattr(anime, "cover"):
+                if hasattr(anime.cover, "extra_large"):
+                    photo = anime.cover.extra_large
+                elif hasattr(anime.cover, "large"):
+                    photo = anime.cover.large
+                elif hasattr(anime.cover, "medium"):
+                    photo = anime.cover.medium
+
             
             if len(episodes) > 0 and hasattr(anime, "genres"):
-                description = f"✅ Tersedia | {anime.episodes}Eps ({anime.format})"
+                description = f"✅ Tersedia | {anime.episodes} Eps ({anime.format})"
                 description += f"\nGenre: {', '.join(anime.genres)}"
 
             if len(episodes) < 1 and hasattr(anime, "genres"):
-                description = f"❌ Tidak Ada | {anime.episodes}Eps ({anime.format})"    
+                description = f"❌ Tidak Ada | {anime.episodes} Eps ({anime.format})"    
                 description += f"\nGenre: {', '.join(anime.genres)}"        
 
             text = f"<b>{anime.title.romaji}</b>"
@@ -87,7 +94,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             await inline_query.answer(
                 results=results,
                 is_gallery=False,
-                cache_time=0,
+                cache_time=3,
             )
         except QueryIdInvalid:
             pass
