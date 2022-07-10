@@ -49,9 +49,14 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             
             
             if len(episodes) > 0:
-                description = f"✅ Tersedia | {anime.episodes} Eps\nFormat: {anime.format} - 🌟 {anime.score.average}%"
+                description = f"✅ Tersedia | {anime.episodes} Eps - {anime.format}"
+            if hasattr(anime, "genres"):
+                description += f"\n<b>{lang.genres}</b>: <code>{', '.join(anime.genres)}</code>"
+
             if len(episodes) < 1:
-                description = f"❌ Tidak Tersedia | {anime.episodes} Eps\nFormat: {anime.format} - 🌟 {anime.score.average}%"            
+                description = f"❌ Tidak Tersedia | {anime.episodes} Eps{anime.format}"    
+            if hasattr(anime, "genres"):
+                description += f"\n<b>{lang.genres}</b>: <code>{', '.join(anime.genres)}</code>"        
 
             text = f"<b>{anime.title.romaji}</b>"
             text += f"\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
