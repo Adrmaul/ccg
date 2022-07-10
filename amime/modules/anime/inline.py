@@ -59,7 +59,10 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             if len(episodes) > 0 and hasattr(anime, "genres") and hasattr(anime.score, "average"):
                 description = f"✅ Tersedia | {anime.episodes} Eps ({anime.format}) - 🌟 {anime.score.average}%"
                 description += f"\n{', '.join(anime.genres)}"
-                description += f"\n{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0} s/d {anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}"
+                if not anime.status.lower() == "not_yet_released":
+                    description += f"\n{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0} s/d"
+                if not anime.status.lower() in ["not_yet_released", "releasing"]:
+                    description += f" {anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}"
 
             if len(episodes) < 1 and hasattr(anime, "genres") and hasattr(anime.score, "average"):
                 description = f"❌ Tidak Ada | {anime.episodes} Eps ({anime.format}) - 🌟 {anime.score.average}%"
@@ -67,7 +70,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 if not anime.status.lower() == "not_yet_released":
                     description += f"\n{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0} s/d"
                 if not anime.status.lower() in ["not_yet_released", "releasing"]:
-                    description += f"{anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}"        
+                    description += f" {anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}"        
 
             text = f"<b>{anime.title.romaji}</b>"
             text += f"\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
