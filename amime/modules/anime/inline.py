@@ -40,34 +40,22 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             episodes = await Episodes.filter(anime=anime.id)
             episodes = sorted(episodes, key=lambda episode: episode.number)
             episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
+          
 
-            photo: str = ""
-            if hasattr(anime, "banner"):
-                photo = anime.banner
-            elif hasattr(anime, "cover"):
-                if hasattr(anime.cover, "extra_large"):
-                    photo = anime.cover.extra_large
-                elif hasattr(anime.cover, "large"):
-                    photo = anime.cover.large
-                elif hasattr(anime.cover, "medium"):
-                    photo = anime.cover.medium            
-
-            #photo = f"https://img.anili.st/media/{anime.id}"
+            photo = f"https://img.anili.st/media/{anime.id}"
 
 
             #
             
             
             
-            if len(episodes) > 0:
+            if len(episodes) > 0 and hasattr(anime, "genres"):
                 description = f"✅ Tersedia | {anime.episodes}Eps ({anime.format})"
-            if hasattr(anime, "genres"):
-                description += f"\n<b>{lang.genres}</b>: <code>{', '.join(anime.genres)}</code>"
+                description += f"\nGenre: {', '.join(anime.genres)}"
 
-            if len(episodes) < 1:
+            if len(episodes) < 1 and hasattr(anime, "genres"):
                 description = f"❌ Tidak Ada | {anime.episodes}Eps ({anime.format})"    
-            if hasattr(anime, "genres"):
-                description += f"\n<b>{lang.genres}</b>: <code>{', '.join(anime.genres)}</code>"        
+                description += f"\nGenre: {', '.join(anime.genres)}"        
 
             text = f"<b>{anime.title.romaji}</b>"
             text += f"\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
@@ -99,7 +87,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             await inline_query.answer(
                 results=results,
                 is_gallery=False,
-                cache_time=3,
+                cache_time=0,
             )
         except QueryIdInvalid:
             pass
