@@ -48,9 +48,9 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             
             
             if len(episodes) > 0:
-                description = f"✅ Tersedia | {anime.episodes} Eps ({anime.format})\nGenre: {', '.join(anime.genres)}"
+                description = f"✅ Tersedia | {anime.episodes} Eps\nFormat: {anime.format}"
             if len(episodes) < 1:
-                description = f"❌ Tidak Tersedia | {anime.episodes} Eps ({anime.format})\nGenre: {', '.join(anime.genres)}"            
+                description = f"❌ Tidak Tersedia | {anime.episodes} Eps\nFormat: {anime.format}"            
 
             text = f"<b>{anime.title.romaji}</b>"
             text += f"\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
