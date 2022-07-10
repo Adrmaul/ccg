@@ -44,17 +44,12 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             photo = f"https://img.anili.st/media/{anime.id}"
 
 
-            description1: str = ""
-            if hasattr(anime, "description"):
-                description = anime.description
-                description = re.sub(re.compile(r"<.*?>"), "", description)
-                description = description[0:260] + "..."
+            #
             
-            description: str = ""
             if len(episodes) > 0:
-                text = f"✅ Tersedia"
+                description = f"✅ Tersedia"
             if len(episodes) < 1:
-                text = f"Belum Tersedia"            
+                description = f"Belum Tersedia"            
 
             text = f"<b>{anime.title.romaji}</b>"
             text += f"\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
