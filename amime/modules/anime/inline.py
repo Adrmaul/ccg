@@ -20,8 +20,8 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     is_collaborator = await filters.sudo(bot, inline_query) or await filters.collaborator(bot, inline_query)
 
 
-    #if query.startswith("!"):
-    #    inline_query.continue_propagation()
+    if query.startswith("!"):
+        inline_query.continue_propagation()
 
     results: List[InlineQueryResultPhoto] = []
 
@@ -29,7 +29,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
         search_results = await client.search(query, "anime", 25)
         while search_results is None:
             search_results = await client.search(query, "anime", 10)
-            await asyncio.sleep(6)
+            await asyncio.sleep(5)
 
         for result in search_results:
             anime = await client.get(result.id, "anime")
