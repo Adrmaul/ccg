@@ -26,10 +26,10 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     results: List[InlineQueryResultPhoto] = []
 
     async with anilist.AsyncClient() as client:
-        search_results = await client.search(query, "anime", 30)
+        search_results = await client.search(query, "anime", 20)
         while search_results is None:
             search_results = await client.search(query, "anime", 10)
-            await asyncio.sleep(1)
+            await asyncio.sleep(0.5)
 
         for result in search_results:
             anime = await client.get(result.id, "anime")
@@ -41,7 +41,18 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             episodes = sorted(episodes, key=lambda episode: episode.number)
             episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
-            photo = f"https://img.anili.st/media/{anime.id}"
+            photo: str = ""
+            if hasattr(anime, "banner"):
+                photo = anime.banner
+            elif hasattr(anime, "cover"):
+                if hasattr(anime.cover, "extra_large"):
+                    photo = anime.cover.extra_large
+                elif hasattr(anime.cover, "large"):
+                    photo = anime.cover.large
+                elif hasattr(anime.cover, "medium"):
+                    photo = anime.cover.medium            
+
+            #photo = f"https://img.anili.st/media/{anime.id}"
 
 
             #
@@ -49,12 +60,12 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             
             
             if len(episodes) > 0:
-                description = f"✅ Tersedia | {anime.episodes} Eps - {anime.format}"
+                description = f"✅ Tersedia | {anime.episodes}Eps ({anime.format})"
             if hasattr(anime, "genres"):
                 description += f"\n<b>{lang.genres}</b>: <code>{', '.join(anime.genres)}</code>"
 
             if len(episodes) < 1:
-                description = f"❌ Tidak Tersedia | {anime.episodes} Eps{anime.format}"    
+                description = f"❌ Tidak Ada | {anime.episodes}Eps ({anime.format})"    
             if hasattr(anime, "genres"):
                 description += f"\n<b>{lang.genres}</b>: <code>{', '.join(anime.genres)}</code>"        
 
@@ -86,10 +97,9 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     if is_collaborator and len(results) > 0:
         try:
             await inline_query.answer(
-                is_personal=True,
                 results=results,
                 is_gallery=False,
-                cache_time=0,
+                cache_time=3,
             )
         except QueryIdInvalid:
             pass
