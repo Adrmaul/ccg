@@ -148,7 +148,7 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
                     [
                         (
                             lang.back_button,
-                            f"episode {anime_id} 0 1",
+                            f"episodes {anime_id} 0 1",
                         )
                     ]
                 )
