@@ -102,7 +102,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             await inline_query.answer(
                 results=results,
                 is_gallery=False,
-                cache_time=50,
+                cache_time=3,
             )
         except QueryIdInvalid:
             pass
