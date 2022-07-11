@@ -74,18 +74,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 results = await client.search(query, "anime", 10)
 
             if results is None:
-                return
-            
-            episodes = await Episodes.filter(anime=anime.id)
-            episodes = sorted(episodes, key=lambda episode: episode.number)
-            episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
-            
-            if len(episodes) > 0:
-                ada = f"✅"
-            
-
-            if len(episodes) < 1:
-                ada = f"❌"     
+                return    
             
 
             if len(results) == 1:
@@ -94,7 +83,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 keyboard = []
                 for result in results:
                     keyboard.append(
-                        [(result.title.romaji, f"menu {result.id} {user.id} 1"), ({ada}, f"{data}")]
+                        [(result.title.romaji, f"menu {result.id} {user.id} 1"), (lang.Hapus_text, f"neko_delete, {user.id}")]
                     )
                 await message.reply_text(
                     lang.search_results_text(
