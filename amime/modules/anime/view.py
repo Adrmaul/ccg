@@ -62,7 +62,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         to_delete = union.matches[0].group(3)
         if bool(to_delete) and not is_private:
             await message.delete()
-
+    
     if not bool(query):
         return
 
@@ -75,6 +75,18 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
             if results is None:
                 return
+            
+            episodes = await Episodes.filter(anime=anime.id)
+            episodes = sorted(episodes, key=lambda episode: episode.number)
+            episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
+            
+            if len(episodes) > 0:
+                ada = f"✅"
+            
+
+            if len(episodes) < 1:
+                ada = f"❌"     
+            
 
             if len(results) == 1:
                 anime_id = results[0].id
@@ -82,7 +94,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 keyboard = []
                 for result in results:
                     keyboard.append(
-                        [(result.title.romaji, f"menu {result.id} {user.id} 1")]
+                        [(result.title.romaji, f"menu {result.id} {user.id} 1"), ({ada}, f"{data}")]
                     )
                 await message.reply_text(
                     lang.search_results_text(
