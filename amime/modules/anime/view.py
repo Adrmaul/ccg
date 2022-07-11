@@ -66,6 +66,14 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
     if not bool(query):
         return
 
+
+    episodes = await Episodes.filter(anime=anime.id)
+    episodes = sorted(episodes, key=lambda episode: episode.number)
+    episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
+
+    if len(episodes) > 0:
+        data = f"✅"
+        
     async with anilist.AsyncClient() as client:
         if not query.isdecimal():
             results = await client.search(query, "anime", 15)
@@ -75,7 +83,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
             if results is None:
                 return    
-            
 
             if len(results) == 1:
                 anime_id = results[0].id
@@ -83,7 +90,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 keyboard = []
                 for result in results:
                     keyboard.append(
-                        [(result.title.romaji, f"menu {result.id} {user.id} 1"), (lang.Hapus_text, f"neko_delete, {user.id}")]
+                        [(result.title.romaji, f"menu {result.id} {user.id} 1"), ({data}, f"neko_delete, {user.id}")]
                     )
                 await message.reply_text(
                     lang.search_results_text(
