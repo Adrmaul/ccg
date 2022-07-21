@@ -108,11 +108,11 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
         if len(episodes) > 0:
-            text = f"✅ List tersedia untuk ditonton. - <code>{anime.title.romaji}"
+            text = f"✅ List Episode tersedia untuk ditonton. - <code>{anime.title.romaji}"
             if hasattr(anime.title, "native"):
                 text += f" (<b>{anime.title.native}</b>)"
         if len(episodes) < 1 :
-            text = f"\n\n❌ List belum tersedia. - <code>{anime.title.romaji}"
+            text = f"\n\n❌ List Episode belum tersedia. - <code>{anime.title.romaji}"
             if hasattr(anime.title, "native"):
                 text += f" (<b>{anime.title.native}</b>)"
             text += f"\nCek progres: <a href='https://t.me/otakuindonew/49696'>Disini</a></b>"
