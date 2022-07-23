@@ -186,7 +186,7 @@ class VideoQueue(object):
                     await self.bot.send_video(
                         CHATS["chanireborn"],
                         path,
-                        f"{episode.number} | <b>{anime.title.romaji}</b> - #{episode.notes}",
+                        f"{episode.number} | <b>{anime.title.romaji}</b> - {episode.notes}",
                         duration=video.duration,
                         width=video.width,
                         height=video.height,
