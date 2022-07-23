@@ -18,10 +18,10 @@ CHATS: Dict = {
     "requests": -1001519273319, 
     "videos": -1001763186709,
     "staff": -1001519273319,
-    "chanireborn": -1001728558641,
+    "chanireborn": -1001763186709,
 }
 
-COLLABORATOR_USERS: List[int] = [1891259266, 854915330, 1765145725, 1929973545, 1422633582, 1763576099, 1822182140] # @satyo @yaneka @liveuser @chihi @Xeno @Bell, @Brian
+COLLABORATOR_USERS: List[int] = [1891259266, 854915330, 1765145725, 1929973545, 1422633582, 1763576099, 1822182140, 1757259822] # @satyo @yaneka @liveuser @chihi @Xeno @Bell, @Brian, @masdihan
 SUDO_USERS: List[int] = [784985038, 1177818563, 1457083910, ]  # @yudi, @adrian and @anggi
 PREFIXES: List[str] = ["!", "/"] # Like !start or /start
 #tes

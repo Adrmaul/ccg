@@ -93,9 +93,9 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             if episode.unified_until > 0:
                 episode_number += f"-{episode.unified_until}"
             text += f"\n<b>{lang.episode}</b>: <code>{episode_number}</code>"
-            text += f"\n<b>{lang.duration}</b>: <code>{episode.duration}m</code>"
+            text += f" | <b>{lang.duration}</b>: <code>{episode.duration}m</code>"
             text += f"\n<b>{lang.language}</b>: <code>{lang.strings[episode.language]['LANGUAGE_NAME']}</code>"
-            text += f"\n<b>{lang.added_by}</b>: <code>{episode.added_by}</code>"
+            text += f"\n<b>Diunggah oleh</b>: @{episode.added_by}"
 
 
             #if len(episode.added_by) > 0:
@@ -108,18 +108,16 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
             if is_admin:
                 viewed = await Viewed.filter(item=episode.id, type="anime")
                 text += f"\n\n<b>{len(viewed)}+ {lang.views.lower()}</b> - (Hanya admin yang bisa melihat)"
-            vieweds = await Viewed.filter(user=user.id, type="anime")
             text += f"\n\n┏━━━━━━━━━━━━━━━━━━━━━</code>"
             text += f"\n┣❏ <b>Profil Saya</b>: <code>{user.username}</code> - <a href='t.me/{user.username}'>{user.id}</a>"
-            text += f"\n┣❏ <b>{lang.episodes_viewed}</b>: <code>{len(vieweds)} Eps</code>"
             watcheds = await Watched.filter(user=user.id)
-            text += f" | <b>{lang.episodes_watched}</b>: <code>{len(watcheds)} Eps</code>"
+            text += f"\n┣❏ {lang.episodes_watched}</b>: <code>{len(watcheds)} Eps</code>"
             if is_admin:
                 text += f"\n┣❏ <b>Status</b> : Admin"
             if is_auth:
                 text += f"\n┣❏ <b>Status</b> : Premium (Lifetime)"
             if not is_auth and not is_admin:
-                text += f"\n┣❏ <b>Status</b> : Trial User - <a href='t.me/akuiiki'>Order Premium</a>"
+                text += f"\n┣❏ <b>Status</b> : Free User - <a href='t.me/akuiiki'>Order Premium</a>"
             text += f"\n┗━━━━━━━━━━━━━━━━━━━━━</code>"
 
             previous_button = await get_previous_episode_button(
