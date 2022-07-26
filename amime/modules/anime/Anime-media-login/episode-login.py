@@ -151,7 +151,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         return
 
     if is_admin:
-        text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
+        text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)\n\nSilahkan menonton dan pilih Tipe Resolusi yang tersedia/diinginkan."
     
     if not is_admin and anime.status.lower() == "releasing":
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
