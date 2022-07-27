@@ -140,8 +140,7 @@ async def start(bot: Amime, union: Union[CallbackQuery, Message]):
 
 
 @Amime.on_message(
-    filters.cmd(r"start (?P<content_type>menu|character|manga|bantuan)_(\d+)")
-    & filters.private
+    filters.cmd(r"start (?P<content_type>menu|character|manga_s|bantuan)_(\d+)")
 )
 async def view(bot: Amime, message: Message):
     content_type = message.matches[0]["content_type"]
@@ -160,7 +159,6 @@ async def view(bot: Amime, message: Message):
 
 @Amime.on_message(
     filters.cmd(r"start (?P<content_type>menu|bantuan)")
-    & filters.private
 )
 async def menu(bot: Amime, message: Message):
     content_type = message.matches[0]["content_type"]

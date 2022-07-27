@@ -783,7 +783,7 @@ async def anime_episode_batch(bot: Amime, callback: CallbackQuery):
         VIDEOS[str(user.id)][str(anime_id)] = []
 
     while True:
-        if len(VIDEOS[str(user.id)][str(anime_id)]) >= 30:
+        if len(VIDEOS[str(user.id)][str(anime_id)]) >= 500:
             await anime_episode_batch_confirm(bot, callback)
             break
 
