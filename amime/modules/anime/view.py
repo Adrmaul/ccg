@@ -150,18 +150,18 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if len(episodes) < 1 and is_private and not anime.status.lower() == "not_yet_released" and not anime.status.lower() == "releasing" and not hasattr(anime, "genres") == 'hentai':      
             buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
 
+        if is_private:
+            buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
         
-        buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
+        if is_private:
+            buttons.append(await get_mylist_button(lang, user, "anime", anime.id))
         
-        
-        buttons.append(await get_mylist_button(lang, user, "anime", anime.id))
-        
-
-        buttons.append(
-            await get_notify_button(
-                lang, user if is_private else chat, "anime", anime.id
+        if is_private:
+            buttons.append(
+                await get_notify_button(
+                    lang, user if is_private else chat, "anime", anime.id
+                )
             )
-        )
 
         if is_private and not anime.status.lower() == "not_yet_released":
             button = (
@@ -180,13 +180,13 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     buttons.append(button)
 
 
-               
-        buttons.append(
-                (
-                    lang.Hapus_text, 
-                    f"neko_delete, {user.id}"
-                ),
-            )
+        if is_private:       
+            buttons.append(
+                    (
+                        lang.Hapus_text, 
+                        f"neko_delete, {user.id}"
+                    ),
+                )
 
         keyboard = array_chunk(buttons, 2)
 
