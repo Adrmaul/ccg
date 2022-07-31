@@ -177,7 +177,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             buttons.append(
                 (
                     lang.back_button,
-                    f"episodes1 {anime.id} {episodes[0].season} 1",
+                    f"media_login {anime.id}",
                 )
             )
 
