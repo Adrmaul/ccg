@@ -120,7 +120,7 @@ async def upgrade_callback(bot: Amime, callback: CallbackQuery):
         )
 
 
-@Amime.on_message(filters.cmd(r"re(boot|start)") & filters.sudo)
+@Amime.on_message(filters.cmd(r"re(boot|load)") & filters.sudo)
 async def reboot_message(bot: Amime, message: Message):
     await message.reply_text("Restarting...")
     args = [sys.executable, "-m", "amime"]
