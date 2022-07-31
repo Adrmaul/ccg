@@ -114,7 +114,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         buttons = [
             (
                         lang.Hapus_text, 
-                        f"neko_delete, {user.id}"
+                        f"close_data"
                     ),       
         ]
 
