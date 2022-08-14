@@ -25,6 +25,9 @@ import math
 from typing import Union
 
 import anilist
+from datetime import datetime
+from time import time
+from anilist.types import next_airing
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 from pyromod.helpers import array_chunk, ikb
@@ -34,6 +37,22 @@ from amime.database import Episodes, Users
 from amime.modules.favorites import get_favorite_button
 from amime.modules.mylists import get_mylist_button
 from amime.modules.notify import get_notify_button
+
+
+def make_it_rw(time_stamp):
+    """Converting Time Stamp to Readable Format"""
+    seconds, milliseconds = divmod(int(time_stamp), 1000)
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    days, hours = divmod(hours, 24)
+    tmp = (
+        ((str(days) + " Hari, ") if days else "")
+        + ((str(hours) + " Jam, ") if hours else "")
+        + ((str(minutes) + " Menit, ") if minutes else "")
+        + ((str(seconds) + " Detik, ") if seconds else "")
+        + ((str(milliseconds) + " ms, ") if milliseconds else "")
+    )
+    return tmp[:-2]
 
 
 @Amime.on_message(filters.cmd(r"media (.+)"))
@@ -107,15 +126,19 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         episodes = sorted(episodes, key=lambda episode: episode.number)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
-        if len(episodes) > 0:
-            text = f"✅ List Episode tersedia untuk ditonton. - <code>{anime.title.romaji}"
-            if hasattr(anime.title, "native"):
-                text += f" (<b>{anime.title.native}</b>)"
-        if len(episodes) < 1 :
-            text = f"\n\n❌ List Episode belum tersedia. - <code>{anime.title.romaji}"
-            if hasattr(anime.title, "native"):
-                text += f" (<b>{anime.title.native}</b>)"
-            text += f"\nCek progres: <a href='https://t.me/otakuindonew/49696'>Disini</a></b>"
+        if is_private:
+            if len(episodes) > 0 and anime.status.lower() == "releasing":
+                air_on = make_it_rw(anime.next_airing.time_until*1000)
+                text = f"<b>{anime.title.romaji}</b> (<b>{anime.title.native}</b>) | ✅ List Episode Tersedia untuk ditonton. ({len(episodes1)})"
+                if hasattr(anime.next_airing, "time_until") and air_on:
+                    text += f"\n\nℹ️ Episode ({anime.next_airing.episode}) akan rilis dalam {air_on}"
+            if len(episodes) > 0 and not anime.status.lower() == "releasing":
+                text = f"✅ List Episode Tersedia untuk ditonton. - <code>{anime.title.romaji}"
+            if len(episodes) < 1 :
+                text = f"\n\n❌ Belum tersedia. - <code>{anime.title.romaji}"
+                if hasattr(anime.title, "native"):
+                    text += f" (<b>{anime.title.native}</b>)"
+                text += f"\nCek progres: <a href='https://t.me/otakuindonew/49696'>Disini</a></b>"
         buttons = [
             (lang.menu_login, f"settings_global {anime_id}")       
         ]
