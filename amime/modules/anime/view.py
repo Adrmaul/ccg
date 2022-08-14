@@ -129,11 +129,13 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         
         if is_private:
-            if len(episodes) > 0:
+            if len(episodes) > 0 and anime.status.lower() == "releasing":
                 air_on = make_it_rw(anime.next_airing.time_until*1000)
-                text = f"✅ List Episode Tersedia untuk ditonton. - <code>{anime.title.romaji}"
+                text = f"✅ <b>{anime.title.romaji}<b> | ({len(episodes)}) Episode Tersedia"
                 if hasattr(anime.next_airing, "time_until") and air_on:
-                    text += f"\nEpisode ({anime.next_airing.episode}) akan rilis dalam {air_on}"
+                    text += f"\n\nℹ️ Episode ({anime.next_airing.episode}) akan rilis dalam {air_on}"
+            if len(episodes) > 0 and not anime.status.lower() == "releasing":
+                text = f"✅ List Episode Tersedia untuk ditonton. - <code>{anime.title.romaji}"
             if len(episodes) < 1 :
                 text = f"\n\n❌ belum tersedia. - <code>{anime.title.romaji}"
                 if hasattr(anime.title, "native"):
