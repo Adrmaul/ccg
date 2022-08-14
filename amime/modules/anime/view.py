@@ -132,15 +132,18 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if is_private:
             if len(episodes) > 0 and anime.status.lower() == "releasing":
                 air_on = make_it_rw(anime.next_airing.time_until*1000)
-                text = f"<b>{anime.title.romaji}</b> ({anime.title.native}) | ✅ ({len(episodes1)}) List Episode Tersedia untuk {lang.strings[user_db.language_bot]['LANGUAGE_NAME']}."
+                text = f"<b>{anime.title.romaji}</b> ({anime.title.native}) | ✅ ({len(episodes1)}) List Episode Tersedia untuk ditonton."
                 if hasattr(anime.next_airing, "time_until") and air_on:
                     text += f"\n\nℹ️ Episode ({anime.next_airing.episode}) akan rilis dalam {air_on}"
             if len(episodes) > 0 and not anime.status.lower() == "releasing":
-                text = f"<b>{anime.title.romaji}</b> ({anime.title.native}) | ✅ ({len(episodes1)}) List Episode Tersedia untuk {lang.strings[user_db.language_bot]['LANGUAGE_NAME']}."
-            if len(episodes) < 1 :
+                text = f"✅ List Episode Tersedia untuk ditonton. - <code>{anime.title.romaji}</code>"
+            if len(episodes) < 1:
+                air_on = make_it_rw(anime.next_airing.time_until*1000)
                 text = f"\n\n❌ Belum tersedia. - <code>{anime.title.romaji}"
                 if hasattr(anime.title, "native"):
                     text += f" (<b>{anime.title.native}</b>)"
+                if hasattr(anime.next_airing, "time_until") and air_on:
+                    text += f"\n\nℹ️ Episode ({anime.next_airing.episode}) akan rilis dalam {air_on}"
                 text += f"\nCek progres: <a href='https://t.me/otakuindonew/49696'>Disini</a></b>"
         buttons = [
             (
