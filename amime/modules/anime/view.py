@@ -103,18 +103,20 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 
                 
             else:
-                buttons = []
+                keyboard = []
                 for result in results:
 
-                    buttons.append(
+                    keyboard.append(
                         [(result.title.romaji, f"menu {result.id} {user.id} 1"), (lang.search_button, "!a result.title.romaji", "switch_inline_query_current_chat")]
                     )
-                    buttons.append([(lang.Hapus_text, "close_data")])
+                keyboard += lines
+                keyboard.append([(lang.Hapus_text, "close_data")])
+
                 await message.reply_text(
                     lang.search_results_text(
                         query=query,
                     ),
-                    reply_markup=ikb(buttons),
+                    reply_markup=ikb(keyboard),
                 )
                 return
         else:
