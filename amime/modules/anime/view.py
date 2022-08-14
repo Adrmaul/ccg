@@ -124,7 +124,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         language = user_db.language_anime
 
         episodes = await Episodes.filter(anime=anime.id)
-        episodes1 = await Episodes.filter(anime=anime_id, language=language)
+        episodes1 = await Episodes.filter(anime=anime_id, language=en)
         episodes = sorted(episodes, key=lambda episode: episode.number)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
