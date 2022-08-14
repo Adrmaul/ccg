@@ -124,6 +124,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         language = user_db.language_anime
 
         episodes = await Episodes.filter(anime=anime.id)
+        episodes1 = await Episodes.filter(anime=anime_id, language=language)
         episodes = sorted(episodes, key=lambda episode: episode.number)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
@@ -131,7 +132,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if is_private:
             if len(episodes) > 0 and anime.status.lower() == "releasing":
                 air_on = make_it_rw(anime.next_airing.time_until*1000)
-                text = f"✅ <b>{anime.title.romaji}<b> | ({len(episodes)}) Episode Tersedia"
+                text = f"<b>{anime.title.romaji}</b> |✅ List Episode Tersedia untuk ditonton. ({len(episodes1)})"
                 if hasattr(anime.next_airing, "time_until") and air_on:
                     text += f"\n\nℹ️ Episode ({anime.next_airing.episode}) akan rilis dalam {air_on}"
             if len(episodes) > 0 and not anime.status.lower() == "releasing":
