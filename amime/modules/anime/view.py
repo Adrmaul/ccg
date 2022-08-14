@@ -129,8 +129,8 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         
         if is_private:
+            air_on = None
             if len(episodes) > 0:
-                air_on = None
                 nextAir = {anime.next_airing.time_until}
                 air_on = make_it_rw(nextAir*1000)
                 text = f"✅ List Episode Tersedia untuk ditonton. - <code>{anime.title.romaji}"
