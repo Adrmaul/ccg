@@ -113,7 +113,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             if len(episodes) > 0:
                 text = f"✅ List Episode Tersedia untuk ditonton. - <code>{anime.title.romaji}"
                 if hasattr(anime.next_airing, "time_until"):
-                    text += f"\nEpisode ({anime.next_airing.episode}) Akan rilis {anime.next_airing.time_until}"
+                    text += f"\nEpisode ({anime.next_airing.episode}) akan rilis dalam {anime.next_airing.at}"
             if len(episodes) < 1 :
                 text = f"\n\n❌ belum tersedia. - <code>{anime.title.romaji}"
                 if hasattr(anime.title, "native"):
