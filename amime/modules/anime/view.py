@@ -25,6 +25,8 @@ import math
 from typing import Union
 
 import anilist
+from datetime import datetime
+from anilist.types import next_airing
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
 from pyromod.helpers import array_chunk, ikb
@@ -85,7 +87,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     keyboard.append(
                         [(result.title.romaji, f"menu {result.id} {user.id} 1")],
                     )
-                    keyboard.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
                 await message.reply_text(
                     lang.search_results_text(
                         query=query,
@@ -111,10 +112,10 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if is_private:
             if len(episodes) > 0:
                 text = f"✅ List Episode Tersedia untuk ditonton. - <code>{anime.title.romaji}"
-                if hasattr(anime.title, "native"):
-                    text += f" (<b>{anime.title.native}</b>)"
+                if hasattr(anime.next_airing, "time_until"):
+                    text += f"\nEpisode ({anime.next_airing.episode}) Akan rilis {anime.next_airing.time_until}"
             if len(episodes) < 1 :
-                text = f"\n\n❌ List Episode belum tersedia. - <code>{anime.title.romaji}"
+                text = f"\n\n❌ belum tersedia. - <code>{anime.title.romaji}"
                 if hasattr(anime.title, "native"):
                     text += f" (<b>{anime.title.native}</b>)"
                 text += f"\nCek progres: <a href='https://t.me/otakuindonew/49696'>Disini</a></b>"
