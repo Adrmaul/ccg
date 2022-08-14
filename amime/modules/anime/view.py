@@ -26,6 +26,7 @@ from typing import Union
 
 import anilist
 from datetime import datetime
+from time import time
 from anilist.types import next_airing
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
@@ -36,6 +37,23 @@ from amime.database import Episodes, Users
 from amime.modules.favorites import get_favorite_button
 from amime.modules.mylists import get_mylist_button
 from amime.modules.notify import get_notify_button
+
+
+
+def make_it_rw(time_stamp):
+    """Converting Time Stamp to Readable Format"""
+    seconds, milliseconds = divmod(int(time_stamp), 1000)
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    days, hours = divmod(hours, 24)
+    tmp = (
+        ((str(days) + " Hari, ") if days else "")
+        + ((str(hours) + " Jam, ") if hours else "")
+        + ((str(minutes) + " Menit, ") if minutes else "")
+        + ((str(seconds) + " Detik, ") if seconds else "")
+        + ((str(milliseconds) + " ms, ") if milliseconds else "")
+    )
+    return tmp[:-2]
 
 
 @Amime.on_message(filters.cmd(r"menu (.+)"))
@@ -109,11 +127,14 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         episodes = sorted(episodes, key=lambda episode: episode.number)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
+        
         if is_private:
             if len(episodes) > 0:
+                air_on = None
+                nextAir = {anime.next_airing.time_until}
+                air_on = make_it_rw(nextAir*1000)
                 text = f"✅ List Episode Tersedia untuk ditonton. - <code>{anime.title.romaji}"
                 if hasattr(anime.next_airing, "time_until"):
-                    air_on = make_it_rw(anime.next_airing.time_until*1000)
                     text += f"\nEpisode ({anime.next_airing.episode}) akan rilis dalam {air_on}"
             if len(episodes) < 1 :
                 text = f"\n\n❌ belum tersedia. - <code>{anime.title.romaji}"
