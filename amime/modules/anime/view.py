@@ -111,7 +111,8 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         if is_private:
             if len(episodes) > 0:
-                text = f"✅ ({len(episode.number)}) List Episode Tersedia untuk ditonton. - <code>{anime.title.romaji}"
+                listeps = await episodes.filter(episode=file_id)
+                text = f"✅ ({len(listeps)}) List Episode Tersedia untuk ditonton. - <code>{anime.title.romaji}"
                 if hasattr(anime.next_airing, "time_until"):
                     text += f"\nEpisode ({anime.next_airing.episode}) akan rilis dalam {anime.next_airing.time_until}"
             if len(episodes) < 1 :
