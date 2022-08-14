@@ -22,4 +22,3 @@ sqlite-utils
 pytz
 asyncpg
 python-anilist==1.0.4
-git+https://github.com/Losk129/anibot-.git
