@@ -151,7 +151,10 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     text += f" (<b>{anime.title.native}</b>)"
                 if hasattr(anime.next_airing, "time_until") and air_on and not anime.status.lower() == "finished":
                     text += f"\n\nℹ️ Episode ({anime.next_airing.episode}) akan rilis dalam {air_on}"
-                text += f"\nCek progres: <a href='https://t.me/otakuindonew/49696'>Disini</a></b>"
+                if air_on:
+                    text += f"\nCek progres: <a href='https://t.me/otakuindonew/49696'>Disini</a></b>"
+                if not air_on:
+                    text += f"\nCek progres: <a href='https://t.me/otakuindonew/49696'>Disini</a></b>"
         buttons = [
             (
                         lang.view_more_button,
