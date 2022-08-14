@@ -93,6 +93,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             if results is None:
                 await asyncio.sleep(0.5)
                 results = await client.search(query, "anime", 10)
+                
 
             if results is None:
                 return    
@@ -100,12 +101,18 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             if len(results) == 1:
                 anime_id = results[0].id
                 
+                
             else:
-                keyboard = []
+                keyboard = [[buttons.append(
+                    (
+                        lang.Hapus_text, 
+                        f"close_data"
+                    ),
+                )]]
                 for result in results:
-                    cari = f"{anime.title.romaji} - ({anime.title.native})"
+
                     keyboard.append(
-                        [(cari.result, f"menu {result.id} {user.id} 1")],
+                        [(result.cari, f"menu {result.id} {user.id} 1")],
                     )
                 await message.reply_text(
                     lang.search_results_text(
