@@ -64,7 +64,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
 
             if len(lines) > 0:
                 keyboard += lines
-    keyboard.append([(lang.back_button, "jadwal")])
+    keyboard.append([(lang.Hapus_text, "close_data"), (lang.back_button, "jadwal")])
 
     await message.edit_text(
         lang.jad_text,
