@@ -110,16 +110,16 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                     description += f" s/d {anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}"        
 
             #Tidak Full
-            if len(episodes) > 0 and anime.status.lower() == "releasing":
+            if len(episodes) > 0 and anime.status.lower() == "releasing" and not hasattr(anime, "genres") and not hasattr(anime.score, "average"):
                 description = f"✅ Tersedia ({len(episodes)}) Eps - {anime.episodes} Eps | ({anime.format})"
                 air_on = make_it_rw(anime.next_airing.time_until*1000)
                 if hasattr(anime.next_airing, "time_until") and air_on:
                     description += f"\nNext Eps ({anime.next_airing.episode}) : {air_on}"
             
-            if len(episodes) > 0 and not anime.status.lower() == "releasing":
+            if len(episodes) > 0 and not anime.status.lower() == "releasing" and not hasattr(anime, "genres") and not hasattr(anime.score, "average"):
                 description = f"✅ Tersedia ({len(episodes)}) Eps - {anime.episodes} Eps | ({anime.format})"
 
-            if len(episodes) < 1:
+            if len(episodes) < 1 and not hasattr(anime, "genres") and not hasattr(anime.score, "average"):
                 description = f"❌ Tidak Ada | {anime.episodes} Eps | ({anime.format})"
                 if not anime.status.lower() == "not_yet_released":
                     description += f"\n{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0}"
