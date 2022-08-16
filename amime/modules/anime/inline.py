@@ -19,9 +19,6 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
 
     is_collaborator = await filters.sudo(bot, inline_query) or await filters.collaborator(bot, inline_query)
 
-    user_db = await Users.get(id=user.id)
-    language = user_db.language_anime
-
 
     #if query.startswith("!"):
         #inline_query.continue_propagation()
@@ -42,7 +39,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
 
             user_db = await Users.get(id=user.id)
             language = user_db.language_anime
-            
+
             episodes = await Episodes.filter(anime=anime.id)
             episodes = sorted(episodes, key=lambda episode: episode.number)
             episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
