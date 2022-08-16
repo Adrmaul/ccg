@@ -46,6 +46,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     query = inline_query.matches[0]["query"].strip()
     lang = inline_query._lang
     user = inline_query.from_user
+    language = user_db.language_anime
 
     is_collaborator = await filters.sudo(bot, inline_query) or await filters.collaborator(bot, inline_query)
 
