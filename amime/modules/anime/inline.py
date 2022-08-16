@@ -46,7 +46,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     query = inline_query.matches[0]["query"].strip()
     lang = inline_query._lang
     user = inline_query.from_user
-    language = user_db.language_anime
+
 
     is_collaborator = await filters.sudo(bot, inline_query) or await filters.collaborator(bot, inline_query)
 
@@ -67,6 +67,9 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
 
             if anime is None:
                 continue
+
+            user_db = await Users.get(id=user.id)
+            language = user_db.language_anime
 
             episodes = await Episodes.filter(anime=anime.id, language=language)
             episodes = sorted(episodes, key=lambda episode: episode.number)
@@ -93,10 +96,8 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                    air_on = make_it_rw(anime.next_airing.time_until*1000)
                    if hasattr(anime.next_airing, "time_until") and air_on:
                         description += f"\nNext Eps ({anime.next_airing.episode}) : {air_on}"
-                if not anime.status.lower() == "releasing":
-                    description += f"\nSelesai s/d {anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}"
                 description += f"\n{', '.join(anime.genres)}"
-                
+
             if len(episodes) < 1:
                 description = f"❌ Tidak Ada | {anime.episodes} Eps | ({anime.format}) - 🌟 {anime.score.average}%"
                 description += f"\n{', '.join(anime.genres)}"
