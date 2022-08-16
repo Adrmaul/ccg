@@ -75,18 +75,35 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             text = f"<b>{anime.title.romaji}</b>"
             text += f"\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
 
-            keyboard = [
-                [
-                    (
-                        lang.view_more_button,
-                        f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
-                        "url",
-                    ),
-                    (lang.search_button, "!a ", "switch_inline_query_current_chat"),
+            if is_collaborator:
+                keyboard = [
+                    [
+                        (
+                            lang.view_more_button,
+                            f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
+                            "url",
+                        ),
+                        (lang.search_button, "!a {anime.title.romaji}", "switch_inline_query_current_chat"),
 
-                ],
-                [(lang.Hapus_text, "close_data")]
-            ]
+                    ],
+                    [(
+                        lang.manage_button,
+                        f"manage anime {anime.id} 0 1 {language} 1",
+                    )]
+                ]
+
+            if not is_collaborator:
+                keyboard = [
+                    [
+                        (
+                            lang.view_more_button,
+                            f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
+                            "url",
+                        ),
+                        (lang.search_button, "!a {anime.title.romaji}", "switch_inline_query_current_chat"),
+
+                    ]
+                ]
 
             results.append(
                 InlineQueryResultPhoto(
