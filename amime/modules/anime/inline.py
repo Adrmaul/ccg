@@ -85,6 +85,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                     (lang.search_button, "!a ", "switch_inline_query_current_chat"),
 
                 ],
+                [(lang.Hapus_text, "close_data")]
             ]
 
             results.append(

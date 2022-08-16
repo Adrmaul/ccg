@@ -109,7 +109,7 @@ class Amime(Client):
 
     async def stop(self, *args):
         await super().stop(*args)
-        logger.warning("AmimeWatch stopped. Bye.")
+        logger.warning("ccgnimex stopped. Bye.")
 
     def is_sudo(self, user: User) -> bool:
         return user.id in self.sudos
