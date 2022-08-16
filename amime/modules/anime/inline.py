@@ -1,8 +1,13 @@
 import asyncio
 import re
 from typing import List
+from datetime import datetime
+from time import time
+import math
+from typing import Union
 
 import anilist
+from anilist.types import next_airing
 from pyrogram import filters
 from pyrogram.errors import QueryIdInvalid
 from pyrogram.types import InlineQuery, InlineQueryResultPhoto
@@ -10,6 +15,31 @@ from pyromod.helpers import ikb
 
 from amime.amime import Amime
 from amime.database import Episodes
+
+from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
+from pyromod.helpers import array_chunk, ikb
+
+from amime.database import Episodes, Users
+from amime.modules.favorites import get_favorite_button
+from amime.modules.mylists import get_mylist_button
+from amime.modules.notify import get_notify_button
+
+
+
+def make_it_rw(time_stamp):
+    """Converting Time Stamp to Readable Format"""
+    seconds, milliseconds = divmod(int(time_stamp), 1000)
+    minutes, seconds = divmod(seconds, 60)
+    hours, minutes = divmod(minutes, 60)
+    days, hours = divmod(hours, 24)
+    tmp = (
+        ((str(days) + " Hari, ") if days else "")
+        + ((str(hours) + " Jam, ") if hours else "")
+        + ((str(minutes) + " Menit, ") if minutes else "")
+        + ((str(seconds) + " Detik, ") if seconds else "")
+        + ((str(milliseconds) + " ms, ") if milliseconds else "")
+    )
+    return tmp[:-2]
 
 @Amime.on_inline_query(filters.regex(r"^!a (?P<query>.+)"))
 async def anime_inline(bot: Amime, inline_query: InlineQuery):
@@ -57,15 +87,17 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
 
             
             if len(episodes) > 0:
-                description = f"✅ Tersedia ({len(episodes)})Eps - {anime.episodes}Eps | ({anime.format}) - 🌟 {anime.score.average}%"
+                description = f"✅ Tersedia ({len(episodes)}) Eps - {anime.episodes} Eps | ({anime.format}) - 🌟 {anime.score.average}%"
+                if anime.status.lower() == "releasing":
+                   air_on = make_it_rw(anime.next_airing.time_until*1000)
+                   if hasattr(anime.next_airing, "time_until") and air_on:
+                        text += f"\n\nℹ️ Episode ({anime.next_airing.episode}) Rilis : {air_on}"
                 description += f"\n{', '.join(anime.genres)}"
-                if not anime.status.lower() == "not_yet_released":
-                    description += f"\n{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0}"
-                if not anime.status.lower() in ["not_yet_released", "releasing"]:
-                    description += f" s/d {anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}"
+                if not anime.status.lower() == "releasing":
+                    description += f"ℹ️ Selesai s/d {anime.end_date.day if hasattr(anime.end_date, 'day') else 0}/{anime.end_date.month if hasattr(anime.end_date, 'month') else 0}/{anime.end_date.year if hasattr(anime.end_date, 'year') else 0}"
 
-            if len(episodes) < 1 and hasattr(anime, "genres") and hasattr(anime.score, "average"):
-                description = f"❌ Tidak Ada | {anime.episodes}Eps | ({anime.format}) - 🌟 {anime.score.average}%"
+            if len(episodes) < 1:
+                description = f"❌ Tidak Ada | {anime.episodes} Eps | ({anime.format}) - 🌟 {anime.score.average}%"
                 description += f"\n{', '.join(anime.genres)}"
                 if not anime.status.lower() == "not_yet_released":
                     description += f"\n{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0}"
