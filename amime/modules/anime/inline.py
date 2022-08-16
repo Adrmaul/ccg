@@ -95,7 +95,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 [
                     (
                         lang.watch_button,
-                        f"episodes {anime.id} {episodes[0].season} 1",
+                        f"episodes {anime.id} 0 1",
                     ),
                     (lang.search_button, f"!a {anime.title.romaji}", "switch_inline_query_current_chat"),
 
