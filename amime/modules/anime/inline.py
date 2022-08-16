@@ -1,6 +1,5 @@
 import asyncio
 import re
-import math
 from typing import List
 
 import anilist
@@ -10,18 +9,7 @@ from pyrogram.types import InlineQuery, InlineQueryResultPhoto
 from pyromod.helpers import ikb
 
 from amime.amime import Amime
-from amime.database import Episodes, Users
-from typing import Union
-
-from datetime import datetime
-from time import time
-from anilist.types import next_airing
-from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
-from pyromod.helpers import array_chunk, ikb
-
-from amime.modules.favorites import get_favorite_button
-from amime.modules.mylists import get_mylist_button
-from amime.modules.notify import get_notify_button
+from amime.database import Episodes
 
 @Amime.on_inline_query(filters.regex(r"^!a (?P<query>.+)"))
 async def anime_inline(bot: Amime, inline_query: InlineQuery):
@@ -30,9 +18,6 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     user = inline_query.from_user
 
     is_collaborator = await filters.sudo(bot, inline_query) or await filters.collaborator(bot, inline_query)
-
-    user_db = await Users.get(id=user.id)
-    language = user_db.language_anime
 
 
     #if query.startswith("!"):
@@ -51,6 +36,9 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
 
             if anime is None:
                 continue
+
+            user_db = await Users.get(id=user.id)
+            language = user_db.language_anime
 
             episodes = await Episodes.filter(anime=anime.id)
             episodes = sorted(episodes, key=lambda episode: episode.number)
@@ -94,10 +82,11 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             keyboard = [
                 [
                     (
-                        lang.watch_button,
-                        f"episodes {anime.id} 0 1",
+                        lang.view_more_button,
+                        f"https://t.me/{bot.me.username}/?start=anime_{anime.id}",
+                        "url",
                     ),
-                    (lang.search_button, f"!a {anime.title.romaji}", "switch_inline_query_current_chat"),
+                    (lang.search_button, f"{anime.title.romaji}", "switch_inline_query_current_chat"),
 
                 ]
             ]
