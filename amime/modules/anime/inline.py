@@ -90,12 +90,15 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                     photo = anime.cover.medium
 
             
-            if len(episodes) > 0:
+            if len(episodes) > 0 and anime.status.lower() == "releasing":
                 description = f"✅ Tersedia ({len(episodes)}) Eps - {anime.episodes} Eps | ({anime.format}) - 🌟 {anime.score.average}%"
-                if anime.status.lower() == "releasing":
-                   air_on = make_it_rw(anime.next_airing.time_until*1000)
-                   if hasattr(anime.next_airing, "time_until") and air_on:
-                        description += f"\nNext Eps ({anime.next_airing.episode}) : {air_on}"
+                air_on = make_it_rw(anime.next_airing.time_until*1000)
+                if hasattr(anime.next_airing, "time_until") and air_on:
+                    description += f"\nNext Eps ({anime.next_airing.episode}) : {air_on}"
+                description += f"\n{', '.join(anime.genres)}"
+            
+            if len(episodes) > 0 and not anime.status.lower() == "releasing":
+                description = f"✅ Tersedia ({len(episodes)}) Eps - {anime.episodes} Eps | ({anime.format}) - 🌟 {anime.score.average}%"
                 description += f"\n{', '.join(anime.genres)}"
 
             if len(episodes) < 1:
