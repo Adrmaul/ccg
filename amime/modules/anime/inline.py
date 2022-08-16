@@ -9,7 +9,7 @@ from pyrogram.types import InlineQuery, InlineQueryResultPhoto
 from pyromod.helpers import ikb
 
 from amime.amime import Amime
-from amime.database import Episodes
+from amime.database import Episodes, Users
 
 @Amime.on_inline_query(filters.regex(r"^!a (?P<query>.+)"))
 async def anime_inline(bot: Amime, inline_query: InlineQuery):
@@ -18,6 +18,9 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
     user = inline_query.from_user
 
     is_collaborator = await filters.sudo(bot, inline_query) or await filters.collaborator(bot, inline_query)
+
+    user_db = await Users.get(id=user.id)
+    language = user_db.language_anime
 
 
     #if query.startswith("!"):
@@ -36,8 +39,6 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
 
             if anime is None:
                 continue
-
-            language = user_db.language_anime
 
             episodes = await Episodes.filter(anime=anime.id)
             episodes = sorted(episodes, key=lambda episode: episode.number)
