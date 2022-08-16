@@ -38,7 +38,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 continue
 
             episodes = await Episodes.filter(anime=anime.id)
-            episodes1 = await Episodes.filter(anime=anime_id, language=language)
+            episodes1 = await Episodes.filter(anime=anime.id, language=language)
             episodes = sorted(episodes, key=lambda episode: episode.number)
             episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
           
@@ -58,7 +58,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
 
             
             if len(episodes) > 0:
-                description = f"✅ Tersedia | ({len(episodes1)})Eps - {anime.episodes}Eps | ({anime.format}) - 🌟 {anime.score.average}%"
+                description = f"✅ Tersedia ({len(episodes1)})Eps - {anime.episodes}Eps | ({anime.format}) - 🌟 {anime.score.average}%"
                 description += f"\n{', '.join(anime.genres)}"
                 if not anime.status.lower() == "not_yet_released":
                     description += f"\n{anime.start_date.day if hasattr(anime.start_date, 'day') else 0}/{anime.start_date.month if hasattr(anime.start_date, 'month') else 0}/{anime.start_date.year if hasattr(anime.start_date, 'year') else 0}"
