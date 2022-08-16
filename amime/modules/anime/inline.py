@@ -38,7 +38,6 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                 continue
 
             episodes = await Episodes.filter(anime=anime.id)
-            episodes1 = await Episodes.filter(anime=anime_id, language=language)
             episodes = sorted(episodes, key=lambda episode: episode.number)
             episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
           
