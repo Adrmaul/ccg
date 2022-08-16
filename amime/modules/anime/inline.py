@@ -37,9 +37,6 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             if anime is None:
                 continue
 
-            user_db = await Users.get(id=user.id)
-            language = user_db.language_anime
-
             episodes = await Episodes.filter(anime=anime.id)
             episodes = sorted(episodes, key=lambda episode: episode.number)
             episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
@@ -78,7 +75,6 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
             text = f"<b>{anime.title.romaji}</b>"
             text += f"\n<b>ID</b>: <code>{anime.id}</code> (<b>ANIME</b>)"
 
-            
             keyboard = [
                 [
                     (
@@ -88,7 +84,7 @@ async def anime_inline(bot: Amime, inline_query: InlineQuery):
                     ),
                     (lang.search_button, f"{anime.title.romaji}", "switch_inline_query_current_chat"),
 
-                ]
+                ],
             ]
 
             results.append(
