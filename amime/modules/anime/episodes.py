@@ -83,7 +83,12 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         buttons.append(
             (
                 lang.order_button,
-                f"http://t.me/akuiiki",
+                f"https://trakteer.id/ccgnimex/tip",
+                "url",
+            ),
+            (
+                lang.cs_button,
+                f"t.me/akuiiki",
                 "url",
             )
         )
