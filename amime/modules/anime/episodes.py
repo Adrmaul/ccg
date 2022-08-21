@@ -85,11 +85,6 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
                 lang.order_button,
                 f"https://trakteer.id/ccgnimex/tip",
                 "url",
-            ),
-            (
-                lang.cs_button,
-                f"t.me/akuiiki",
-                "url",
             )
         )
     
@@ -170,7 +165,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
 
     if not is_admin and not anime.status.lower() == "releasing":
         text = f"Mohon maaf, untuk list episode tidak tersedia, Karena anda adalah free user, silahkan upgrade status bot hanya 10k (Lifetime)"
-        text += f"\n\nUntuk lebih lanjutnya, silahkan buka tautan ini untuk mengetahui fitur: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b>"
+        text += f"\n\nUntuk lebih lanjutnya, silahkan buka tautan ini untuk mengetahui fitur: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b> & Jika sudah transaksi dengan cara klik tombol dibawah, Silahkan pm admin @akuiiki"
 
     await callback.edit_message_media(
         InputMediaPhoto(
