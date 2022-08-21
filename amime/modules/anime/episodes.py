@@ -78,6 +78,15 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     
     if is_admin:
         buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
+
+    if not is_admin:
+        buttons.append(
+            (
+                lang.premium_tutor_button,
+                f"https://telegra.ph/Panduan-Order-Premium-08-21",
+                "url",
+            )
+        )
     
     if not is_admin:
         buttons.append(
