@@ -34,7 +34,6 @@ from pyrogram.types import (
     Document,
     InputMediaPhoto,
     InputMediaVideo,
-    InputMediaDocument,
     Video,
 )
 from pyromod.helpers import array_chunk, ikb
@@ -432,14 +431,6 @@ async def anime_episode(bot: Amime, callback: CallbackQuery):
                             file_id,
                             caption=text,
                         ),
-                        InputMediaDocument(
-                            file_id,
-                            caption=text,
-                        ),
-                        InputMediaAudio(
-                            file_id,
-                            caption=text,
-                        ),
                         reply_markup=ikb(keyboard),
                     )
                     return
@@ -813,9 +804,6 @@ async def anime_episode_batch(bot: Amime, callback: CallbackQuery):
 
         if bool(msg.video):
             VIDEOS[str(user.id)][str(anime_id)].append(msg)
-        
-        if bool(msg.document):
-            VIDEOS[str(user.id)][str(anime_id)].append(msg)
 
 
 @Amime.on_callback_query(
@@ -878,7 +866,6 @@ async def anime_episode_batch_confirm(bot: Amime, callback: CallbackQuery):
             duration = video.duration
         else:
             video = msg.document
-            file_id = dpcument.file_id
 
         if len(caption) == 0:
             continue
