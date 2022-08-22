@@ -80,8 +80,17 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if not is_admin:
         buttons.append(
             (
+                lang.premium_tutor_button,
+                f"https://telegra.ph/Panduan-Order-Premium-08-21",
+                "url",
+            )
+        )
+    
+    if not is_admin:
+        buttons.append(
+            (
                 lang.order_button,
-                f"http://t.me/akuiiki",
+                f"https://trakteer.id/ccgnimex/tip",
                 "url",
             )
         )
@@ -157,8 +166,9 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
     if not is_admin and not anime.status.lower() == "releasing":
-        text = f"Mohon maaf, untuk list episode tidak tersedia, Karena anda adalah free user, silahkan upgrade status bot hanya 10k (Lifetime)\n"
-        text += f"\nUntuk lebih lanjutnya, silahkan buka tautan ini untuk mengetahui fitur: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b>"
+        text = f"Mohon maaf, untuk list episode tidak tersedia, Karena anda adalah free user, silahkan upgrade status bot hanya 10k (Lifetime)"
+        text += f"\n\nUntuk lebih lanjutnya, silahkan buka tautan ini untuk mengetahui fitur: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b> & Jika sudah transaksi dengan cara klik tombol dibawah, Silahkan pm admin @akuiiki"
+
 
     photo: str = ""
     if hasattr(anime, "banner"):
