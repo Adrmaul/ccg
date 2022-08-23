@@ -143,7 +143,7 @@ async def connect_database():
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "postgres://eamifmwk:i8K4UyYKbwN_i2j9lwrDmPBjMGgl86ua@otto.db.elephantsql.com/eamifmwk"
+                    "DATABASE_URL", "postgres://usktjknjfivmnt:285ecaa1b6c3aa92af95d8a375d97b42f9321d07599cb4ab1828c79248d551eb@ec2-44-198-82-71.compute-1.amazonaws.com:5432/d5js639jnufabb"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
