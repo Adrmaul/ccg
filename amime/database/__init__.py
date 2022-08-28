@@ -137,13 +137,13 @@ class Watched(Model):
     user = fields.IntField()
     episode = fields.IntField()
 
-
+#"postgres://zjvqqwlrgffrwt:b2bffca9cb7c5d4be3c0e0964dad2ce2d066f6b473cdd3e18dbe3f2e2841c56f@ec2-44-193-178-122.compute-1.amazonaws.com:5432/dc4acgce5rpq84"
 async def connect_database():
     await Tortoise.init(
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "postgres://zjvqqwlrgffrwt:b2bffca9cb7c5d4be3c0e0964dad2ce2d066f6b473cdd3e18dbe3f2e2841c56f@ec2-44-193-178-122.compute-1.amazonaws.com:5432/dc4acgce5rpq84"
+                    "DATABASE_URL", "postgres://postgres:9f537f5bbe6a56db753e0939ad2451d8@dokku-postgres-ccgnimex-db:5432/ccgnimex_db"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
