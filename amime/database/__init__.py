@@ -143,7 +143,7 @@ async def connect_database():
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "postgres://admin@103.183.74.40:5432/ccgnimex"
+                    "DATABASE_URL", "postgres://zjvqqwlrgffrwt:b2bffca9cb7c5d4be3c0e0964dad2ce2d066f6b473cdd3e18dbe3f2e2841c56f@ec2-44-193-178-122.compute-1.amazonaws.com:5432/dc4acgce5rpq84"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
