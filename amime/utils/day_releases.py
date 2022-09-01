@@ -33,7 +33,7 @@ tz = pytz.timezone('Asia/Jakarta')
 async def load(bot):
     now = datetime.datetime.now(tz=tz)
 
-    sent = await bot.send_message(CHATS["staff"], "Checking the day's releases...")
+    sent = await bot.send_message(CHATS["staff"], "Cek jadwal hari ini...")
 
     animes = {}
 

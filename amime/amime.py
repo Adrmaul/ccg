@@ -57,6 +57,7 @@ logging.getLogger("pyrogram.client").setLevel(logging.WARNING)
 
 logger = logging.getLogger(__name__)
 
+tz = pytz.timezone('Asia/Jakarta')
 
 class Amime(Client):
     def __init__(self):
@@ -74,7 +75,7 @@ class Amime(Client):
         self.sudos = SUDO_USERS
         self.collab = COLLABORATOR_USERS
 
-        self.start_datetime = datetime.datetime.now(pytz.timezone('Asia/Jakarta'))
+        self.start_datetime = datetime.datetime.now(tz=tz)
     async def start(self):
         await super().start()
 
