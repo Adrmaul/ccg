@@ -22,15 +22,17 @@
 
 import asyncio
 import datetime
+import pytz
 
 import anilist
 
 from amime.config import CHATS
 from amime.database import Episodes
 
+IST = pytz.timezone('Asia/Kolkata')
 
 async def load(bot):
-    now = datetime.datetime.now().replace(tzinfo=timezone('US/Pacific'))
+    now = datetime.datetime.now().replace(datetime.now(IST))
     
 
     sent = await bot.send_message(CHATS["staff"], "Checking the day's releases...")
