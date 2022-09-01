@@ -44,6 +44,8 @@ from amime.database import (
     Watched,
 )
 
+import datetime
+tz = pytz.timezone('Pacific/Johnston')
 
 @Amime.on_message(filters.cmd(r"stats$") & (filters.collaborator | filters.sudo))
 async def stats_view(bot: Amime, message: Message):
@@ -103,7 +105,7 @@ async def stats_view(bot: Amime, message: Message):
     text += f"\n    <b>Architecture</b>: <code>{uname.machine}</code>"
     memory = psutil.virtual_memory()
     text += f"\n    <b>Memory</b>: <code>{humanize.naturalsize(memory.used, binary=True)}/{humanize.naturalsize(memory.total, binary=True)}</code>"
-    now = datetime.datetime.now().astimezone(timezone('Asia/jakarta'))
+    now = datetime.datetime.now(tz=tz)
     date = now - bot.start_datetime
     text += f"\n    <b>UPTime</b>: <code>{humanize.precisedelta(date)}</code>"
 
@@ -114,7 +116,7 @@ async def stats_view(bot: Amime, message: Message):
 async def today_releases_view(bot: Amime, message: Message):
     lang = message._lang
 
-    now = datetime.datetime.now().astimezone(timezone('Asia/jakarta'))
+    now = datetime.datetime.now(tz=tz)
     text = lang.day_releases_text(date=now.strftime("%H:%M:%S"))
 
     animes = bot.day_releases
