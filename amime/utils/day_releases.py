@@ -56,9 +56,9 @@ async def load(bot):
             if anime.status.lower() == "releasing":
                 if hasattr(anime, "next_airing"):
                     number = anime.next_airing.episode
-                    date = datetime.datetime.fromtimestamp(
+                    date = datetime.datetime.now(tz=tz).fromtimestamp(
                         anime.next_airing.at
-                    ).replace(tz=tz)
+                    )
 
                     if date.day == now.day:
                         animes[anime_id] = [
