@@ -30,7 +30,7 @@ from amime.database import Episodes
 
 
 async def load(bot):
-    now = datetime.datetime.now().replace(tzinfo=datetime.timezone('US/Pacific'))
+    now = datetime.datetime.now().replace(tzinfo=timezone('US/Pacific'))
     
 
     sent = await bot.send_message(CHATS["staff"], "Checking the day's releases...")
