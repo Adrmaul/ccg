@@ -22,15 +22,16 @@
 
 import asyncio
 import datetime
+import pytz
 
 import anilist
 
 from amime.config import CHATS
 from amime.database import Episodes
 
-
+tz = pytz.timezone('Asia/Jakarta')
 async def load(bot):
-    now = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
+    now = datetime.datetime.now(tz=tz)
 
     sent = await bot.send_message(CHATS["staff"], "Checking the day's releases...")
 
@@ -57,7 +58,7 @@ async def load(bot):
                     number = anime.next_airing.episode
                     date = datetime.datetime.fromtimestamp(
                         anime.next_airing.at
-                    ).replace(tzinfo=datetime.timezone.utc)
+                    ).replace(datetime.datetime.now(tz=tz))
 
                     if date.day == now.day:
                         animes[anime_id] = [
@@ -79,7 +80,7 @@ async def load(bot):
 
 
 async def reload(bot):
-    now = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
+    now = datetime.datetime.now(tz=tz)
 
     animes = bot.day_releases
 

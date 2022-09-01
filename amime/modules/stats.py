@@ -45,7 +45,7 @@ from amime.database import (
 )
 
 import datetime
-tz = pytz.timezone('Pacific/Johnston')
+tz = pytz.timezone('Asia/Jakarta')
 
 @Amime.on_message(filters.cmd(r"stats$") & (filters.collaborator | filters.sudo))
 async def stats_view(bot: Amime, message: Message):
