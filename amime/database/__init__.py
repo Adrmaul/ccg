@@ -143,7 +143,7 @@ async def connect_database():
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "postgres://npshqryw:qB36Hl2d64csE9t2-GpFPeu03XPICiLA@hansken.db.elephantsql.com/npshqryw"
+                    "DATABASE_URL", "postgres://admin:Cinangka3@103.183.74.40/ccgnimex_db"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
