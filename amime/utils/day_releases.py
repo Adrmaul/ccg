@@ -58,7 +58,7 @@ async def load(bot):
                     number = anime.next_airing.episode
                     date = datetime.datetime.fromtimestamp(
                         anime.next_airing.at
-                    ).replace(tz=tz)
+                    ).datetime.now(tz=tz)
 
                     if date.day == now.day:
                         animes[anime_id] = [
