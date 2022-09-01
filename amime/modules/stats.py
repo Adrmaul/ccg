@@ -115,6 +115,7 @@ async def stats_view(bot: Amime, message: Message):
 @Amime.on_message(filters.cmd(r"today$"))
 async def today_releases_view(bot: Amime, message: Message):
     lang = message._lang
+    tz = pytz.timezone('Asia/Jakarta')
 
     now = datetime.datetime.now(tz=tz)
     text = lang.day_releases_text(date=now.strftime("%H:%M:%S"))
