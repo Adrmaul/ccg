@@ -128,7 +128,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
         
-        if is_private:
+        if not is_private:
             if len(episodes) > 0 and anime.status.lower() == "releasing":
                 air_on = make_it_rw(anime.next_airing.time_until*1000)
                 text = f"<b>{anime.title.romaji}</b> ({anime.title.native}) |" 
@@ -167,7 +167,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
          
 
         if len(episodes) > 0:
-            if is_private:
+            if not is_private:
                 buttons.append(
                     (
                         lang.watch_button,
@@ -175,7 +175,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                     )
                 )
         
-        if len(episodes) < 1 and is_private:
+        if len(episodes) < 1 and not is_private:
             buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))    
 
        
@@ -186,7 +186,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 ),
             )
         
-        if is_private:       
+        if not is_private:       
             buttons.append(
                     (lang.back_button, f"btn_{anime_id}_True_{user.id}")
                 )
