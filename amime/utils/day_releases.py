@@ -22,16 +22,15 @@
 
 import asyncio
 import datetime
-import pytz
 
 import anilist
 
 from amime.config import CHATS
 from amime.database import Episodes
 
-tz = pytz.timezone('Asia/Jakarta')
+
 async def load(bot):
-    now = datetime.datetime.now(tz=tz)
+    now = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
 
     sent = await bot.send_message(CHATS["staff"], "Cek jadwal hari ini...")
 
@@ -56,9 +55,9 @@ async def load(bot):
             if anime.status.lower() == "releasing":
                 if hasattr(anime, "next_airing"):
                     number = anime.next_airing.episode
-                    date = datetime.datetime.now(tz=tz).fromtimestamp(
+                    date = datetime.datetime.fromtimestamp(
                         anime.next_airing.at
-                    )
+                    ).replace(tzinfo=datetime.timezone.utc)
 
                     if date.day == now.day:
                         animes[anime_id] = [
@@ -72,7 +71,7 @@ async def load(bot):
             del animes[anime_id]
 
     await sent.edit_text(
-        f"<code>{len(animes)}</code> animes have episodes to be released today, check them out using /today"
+        f"<code>{len(anime)}</code> anime garapan yang akan dirilis hari ini (untuk 1-2 hari tersedia), periksa menggunakan /today"
     )
 
     await asyncio.sleep(3600)
@@ -80,7 +79,7 @@ async def load(bot):
 
 
 async def reload(bot):
-    now = datetime.datetime.now(tz=tz)
+    now = datetime.datetime.now().replace(tzinfo=datetime.timezone.utc)
 
     animes = bot.day_releases
 
@@ -97,7 +96,7 @@ async def reload(bot):
                 ):
                     await bot.send_message(
                         CHATS["staff"],
-                        f"Episode <code>{value[1]}</code> of <b>{value[0]}</b> (<code>{key}</code>) has just been released. <code>{now.strftime('%H:%M:%S')}</code>",
+                        f"Episode <code>{value[1]}</code> dari <b>{value[0]}</b> (<code>{key}</code>) baru saja rilis (studio)",
                     )
 
                     animes[key][0] = f"<s>{value[0]}</s>"
