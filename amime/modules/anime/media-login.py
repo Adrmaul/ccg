@@ -167,15 +167,14 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
          
 
         if len(episodes) > 0:
-            if is_private:
-                buttons.append(
-                    (
-                        lang.watch_button,
-                        f"episodes1 {anime.id} {episodes[0].season} 1",
-                    )
+            buttons.append(
+                (
+                    lang.watch_button,
+                    f"episodes1 {anime.id} {episodes[0].season} 1",
                 )
+            )
         
-        if len(episodes) < 1 and is_private:
+        if len(episodes) < 1 :
             buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))    
 
        
