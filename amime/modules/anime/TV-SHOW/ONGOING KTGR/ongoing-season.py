@@ -24,13 +24,6 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     user = callback.from_user
     lang = callback._lang
 
-    anime_id = int(callback.matches[0].group(1))
-    user_id = int(callback.matches[0].group(2))
-
-    if user_id != user.id:
-        return
-
-
     keyboard = []
 
     async with anilist.AsyncClient() as client:
