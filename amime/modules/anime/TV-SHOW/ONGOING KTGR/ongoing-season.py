@@ -19,14 +19,12 @@ from amime.modules.favorites import get_favorite_button
 from amime.modules.mylists import get_mylist_button
 from amime.modules.notify import get_notify_button
 
-
 @Amime.on_callback_query(filters.regex(r"^tv_ongoing_anime anime (?P<page>\d+)"))
-async def anime_suggestions(bot: Amime, union: Union[CallbackQuery, Message]):
-    is_callback = isinstance(union, CallbackQuery)
+async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
-    message = union.message if is_callback else union
-    user = union.from_user
-    lang = union._lang
+
+    message = callback.message
+    lang = callback._lang
 
     keyboard = []
     async with httpx.AsyncClient(http2=True) as client:
