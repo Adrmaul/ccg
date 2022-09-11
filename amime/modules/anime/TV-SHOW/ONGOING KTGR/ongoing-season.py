@@ -18,13 +18,13 @@ from amime.database import Episodes, Users
 
 @Amime.on_callback_query(filters.regex(r"^tv_ongoing_anime anime (?P<page>\d+)"))
 async def anime_suggestions(bot: Amime, callback: CallbackQuery):
-    page = int(callback.matches[0]["page"].group(0))
+    page = int(callback.matches[0]["page"])
 
     message = callback.message
     lang = callback._lang
     user = callback.from_user
 
-    anime_id = int(callback.matches[0]["page"].group(1))
+    anime_id = int(callback.matches[1]["page"])
 
 
     async with anilist.AsyncClient() as client:
