@@ -21,15 +21,15 @@ from amime.modules.notify import get_notify_button
 
 @Amime.on_callback_query(filters.regex(r"^tv_ongoing_anime anime (?P<page>\d+)"))
 async def anime_suggestions(bot: Amime, callback: CallbackQuery):
-    page = int(callback.matches[0]["page"].group(1))
+    page = int(callback.matches[0]["page"])
 
     message = callback.message
     lang = callback._lang
     user = callback.from_user
 
-    anime_id = int(callback.matches[0]["page"].group(2))
+    anime_id = int(callback.matches[0]["page"])
 
-    user_id = int(callback.matches[0]["page"].group(3))
+    user_id = int(callback.matches[0]["page"])
 
     if user_id != user.id:
         return
