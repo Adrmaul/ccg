@@ -6,6 +6,22 @@ from pyromod.helpers import ikb
 from pyromod.nav import Pagination
 
 from amime.amime import Amime
+import asyncio
+import math
+from typing import Union
+
+import anilist
+from datetime import datetime
+from time import time
+from anilist.types import next_airing
+from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
+from pyromod.helpers import array_chunk, ikb
+
+from amime.database import Episodes, Users
+from amime.modules.favorites import get_favorite_button
+from amime.modules.mylists import get_mylist_button
+from amime.modules.notify import get_notify_button
+
 
 
 @Amime.on_callback_query(filters.regex(r"^tv_ongoing_anime anime (?P<page>\d+)"))
@@ -14,6 +30,11 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
 
     message = callback.message
     lang = callback._lang
+
+    episodes = await Episodes.filter(anime=anime.id)
+    episodes1 = await Episodes.filter(anime=anime_id, language=language)
+    episodes = sorted(episodes, key=lambda episode: episode.number)
+    episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
     keyboard = []
     async with httpx.AsyncClient(http2=True) as client:
@@ -53,10 +74,13 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 for item in items
             ]
 
+            if len(episodes) > 0:
+                info = f"✅"
+
             layout = Pagination(
                 suggestions,
                 item_data=lambda i, pg: f"menu {i.id}",
-                item_title=lambda i, pg: f"{i.title.romaji} | TES" ,
+                item_title=lambda i, pg: f"{info}|{i.title.romaji}" ,
                 page_data=lambda pg: f"tv_ongoing_anime anime {pg}",
             )
 
