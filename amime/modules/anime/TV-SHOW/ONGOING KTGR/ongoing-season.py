@@ -24,14 +24,23 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     lang = callback._lang
     user = callback.from_user
 
+
+    keyboard = []
+    anime_id = int(callback.matches[0]["page"])
+
+    async with anilist.AsyncClient() as client:
+        anime = await client.get(anime_id, "anime")
+
+        if anime is None:
+            return
+        
     user_db = await Users.get(id=user.id)
     language = user_db.language_anime
 
     episodes = await Episodes.filter(anime=anime_id, language=language)
     episodes = sorted(episodes, key=lambda episode: episode.number)
     episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
-
-    keyboard = []
+    
     async with httpx.AsyncClient(http2=True) as client:
         response = await client.post(
             url="https://graphql.anilist.co",
@@ -80,7 +89,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             layout = Pagination(
                 suggestions,
                 item_data=lambda i, pg: f"menu {i.id}",
-                item_title=lambda i, pg: f"{i.db}{i.title.romaji}",
+                item_title=lambda i, pg: f"{db}{i.title.romaji}",
                 page_data=lambda pg: f"tv_ongoing_anime anime {pg}",
             )
 
