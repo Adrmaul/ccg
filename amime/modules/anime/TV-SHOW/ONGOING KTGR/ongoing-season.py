@@ -33,6 +33,36 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
 
 
     keyboard = []
+    async with anilist.AsyncClient() as client:
+        if not query.isdecimal():
+            results = await client.search(query, "anime", 15)
+            if results is None:
+                await asyncio.sleep(0.5)
+                results = await client.search(query, "anime", 10)
+                
+
+            if results is None:
+                return    
+
+            if len(results) == 1:
+                anime_id = results[0].id
+                return
+        else:
+            anime_id = int(query)
+
+        anime = await client.get(anime_id, "anime")
+
+        if anime is None:
+            return
+
+        user_db = await Users.get(id=user.id)
+        language = user_db.language_anime
+
+        episodes = await Episodes.filter(anime=anime.id)
+        episodes1 = await Episodes.filter(anime=anime_id, language=language)
+        episodes = sorted(episodes, key=lambda episode: episode.number)
+        episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
+        
     async with httpx.AsyncClient(http2=True) as client:
         response = await client.post(
             url="https://graphql.anilist.co",
@@ -63,19 +93,6 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
         )
         data = response.json()
         await client.aclose()
-
-        anime = await client.get(anime_id, "anime")
-
-        if anime is None:
-            return
-
-        user_db = await Users.get(id=user.id)
-        language = user_db.language_anime
-
-        episodes = await Episodes.filter(anime=anime.id)
-        episodes1 = await Episodes.filter(anime=anime_id, language=language)
-        episodes = sorted(episodes, key=lambda episode: episode.number)
-        episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
         if data["data"]:
             items = data["data"]["Page"]["media"]
