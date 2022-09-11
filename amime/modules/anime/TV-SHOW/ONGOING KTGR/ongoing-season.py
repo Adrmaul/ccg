@@ -30,7 +30,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
         
-    user_db = await Users.get(id=user_id)
+    user_db = await Users.get(id=user.id)
     language = user_db.language_anime
 
     episodes = await Episodes.filter(anime=anime.id, language=language)
