@@ -24,9 +24,9 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     lang = callback._lang
     user = callback.from_user
 
-    anime_id = int(callback.matches[0].group(1))
-    user_id = int(callback.matches[0].group(2))
-
+    anime_id = int(callback.matches[0]["page"])
+    user_id = int(callback.matches[0]["page"])
+    
     if user_id != user.id:
         return
 
