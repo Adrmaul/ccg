@@ -19,15 +19,17 @@ from amime.database import Episodes, Users
 @Amime.on_callback_query(filters.regex(r"^tv_ongoing_anime anime (?P<page>\d+)"))
 async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
-    
+
     message = callback.message
-    user = callback.from_user
     lang = callback._lang
+    user = callback.from_user
+
 
     keyboard = []
+    anime_id = int(callback.matches[0]["page"])
 
     async with anilist.AsyncClient() as client:
-        anime = await client.get(keyboard.id, "anime")
+        anime = await client.get(anime_id, "anime")
 
         if anime is None:
             return
