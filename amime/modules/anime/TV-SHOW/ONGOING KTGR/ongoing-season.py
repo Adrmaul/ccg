@@ -67,7 +67,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 for item in items
             ]
         
-        episodes = await Episodes.filter(id=item["id"], language=language)
+        episodes = await Episodes.filter(anime=anime_id, language=language)
         episodes = sorted(episodes, key=lambda episode: episode.number)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
