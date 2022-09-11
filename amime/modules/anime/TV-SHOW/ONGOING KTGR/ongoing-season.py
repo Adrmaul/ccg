@@ -5,15 +5,28 @@ from pyrogram.types import CallbackQuery
 from pyromod.helpers import ikb
 from pyromod.nav import Pagination
 
+import anilist
+from datetime import datetime
+from time import time
+from anilist.types import next_airing
+from pyrogram import filters
+from pyrogram.types import CallbackQuery, InputMediaPhoto, Message
+from pyromod.helpers import array_chunk, ikb
+
 from amime.amime import Amime
+from amime.database import Episodes, Users
+from amime.modules.favorites import get_favorite_button
+from amime.modules.mylists import get_mylist_button
+from amime.modules.notify import get_notify_button
 
 
 @Amime.on_callback_query(filters.regex(r"^tv_ongoing_anime anime (?P<page>\d+)"))
-async def anime_suggestions(bot: Amime, callback: CallbackQuery):
+async def anime_suggestions(bot: Amime, union: Union[CallbackQuery, Message]):
+    is_callback = isinstance(union, CallbackQuery)
     page = int(callback.matches[0]["page"])
-
-    message = callback.message
-    lang = callback._lang
+    message = union.message if is_callback else union
+    user = union.from_user
+    lang = union._lang
 
     keyboard = []
     async with httpx.AsyncClient(http2=True) as client:
@@ -46,6 +59,14 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
         )
         data = response.json()
         await client.aclose()
+
+        user_db = await Users.get(id=user.id)
+        language = user_db.language_anime
+
+        episodes = await Episodes.filter(anime=anime.id)
+        episodes = sorted(episodes, key=lambda episode: episode.number)
+        episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
+
         if data["data"]:
             items = data["data"]["Page"]["media"]
             suggestions = [
