@@ -84,7 +84,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             db = f""
         
         if len(episodes) < 1:
-            db = f"x"
+            db = f"❌"
 
             layout = Pagination(
                 suggestions,
