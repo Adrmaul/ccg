@@ -24,20 +24,8 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     lang = callback._lang
     user = callback.from_user
 
-    anime_id = int(callback.matches[0]["page"])
-
-    async with anilist.AsyncClient() as client:
-        anime = await client.get(anime_id, "anime")
-
-        if anime is None:
-            return
-        
     user_db = await Users.get(id=user.id)
     language = user_db.language_anime
-
-    episodes = await Episodes.filter(anime=anime_id, language=language)
-    episodes = sorted(episodes, key=lambda episode: episode.number)
-    episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
     keyboard = []
     async with httpx.AsyncClient(http2=True) as client:
@@ -78,9 +66,13 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 Anime(id=item["id"], title=item["title"], url=item["siteUrl"])
                 for item in items
             ]
+        
+        episodes = await Episodes.filter(id=item["id"], language=language)
+        episodes = sorted(episodes, key=lambda episode: episode.number)
+        episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
         if len(episodes) > 0:
-            db = f""
+            db = f"XX"
         
         if len(episodes) < 1:
             db = f"x"
