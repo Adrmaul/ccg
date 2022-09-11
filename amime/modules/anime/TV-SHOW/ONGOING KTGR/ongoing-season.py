@@ -25,6 +25,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
 
     message = callback.message
     lang = callback._lang
+    user = callback.from_user
 
     keyboard = []
     async with httpx.AsyncClient(http2=True) as client:
