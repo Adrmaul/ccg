@@ -68,10 +68,9 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
         user_db = await Users.get(id=user.id)
         language = user_db.language_anime
 
-        episodes = await Episodes.filter(anime=anime.id)
-        episodes = sorted(episodes, key=lambda episode: episode.number)
+        episodes1 = sorted(episodes, key=lambda episode: episode.number)
         episodes1 = await Episodes.filter(anime=anime_id, language=language)
-        episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
+        episodes1 = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
 
         if data["data"]:
