@@ -59,6 +59,13 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 item_title=lambda i, pg: i.title.romaji,
                 page_data=lambda pg: f"top_movie anime {pg}",
             )
+            
+            layout = Pagination(
+                suggestions,
+                item_data=lambda i, pg: f"menu {i.id}",
+                item_title=lambda i, pg: i.title.romaji,
+                page_data=lambda pg: f"top_movie anime {pg}",
+            )
 
             lines = layout.create(page, lines=8)
 
