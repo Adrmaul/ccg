@@ -24,11 +24,10 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     lang = callback._lang
     user = callback.from_user
 
-    anime_id = int(callback.matches[0]["page"])
 
 
     async with anilist.AsyncClient() as client:
-        anime = await client.get(anime_id, "anime")
+        anime = await client.get(page, "anime")
 
         if anime is None:
             return
