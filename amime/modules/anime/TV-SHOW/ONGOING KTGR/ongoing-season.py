@@ -26,7 +26,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
 
 
     keyboard = []
-    anime_id = int(callback.matches[0]["item"])
+    anime_id = int(callback.matches[0])
 
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
