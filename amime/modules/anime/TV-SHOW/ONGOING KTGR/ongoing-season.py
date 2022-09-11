@@ -25,10 +25,6 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     user = callback.from_user
 
     anime_id = int(callback.matches[0]["page"])
-    user_id = int(callback.matches[0]["page"])
-    
-    if user_id != user.id:
-        return
 
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
@@ -83,11 +79,11 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 for item in items
             ]
 
-            if len(episodes) > 0:
-                db = f"✅"
+        if len(episodes) > 0:
+            db = f""
         
-            if len(episodes) < 1:
-                db = f"x"
+        if len(episodes) < 1:
+            db = f"x"
 
             layout = Pagination(
                 suggestions,
