@@ -59,6 +59,8 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
         data = response.json()
         await client.aclose()
 
+        anime = await client.get(anime_id, "anime")
+
         user_db = await Users.get(id=user.id)
         language = user_db.language_anime
 
