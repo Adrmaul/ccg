@@ -40,7 +40,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     episodes = await Episodes.filter(anime=anime_id, language=language)
     episodes = sorted(episodes, key=lambda episode: episode.number)
     episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
-    
+
     async with httpx.AsyncClient(http2=True) as client:
         response = await client.post(
             url="https://graphql.anilist.co",
@@ -90,7 +90,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 suggestions,
                 item_data=lambda i, pg: f"menu {i.id}",
                 item_title=lambda i, pg: f"{db}{i.title.romaji}",
-                page_data=lambda pg: f"tv_ongoing_anime anime {pg}",
+                page_data=lambda i, pg: f"tv_ongoing_anime anime {pg}",
             )
 
             lines = layout.create(page, lines=8)
