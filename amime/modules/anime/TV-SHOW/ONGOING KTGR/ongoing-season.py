@@ -73,11 +73,6 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
         episodes1 = await Episodes.filter(anime=anime_id, language=language)
         episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
-        if len(episodes1) > 0:
-            db = f"✅"
-        
-        if len(episodes1) < 1:
-            db = f""
 
         if data["data"]:
             items = data["data"]["Page"]["media"]
@@ -85,6 +80,12 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 Anime(id=item["id"], title=item["title"], url=item["siteUrl"])
                 for item in items
             ]
+
+            if len(episodes1) > 0:
+                db = f"✅"
+        
+            if len(episodes1) < 1:
+                db = f""
 
             layout = Pagination(
                 suggestions,
