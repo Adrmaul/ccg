@@ -18,6 +18,7 @@ from amime.database import Episodes, Users
 from amime.modules.favorites import get_favorite_button
 from amime.modules.mylists import get_mylist_button
 from amime.modules.notify import get_notify_button
+from amime.modules.anime import view
 
 @Amime.on_callback_query(filters.regex(r"^tv_ongoing_anime anime (?P<page>\d+)"))
 async def anime_suggestions(bot: Amime, callback: CallbackQuery):
@@ -29,16 +30,6 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
 
     anime_id = int(callback.matches[0]["page"])
 
-
-    async with anilist.AsyncClient() as client:
-        anime = await client.get(anime_id, "anime")
-        
-    user_db = await Users.get(id=user.id)
-    language = user_db.language_anime
-
-    episodes = await Episodes.filter(anime=anime.id, language=language)
-    episodes = sorted(episodes, key=lambda episode: episode.number)
-    episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
     keyboard = []
     async with httpx.AsyncClient(http2=True) as client:
