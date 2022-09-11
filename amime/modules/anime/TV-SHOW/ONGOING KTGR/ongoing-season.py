@@ -27,6 +27,10 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     user_db = await Users.get(id=user.id)
     language = user_db.language_anime
 
+    episodes = await Episodes.filter(anime=anime_id, language=language)
+    episodes = sorted(episodes, key=lambda episode: episode.number)
+    episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
+
     keyboard = []
     async with httpx.AsyncClient(http2=True) as client:
         response = await client.post(
@@ -66,13 +70,9 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
                 Anime(id=item["id"], title=item["title"], url=item["siteUrl"])
                 for item in items
             ]
-        
-        episodes = await Episodes.filter(anime=i.id, language=language)
-        episodes = sorted(episodes, key=lambda episode: episode.number)
-        episodes = [*filter(lambda episode: len(episode.file_id) > 0, episodes)]
 
         if len(episodes) > 0:
-            db = f"XX"
+            db = f""
         
         if len(episodes) < 1:
             db = f"x"
@@ -80,7 +80,7 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
             layout = Pagination(
                 suggestions,
                 item_data=lambda i, pg: f"menu {i.id}",
-                item_title=lambda i, pg: f"{db}{i.title.romaji}",
+                item_title=lambda i, pg: f"{i.db}{i.title.romaji}",
                 page_data=lambda pg: f"tv_ongoing_anime anime {pg}",
             )
 
