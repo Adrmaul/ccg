@@ -27,6 +27,12 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
     lang = callback._lang
     user = callback.from_user
 
+    anime_id = int(callback.matches[0].group(1))
+
+
+    async with anilist.AsyncClient() as client:
+        anime = await client.get(anime_id, "anime")
+
     keyboard = []
     async with httpx.AsyncClient(http2=True) as client:
         response = await client.post(
@@ -58,8 +64,6 @@ async def anime_suggestions(bot: Amime, callback: CallbackQuery):
         )
         data = response.json()
         await client.aclose()
-
-        anime = await client.get(anime_id, "anime")
 
         user_db = await Users.get(id=user.id)
         language = user_db.language_anime
