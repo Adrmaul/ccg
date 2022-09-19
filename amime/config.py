@@ -21,7 +21,7 @@ CHATS: Dict = {
     "chanireborn": -1001763186709,
 }
 
-COLLABORATOR_USERS: List[int] = [1891259266, 854915330, 1765145725, 1929973545, 1422633582, 1763576099, 1822182140, 1757259822, 992332019, 1675401159, 616954243, 1284373383, 1696268688, 616954243, 1504247645, 5053616128, 1418012198, 1649730462, 1012273656, 5235675310, 1825183760, 939158102] # @satyo @yaneka @liveuser @chihi @Xeno @Bell, @Brian, @masdihan, @razan, @Yusuf, @YamiDakeDesu, @znn_zgrts, @rijalus, @MiyaOjol, @sensei_sinchan, @Jillsya, @Rokhiq, Fatih, @libperfd, @.Hito, @Ghozi, @lutfy
+COLLABORATOR_USERS: List[int] = [1891259266, 854915330, 1765145725, 1929973545, 1422633582, 1763576099, 1822182140, 1757259822, 992332019, 1675401159, 616954243, 1284373383, 1696268688, 616954243, 1504247645, 5053616128, 1418012198, 1649730462, 1012273656, 5235675310, 1825183760, 939158102, 1314423489] # @satyo @yaneka @liveuser @chihi @Xeno @Bell, @Brian, @masdihan, @razan, @Yusuf, @YamiDakeDesu, @znn_zgrts, @rijalus, @MiyaOjol, @sensei_sinchan, @Jillsya, @Rokhiq, Fatih, @libperfd, @.Hito, @Ghozi, @lutfy, @nyx
 SUDO_USERS: List[int] = [784985038, 1177818563, 1457083910, ]  # @yudi, @adrian and @anggi
 PREFIXES: List[str] = ["!", "/"] # Like !start or /start
 #tes
