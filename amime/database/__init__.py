@@ -144,7 +144,7 @@ async def connect_database():
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "postgres://ccgnimex:EYmr)52K4e+)JHq84s@ccgnimex.domcloud.io:5432/ccgnimex_db"
+                    "DATABASE_URL", "postgres://ccgnimex:EYmr)52K4e+)JHq84s@68.183.191.223:5432/ccgnimex_db"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
