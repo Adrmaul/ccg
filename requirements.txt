@@ -21,4 +21,5 @@ db-sqlite3
 sqlite-utils
 pytz
 asyncpg
+aiomysql
 python-anilist==1.0.4
