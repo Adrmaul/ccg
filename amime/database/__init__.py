@@ -144,7 +144,7 @@ async def connect_database():
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "mysql://x8hze4q8ft71oeve0685:pscale_pw_H2GqpNRp4DQvQP1siy8SPwnEIxVMZUnRV6XC5Ikf3FM@ap-southeast.connect.psdb.cloud:3306/ccgnimex"
+                    "DATABASE_URL", "mysql://0crffzce7xdwulb6u08c:pscale_pw_GR3se7rzMb0LQ3EabCsZh6nhzA6bQHA56wxDdaUAnQJ@ap-southeast.connect.psdb.cloud:3306/ccgnimex"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
