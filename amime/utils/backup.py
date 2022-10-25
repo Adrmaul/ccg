@@ -36,7 +36,7 @@ async def save(bot):
     try:
         if await bot.send_document(
             CHATS["backup"],
-            "amime/database/ccgnimex.sqlite",
+            "amime/database/ccgnimex.sql",
             caption=f"<b>Database BACKUP</b>\n\n<b>Date</b>: <code>{date}</code>",
         ):
             logger.warning("Database saved in Telegram successfully!")
