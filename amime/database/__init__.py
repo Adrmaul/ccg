@@ -144,7 +144,7 @@ async def connect_database():
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "sqlite://amime/database/ccgnimex.sqlite"
+                    "DATABASE_URL", "postgres://amime/database/ccgnimex.sql"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
