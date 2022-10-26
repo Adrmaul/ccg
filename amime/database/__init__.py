@@ -22,7 +22,6 @@
 # SOFTWARE.
 
 import os
-import MySQL-python
 from tortoise import Tortoise, fields
 from tortoise.models import Model
 
@@ -144,7 +143,7 @@ async def connect_database():
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "mysql://amime/database/ccgnimex.sql"
+                    "DATABASE_URL", "postgres://admin:cinangka3@188.166.241.229:3291/ccgnimex"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
