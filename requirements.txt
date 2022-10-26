@@ -23,4 +23,3 @@ pytz
 asyncpg
 aiomysql
 python-anilist==1.0.4
-MySQL-python
