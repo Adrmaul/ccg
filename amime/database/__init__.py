@@ -22,7 +22,7 @@
 # SOFTWARE.
 
 import os
-import MySQLdb
+import MySQL-python
 from tortoise import Tortoise, fields
 from tortoise.models import Model
 
