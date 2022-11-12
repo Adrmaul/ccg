@@ -144,7 +144,7 @@ async def connect_database():
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "mysql://7duze7tesgkrgaxkojed:pscale_pw_LAgzgltF08onbmknBDYZ4GDUifPqHAexlIcm7X2S3wF@ap-southeast.connect.psdb.cloud:3306/ccgnimex"
+                    "DATABASE_URL", "postgres://postgres:0a0a7c2036928aff90ec904bcc68ddcd@172.105.113.172:31938/ccgnimex"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
