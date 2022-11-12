@@ -144,7 +144,7 @@ async def connect_database():
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "sqlite://amime/database/backupccgnimex.db"
+                    "DATABASE_URL", "mysql://7duze7tesgkrgaxkojed:pscale_pw_LAgzgltF08onbmknBDYZ4GDUifPqHAexlIcm7X2S3wF@ap-southeast.connect.psdb.cloud:3306/ccgnimex"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
