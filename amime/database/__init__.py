@@ -138,13 +138,13 @@ class Watched(Model):
 
 #"postgres://admin:cinangka3@containers-us-west-57.railway.app:5851/ccgnimex"
 #postgres://admin:cinangka3@188.166.241.229:3291/ccgnimex
-#"DATABASE_URL", "postgres://admin:cinangka3@172.105.113.172:31938/ccgnimex"
+#"DATABASE_URL", "postgres://admin:aaaaaaac@159.223.118.49:55/ccgnimex"
 async def connect_database():
     await Tortoise.init(
         {
             "connections": {
                 "bot_db": os.getenv(
-                    "DATABASE_URL", "postgres://admin:cinangka3@134.209.100.209:31949/anime"
+                    "DATABASE_URL", "postgres://admin:aaaaaaac@159.223.118.49:55/ccgnimex"
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
