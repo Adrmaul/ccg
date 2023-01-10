@@ -96,10 +96,10 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         )
 
     if is_admin:
-        buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
+        buttons.append((lang.inline, f"!a {anime.title.romaji}", "switch_inline_query_current_chat"))
     
     if not is_admin and anime.status.lower() == "releasing":
-        buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
+        buttons.append((lang.inline, f"!a {anime.title.romaji}", "switch_inline_query_current_chat"))
 
 
     keyboard = array_chunk(buttons, 2)
@@ -119,7 +119,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             if index == 0:
                 break
 
-            if math.ceil(episode.number / (5 * 3)) != page:
+            if math.ceil(episode.number / (4 * 3)) != page:
                 keyboard.append(
                     [
                         (
@@ -146,7 +146,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
             page_data=lambda pg: f"episodes1 {anime_id} {season} {pg}",
         )
 
-        lines = layout.create(page, lines=4, columns=3)
+        lines = layout.create(page, lines=3, columns=3)
         if len(lines) > 0:
             keyboard += lines
     
