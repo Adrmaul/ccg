@@ -149,7 +149,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         if len(lines) > 0:
             keyboard += lines
 
-    if not is_admin and anime.status.lower() == "releasing" and anime.episode_lesser() == 13:
+    if not is_admin and anime.status.lower() == "releasing":
         layout = Pagination(
             episodes_list,
             item_data=lambda i, pg: f"episode {i[0].anime} {i[0].season} {i[0].number}",
@@ -172,8 +172,8 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
     if not is_admin and anime.status.lower() == "releasing":
         text = f"<b>{anime.title.romaji}</b> (<code>{anime.title.native}</code>)"
 
-    if not is_admin and not anime.status.lower() == "releasing" and anime.episode_lesser() == 13:
-        text = f"Mohon maaf, Free user hanya bisa akses anime (Ongoing & anime Eps s/d 13), Karena anda adalah free user, silahkan upgrade status bot hanya 10k (Lifetime)"
+    if not is_admin and not anime.status.lower() == "releasing":
+        text = f"Mohon maaf, untuk list episode tidak tersedia (hanya bisa anime ongoing), Karena anda adalah free user, silahkan upgrade status bot hanya 10k (Lifetime)"
         text += f"\n\nUntuk lebih lanjutnya, silahkan buka tautan ini untuk mengetahui fitur: <b><a href='http://telegra.ph/Premium---ccgnimex-06-23'>Premium</a></b> & Jika sudah transaksi dengan cara klik tombol dibawah, Silahkan pm admin @akuiiki"
 
     await callback.edit_message_media(
