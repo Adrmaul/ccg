@@ -149,7 +149,7 @@ async def anime_episodes(bot: Amime, callback: CallbackQuery):
         if len(lines) > 0:
             keyboard += lines
 
-    if not is_admin and anime.status.lower() == "releasing":
+    if not is_admin and anime.status.lower() == "releasing" and {lang.strings['pt']}:
         layout = Pagination(
             episodes_list,
             item_data=lambda i, pg: f"episode {i[0].anime} {i[0].season} {i[0].number}",
