@@ -15,7 +15,7 @@ CHATS: Dict = {
     "backup": -1001559315851,
     "anireborn": -1001204586138,
     "ccgnimex": -1001519273319,
-    "requests": -1001519273319, 
+    "requests": -683488588, 
     "videos": -1001763186709,
     "staff": -1001519273319,
     "chanireborn": -1001763186709,
