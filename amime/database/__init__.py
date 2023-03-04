@@ -60,6 +60,12 @@ class Favorites(Model):
     item = fields.IntField()
     type = fields.CharField(max_length=7)
 
+class Garapan(Model):
+    id = fields.IntField(pk=True)
+    user = fields.IntField()
+    item = fields.IntField()
+    type = fields.CharField(max_length=7)
+
 class Mylists(Model):
     id = fields.IntField(pk=True)
     user = fields.IntField()

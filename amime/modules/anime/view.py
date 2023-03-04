@@ -36,6 +36,8 @@ from amime.amime import Amime
 from amime.database import Episodes, Users
 from amime.modules.favorites import get_favorite_button
 from amime.modules.mylists import get_mylist_button
+from amime.modules.garapan import get_garap_button
+
 from amime.modules.notify import get_notify_button
 
 
@@ -206,6 +208,9 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         
         if is_private:
             buttons.append(await get_mylist_button(lang, user, "anime", anime.id))
+        
+        if is_private:
+            buttons.append(await get_garap_button(lang, user, "anime", anime.id))
         
         if is_private:
             buttons.append(
