@@ -30,7 +30,7 @@ from amime.amime import Amime
 from amime.database import Garapan
 
 
-async def get_mylist_button(
+async def get_garap_button(
     lang, user: User, content_type: str, content_id: int
 ) -> Tuple:
     garap = await Garapan.get_or_none(
@@ -44,7 +44,7 @@ async def get_mylist_button(
 
 
 @Amime.on_callback_query(filters.regex(r"^garap (?P<type>\w+) (?P<id>\d+)"))
-async def mylist_callback(bot: Amime, callback: CallbackQuery):
+async def garap_callback(bot: Amime, callback: CallbackQuery):
     content_type = callback.matches[0]["type"]
     content_id = int(callback.matches[0]["id"])
     message = callback.message
@@ -67,7 +67,7 @@ async def mylist_callback(bot: Amime, callback: CallbackQuery):
     for line, column in enumerate(keyboard):
         for index, button in enumerate(column):
             if button[1].startswith("garap"):
-                keyboard[line][index] = await get_mylist_button(
+                keyboard[line][index] = await get_garap_button(
                     lang, user, content_type, content_id
                 )
 
