@@ -35,6 +35,7 @@ async def anime_mylists(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
     message = callback.message
+    user = callback.from_user
     lang = callback._lang
 
     keyboard = []
