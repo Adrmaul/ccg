@@ -31,7 +31,7 @@ from amime.database import Mylists
 
 
 async def get_mylist_button(
-    lang, user: User, content_type: str, content_id: int
+    lang, content_type: str, content_id: int
 ) -> Tuple:
     mylist = await Mylists.get_or_none(
         item=content_id, type=content_type
