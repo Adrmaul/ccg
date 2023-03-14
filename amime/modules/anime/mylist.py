@@ -21,6 +21,7 @@
 # SOFTWARE.
 
 import anilist
+import random
 from pyrogram import filters
 from pyrogram.types import CallbackQuery
 from pyromod.helpers import ikb
@@ -40,7 +41,7 @@ async def anime_mylists(bot: Amime, callback: CallbackQuery):
 
     keyboard = []
     async with anilist.AsyncClient() as client:
-        mylists = await Mylists.filter(type="anime").order_by(Mylists.created_at.desc())
+        mylists = await Mylists.filter(type="anime").order_by("-created_at")
 
         results = []
         for mylist in mylists:
