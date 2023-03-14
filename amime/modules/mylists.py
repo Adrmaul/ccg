@@ -68,7 +68,7 @@ async def mylist_callback(bot: Amime, callback: CallbackQuery):
         for index, button in enumerate(column):
             if button[1].startswith("mylist"):
                 keyboard[line][index] = await get_mylist_button(
-                    lang, user, content_type, content_id
+                    lang, content_type, content_id
                 )
 
     await callback.edit_message_reply_markup(ikb(keyboard))
