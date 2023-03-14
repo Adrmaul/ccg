@@ -31,10 +31,10 @@ from amime.database import Mylists
 
 
 async def get_mylist_button(
-    lang, user: User, content_type: str, content_id: int
+    lang, content_type: str, content_id: int
 ) -> Tuple:
     mylist = await Mylists.get_or_none(
-        user=user.id, item=content_id, type=content_type
+        item=content_id, type=content_type
     )
     if mylist is None:
         status = "➕"
