@@ -18,7 +18,7 @@
 # AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 # LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.s
+# SOFTWARE.
 
 from typing import Tuple
 
@@ -31,10 +31,10 @@ from amime.database import Mylists
 
 
 async def get_mylist_button(
-    lang, content_type: str, content_id: int
+    lang, user: User, content_type: str, content_id: int
 ) -> Tuple:
     mylist = await Mylists.get_or_none(
-        item=content_id, type=content_type
+        user=user.id, item=content_id, type=content_type
     )
     if mylist is None:
         status = "➕"
@@ -52,11 +52,11 @@ async def mylist_callback(bot: Amime, callback: CallbackQuery):
     lang = callback._lang
 
     mylist = await Mylists.get_or_none(
-        item=content_id, type=content_type
+        user=user.id, item=content_id, type=content_type
     )
 
     if mylist is None:
-        await Mylists.create(item=content_id, type=content_type)
+        await Mylists.create(user=user.id, item=content_id, type=content_type)
         await callback.answer(lang.added_to_mylists_alert, show_alert=True)
     else:
         await mylist.delete()
@@ -68,7 +68,7 @@ async def mylist_callback(bot: Amime, callback: CallbackQuery):
         for index, button in enumerate(column):
             if button[1].startswith("mylist"):
                 keyboard[line][index] = await get_mylist_button(
-                    lang, content_type, content_id
+                    lang, user, content_type, content_id
                 )
 
     await callback.edit_message_reply_markup(ikb(keyboard))

@@ -56,8 +56,8 @@ class Episodes(Model):
 
 class Favorites(Model):
     id = fields.IntField(pk=True)
-    user = fields.IntField()
-    item = fields.IntField()
+    user = fields.IntField(index=True)
+    item = fields.IntField(index=True)
     type = fields.CharField(max_length=7)
 
 class Garapan(Model):
