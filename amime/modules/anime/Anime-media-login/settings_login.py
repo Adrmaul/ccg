@@ -147,7 +147,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
         
         if is_private:
-            buttons.append(await get_mylist_button(lang, user, "anime", anime.id))
+            buttons.append(await get_mylist_button(lang, "anime", anime.id))
         
         if is_private:
             buttons.append(
