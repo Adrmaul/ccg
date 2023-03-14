@@ -34,7 +34,7 @@ async def get_mylist_button(
     lang, user: User, content_type: str, content_id: int
 ) -> Tuple:
     mylist = await Mylists.get_or_none(
-        user=user.id, item=content_id, type=content_type
+        item=content_id, type=content_type
     )
     if mylist is None:
         status = "➕"
@@ -52,11 +52,11 @@ async def mylist_callback(bot: Amime, callback: CallbackQuery):
     lang = callback._lang
 
     mylist = await Mylists.get_or_none(
-        user=user.id, item=content_id, type=content_type
+        item=content_id, type=content_type
     )
 
     if mylist is None:
-        await Mylists.create(user=user.id, item=content_id, type=content_type)
+        await Mylists.create(item=content_id, type=content_type)
         await callback.answer(lang.added_to_mylists_alert, show_alert=True)
     else:
         await mylist.delete()
