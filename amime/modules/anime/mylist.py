@@ -41,6 +41,7 @@ async def anime_mylists(bot: Amime, callback: CallbackQuery):
 
     keyboard = []
     async with anilist.AsyncClient() as client:
+        created_at = fields.DatetimeField(auto_now_add=True)
         mylists = await Mylists.filter(type="anime").order_by("-created_at")
 
         results = []
