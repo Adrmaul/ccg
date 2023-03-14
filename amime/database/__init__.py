@@ -68,7 +68,7 @@ class Garapan(Model):
 
 class Mylists(Model):
     id = fields.IntField(pk=True)
-    user = fields.IntField(null=True, index=True)
+    user = fields.IntField(null=True)
     item = fields.IntField()
     type = fields.CharField(max_length=7)
 
