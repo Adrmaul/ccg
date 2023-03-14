@@ -31,7 +31,7 @@ from amime.database import Mylists
 
 
 async def get_mylist_button(
-    lang, content_type: str, content_id: int
+    lang, user: User, content_type: str, content_id: int
 ) -> Tuple:
     mylist = await Mylists.get_or_none(
         item=content_id, type=content_type
@@ -52,7 +52,7 @@ async def mylist_callback(bot: Amime, callback: CallbackQuery):
     lang = callback._lang
 
     mylist = await Mylists.get_or_none(
-        user=user.id, item=content_id, type=content_type
+        item=content_id, type=content_type
     )
 
     if mylist is None:
