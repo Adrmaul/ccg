@@ -70,6 +70,7 @@ class Mylists(Model):
     id = fields.IntField(pk=True)
     item = fields.IntField()
     type = fields.CharField(max_length=7)
+    user = fields.IntField()
 
 
 class Notifications(Model):
