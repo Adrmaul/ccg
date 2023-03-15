@@ -155,8 +155,9 @@ async def connect_database():
                 )
             },
             "apps": {"bot": {"models": [__name__], "default_connection": "bot_db"}},
+            "use_tz": True  # set use_tz to True to enable timezone awareness
         }
     )
-
+    
     # Generate the schema
     await Tortoise.generate_schemas()
