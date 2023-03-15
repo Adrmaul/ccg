@@ -43,7 +43,8 @@ async def get_mylist_button(
         status = "➖"
     now = datetime.datetime.now(datetime.timezone.utc)
     now_str = now.isoformat()
-    return (f"{status} {lang.mylist}", f"mylist {content_type} {content_id} {now_str}")
+    now_aware = now.replace(tzinfo=datetime.timezone.utc)
+    return (f"{status} {lang.mylist}", f"mylist {content_type} {content_id} {now_aware}")
 
 
 @Amime.on_callback_query(filters.regex(r"^mylist (?P<type>\w+) (?P<id>\d+)"))
