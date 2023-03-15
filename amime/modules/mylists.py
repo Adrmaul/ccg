@@ -26,9 +26,24 @@ from pyrogram import filters
 from pyrogram.types import CallbackQuery, User
 from pyromod.helpers import bki, ikb
 
+import pytz
+from datetime import datetime
+
 from amime.amime import Amime
 from amime.database import Mylists
 
+
+from datetime import datetime
+import pytz
+
+# membuat objek datetime offset-naive
+dt_naive = datetime(2023, 3, 15, 5, 53, 41)
+
+# mengonversi objek datetime menjadi timezone-aware dengan zona waktu UTC
+dt_utc = pytz.utc.localize(dt_naive)
+
+# menggunakan objek datetime yang sudah menjadi timezone-aware untuk operasi matematika
+delta = datetime.utcnow() - dt_utc
 
 async def get_mylist_button(
     lang, user: User, content_type: str, content_id: int
