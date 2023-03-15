@@ -21,6 +21,7 @@
 # SOFTWARE.
 
 from typing import Tuple
+import datetime
 
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, User
@@ -40,7 +41,8 @@ async def get_mylist_button(
         status = "➕"
     else:
         status = "➖"
-    return (f"{status} {lang.mylist}", f"mylist {content_type} {content_id}")
+    now = datetime.datetime.now(datetime.timezone.utc)
+    return (f"{status} {lang.mylist}", f"mylist {content_type} {content_id} {now.isoformat()}")
 
 
 @Amime.on_callback_query(filters.regex(r"^mylist (?P<type>\w+) (?P<id>\d+)"))
