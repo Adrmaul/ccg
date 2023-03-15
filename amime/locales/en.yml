@@ -419,6 +419,11 @@ search1_button: 🔎
 
 home_button: ❇️ Menu
 
+listsx_text: |
+  Dimenu ini adalah list berdasarkan Katagori abjad & angka yang sudah kami list didatabase, dan terverifikasi sudah tersedia animenya.
+
+  <i>Catatan: Anime terbaru yang dilist, kami sortir yang baru dibilakang, simplenya, cari anime yang terbaru kami garap, di halaman akhir.
+
 anime_text: |
   Anda berada di bagian anime, gunakan tombol di bawah untuk melakukan apa yang Anda inginkan, cek beberapa saran anime, upcoming dari kami, cari anime/database, dll...
   Harap gunakan /help jika belum mengerti.
@@ -494,6 +499,9 @@ progress_button: ♨️ ONGOING
 
 favorites_text: |
   Dibawah ini adalah semua item yang ditandai sebagai favorit.
+
+ngelist_text: |
+  Dibawah ini adalah daftar semua anime yang tersedia berdasarkan kategori yang anda pilih.
 
 mylist_text: |
   Dibawah ini adalah daftar semua list anime yang ingin kalian tonton/diminati.
@@ -661,6 +669,12 @@ duadua1_button: 2004
 duatiga1_button: 2005
 
 checknimex_button: ✅ Cek Anime
+
+a_button: ▬ A
+
+b_button: ▬ B
+
+c_button: ▬ C
 
 tv_button: TV-SHOW
 
