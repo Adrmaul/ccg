@@ -36,31 +36,31 @@ async def get_mylist_button(
     a_list = await A_lists.get_or_none(
         item=content_id, type=content_type
     )
-    if a_list is None:
+    if mylist is None:
         status = "➕"
     else:
         status = "➖"
-    return (f"{status} {lang.a_list}", f"a_list {content_type} {content_id}")
+    return (f"{status} {lang.mylist}", f"a_list {content_type} {content_id}")
 
 
 @Amime.on_callback_query(filters.regex(r"^a_list (?P<type>\w+) (?P<id>\d+)"))
-async def a_list_callback(bot: Amime, callback: CallbackQuery):
+async def mylist_callback(bot: Amime, callback: CallbackQuery):
     content_type = callback.matches[0]["type"]
     content_id = int(callback.matches[0]["id"])
     message = callback.message
     user = callback.from_user
     lang = callback._lang
 
-    a_list = await A_lists.get_or_none(
+    a_list = await Mylists.get_or_none(
         item=content_id, type=content_type
     )
 
     if a_list is None:
         await A_lists.create(user=user.id, item=content_id, type=content_type)
-        await callback.answer(lang.added_to_A_lists_alert, show_alert=True)
+        await callback.answer(lang.added_to_mylists_alert, show_alert=True)
     else:
         await a_list.delete()
-        await callback.answer(lang.removed_from_A_lists_alert, show_alert=True)
+        await callback.answer(lang.removed_from_mylists_alert, show_alert=True)
 
     keyboard = bki(message.reply_markup)
 
