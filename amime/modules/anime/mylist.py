@@ -28,7 +28,6 @@ from pyromod.nav import Pagination
 
 from amime.amime import Amime
 from amime.database import Mylists
-from tortoise.query_utils import Q
 
 
 @Amime.on_callback_query(filters.regex(r"mylists anime (?P<page>\d+)"))
@@ -41,7 +40,7 @@ async def anime_mylists(bot: Amime, callback: CallbackQuery):
 
     keyboard = []
     async with anilist.AsyncClient() as client:
-        mylists = await Mylists.filter(Q(type="anime")).order_by("-updated_at")
+        mylists = await Mylists.filter(type="anime").order_by("-updated_at")
 
         results = []
         for mylist in mylists:
