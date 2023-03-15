@@ -31,7 +31,7 @@ from amime.database import A_lists
 
 
 @Amime.on_callback_query(filters.regex(r"a_lists anime (?P<page>\d+)"))
-async def anime_mylists(bot: Amime, callback: CallbackQuery):
+async def anime_a_lists(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
     message = callback.message
