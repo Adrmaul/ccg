@@ -36,7 +36,6 @@ from amime.amime import Amime
 from amime.database import Episodes, Users
 from amime.modules.favorites import get_favorite_button
 from amime.modules.mylists import get_mylist_button
-from amime.modules.a_lists import get_a_list_button
 from amime.modules.notify import get_notify_button
 
 
@@ -174,11 +173,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
             (
                         lang.view_more_button,
                         f"anime more {anime.id} {user.id}"
-                    ),
-            (
-                        lang.view_more_button,
-                        f"ngelist dong {anime.id} {user.id}"
-                    ),     
+                    )       
         ]
          
 
@@ -208,7 +203,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
         if is_private:
             buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
-        
         
         if is_private:
             buttons.append(
@@ -279,41 +273,6 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 reply_markup=ikb(keyboard),
             )
 
-@Amime.on_callback_query(filters.regex(r"^ngelist dong (\d+) (\d+)"))
-async def anime_view_more(bot: Amime, callback: CallbackQuery):
-    message = callback.message
-    user = callback.from_user
-    lang = callback._lang
-
-    anime_id = int(callback.matches[0].group(1))
-    user_id = int(callback.matches[0].group(2))
-
-    if user_id != user.id:
-        return
-
-    async with anilist.AsyncClient() as client:
-        anime = await client.get(anime_id, "anime")
-
-        if is_private and is_collaborator:
-            buttons.append(await get_mylist_button(lang, user.id, "anime", anime.id))
-        
-        if is_private and is_collaborator:
-            buttons.append(await get_a_list_button(lang, user.id, "anime", anime.id))
-
-       # if hasattr(anime, "trailer"):
-            #if hasattr(anime.trailer, "url"):
-       #         buttons.append((lang.trailer_button, anime.trailer.url, "url"))
-
-        #buttons.append(("🐢 Anilist", anime.url, "url"))
-
-        keyboard = array_chunk(buttons, 2)
-
-        keyboard.append([(lang.back_button, f"menu {anime_id} {user_id}")])
-
-        await message.edit_text(
-            lang.view_more_text,
-            reply_markup=ikb(keyboard),
-        )
 
 @Amime.on_callback_query(filters.regex(r"^anime more (\d+) (\d+)"))
 async def anime_view_more(bot: Amime, callback: CallbackQuery):
