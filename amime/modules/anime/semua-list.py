@@ -53,7 +53,7 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
     ]
 
     if is_callback:
-        keyboard.append([(lang.z_button, "z_lists anime 1"), (lang.0_button, "0_lists anime 1"), (lang.back_button, "menu")])
+        keyboard.append([(lang.z_button, "z_lists anime 1"), (lang.back_button, "menu")])
 
     await (message.edit_text if is_callback else message.reply_text)(
         lang.listsx_text,
