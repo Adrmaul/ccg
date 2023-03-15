@@ -41,6 +41,9 @@ from pyromod.nav import Pagination
 
 from amime.amime import Amime
 from amime.database import Episodes, Notifications
+from amime.modules.mylists import get_mylist_button
+from amime.modules.notify import get_notify_button
+
 
 logger = logging.getLogger(__name__)
 
@@ -67,11 +70,6 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
         del VIDEOS[str(user.id)][str(anime_id)]
 
     buttons = [
-
-        (
-            f"{lang.mylist_button}: {anime.title}",
-            f"mylist anime {anime.id}",
-        )
         (
             f"{lang.language_button}: {lang.strings[language]['LANGUAGE_NAME']}",
             f"manage anime language {anime_id} {season} {int(subtitled)} {language} {page}",
@@ -112,6 +110,8 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
             callback.matches = [matches]
             await anime_manage(bot, callback)
             return
+
+    buttons.append(await get_mylist_button(lang, user.id, "anime", anime_id))
 
     buttons.append(
         (
