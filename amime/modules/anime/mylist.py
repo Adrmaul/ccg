@@ -40,7 +40,7 @@ async def anime_mylists(bot: Amime, callback: CallbackQuery):
 
     keyboard = []
     async with anilist.AsyncClient() as client:
-        mylists = await Mylists.filter(type="anime")
+        mylists = await Mylists.filter(type="anime").order_by("-updated_at")
 
         results = []
         for mylist in mylists:

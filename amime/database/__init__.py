@@ -71,6 +71,7 @@ class Mylists(Model):
     item = fields.IntField()
     type = fields.CharField(max_length=7)
     user = fields.IntField()
+    updated_at = fields.DatetimeField(auto_now=True)
 
 
 class Notifications(Model):
