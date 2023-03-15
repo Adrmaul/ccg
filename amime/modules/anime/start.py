@@ -50,7 +50,7 @@ async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
         ],
         [
             (lang.mv_button, "mv_menu"),
-            (lang.garapan_button, "lists"),
+            (lang.garapan_button, "listsx"),
         ],
         [
             (lang.favorites_button, "favorites anime 1"),

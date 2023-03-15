@@ -30,44 +30,44 @@ from amime.amime import Amime
 from amime.database import A_lists
 
 
-async def get_A_list_button(
+async def get_mylist_button(
     lang, user: User, content_type: str, content_id: int
 ) -> Tuple:
-    A_list = await A_lists.get_or_none(
+    a_list = await A_lists.get_or_none(
         item=content_id, type=content_type
     )
-    if A_list is None:
+    if a_list is None:
         status = "➕"
     else:
         status = "➖"
-    return (f"{status} {lang.A_list}", f"A_list {content_type} {content_id}")
+    return (f"{status} {lang.a_list}", f"a_list {content_type} {content_id}")
 
 
-@Amime.on_callback_query(filters.regex(r"^A_list (?P<type>\w+) (?P<id>\d+)"))
-async def A_list_callback(bot: Amime, callback: CallbackQuery):
+@Amime.on_callback_query(filters.regex(r"^a_list (?P<type>\w+) (?P<id>\d+)"))
+async def mylist_callback(bot: Amime, callback: CallbackQuery):
     content_type = callback.matches[0]["type"]
     content_id = int(callback.matches[0]["id"])
     message = callback.message
     user = callback.from_user
     lang = callback._lang
 
-    A_list = await A_lists.get_or_none(
+    a_list = await Mylists.get_or_none(
         item=content_id, type=content_type
     )
 
-    if A_list is None:
-        await A_lists.create(user=user.id, item=content_id, type=content_type)
-        await callback.answer(lang.added_to_A_lists_alert, show_alert=True)
+    if a_list is None:
+        await Mylists.create(user=user.id, item=content_id, type=content_type)
+        await callback.answer(lang.added_to_mylists_alert, show_alert=True)
     else:
-        await A_list.delete()
-        await callback.answer(lang.removed_from_A_lists_alert, show_alert=True)
+        await a_list.delete()
+        await callback.answer(lang.removed_from_mylists_alert, show_alert=True)
 
     keyboard = bki(message.reply_markup)
 
     for line, column in enumerate(keyboard):
         for index, button in enumerate(column):
-            if button[1].startswith("A_list"):
-                keyboard[line][index] = await get_A_list_button(
+            if button[1].startswith("a_list"):
+                keyboard[line][index] = await get_mylist_button(
                     lang, user, content_type, content_id
                 )
 

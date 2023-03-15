@@ -30,8 +30,8 @@ from amime.amime import Amime
 from amime.database import A_lists
 
 
-@Amime.on_callback_query(filters.regex(r"A_lists anime (?P<page>\d+)"))
-async def anime_A_lists(bot: Amime, callback: CallbackQuery):
+@Amime.on_callback_query(filters.regex(r"a_lists anime (?P<page>\d+)"))
+async def anime_mylists(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
 
     message = callback.message
@@ -40,18 +40,18 @@ async def anime_A_lists(bot: Amime, callback: CallbackQuery):
 
     keyboard = []
     async with anilist.AsyncClient() as client:
-        A_lists = await A_lists.filter(type="anime")
+        a_lists = await A_lists.filter(type="anime")
 
         results = []
-        for A_list in A_lists:
-            anime = await client.get(A_list.item, "anime")
-            results.append((A_list, anime))
+        for a_list in a_lists:
+            anime = await client.get(a_list.item, "anime")
+            results.append((a_list, anime))
 
         layout = Pagination(
             results,
             item_data=lambda i, pg: f"menu {i[0].item}",
             item_title=lambda i, pg: i[1].title.romaji,
-            page_data=lambda pg: f"A_lists anime {pg}",
+            page_data=lambda pg: f"a_lists anime {pg}",
         )
 
         lines = layout.create(page, lines=8)
@@ -59,9 +59,9 @@ async def anime_A_lists(bot: Amime, callback: CallbackQuery):
         if len(lines) > 0:
             keyboard += lines
 
-    keyboard.append([(lang.back_button, "menu")])
+    keyboard.append([(lang.back_button, "listsx")])
 
     await message.edit_text(
-        lang.A_list_text,
+        lang.mylist_text,
         reply_markup=ikb(keyboard),
     )
