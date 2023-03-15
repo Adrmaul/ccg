@@ -20,50 +20,48 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from ctypes.wintypes import SHORT
-from typing import Union
-
+import anilist
 from pyrogram import filters
-from pyrogram.types import CallbackQuery, Message
+from pyrogram.types import CallbackQuery
 from pyromod.helpers import ikb
+from pyromod.nav import Pagination
 
 from amime.amime import Amime
+from amime.database import A_lists
 
 
-@Amime.on_message(filters.cmd(r"menu$"))
-@Amime.on_callback_query(filters.regex(r"^menu$"))
-async def anime_start(bot: Amime, union: Union[CallbackQuery, Message]):
-    is_callback = isinstance(union, CallbackQuery)
-    message = union.message if is_callback else union
-    lang = union._lang
+@Amime.on_callback_query(filters.regex(r"A_lists anime (?P<page>\d+)"))
+async def anime_A_lists(bot: Amime, callback: CallbackQuery):
+    page = int(callback.matches[0]["page"])
 
-    keyboard = [
-        [
-            (lang.tv_button, "tvshow_menu"),
-            (lang.movie_button, "movie-menu"),
-            (lang.tvs_button, "tvshort_menu"),
-        ],
-        [
-            (lang.ova_button, "ova_menu"),
-            (lang.ona_button, "ona_menu"),
-            (lang.spesial_button, "special_menu"),
-        ],
-        [
-            (lang.mv_button, "mv_menu"),
-            (lang.garapan_button, "lists"),
-        ],
-        [
-            (lang.favorites_button, "favorites anime 1"),
-            (lang.mylists_button, "mylists anime 1"),
-        ],
-    ]
+    message = callback.message
+    user = callback.from_user
+    lang = callback._lang
 
-    if is_callback:
-        keyboard.append([(lang.back_button, "start")])
+    keyboard = []
+    async with anilist.AsyncClient() as client:
+        A_lists = await A_lists.filter(type="anime")
 
-    await (message.edit_text if is_callback else message.reply_text)(
-        lang.anime_text,
+        results = []
+        for A_list in A_lists:
+            anime = await client.get(A_list.item, "anime")
+            results.append((A_list, anime))
+
+        layout = Pagination(
+            results,
+            item_data=lambda i, pg: f"menu {i[0].item}",
+            item_title=lambda i, pg: i[1].title.romaji,
+            page_data=lambda pg: f"A_lists anime {pg}",
+        )
+
+        lines = layout.create(page, lines=8)
+
+        if len(lines) > 0:
+            keyboard += lines
+
+    keyboard.append([(lang.back_button, "menu")])
+
+    await message.edit_text(
+        lang.A_list_text,
         reply_markup=ikb(keyboard),
-     )
-
-
+    )
