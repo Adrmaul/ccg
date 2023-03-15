@@ -36,6 +36,10 @@ async def anime_menu(bot: Amime, union: Union[CallbackQuery, Message]):
             (lang.x_button, "x_lists anime 1"),
             (lang.y_button, "y_lists anime 1"),
         ],
+            (lang.w_button, "w_lists anime 1"),
+            (lang.x_button, "x_lists anime 1"),
+            (lang.y_button, "y_lists anime 1"),
+        ],
     ]
 
     if is_callback:
