@@ -30,21 +30,21 @@ from amime.amime import Amime
 from amime.database import A_lists
 
 
-async def get_mylist_button(
+async def get_a_list_button(
     lang, user: User, content_type: str, content_id: int
 ) -> Tuple:
     a_list = await A_lists.get_or_none(
         item=content_id, type=content_type
     )
-    if mylist is None:
+    if a_list is None:
         status = "➕"
     else:
         status = "➖"
-    return (f"{status} {lang.mylist}", f"a_list {content_type} {content_id}")
+    return (f"{status} {lang.a_list}", f"a_list {content_type} {content_id}")
 
 
 @Amime.on_callback_query(filters.regex(r"^a_list (?P<type>\w+) (?P<id>\d+)"))
-async def mylist_callback(bot: Amime, callback: CallbackQuery):
+async def a_list_callback(bot: Amime, callback: CallbackQuery):
     content_type = callback.matches[0]["type"]
     content_id = int(callback.matches[0]["id"])
     message = callback.message
@@ -57,17 +57,17 @@ async def mylist_callback(bot: Amime, callback: CallbackQuery):
 
     if a_list is None:
         await A_lists.create(user=user.id, item=content_id, type=content_type)
-        await callback.answer(lang.added_to_mylists_alert, show_alert=True)
+        await callback.answer(lang.added_to_a_lists_alert, show_alert=True)
     else:
         await a_list.delete()
-        await callback.answer(lang.removed_from_mylists_alert, show_alert=True)
+        await callback.answer(lang.removed_from_a_lists_alert, show_alert=True)
 
     keyboard = bki(message.reply_markup)
 
     for line, column in enumerate(keyboard):
         for index, button in enumerate(column):
             if button[1].startswith("a_list"):
-                keyboard[line][index] = await get_mylist_button(
+                keyboard[line][index] = await get_a_list_button(
                     lang, user, content_type, content_id
                 )
 
