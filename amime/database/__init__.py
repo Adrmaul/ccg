@@ -24,9 +24,6 @@
 import os
 from tortoise import Tortoise, fields
 from tortoise.models import Model
-import datetime
-import pytz
-
 
 
 class Chats(Model):
@@ -74,7 +71,7 @@ class Mylists(Model):
     item = fields.IntField()
     type = fields.CharField(max_length=7)
     user = fields.IntField()
-    updated_at = fields.DatetimeField(auto_now=True, tzinfo=datetime.timezone.utc)
+    updated_at = fields.DatetimeField(auto_now=True)
 
 
 class Notifications(Model):

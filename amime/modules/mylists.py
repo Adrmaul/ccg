@@ -21,8 +21,6 @@
 # SOFTWARE.
 
 from typing import Tuple
-import datetime
-import pytz
 
 from pyrogram import filters
 from pyrogram.types import CallbackQuery, User
@@ -32,25 +30,17 @@ from amime.amime import Amime
 from amime.database import Mylists
 
 
-
-tz = pytz.timezone('Asia/Jakarta')
-now = datetime.datetime.now(tz=tz)
-
-
 async def get_mylist_button(
     lang, user: User, content_type: str, content_id: int
 ) -> Tuple:
     mylist = await Mylists.get_or_none(
-    item=content_id, type=content_type, updated_at__lt=now
+        item=content_id, type=content_type
     )
     if mylist is None:
         status = "➕"
     else:
         status = "➖"
-    now = datetime.datetime.now(datetime.timezone.utc)
-    now_str = now.isoformat()
-    now_aware = now.replace(tzinfo=datetime.timezone.utc)
-    return (f"{status} {lang.mylist}", f"mylist {content_type} {content_id} {now_aware}")
+    return (f"{status} {lang.mylist}", f"mylist {content_type} {content_id}")
 
 
 @Amime.on_callback_query(filters.regex(r"^mylist (?P<type>\w+) (?P<id>\d+)"))
