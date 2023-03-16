@@ -1,11 +1,33 @@
+# MIT License
+#
+# Copyright (c) 2021 Andriel Rodrigues for Amano Team
+#
+# Permission is hereby granted, free of charge, to any person obtaining a copy
+# of this software and associated documentation files (the "Software"), to deal
+# in the Software without restriction, including without limitation the rights
+# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+# copies of the Software, and to permit persons to whom the Software is
+# furnished to do so, subject to the following conditions:
+
+# The above copyright notice and this permission notice shall be included in all
+# copies or substantial portions of the Software.
+
+# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+# SOFTWARE.
+
 import anilist
 from pyrogram import filters
 from pyrogram.types import CallbackQuery
 from pyromod.helpers import ikb
-from pyromod.nav import Pagination
+from pyromod.nav import Paginations
 
 from amime.amime import Amime
-from amime.database import A_lists, Anime
+from amime.database import A_lists
 
 
 @Amime.on_callback_query(filters.regex(r"a_lists anime (?P<page>\d+)"))
@@ -18,12 +40,17 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
 
     keyboard = []
     async with anilist.AsyncClient() as client:
-        results = await A_lists.filter(type="anime").select_related("anime").all()
+        a_lists = await A_lists.filter(type="anime")
+
+        results = []
+        for a_list in a_lists:
+            anime = await client.get(a_list.item, "anime")
+            results.append((a_list, anime))
 
         layout = Pagination(
             results,
-            item_data=lambda i, pg: f"menu {i.anime.id}",
-            item_title=lambda i, pg: i.anime.title.romaji,
+            item_data=lambda i, pg: f"menu {i[0].item}",
+            item_title=lambda i, pg: i[1].title.romaji,
             page_data=lambda pg: f"a_lists anime {pg}",
         )
 
