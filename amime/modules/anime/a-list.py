@@ -38,29 +38,32 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
     user = callback.from_user
     lang = callback._lang
 
+    keyboard = []
     async with anilist.AsyncClient() as client:
         a_lists = await A_lists.filter(type="anime")
+
         results = []
         for a_list in a_lists:
             anime = await client.get(a_list.item, "anime")
             results.append((a_list, anime))
 
-    keyboard = [
-        [ikb(f"menu {a_list.item}") for a_list in a_lists],
-        [(lang.back_button, "listsx")],
-    ]
+        layout = Pagination(
+            results,
+            item_data=lambda i, pg: f"menu {i[0].item}",
+            item_title=lambda i, pg: i[1].title.romaji,
+            page_data=lambda pg: f"a_lists anime {pg}",
+        )
 
-    layout = Pagination(
-        results,
-        item_data=lambda i, pg: f"menu {i[0].item}",
-        item_title=lambda i, pg: i[1].title.romaji,
-        page_data=lambda pg: f"a_lists anime {pg}",
-    )
-    keyboard += layout.create_fast(page, lines=8)
+        lines = layout.create(page, lines=8)
+
+        if len(lines) > 0:
+            keyboard += lines
+
+    keyboard.append([(lang.back_button, "listsx")])
 
     # Mengirim jawaban callback query dengan menampilkan hasil
     await callback.answer()
     await message.edit_text(
         lang.mylist_text,
-        reply_markup=ikb(keyboard, show="callback_data"),
+        reply_markup=ikb(keyboard),
     )
