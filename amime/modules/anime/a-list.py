@@ -41,7 +41,7 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
     lang = callback._lang
 
     async with anilist.AsyncClient() as client:
-        a_lists = await A_lists.filter(type="anime").offset((page - 1) * 10).limit(10)
+        a_lists = await A_lists.filter(type="anime").offset((page - 1) * 8).limit(8)
 
         anime_list = await asyncio.gather(
             *[client.get(a_list.item, "anime") for a_list in a_lists]
