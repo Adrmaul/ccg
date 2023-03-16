@@ -304,6 +304,8 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
             #if hasattr(anime.trailer, "url"):
        #         buttons.append((lang.trailer_button, anime.trailer.url, "url"))
         buttons.append(await get_a_list_button(lang, user.id, "anime", anime.id)),
+        buttons.append(await get_a_list_button(lang, user.id, "manga", manga.id))
+        buttons.append(await get_a_list_button(lang, user.id, "manga", manga.id))
 
         keyboard = array_chunk(buttons, 2)
 
