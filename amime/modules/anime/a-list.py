@@ -21,7 +21,6 @@
 # SOFTWARE.
 
 import anilist
-import asyncio
 from pyrogram import filters
 from pyrogram.types import CallbackQuery
 from pyromod.helpers import ikb
@@ -34,14 +33,19 @@ from amime.database import A_lists
 @Amime.on_callback_query(filters.regex(r"a_lists anime (?P<page>\d+)"))
 async def anime_a_lists(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
+
     message = callback.message
     user = callback.from_user
     lang = callback._lang
 
+    keyboard = []
     async with anilist.AsyncClient() as client:
-        a_lists = await A_lists.filter(type="anime").limit(8).offset((page - 1) * 8)
-        anime_list = await asyncio.gather(*[client.get(a_list.item, "anime") for a_list in a_lists])
-        results = list(zip(a_lists, anime_list))
+        a_lists = await A_lists.filter(type="anime")
+
+        results = []
+        for a_list in a_lists:
+            anime = await client.get(a_list.item, "anime")
+            results.append((a_list, anime))
 
         layout = Pagination(
             results,
@@ -49,8 +53,15 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
             item_title=lambda i, pg: i[1].title.romaji,
             page_data=lambda pg: f"a_lists anime {pg}",
         )
-        keyboard = layout.create(page, lines=8)
+
+        lines = layout.create(page, lines=8)
+
+        if len(lines) > 0:
+            keyboard += lines
 
     keyboard.append([(lang.back_button, "listsx")])
 
-    await message.edit_text(lang.mylist_text, reply_markup=ikb(keyboard))
+    await message.edit_text(
+        lang.mylist_text,
+        reply_markup=ikb(keyboard),
+    )
