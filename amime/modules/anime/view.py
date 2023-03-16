@@ -201,8 +201,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if len(episodes) < 1 and is_private and not anime.status.lower() == "not_yet_released" and not anime.status.lower() == "releasing" and not hasattr(anime, "genres") == 'hentai':      
             buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
 
-        if is_private:
-            buttons.append(await get_favorite_button(lang, user, "anime", anime.id))
+        x
         
         if is_private:
             buttons.append(
@@ -378,6 +377,7 @@ async def anime_view_characters(bot: Amime, callback: CallbackQuery):
         keyboard = [
             [
                 (lang.back_button, f"anime more {anime_id} {user_id}"),
+                (lang.back_button, f"ngelist dong {anime_id} {user_id}"),
             ],
         ]
 
