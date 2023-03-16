@@ -292,9 +292,6 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
     anime_id = int(callback.matches[0].group(1))
     user_id = int(callback.matches[0].group(2))
 
-    is_private = await filters.private(bot, message)
-    is_collaborator = await filters.sudo(bot, message)
-
 
     if user_id != user.id:
         return
@@ -311,11 +308,8 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
        # if hasattr(anime, "trailer"):
             #if hasattr(anime.trailer, "url"):
        #         buttons.append((lang.trailer_button, anime.trailer.url, "url"))
-        buttons.append(await get_a_list_button(lang, user.id, "anime", anime.id)),
-        buttons.append(await get_a_list_button(lang, user.id, "anime", anime.id)),
-        buttons.append(await get_a_list_button(lang, user.id, "anime", anime.id)),
 
-        keyboard = array_chunk(buttons, 3)
+        keyboard = array_chunk(buttons, 2)
 
         keyboard.append([(lang.back_button, f"menu {anime_id} {user_id}")])
 
