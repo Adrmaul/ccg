@@ -47,7 +47,7 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
             *[client.get(a_list.item, "anime") for a_list in a_lists]
         )
 
-        results = zip(a_lists, anime_list)
+        results = list(zip(a_lists, anime_list))
 
         layout = Pagination(
             results,
