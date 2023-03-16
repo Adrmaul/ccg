@@ -25,9 +25,12 @@ from pyrogram import filters
 from pyrogram.types import CallbackQuery
 from pyromod.helpers import ikb
 from pyromod.nav import Pagination
+import asyncio
 
 from amime.amime import Amime
 from amime.database import A_lists
+from asyncio import gather
+
 
 
 @Amime.on_callback_query(filters.regex(r"a_lists anime (?P<page>\d+)"))
