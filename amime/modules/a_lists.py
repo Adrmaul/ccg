@@ -51,7 +51,7 @@ async def a_list_callback(bot: Amime, callback: CallbackQuery):
     user = callback.from_user
     lang = callback._lang
 
-    a_list = await Mylists.get_or_none(
+    a_list = await A_lists.get_or_none(
         item=content_id, type=content_type
     )
 
