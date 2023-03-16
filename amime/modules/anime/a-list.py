@@ -30,6 +30,7 @@ import asyncio
 from amime.amime import Amime
 from amime.database import A_lists
 from asyncio import gather
+from math import ceil
 
 
 
