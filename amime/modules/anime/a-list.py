@@ -24,7 +24,7 @@ import anilist
 from pyrogram import filters
 from pyrogram.types import CallbackQuery
 from pyromod.helpers import ikb
-from pyromod.nav import Paginations
+from pyromod.nav import Pagination
 
 from amime.amime import Amime
 from amime.database import A_lists
