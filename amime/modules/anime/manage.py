@@ -111,11 +111,12 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
             await anime_manage(bot, callback)
             return
 
-    keyboard = [
-        [
-            (lang.tv_button, "manage_list"),
-        ]
-    ],
+    buttons.append(
+        (
+            lang.tv_button,
+            "manage_list",
+        )
+    )
 
     buttons.append(
         (
