@@ -43,7 +43,6 @@ from amime.amime import Amime
 from amime.database import Episodes, Notifications
 from amime.modules.mylists import get_mylist_button
 from amime.modules.notify import get_notify_button
-form amime.modules.manage_list import manage_list
 
 
 logger = logging.getLogger(__name__)
@@ -112,7 +111,11 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
             await anime_manage(bot, callback)
             return
 
-    buttons.append(await get_mylist_button(manage_list))
+    keyboard = [
+        [
+            (lang.tv_button, "tvshow_menu"),
+        ]
+    ],
 
     buttons.append(
         (
