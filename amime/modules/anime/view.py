@@ -200,7 +200,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if is_collaborator:
             buttons.append(
                 (
-                    lang.view_more_button,
+                    lang.ngelist_more_button,
                     f"ngelist more {anime.id} {user.id}",
                 )
             )
@@ -337,12 +337,6 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
 
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
-
-        buttons = [
-            (lang.Login, f"btn_{anime.id}_True_{user_id}"),
-            (lang.Guest, f"btn_{anime.id}_ANI_False_{user_id}"),
-            #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
-        ]
 
        # if hasattr(anime, "trailer"):
             #if hasattr(anime.trailer, "url"):
