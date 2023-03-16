@@ -113,13 +113,6 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
 
     buttons.append(
         (
-            lang.tv_button,
-            "manage_list",
-        )
-    )
-
-    buttons.append(
-        (
             lang.add_in_batch_button,
             f"manage episode batch {anime_id} {season} {int(subtitled)} {language} {page}",
         )

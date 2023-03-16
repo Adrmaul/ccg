@@ -33,19 +33,18 @@ from amime.database import A_lists
 @Amime.on_callback_query(filters.regex(r"a_lists anime (?P<page>\d+)"))
 async def anime_a_lists(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
-
     message = callback.message
     user = callback.from_user
     lang = callback._lang
 
-    keyboard = []
     async with anilist.AsyncClient() as client:
-        a_lists = await A_lists.filter(type="anime")
+        a_lists = await A_lists.filter(type="anime").offset((page - 1) * 10).limit(10)
 
-        results = []
-        for a_list in a_lists:
-            anime = await client.get(a_list.item, "anime")
-            results.append((a_list, anime))
+        anime_list = await asyncio.gather(
+            *[client.get(a_list.item, "anime") for a_list in a_lists]
+        )
+
+        results = zip(a_lists, anime_list)
 
         layout = Pagination(
             results,
@@ -54,14 +53,8 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
             page_data=lambda pg: f"a_lists anime {pg}",
         )
 
-        lines = layout.create(page, lines=8)
-
-        if len(lines) > 0:
-            keyboard += lines
+        keyboard = layout.create(page, lines=8)
 
     keyboard.append([(lang.back_button, "listsx")])
 
-    await message.edit_text(
-        lang.mylist_text,
-        reply_markup=ikb(keyboard),
-    )
+    await message.edit_text(lang.mylist_text, reply_markup=ikb(keyboard))
