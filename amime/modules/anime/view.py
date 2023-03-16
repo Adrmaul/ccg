@@ -201,7 +201,7 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
         if len(episodes) < 1 and is_private and not anime.status.lower() == "not_yet_released" and not anime.status.lower() == "releasing" and not hasattr(anime, "genres") == 'hentai':      
             buttons.append((lang.inline, f"{anime.title.romaji}", "switch_inline_query_current_chat"))
 
-        x
+        
         
         if is_private:
             buttons.append(
