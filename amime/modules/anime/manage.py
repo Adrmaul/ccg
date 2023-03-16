@@ -111,7 +111,7 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
             await anime_manage(bot, callback)
             return
 
-    buttons.append(await get_mylist_button(lang, user.id, "anime", anime_id))
+    buttons.append(await get_mylist_button(manage_list))
 
     buttons.append(
         (
