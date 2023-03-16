@@ -113,7 +113,7 @@ async def anime_manage(bot: Amime, callback: CallbackQuery):
 
     keyboard = [
         [
-            (lang.tv_button, "tvshow_menu"),
+            (lang.tv_button, "manage_list"),
         ]
     ],
 
