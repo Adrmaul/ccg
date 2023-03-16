@@ -282,6 +282,10 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
     anime_id = int(callback.matches[0].group(1))
     user_id = int(callback.matches[0].group(2))
 
+    is_private = await filters.private(bot, message)
+    is_collaborator = await filters.sudo(bot, message)
+
+
     if user_id != user.id:
         return
 
