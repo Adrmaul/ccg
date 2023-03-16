@@ -43,6 +43,7 @@ from amime.amime import Amime
 from amime.database import Episodes, Notifications
 from amime.modules.mylists import get_mylist_button
 from amime.modules.notify import get_notify_button
+form amime.modules.manage_list import manage_list
 
 
 logger = logging.getLogger(__name__)
