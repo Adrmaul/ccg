@@ -538,6 +538,10 @@ view_more_text: |
 
   Login = Sudah menautkan akun anilist
   guest = belum menautkan.
+
+ngelist_more_text: |
+  Silahkan Bookmark dengan sesuai untuk dimasukan kedaftar list. (Untuk admin : silahkan verifikasi berkas video animenya sebelum ditambahkan list animenya.)
+
 filter_more_text: |
   {title}
 

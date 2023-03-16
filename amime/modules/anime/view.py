@@ -352,7 +352,7 @@ async def ngelist_view_more(bot: Amime, callback: CallbackQuery):
         keyboard.append([(lang.back_button, f"menu {anime_id} {user_id}")])
 
         await message.edit_text(
-            lang.view_more_text,
+            lang.ngelist_more_text,
             reply_markup=ikb(keyboard),
         )
 
