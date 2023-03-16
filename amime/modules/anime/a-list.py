@@ -30,7 +30,6 @@ import asyncio
 from amime.amime import Amime
 from amime.database import A_lists
 from asyncio import gather
-from math import ceil
 
 
 
@@ -42,26 +41,14 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
     lang = callback._lang
 
     async with anilist.AsyncClient() as client:
-        # hitung total jumlah data yang tersedia
-        total_data = await A_lists.filter(type="anime").count()
-        total_pages = ceil(total_data / 10)
+        a_lists = await A_lists.filter(type="anime").offset((page - 1) * 10).limit(10)
 
-        # inisialisasi list untuk menyimpan semua data anime
-        anime_list = []
+        anime_list = await asyncio.gather(
+            *[client.get(a_list.item, "anime") for a_list in a_lists]
+        )
 
-        # loop untuk mengambil data dari semua halaman
-        for p in range(1, total_pages+1):
-            a_lists = await A_lists.filter(type="anime").offset((p - 1) * 10).limit(10)
-
-            # ambil data anime dari setiap item pada a_lists
-            anime_list += await asyncio.gather(
-                *[client.get(a_list.item, "anime") for a_list in a_lists]
-            )
-
-        # zip a_lists dan anime_list menjadi satu list hasil
         results = list(zip(a_lists, anime_list))
 
-        # buat tampilan halaman menggunakan pagination
         layout = Pagination(
             results,
             item_data=lambda i, pg: f"menu {i[0].item}",
