@@ -297,8 +297,8 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
        # if hasattr(anime, "trailer"):
             #if hasattr(anime.trailer, "url"):
        #         buttons.append((lang.trailer_button, anime.trailer.url, "url"))
-
-        #buttons.append(("🐢 Anilist", anime.url, "url"))
+        if collaborator:
+            buttons.append(await get_mylist_button(lang, user.id, "anime", anime.id)),
 
         keyboard = array_chunk(buttons, 2)
 
@@ -377,7 +377,6 @@ async def anime_view_characters(bot: Amime, callback: CallbackQuery):
         keyboard = [
             [
                 (lang.back_button, f"anime more {anime_id} {user_id}"),
-                (lang.back_button, f"ngelist dong {anime_id} {user_id}"),
             ],
         ]
 
