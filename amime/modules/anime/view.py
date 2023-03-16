@@ -194,12 +194,15 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 (
                     lang.manage_button,
                     f"manage anime {anime.id} 0 1 {language} 1",
-                ),
+                )
+            )
+        
+        if is_collaborator:
+            buttons.append(
                 (
                     lang.view_more_button,
-                    f"ngelist more {anime.id} {user.id}"
-                ),
-
+                    f"anime more {anime.id} {user.id}",
+                )
             )
 
  
