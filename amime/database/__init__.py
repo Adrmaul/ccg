@@ -24,7 +24,6 @@
 import os
 from tortoise import Tortoise, fields
 from tortoise.models import Model
-from tortoise.fields import IntField, CharField, DatetimeField
 
 
 class Chats(Model):
@@ -78,7 +77,7 @@ class A_lists(Model):
     item = fields.IntField()
     type = fields.CharField(max_length=7)
     user = fields.IntField()
-    created_at = DatetimeField(auto_now_add=True)
+
 
 
 
