@@ -307,7 +307,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
         buttons.append(await get_a_list_button(lang, user.id, "anime", anime.id)),
         buttons.append(await get_a_list_button(lang, user.id, "anime", anime.id)),
 
-        keyboard = array_chunk(buttons, 2)
+        keyboard = array_chunk(buttons, 3)
 
         keyboard.append([(lang.back_button, f"menu {anime_id} {user_id}")])
 
