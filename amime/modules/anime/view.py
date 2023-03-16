@@ -194,7 +194,12 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
                 (
                     lang.manage_button,
                     f"manage anime {anime.id} 0 1 {language} 1",
-                )
+                ),
+                (
+                    lang.view_more_button,
+                    f"ngelist more {anime.id} {user.id}"
+                ),
+
             )
 
  
@@ -276,6 +281,48 @@ async def anime_view(bot: Amime, union: Union[CallbackQuery, Message]):
 
 
 @Amime.on_callback_query(filters.regex(r"^anime more (\d+) (\d+)"))
+async def anime_view_more(bot: Amime, callback: CallbackQuery):
+    message = callback.message
+    user = callback.from_user
+    lang = callback._lang
+
+    anime_id = int(callback.matches[0].group(1))
+    user_id = int(callback.matches[0].group(2))
+
+    is_private = await filters.private(bot, message)
+    is_collaborator = await filters.sudo(bot, message)
+
+
+    if user_id != user.id:
+        return
+
+    async with anilist.AsyncClient() as client:
+        anime = await client.get(anime_id, "anime")
+
+        buttons = [
+            (lang.Login, f"btn_{anime.id}_True_{user_id}"),
+            (lang.Guest, f"btn_{anime.id}_ANI_False_{user_id}"),
+            #(lang.characters_button, f"anime characters {anime_id} {user_id}"),
+        ]
+
+       # if hasattr(anime, "trailer"):
+            #if hasattr(anime.trailer, "url"):
+       #         buttons.append((lang.trailer_button, anime.trailer.url, "url"))
+        buttons.append(await get_a_list_button(lang, user.id, "anime", anime.id)),
+        buttons.append(await get_a_list_button(lang, user.id, "anime", anime.id)),
+        buttons.append(await get_a_list_button(lang, user.id, "anime", anime.id)),
+
+        keyboard = array_chunk(buttons, 3)
+
+        keyboard.append([(lang.back_button, f"menu {anime_id} {user_id}")])
+
+        await message.edit_text(
+            lang.view_more_text,
+            reply_markup=ikb(keyboard),
+        )
+
+
+@Amime.on_callback_query(filters.regex(r"^ngelist more (\d+) (\d+)"))
 async def anime_view_more(bot: Amime, callback: CallbackQuery):
     message = callback.message
     user = callback.from_user
