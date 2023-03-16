@@ -28,6 +28,7 @@ from pyromod.nav import Pagination
 
 from amime.amime import Amime
 from amime.database import A_lists
+import asyncio
 
 
 @Amime.on_callback_query(filters.regex(r"a_lists anime (?P<page>\d+)"))
