@@ -37,6 +37,8 @@ from amime.database import Episodes, Users
 from amime.modules.favorites import get_favorite_button
 from amime.modules.mylists import get_mylist_button
 from amime.modules.notify import get_notify_button
+from amime.modules.a_lists import get_a_list_button
+
 
 
 
