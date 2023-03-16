@@ -320,7 +320,7 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
 
 
 @Amime.on_callback_query(filters.regex(r"^ngelist more (\d+) (\d+)"))
-async def anime_view_more(bot: Amime, callback: CallbackQuery):
+async def ngelist_view_more(bot: Amime, callback: CallbackQuery):
     message = callback.message
     user = callback.from_user
     lang = callback._lang
@@ -337,6 +337,8 @@ async def anime_view_more(bot: Amime, callback: CallbackQuery):
 
     async with anilist.AsyncClient() as client:
         anime = await client.get(anime_id, "anime")
+
+        buttons = []
 
        # if hasattr(anime, "trailer"):
             #if hasattr(anime.trailer, "url"):
