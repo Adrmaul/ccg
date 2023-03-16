@@ -40,7 +40,7 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
 
     keyboard = []
     async with anilist.AsyncClient() as client:
-        a_lists = await A_lists.filter(type="anime", item__gt=10)
+        a_lists = await A_lists.filter(type="anime")
 
         results = []
         for a_list in a_lists:
