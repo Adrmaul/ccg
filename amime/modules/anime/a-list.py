@@ -61,6 +61,8 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
 
     keyboard.append([(lang.back_button, "listsx")])
 
+    # Mengirim jawaban callback query dengan menampilkan hasil
+    await callback.answer()
     await message.edit_text(
         lang.mylist_text,
         reply_markup=ikb(keyboard),
