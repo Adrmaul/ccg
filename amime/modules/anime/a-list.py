@@ -49,7 +49,7 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
         a_lists = cache["a_lists"]
     else:
         # menggunakan select_related untuk mengambil objek terkait dalam satu kueri
-        a_lists = await A_lists.filter(type="anime").select_related("item").all()
+        a_lists = await A_lists.filter(type="anime").select_related("user").all()
         cache["a_lists"] = a_lists
 
     results = []
