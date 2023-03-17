@@ -31,9 +31,6 @@ from amime.amime import Amime
 from amime.database import A_lists
 
 # inisialisasi cache untuk data dari database dan API Anilist
-cache = {}
-
-
 @Amime.on_callback_query(filters.regex(r"a_lists anime (?P<page>\d+)"))
 async def anime_a_lists(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
@@ -44,13 +41,8 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
 
     keyboard = []
 
-    # mengambil data dari cache jika sudah ada
-    if "a_lists" in cache:
-        a_lists = cache["a_lists"]
-    else:
-        # menggunakan select_related untuk mengambil objek terkait dalam satu kueri
-        a_lists = await A_lists.filter(type="anime").all()
-        cache["a_lists"] = a_lists
+    # menggunakan select_related untuk mengambil objek terkait dalam satu kueri
+    a_lists = await A_lists.filter(type="anime")
 
     results = []
     # menggunakan asyncio.gather untuk memuat data dari Anilist dalam batch
@@ -63,7 +55,6 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
         # menggunakan prefetch_related untuk mengambil objek terkait dalam satu kueri
         for a_list, anime in zip(a_lists, anime_list):
             results.append((a_list, anime))
-        cache["anime_list"] = anime_list
 
     layout = Pagination(
         results,
