@@ -21,6 +21,7 @@
 # SOFTWARE.
 
 import anilist
+import asyncio
 from pyrogram import filters
 from pyrogram.types import CallbackQuery
 from pyromod.helpers import ikb
@@ -28,6 +29,9 @@ from pyromod.nav import Pagination
 
 from amime.amime import Amime
 from amime.database import A_lists
+
+# inisialisasi cache untuk data dari database dan API Anilist
+cache = {}
 
 
 @Amime.on_callback_query(filters.regex(r"a_lists anime (?P<page>\d+)"))
@@ -39,25 +43,39 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
     lang = callback._lang
 
     keyboard = []
+
+    # mengambil data dari cache jika sudah ada
+    if "a_lists" in cache:
+        a_lists = cache["a_lists"]
+    else:
+        # menggunakan select_related untuk mengambil objek terkait dalam satu kueri
+        a_lists = await A_lists.filter(type="anime").select_related("item").all()
+        cache["a_lists"] = a_lists
+
+    results = []
+    # menggunakan asyncio.gather untuk memuat data dari Anilist dalam batch
     async with anilist.AsyncClient() as client:
-        a_lists = await A_lists.filter(type="anime")
-
-        results = []
+        tasks = []
         for a_list in a_lists:
-            anime = await client.get(a_list.item, "anime")
+            tasks.append(client.get(a_list.item, "anime"))
+        anime_list = await asyncio.gather(*tasks)
+
+        # menggunakan prefetch_related untuk mengambil objek terkait dalam satu kueri
+        for a_list, anime in zip(a_lists, anime_list):
             results.append((a_list, anime))
+        cache["anime_list"] = anime_list
 
-        layout = Pagination(
-            results,
-            item_data=lambda i, pg: f"menu {i[0].item}",
-            item_title=lambda i, pg: i[1].title.romaji,
-            page_data=lambda pg: f"a_lists anime {pg}",
-        )
+    layout = Pagination(
+        results,
+        item_data=lambda i, pg: f"menu {i[0].item}",
+        item_title=lambda i, pg: i[1].title.romaji,
+        page_data=lambda pg: f"a_lists anime {pg}",
+    )
 
-        lines = layout.create(page, lines=8)
+    lines = layout.create(page, lines=8)
 
-        if len(lines) > 0:
-            keyboard += lines
+    if len(lines) > 0:
+        keyboard += lines
 
     keyboard.append([(lang.back_button, "listsx")])
 
