@@ -1,25 +1,3 @@
-# MIT License
-#
-# Copyright (c) 2021 Andriel Rodrigues for Amano Team
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-
-# The above copyright notice and this permission notice shall be included in all
-# copies or substantial portions of the Software.
-
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 import anilist
 from pyrogram import filters
 from pyrogram.types import CallbackQuery
@@ -33,19 +11,22 @@ from amime.database import A_lists
 @Amime.on_callback_query(filters.regex(r"a_lists anime (?P<page>\d+)"))
 async def anime_a_lists(bot: Amime, callback: CallbackQuery):
     page = int(callback.matches[0]["page"])
-
     message = callback.message
     user = callback.from_user
     lang = callback._lang
 
     keyboard = []
     async with anilist.AsyncClient() as client:
-        a_lists = await A_lists.list(type="anime")
+        # Mengambil seluruh data dari A_lists dalam batch dengan metode 'all'
+        a_lists = await A_lists.all(type="anime")
+        # Menyiapkan id-item list untuk diproses bersama dengan anilist API
+        item_ids = [a_list.item for a_list in a_lists]
 
-        results = []
-        for a_list in a_lists:
-            anime = await client.get(a_list.item, "anime")
-            results.append((a_list, anime))
+        # Mengambil data anime dari Anilist secara bersamaan dengan A_lists
+        animes = await client.get_multi(item_ids, "anime")
+
+        # Menggabungkan data dari A_lists dan Anilist menjadi satu tuple
+        results = [(a_lists[i], animes[i]) for i in range(len(a_lists))]
 
         layout = Pagination(
             results,
@@ -54,11 +35,12 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
             page_data=lambda pg: f"a_lists anime {pg}",
         )
 
+        # Membuat keyboard untuk pagination
         lines = layout.create(page, lines=8)
-
         if len(lines) > 0:
             keyboard += lines
 
+    # Menambah tombol back
     keyboard.append([(lang.back_button, "listsx")])
 
     # Mengirim jawaban callback query dengan menampilkan hasil
