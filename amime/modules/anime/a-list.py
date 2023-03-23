@@ -43,8 +43,6 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
             item_data=lambda i, pg: f"menu {i[0].item}",
             item_title=lambda i, pg: i[1].title.romaji,
             page_data=lambda pg: f"a_lists anime {pg}",
-            results_per_page=RESULTS_PER_PAGE,
-            total_results=total_results,
             current_page=page,
             total_pages=total_pages,
         )
