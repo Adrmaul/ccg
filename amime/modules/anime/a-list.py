@@ -22,8 +22,8 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
         # Menyiapkan id-item list untuk diproses bersama dengan anilist API
         item_ids = [a_list.item for a_list in a_lists]
 
-        # Mengambil data anime dari Anilist secara bersamaan dengan A_lists
-        animes = await client.get_multi(item_ids, "anime")
+        # Mengambil data anime dari Anilist dengan menggunakan fetch_media
+        animes = await client.fetch_media(item_ids, "ANIME")
 
         # Menggabungkan data dari A_lists dan Anilist menjadi satu tuple
         results = [(a_lists[i], animes[i]) for i in range(len(a_lists))]
