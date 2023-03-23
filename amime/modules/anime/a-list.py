@@ -17,8 +17,8 @@ async def anime_a_lists(bot: Amime, callback: CallbackQuery):
 
     keyboard = []
     async with anilist.AsyncClient() as client:
-        # Mengambil seluruh data dari A_lists dalam batch dengan metode 'all'
-        a_lists = await A_lists.all(type="anime")
+        # Mengambil seluruh data dari A_lists dalam batch
+        a_lists = await A_lists.all()
         # Menyiapkan id-item list untuk diproses bersama dengan anilist API
         item_ids = [a_list.item for a_list in a_lists]
 
